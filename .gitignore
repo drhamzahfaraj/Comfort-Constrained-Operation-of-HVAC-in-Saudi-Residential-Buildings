@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# LaTeX build products in paper/ (paper/paper.pdf is kept)
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+paper/*.synctex.gz
+paper/main.pdf
+
+# EnergyPlus scratch files (the stored outputs in results/energyplus/ are kept: `make benchmark-parse` reads them)
+results/energyplus/*/eplusout.mdd
+results/energyplus/*/eplusout.rdd
+results/energyplus/*/eplusout.shd
+results/energyplus/*/sqlite.err
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,122 @@
+{
+ "Riyadh": {
+  "bill_start": 26788,
+  "bill_end": 8889,
+  "saving_total_pct": 66.8,
+  "shapley_SAR": {
+   "envelope": 13346,
+   "equipment": 2395,
+   "setpoint": 1742,
+   "no_precool": 416
+  },
+  "shapley_share_pct": {
+   "envelope": 74.6,
+   "equipment": 13.4,
+   "setpoint": 9.7,
+   "no_precool": 2.3
+  },
+  "shapley_pct_of_start": {
+   "envelope": 49.8,
+   "equipment": 8.9,
+   "setpoint": 6.5,
+   "no_precool": 1.6
+  },
+  "main_effect_pct": {
+   "envelope": 56.0,
+   "equipment": 13.5,
+   "setpoint": 10.2,
+   "no_precool": 2.6
+  },
+  "interaction_pct_of_start": {
+   "envelopexequipment": 5.46,
+   "envelopexsetpoint": 3.25,
+   "envelopexno_precool": 0.74,
+   "equipmentxsetpoint": 0.83,
+   "equipmentxno_precool": -0.06,
+   "setpointxno_precool": -0.49
+  },
+  "all_admissible": true,
+  "inadmissible": [],
+  "bills": {
+   "1001": 11941,
+   "1011": 10456,
+   "1000": 12180,
+   "1010": 10811,
+   "1101": 10151,
+   "1111": 8889,
+   "1100": 10411,
+   "1110": 9290,
+   "0001": 26345,
+   "0011": 23994,
+   "0000": 26788,
+   "0010": 24573,
+   "0101": 23116,
+   "0111": 20973,
+   "0100": 23559,
+   "0110": 21553
+  }
+ },
+ "Jeddah": {
+  "bill_start": 33616,
+  "bill_end": 13924,
+  "saving_total_pct": 58.6,
+  "shapley_SAR": {
+   "envelope": 13503,
+   "equipment": 2667,
+   "setpoint": 2774,
+   "no_precool": 747
+  },
+  "shapley_share_pct": {
+   "envelope": 68.6,
+   "equipment": 13.5,
+   "setpoint": 14.1,
+   "no_precool": 3.8
+  },
+  "shapley_pct_of_start": {
+   "envelope": 40.2,
+   "equipment": 7.9,
+   "setpoint": 8.3,
+   "no_precool": 2.2
+  },
+  "main_effect_pct": {
+   "envelope": 45.7,
+   "equipment": 11.1,
+   "setpoint": 11.0,
+   "no_precool": 3.4
+  },
+  "interaction_pct_of_start": {
+   "envelopexequipment": 4.38,
+   "envelopexsetpoint": 6.95,
+   "envelopexno_precool": 0.86,
+   "equipmentxsetpoint": 1.1,
+   "equipmentxno_precool": -0.03,
+   "setpointxno_precool": -0.64
+  },
+  "all_admissible": true,
+  "inadmissible": [],
+  "bills": {
+   "1001": 17551,
+   "1011": 15714,
+   "1000": 18041,
+   "1010": 16390,
+   "1101": 15478,
+   "1111": 13924,
+   "1100": 15988,
+   "1110": 14648,
+   "0001": 32836,
+   "0011": 28566,
+   "0000": 33616,
+   "0010": 29579,
+   "0101": 29234,
+   "0111": 25411,
+   "0100": 30002,
+   "0110": 26407
+  }
+ },
+ "levers": [
+  "envelope (pre-code -> SBC)",
+  "equipment (catalogue -> 3-ton inverter)",
+  "setpoint (current practice -> reference)",
+  "pre-cooling (2 K pre-peak -> none)"
+ ]
+}

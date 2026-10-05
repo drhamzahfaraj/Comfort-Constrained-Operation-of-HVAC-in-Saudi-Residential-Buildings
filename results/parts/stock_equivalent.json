@@ -1,0 +1,13 @@
+{
+ "EER": 8.5,
+ "ACH": 0.8,
+ "cop_scale": 0.74,
+ "Riyadh": {
+  "compliant": 60,
+  "noncompliant": 121
+ },
+ "Jeddah": {
+  "compliant": 101,
+  "noncompliant": 161
+ }
+}

@@ -1,0 +1,11 @@
+key,value
+apartment/day.n_vars,5088
+apartment/day.n_constraints,3072
+apartment/day.n_solves,6
+apartment/day.t_solve_s,8.91
+apartment/day.t_per_solve_s,1.48
+floor/day.n_vars,10656
+floor/day.n_constraints,6336
+floor/day.n_solves,6
+floor/day.t_solve_s,116.69
+floor/day.t_per_solve_s,19.45

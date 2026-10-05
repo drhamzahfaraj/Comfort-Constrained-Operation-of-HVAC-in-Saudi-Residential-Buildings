@@ -1,0 +1,64 @@
+{
+ "Riyadh": {
+  "total_unit_kwh": 48750,
+  "total_unit_kwh_all_inverter": 41181,
+  "guest_fixed": {
+   "n_units": 8,
+   "area_share_pct": 21.1,
+   "kwh_share_pct": 30.4,
+   "kwh": 14834,
+   "kwh_as_inverter": 9060,
+   "runtime_frac": 0.049,
+   "peak_load_ratio": 0.16
+  },
+  "stair_fixed": {
+   "n_units": 4,
+   "area_share_pct": 11.8,
+   "kwh_share_pct": 8.9,
+   "kwh": 4351,
+   "kwh_as_inverter": 2647,
+   "runtime_frac": 0.028,
+   "peak_load_ratio": 0.1
+  },
+  "inverter": {
+   "n_units": 48,
+   "area_share_pct": 67.1,
+   "kwh_share_pct": 60.6,
+   "kwh": 29565,
+   "kwh_as_inverter": 29474,
+   "runtime_frac": 0.096,
+   "peak_load_ratio": 0.19
+  }
+ },
+ "Jeddah": {
+  "total_unit_kwh": 54784,
+  "total_unit_kwh_all_inverter": 46138,
+  "guest_fixed": {
+   "n_units": 8,
+   "area_share_pct": 21.1,
+   "kwh_share_pct": 30.8,
+   "kwh": 16863,
+   "kwh_as_inverter": 10281,
+   "runtime_frac": 0.058,
+   "peak_load_ratio": 0.16
+  },
+  "stair_fixed": {
+   "n_units": 4,
+   "area_share_pct": 11.8,
+   "kwh_share_pct": 9.1,
+   "kwh": 4998,
+   "kwh_as_inverter": 3041,
+   "runtime_frac": 0.034,
+   "peak_load_ratio": 0.1
+  },
+  "inverter": {
+   "n_units": 48,
+   "area_share_pct": 67.1,
+   "kwh_share_pct": 60.1,
+   "kwh": 32923,
+   "kwh_as_inverter": 32816,
+   "runtime_frac": 0.12,
+   "peak_load_ratio": 0.19
+  }
+ }
+}

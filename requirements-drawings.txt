@@ -1,0 +1,4 @@
+# drawing set (drawings/): DXF generation and vector PDF export
+ezdxf>=1.4
+shapely>=2.0
+pymupdf>=1.24

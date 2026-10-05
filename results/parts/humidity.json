@@ -1,0 +1,26 @@
+{
+ "compliant/Riyadh": {
+  "humidity_aware_setpoint_pct": 12.4,
+  "sensible_only_setpoint_pct": 12.4,
+  "latent_kwh_building": 185,
+  "latent_share_pct": 0.4
+ },
+ "noncompliant/Riyadh": {
+  "humidity_aware_setpoint_pct": 9.2,
+  "sensible_only_setpoint_pct": 9.2,
+  "latent_kwh_building": 185,
+  "latent_share_pct": 0.2
+ },
+ "compliant/Jeddah": {
+  "humidity_aware_setpoint_pct": 10.1,
+  "sensible_only_setpoint_pct": 13.3,
+  "latent_kwh_building": 19551,
+  "latent_share_pct": 25.8
+ },
+ "noncompliant/Jeddah": {
+  "humidity_aware_setpoint_pct": 12.9,
+  "sensible_only_setpoint_pct": 15.0,
+  "latent_kwh_building": 19551,
+  "latent_share_pct": 14.2
+ }
+}

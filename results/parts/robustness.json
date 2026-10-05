@@ -1,0 +1,247 @@
+{
+ "reference": {
+  "Riyadh": {
+   "EUI": 25.1,
+   "setpoint_pct": 12.4,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.17,
+   "prepeak2_pct": 3.4,
+   "night2_pct": 4.57,
+   "hot_Ch": 0,
+   "bill": 10456,
+   "latent_share_pct": 0.4,
+   "starts_per_unit_h": 2.01
+  },
+  "Jeddah": {
+   "EUI": 37.7,
+   "setpoint_pct": 10.5,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.72,
+   "prepeak2_pct": 4.3,
+   "night2_pct": 5.27,
+   "hot_Ch": 0,
+   "bill": 15714,
+   "latent_share_pct": 25.8,
+   "starts_per_unit_h": 2.63
+  }
+ },
+ "doors_closed": {
+  "Riyadh": {
+   "EUI": 25.1,
+   "setpoint_pct": 12.2,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.18,
+   "prepeak2_pct": 3.09,
+   "night2_pct": 4.09,
+   "hot_Ch": 0,
+   "bill": 10465,
+   "latent_share_pct": 0.4,
+   "starts_per_unit_h": 2.05
+  },
+  "Jeddah": {
+   "EUI": 37.6,
+   "setpoint_pct": 10.5,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.66,
+   "prepeak2_pct": 3.92,
+   "night2_pct": 4.86,
+   "hot_Ch": 0,
+   "bill": 15672,
+   "latent_share_pct": 25.8,
+   "starts_per_unit_h": 2.65
+  }
+ },
+ "gains_minus30": {
+  "Riyadh": {
+   "EUI": 23.0,
+   "setpoint_pct": 11.4,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.29,
+   "prepeak2_pct": 3.54,
+   "night2_pct": 4.86,
+   "hot_Ch": 0,
+   "bill": 9605,
+   "latent_share_pct": 0.4,
+   "starts_per_unit_h": 1.85
+  },
+  "Jeddah": {
+   "EUI": 35.0,
+   "setpoint_pct": 11.0,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.77,
+   "prepeak2_pct": 4.28,
+   "night2_pct": 5.45,
+   "hot_Ch": 0,
+   "bill": 14574,
+   "latent_share_pct": 27.8,
+   "starts_per_unit_h": 2.38
+  }
+ },
+ "gains_plus30": {
+  "Riyadh": {
+   "EUI": 27.4,
+   "setpoint_pct": 12.7,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.09,
+   "prepeak2_pct": 3.16,
+   "night2_pct": 4.26,
+   "hot_Ch": 0,
+   "bill": 11428,
+   "latent_share_pct": 0.3,
+   "starts_per_unit_h": 2.21
+  },
+  "Jeddah": {
+   "EUI": 40.4,
+   "setpoint_pct": 10.1,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.64,
+   "prepeak2_pct": 4.3,
+   "night2_pct": 5.1,
+   "hot_Ch": 0,
+   "bill": 16853,
+   "latent_share_pct": 24.0,
+   "starts_per_unit_h": 2.86
+  }
+ },
+ "flat_partload_cop": {
+  "Riyadh": {
+   "EUI": 31.5,
+   "setpoint_pct": 12.6,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 0.92,
+   "prepeak2_pct": 2.07,
+   "night2_pct": 4.01,
+   "hot_Ch": 0,
+   "bill": 13119,
+   "latent_share_pct": 0.3,
+   "starts_per_unit_h": 2.01
+  },
+  "Jeddah": {
+   "EUI": 45.0,
+   "setpoint_pct": 11.0,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.51,
+   "prepeak2_pct": 3.15,
+   "night2_pct": 5.08,
+   "hot_Ch": 0,
+   "bill": 18765,
+   "latent_share_pct": 21.6,
+   "starts_per_unit_h": 2.63
+  }
+ },
+ "ground_constant": {
+  "Riyadh": {
+   "EUI": 26.0,
+   "setpoint_pct": 17.0,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.47,
+   "prepeak2_pct": 4.0,
+   "night2_pct": 6.15,
+   "hot_Ch": 0,
+   "bill": 10844,
+   "latent_share_pct": 0.4,
+   "starts_per_unit_h": 2.14
+  },
+  "Jeddah": {
+   "EUI": 42.2,
+   "setpoint_pct": 12.5,
+   "best_precool_pct": 0.0,
+   "best_precool_policy": [
+    0,
+    0.5
+   ],
+   "reference_admissible": true,
+   "n_admissible": 10,
+   "hot_Kh": 0.0,
+   "prepeak1_pct": 1.92,
+   "prepeak2_pct": 4.55,
+   "night2_pct": 6.42,
+   "hot_Ch": 0,
+   "bill": 17603,
+   "latent_share_pct": 23.0,
+   "starts_per_unit_h": 2.95
+  }
+ },
+ "full_year_riyadh_prepeak": {
+  "0.0": -0.0,
+  "0.5": 0.52,
+  "1.0": 1.15
+ }
+}

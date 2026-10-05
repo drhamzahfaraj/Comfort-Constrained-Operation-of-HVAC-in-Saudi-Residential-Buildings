@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: >-
+  Comfort-Constrained Operation of Multi-Mode HVAC in a Saudi Apartment
+  Building under a Volume Tariff and Parameter Uncertainty
+message: "If you use this software or data, please cite the paper."
+type: software
+authors:
+  - family-names: Faraj
+    given-names: Hamzah
+    orcid: "https://orcid.org/0009-0009-8832-0407"
+    affiliation: "Ranyah University College, Taif University, Saudi Arabia"
+    email: f.hamzah@tu.edu.sa
+keywords:
+  - HVAC control
+  - residential building energy efficiency
+  - thermal comfort
+  - electricity tariff design
+  - pre-cooling and demand response
+  - EnergyPlus validation
+  - Saudi Arabia
+license: MIT
+repository-code: "https://github.com/drhamzahfaraj/Comfort-Constrained-Operation-of-HVAC-in-Saudi-Residential-Buildings"

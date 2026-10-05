@@ -1,0 +1,186 @@
+{
+ "per_configuration": {
+  "compliant/Riyadh": {
+   "apartment": {
+    "kwh": 5527,
+    "bill": 1144,
+    "EUI": 23.9,
+    "kwh_current": 6309,
+    "bill_current": 1306,
+    "setpoint_pct": 12.4,
+    "tier2_share_pct": 0.0,
+    "max_month_kwh": 935,
+    "max_month_household_kwh_est": 1335,
+    "util_mean": 0.042
+   },
+   "building": {
+    "kwh": 50512,
+    "bill": 10456,
+    "EUI": 25.1,
+    "kwh_current": 57687,
+    "bill_current": 11941,
+    "setpoint_pct": 12.4,
+    "peak_hourly_kw": 21.4,
+    "max_meter_month_kwh": 1060,
+    "max_meter_month_household_kwh_est": 1514
+   },
+   "util_mean": 0.043,
+   "peak_load_ratio": 0.19,
+   "standby_kwh": 1577,
+   "standby_share_pct": 3.1,
+   "hot_excursion_Ch": 0,
+   "cold_excursion_Ch": 0,
+   "latent_share_pct": 0.4,
+   "latent_kwh": 185,
+   "apartment_kwh_by_floor": [
+    6007,
+    5527,
+    5548,
+    6248
+   ],
+   "common_meter_kwh": 4478
+  },
+  "compliant/Jeddah": {
+   "apartment": {
+    "kwh": 8117,
+    "bill": 1680,
+    "EUI": 35.2,
+    "kwh_current": 9029,
+    "bill_current": 1869,
+    "setpoint_pct": 10.1,
+    "tier2_share_pct": 0.0,
+    "max_month_kwh": 1011,
+    "max_month_household_kwh_est": 1444,
+    "util_mean": 0.047
+   },
+   "building": {
+    "kwh": 75912,
+    "bill": 15714,
+    "EUI": 37.7,
+    "kwh_current": 84789,
+    "bill_current": 17551,
+    "setpoint_pct": 10.5,
+    "peak_hourly_kw": 22.0,
+    "max_meter_month_kwh": 1137,
+    "max_meter_month_household_kwh_est": 1625
+   },
+   "util_mean": 0.05,
+   "peak_load_ratio": 0.19,
+   "standby_kwh": 1577,
+   "standby_share_pct": 2.1,
+   "hot_excursion_Ch": 0,
+   "cold_excursion_Ch": 0,
+   "latent_share_pct": 25.8,
+   "latent_kwh": 19551,
+   "apartment_kwh_by_floor": [
+    8681,
+    8117,
+    8140,
+    8852
+   ],
+   "common_meter_kwh": 7409
+  },
+  "noncompliant/Riyadh": {
+   "apartment": {
+    "kwh": 11183,
+    "bill": 2315,
+    "EUI": 48.4,
+    "kwh_current": 12311,
+    "bill_current": 2548,
+    "setpoint_pct": 9.2,
+    "tier2_share_pct": 0.0,
+    "max_month_kwh": 1839,
+    "max_month_household_kwh_est": 2628,
+    "util_mean": 0.081
+   },
+   "building": {
+    "kwh": 115915,
+    "bill": 23994,
+    "EUI": 57.5,
+    "kwh_current": 127272,
+    "bill_current": 26345,
+    "setpoint_pct": 8.9,
+    "peak_hourly_kw": 49.9,
+    "max_meter_month_kwh": 3022,
+    "max_meter_month_household_kwh_est": 4317
+   },
+   "util_mean": 0.094,
+   "peak_load_ratio": 0.55,
+   "standby_kwh": 1577,
+   "standby_share_pct": 1.4,
+   "hot_excursion_Ch": 0,
+   "cold_excursion_Ch": 213,
+   "latent_share_pct": 0.2,
+   "latent_kwh": 185,
+   "apartment_kwh_by_floor": [
+    11478,
+    11183,
+    11903,
+    18865
+   ],
+   "common_meter_kwh": 10677
+  },
+  "noncompliant/Jeddah": {
+   "apartment": {
+    "kwh": 13175,
+    "bill": 2727,
+    "EUI": 57.1,
+    "kwh_current": 15122,
+    "bill_current": 3130,
+    "setpoint_pct": 12.9,
+    "tier2_share_pct": 0.0,
+    "max_month_kwh": 1702,
+    "max_month_household_kwh_est": 2431,
+    "util_mean": 0.084
+   },
+   "building": {
+    "kwh": 137998,
+    "bill": 28566,
+    "EUI": 68.5,
+    "kwh_current": 158626,
+    "bill_current": 32836,
+    "setpoint_pct": 13.0,
+    "peak_hourly_kw": 50.5,
+    "max_meter_month_kwh": 2734,
+    "max_meter_month_household_kwh_est": 3906
+   },
+   "util_mean": 0.102,
+   "peak_load_ratio": 0.53,
+   "standby_kwh": 1577,
+   "standby_share_pct": 1.1,
+   "hot_excursion_Ch": 0,
+   "cold_excursion_Ch": 483,
+   "latent_share_pct": 14.2,
+   "latent_kwh": 19551,
+   "apartment_kwh_by_floor": [
+    13504,
+    13175,
+    13953,
+    20230
+   ],
+   "common_meter_kwh": 13705
+  }
+ },
+ "envelope": {
+  "Riyadh": {
+   "apartment_pct": 50.6,
+   "building_pct": 56.4,
+   "by_floor_pct": [
+    47.7,
+    50.6,
+    53.4,
+    66.9
+   ]
+  },
+  "Jeddah": {
+   "apartment_pct": 38.4,
+   "building_pct": 45.0,
+   "by_floor_pct": [
+    35.7,
+    38.4,
+    41.7,
+    56.2
+   ]
+  }
+ }
+}

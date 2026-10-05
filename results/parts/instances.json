@@ -1,0 +1,334 @@
+{
+ "compliant/Riyadh/+0K": {
+  "hard": false,
+  "peak_load_ratio": 0.19,
+  "util_mean": 0.043,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 25.1,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 12.3,
+  "n_feasible": 49,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 22.0,
+  "n_rooms_below_floor": 0,
+  "heating_months": [
+   1,
+   2,
+   3,
+   11,
+   12
+  ]
+ },
+ "compliant/Jeddah/+0K": {
+  "hard": false,
+  "peak_load_ratio": 0.19,
+  "util_mean": 0.05,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 37.7,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 14.7,
+  "n_feasible": 49,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 22.74,
+  "n_rooms_below_floor": 0,
+  "heating_months": []
+ },
+ "noncompliant/Riyadh/+0K": {
+  "hard": false,
+  "peak_load_ratio": 0.55,
+  "util_mean": 0.094,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 57.5,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 11.3,
+  "n_feasible": 42,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 20.82,
+  "n_rooms_below_floor": 0,
+  "heating_months": [
+   1,
+   2,
+   3,
+   11,
+   12
+  ]
+ },
+ "noncompliant/Jeddah/+0K": {
+  "hard": false,
+  "peak_load_ratio": 0.53,
+  "util_mean": 0.102,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 68.5,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 15.6,
+  "n_feasible": 36,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 20.5,
+  "n_rooms_below_floor": 0,
+  "heating_months": []
+ },
+ "compliant/Riyadh/+3K": {
+  "hard": false,
+  "peak_load_ratio": 0.26,
+  "util_mean": 0.054,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 32.5,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 12.7,
+  "n_feasible": 49,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 22.0,
+  "n_rooms_below_floor": 0,
+  "heating_months": [
+   1,
+   2,
+   12
+  ]
+ },
+ "compliant/Jeddah/+3K": {
+  "hard": false,
+  "peak_load_ratio": 0.26,
+  "util_mean": 0.063,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 46.0,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 13.1,
+  "n_feasible": 49,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 23.0,
+  "n_rooms_below_floor": 0,
+  "heating_months": []
+ },
+ "noncompliant/Riyadh/+3K": {
+  "hard": false,
+  "peak_load_ratio": 0.59,
+  "util_mean": 0.114,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 72.2,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 12.3,
+  "n_feasible": 30,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 20.5,
+  "n_rooms_below_floor": 0,
+  "heating_months": [
+   1,
+   2,
+   12
+  ]
+ },
+ "noncompliant/Jeddah/+3K": {
+  "hard": false,
+  "peak_load_ratio": 0.62,
+  "util_mean": 0.133,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 0,
+  "warmest_room": 24.0,
+  "EUI": 89.1,
+  "best_policy": [
+   0.0,
+   0.0
+  ],
+  "sched_pct": 0.0,
+  "worst_precool_pct": 13.4,
+  "n_feasible": 33,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "min_room_C": 22.04,
+  "n_rooms_below_floor": 0,
+  "heating_months": []
+ },
+ "compliant/Riyadh/+0K/right_sized": {
+  "hard": true,
+  "peak_load_ratio": 0.58,
+  "util_mean": 0.121,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 69,
+  "warmest_room": 24.1,
+  "EUI": 20.5,
+  "best_policy": null,
+  "sched_pct": null,
+  "worst_precool_pct": 14.1,
+  "n_feasible": 0,
+  "hot_Kh": 68.58,
+  "cold_Kh": 0.0,
+  "min_room_C": 22.0,
+  "n_rooms_below_floor": 0,
+  "heating_months": [
+   1,
+   2,
+   3,
+   11,
+   12
+  ]
+ },
+ "compliant/Jeddah/+0K/right_sized": {
+  "hard": true,
+  "peak_load_ratio": 0.57,
+  "util_mean": 0.144,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 18,
+  "warmest_room": 24.2,
+  "EUI": 32.7,
+  "best_policy": null,
+  "sched_pct": null,
+  "worst_precool_pct": 14.1,
+  "n_feasible": 0,
+  "hot_Kh": 17.75,
+  "cold_Kh": 0.0,
+  "min_room_C": 22.74,
+  "n_rooms_below_floor": 0,
+  "heating_months": []
+ },
+ "noncompliant/Riyadh/+0K/right_sized": {
+  "hard": true,
+  "peak_load_ratio": 0.79,
+  "util_mean": 0.196,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 81,
+  "warmest_room": 24.2,
+  "EUI": 46.3,
+  "best_policy": null,
+  "sched_pct": null,
+  "worst_precool_pct": 12.6,
+  "n_feasible": 0,
+  "hot_Kh": 81.2,
+  "cold_Kh": 0.0,
+  "min_room_C": 20.81,
+  "n_rooms_below_floor": 0,
+  "heating_months": [
+   1,
+   2,
+   3,
+   11,
+   12
+  ]
+ },
+ "noncompliant/Jeddah/+0K/right_sized": {
+  "hard": true,
+  "peak_load_ratio": 0.75,
+  "util_mean": 0.215,
+  "saturated_by_storey": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "hot_excursion_Ch": 29,
+  "warmest_room": 24.2,
+  "EUI": 56.4,
+  "best_policy": null,
+  "sched_pct": null,
+  "worst_precool_pct": 16.2,
+  "n_feasible": 0,
+  "hot_Kh": 28.73,
+  "cold_Kh": 0.0,
+  "min_room_C": 20.5,
+  "n_rooms_below_floor": 0,
+  "heating_months": []
+ }
+}

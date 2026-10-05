@@ -1,0 +1,7 @@
+# Table 12. Factorial (2^4) decomposition of the bill saving (Case 3). Levers, from start to end state: pre-code -> SBC envelope; fixed-speed -> inverter 3-ton units; setpoints 22/20.5->23.5/22.5 degC; 2 K pre-peak pre-cool -> none. Shapley value: each lever's marginal saving averaged over all orders (SAR/yr and share of the total); main effect: mean saving of the lever over the eight combinations of the others (% of the bill without it).
+Lever,Riyadh: SAR,Riyadh: Share,Riyadh: Main,Jeddah: SAR,Jeddah: Share,Jeddah: Main
+Envelope,"13,346",74.6%,56.0%,"13,503",68.6%,45.7%
+Inverter 3-ton units,"2,395",13.4%,13.5%,"2,667",13.5%,11.1%
+Setpoints,"1,742",9.7%,10.2%,"2,774",14.1%,11.0%
+No pre-cooling,416,2.3%,2.6%,747,3.8%,3.4%
+Total,"17,899",100%,,"19,692",100%,

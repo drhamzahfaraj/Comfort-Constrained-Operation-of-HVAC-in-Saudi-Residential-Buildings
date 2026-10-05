@@ -1,0 +1,460 @@
+{
+ "Riyadh": {
+  "scenarios": {
+   "no_controller": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 32.7,
+      "T_july": 41.3,
+      "T_jan": 22.3,
+      "T_max": 44.3,
+      "T_min_month": 21.8,
+      "hot_pct_time": 81.7,
+      "cold_pct_time": 5.0,
+      "mean_excess_K": 11.0,
+      "hot_Kh": 78391,
+      "cold_Kh": 224
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 32.9,
+      "T_july": 41.4,
+      "T_jan": 22.6,
+      "T_max": 43.6,
+      "T_min_month": 22.3,
+      "hot_pct_time": 83.8,
+      "cold_pct_time": 1.0,
+      "mean_excess_K": 10.9,
+      "hot_Kh": 79891,
+      "cold_Kh": 15
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 32.9,
+      "T_july": 41.5,
+      "T_jan": 22.5,
+      "T_max": 43.9,
+      "T_min_month": 22.0,
+      "hot_pct_time": 83.2,
+      "cold_pct_time": 2.1,
+      "mean_excess_K": 11.0,
+      "hot_Kh": 79849,
+      "cold_Kh": 56
+     }
+    },
+    "conditioned_T_max": 44.8,
+    "energy_change_pct": null
+   },
+   "controller_doors_closed": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 25.7,
+      "T_july": 28.8,
+      "T_jan": 22.1,
+      "T_max": 31.9,
+      "T_min_month": 21.7,
+      "hot_pct_time": 67.4,
+      "cold_pct_time": 12.0,
+      "mean_excess_K": 3.3,
+      "hot_Kh": 19761,
+      "cold_Kh": 846
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 24.9,
+      "T_july": 26.5,
+      "T_jan": 22.8,
+      "T_max": 28.1,
+      "T_min_month": 22.6,
+      "hot_pct_time": 68.7,
+      "cold_pct_time": 0.1,
+      "mean_excess_K": 1.8,
+      "hot_Kh": 10567,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 24.5,
+      "T_july": 25.5,
+      "T_jan": 22.8,
+      "T_max": 28.6,
+      "T_min_month": 22.3,
+      "hot_pct_time": 47.9,
+      "cold_pct_time": 0.4,
+      "mean_excess_K": 1.5,
+      "hot_Kh": 6503,
+      "cold_Kh": 5
+     }
+    },
+    "conditioned_T_max": 24.0,
+    "energy_change_pct": 0.1
+   },
+   "controller": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 24.2,
+      "T_july": 25.2,
+      "T_jan": 22.6,
+      "T_max": 26.3,
+      "T_min_month": 22.3,
+      "hot_pct_time": 63.2,
+      "cold_pct_time": 5.8,
+      "mean_excess_K": 0.9,
+      "hot_Kh": 5024,
+      "cold_Kh": 144
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 23.9,
+      "T_july": 24.5,
+      "T_jan": 22.8,
+      "T_max": 25.0,
+      "T_min_month": 22.6,
+      "hot_pct_time": 60.8,
+      "cold_pct_time": 0.1,
+      "mean_excess_K": 0.4,
+      "hot_Kh": 1994,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 23.8,
+      "T_july": 24.2,
+      "T_jan": 22.8,
+      "T_max": 25.0,
+      "T_min_month": 22.5,
+      "hot_pct_time": 40.7,
+      "cold_pct_time": 0.2,
+      "mean_excess_K": 0.3,
+      "hot_Kh": 991,
+      "cold_Kh": 1
+     }
+    },
+    "conditioned_T_max": 24.0,
+    "energy_change_pct": -0.0
+   },
+   "controller_current_practice": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 22.9,
+      "T_july": 23.8,
+      "T_jan": 21.7,
+      "T_max": 25.0,
+      "T_min_month": 21.1,
+      "hot_pct_time": 11.1,
+      "cold_pct_time": 20.3,
+      "mean_excess_K": 0.2,
+      "hot_Kh": 235,
+      "cold_Kh": 1244
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 22.6,
+      "T_july": 23.1,
+      "T_jan": 22.0,
+      "T_max": 23.5,
+      "T_min_month": 21.6,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 14.0,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 434
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 22.4,
+      "T_july": 22.8,
+      "T_jan": 21.9,
+      "T_max": 23.5,
+      "T_min_month": 21.3,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 14.8,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 585
+     }
+    },
+    "conditioned_T_max": 22.5,
+    "energy_change_pct": 14.2
+   },
+   "unit_in_every_bath": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 23.4,
+      "T_july": 23.6,
+      "T_jan": 22.8,
+      "T_max": 24.0,
+      "T_min_month": 22.6,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 0
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 23.5,
+      "T_july": 23.6,
+      "T_jan": 22.8,
+      "T_max": 24.0,
+      "T_min_month": 22.6,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 23.7,
+      "T_july": 24.0,
+      "T_jan": 22.9,
+      "T_max": 24.8,
+      "T_min_month": 22.6,
+      "hot_pct_time": 18.7,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.3,
+      "hot_Kh": 448,
+      "cold_Kh": 0
+     }
+    },
+    "conditioned_T_max": 24.0,
+    "energy_change_pct": 2.8
+   }
+  }
+ },
+ "Jeddah": {
+  "scenarios": {
+   "no_controller": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 34.9,
+      "T_july": 39.3,
+      "T_jan": 26.6,
+      "T_max": 41.7,
+      "T_min_month": 26.2,
+      "hot_pct_time": 99.2,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 11.0,
+      "hot_Kh": 95897,
+      "cold_Kh": 0
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 35.1,
+      "T_july": 39.4,
+      "T_jan": 26.6,
+      "T_max": 41.3,
+      "T_min_month": 26.3,
+      "hot_pct_time": 99.1,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 11.2,
+      "hot_Kh": 97384,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 35.1,
+      "T_july": 39.5,
+      "T_jan": 26.6,
+      "T_max": 41.6,
+      "T_min_month": 26.3,
+      "hot_pct_time": 99.2,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 11.2,
+      "hot_Kh": 97461,
+      "cold_Kh": 0
+     }
+    },
+    "conditioned_T_max": 42.3,
+    "energy_change_pct": null
+   },
+   "controller_doors_closed": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 26.7,
+      "T_july": 28.1,
+      "T_jan": 24.8,
+      "T_max": 31.4,
+      "T_min_month": 24.6,
+      "hot_pct_time": 95.7,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 2.8,
+      "hot_Kh": 23728,
+      "cold_Kh": 0
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 25.5,
+      "T_july": 26.1,
+      "T_jan": 24.5,
+      "T_max": 27.7,
+      "T_min_month": 24.4,
+      "hot_pct_time": 99.1,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 1.5,
+      "hot_Kh": 12972,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 24.9,
+      "T_july": 25.3,
+      "T_jan": 24.2,
+      "T_max": 28.1,
+      "T_min_month": 23.8,
+      "hot_pct_time": 65.4,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 1.4,
+      "hot_Kh": 7947,
+      "cold_Kh": 0
+     }
+    },
+    "conditioned_T_max": 24.0,
+    "energy_change_pct": -0.3
+   },
+   "controller": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 24.7,
+      "T_july": 25.0,
+      "T_jan": 24.1,
+      "T_max": 26.3,
+      "T_min_month": 24.0,
+      "hot_pct_time": 89.6,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.8,
+      "hot_Kh": 6128,
+      "cold_Kh": 0
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 24.3,
+      "T_july": 24.4,
+      "T_jan": 24.0,
+      "T_max": 25.0,
+      "T_min_month": 23.9,
+      "hot_pct_time": 91.8,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.3,
+      "hot_Kh": 2367,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 24.1,
+      "T_july": 24.2,
+      "T_jan": 23.9,
+      "T_max": 25.0,
+      "T_min_month": 23.8,
+      "hot_pct_time": 55.2,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.2,
+      "hot_Kh": 1149,
+      "cold_Kh": 0
+     }
+    },
+    "conditioned_T_max": 24.0,
+    "energy_change_pct": -0.0
+   },
+   "controller_current_practice": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 23.3,
+      "T_july": 23.6,
+      "T_jan": 22.9,
+      "T_max": 24.9,
+      "T_min_month": 22.8,
+      "hot_pct_time": 7.4,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.2,
+      "hot_Kh": 103,
+      "cold_Kh": 0
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 22.8,
+      "T_july": 23.0,
+      "T_jan": 22.7,
+      "T_max": 23.5,
+      "T_min_month": 22.6,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 22.6,
+      "T_july": 22.7,
+      "T_jan": 22.5,
+      "T_max": 23.5,
+      "T_min_month": 22.3,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 0
+     }
+    },
+    "conditioned_T_max": 22.5,
+    "energy_change_pct": 11.7
+   },
+   "unit_in_every_bath": {
+    "groups": {
+     "baths_exterior": {
+      "n": 16,
+      "T_mean": 23.6,
+      "T_july": 23.6,
+      "T_jan": 23.6,
+      "T_max": 24.0,
+      "T_min_month": 23.6,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 0
+     },
+     "baths_interior": {
+      "n": 16,
+      "T_mean": 23.7,
+      "T_july": 23.7,
+      "T_jan": 23.8,
+      "T_max": 24.0,
+      "T_min_month": 23.6,
+      "hot_pct_time": 0.0,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.0,
+      "hot_Kh": 0,
+      "cold_Kh": 0
+     },
+     "other_passive": {
+      "n": 32,
+      "T_mean": 23.9,
+      "T_july": 24.0,
+      "T_jan": 23.8,
+      "T_max": 24.8,
+      "T_min_month": 23.7,
+      "hot_pct_time": 25.9,
+      "cold_pct_time": 0.0,
+      "mean_excess_K": 0.2,
+      "hot_Kh": 543,
+      "cold_Kh": 0
+     }
+    },
+    "conditioned_T_max": 24.0,
+    "energy_change_pct": 4.9
+   }
+  }
+ }
+}

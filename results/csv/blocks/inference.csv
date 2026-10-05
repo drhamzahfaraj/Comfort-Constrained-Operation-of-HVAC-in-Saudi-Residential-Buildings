@@ -1,0 +1,7 @@
+key,value
+apartment.units,7
+apartment.inference_us,7.2
+floor.units,15
+floor.inference_us,7.1
+building.units,60
+building.inference_us,8.4

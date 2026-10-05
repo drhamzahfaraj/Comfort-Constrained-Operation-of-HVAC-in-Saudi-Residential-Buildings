@@ -1,0 +1,846 @@
+{
+ "apartment/Riyadh/vmin22.0/gamma0.02": {
+  "days": {
+   "5/mean": {
+    "E_hold": 16.84,
+    "E_lp": 16.9,
+    "gap_pct": -0.33,
+    "precool_K_h": 7.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "6/mean": {
+    "E_hold": 20.79,
+    "E_lp": 20.84,
+    "gap_pct": -0.22,
+    "precool_K_h": 9.7,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": true
+   },
+   "7/mean": {
+    "E_hold": 22.26,
+    "E_lp": 22.28,
+    "gap_pct": -0.1,
+    "precool_K_h": 10.7,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "8/mean": {
+    "E_hold": 21.42,
+    "E_lp": 21.43,
+    "gap_pct": -0.05,
+    "precool_K_h": 12.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "9/mean": {
+    "E_hold": 17.14,
+    "E_lp": 17.19,
+    "gap_pct": -0.33,
+    "precool_K_h": 7.4,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 25.44,
+    "E_lp": 25.42,
+    "gap_pct": 0.06,
+    "precool_K_h": 11.9,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -0.19
+ },
+ "apartment/Riyadh/vmin22.0/gamma0.0": {
+  "days": {
+   "5/mean": {
+    "E_hold": 15.83,
+    "E_lp": 15.71,
+    "gap_pct": 0.79,
+    "precool_K_h": 8.7,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "6/mean": {
+    "E_hold": 19.54,
+    "E_lp": 19.34,
+    "gap_pct": 1.05,
+    "precool_K_h": 10.7,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/mean": {
+    "E_hold": 20.92,
+    "E_lp": 20.66,
+    "gap_pct": 1.26,
+    "precool_K_h": 11.7,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 20.13,
+    "E_lp": 19.85,
+    "gap_pct": 1.41,
+    "precool_K_h": 12.9,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "9/mean": {
+    "E_hold": 16.11,
+    "E_lp": 15.98,
+    "gap_pct": 0.82,
+    "precool_K_h": 8.4,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 23.91,
+    "E_lp": 23.55,
+    "gap_pct": 1.5,
+    "precool_K_h": 12.2,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 1.07
+ },
+ "apartment/Riyadh/vmin20.0/gamma0.02": {
+  "days": {
+   "5/mean": {
+    "E_hold": 16.84,
+    "E_lp": 17.11,
+    "gap_pct": -1.61,
+    "precool_K_h": 7.6,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "6/mean": {
+    "E_hold": 20.79,
+    "E_lp": 21.12,
+    "gap_pct": -1.57,
+    "precool_K_h": 12.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/mean": {
+    "E_hold": 22.26,
+    "E_lp": 22.58,
+    "gap_pct": -1.44,
+    "precool_K_h": 21.7,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "8/mean": {
+    "E_hold": 21.42,
+    "E_lp": 21.75,
+    "gap_pct": -1.53,
+    "precool_K_h": 16.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "9/mean": {
+    "E_hold": 17.14,
+    "E_lp": 17.42,
+    "gap_pct": -1.65,
+    "precool_K_h": 10.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 25.44,
+    "E_lp": 25.69,
+    "gap_pct": -0.99,
+    "precool_K_h": 19.8,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -1.55
+ },
+ "apartment/Riyadh/vmin20.0/gamma0.0": {
+  "days": {
+   "5/mean": {
+    "E_hold": 15.83,
+    "E_lp": 15.6,
+    "gap_pct": 1.47,
+    "precool_K_h": 16.9,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "6/mean": {
+    "E_hold": 19.54,
+    "E_lp": 19.15,
+    "gap_pct": 1.99,
+    "precool_K_h": 20.5,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/mean": {
+    "E_hold": 20.92,
+    "E_lp": 20.42,
+    "gap_pct": 2.41,
+    "precool_K_h": 21.7,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 20.13,
+    "E_lp": 19.59,
+    "gap_pct": 2.68,
+    "precool_K_h": 25.2,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "9/mean": {
+    "E_hold": 16.11,
+    "E_lp": 15.86,
+    "gap_pct": 1.52,
+    "precool_K_h": 16.4,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 23.91,
+    "E_lp": 23.23,
+    "gap_pct": 2.86,
+    "precool_K_h": 22.9,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 2.07
+ },
+ "apartment/Riyadh/july_chained": {
+  "E_hold": 22.33,
+  "E_lp": 22.34,
+  "gap_pct": -0.05,
+  "V_profile": [
+   23.98,
+   23.89,
+   23.68,
+   23.33,
+   22.68,
+   22.25,
+   22.02,
+   22.04,
+   22.38,
+   23.29,
+   23.68,
+   23.95,
+   23.99,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   23.99
+  ]
+ },
+ "profile_apartment_Riyadh_july": {
+  "V_profile": [
+   24.0,
+   24.0,
+   23.91,
+   22.96,
+   21.69,
+   20.0,
+   20.0,
+   20.0,
+   20.0,
+   22.33,
+   23.52,
+   23.92,
+   23.99,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0
+  ],
+  "q_profile": [
+   0.388,
+   0.365,
+   0.37,
+   0.808,
+   1.053,
+   1.48,
+   1.192,
+   1.119,
+   1.089,
+   0.217,
+   0.072,
+   0.143,
+   0.258,
+   0.361,
+   0.456,
+   0.536,
+   0.59,
+   0.615,
+   0.595,
+   0.546,
+   0.494,
+   0.467,
+   0.439,
+   0.411
+  ]
+ },
+ "apartment/Jeddah/vmin22.0/gamma0.02": {
+  "days": {
+   "5/mean": {
+    "E_hold": 13.65,
+    "E_lp": 13.71,
+    "gap_pct": -0.42,
+    "precool_K_h": 5.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "6/mean": {
+    "E_hold": 15.34,
+    "E_lp": 15.39,
+    "gap_pct": -0.3,
+    "precool_K_h": 7.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/mean": {
+    "E_hold": 16.79,
+    "E_lp": 16.87,
+    "gap_pct": -0.43,
+    "precool_K_h": 7.6,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "8/mean": {
+    "E_hold": 16.83,
+    "E_lp": 16.89,
+    "gap_pct": -0.37,
+    "precool_K_h": 3.1,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "9/mean": {
+    "E_hold": 14.96,
+    "E_lp": 15.03,
+    "gap_pct": -0.47,
+    "precool_K_h": 3.5,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 19.34,
+    "E_lp": 19.3,
+    "gap_pct": 0.23,
+    "precool_K_h": 13.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -0.41
+ },
+ "apartment/Jeddah/vmin22.0/gamma0.0": {
+  "days": {
+   "5/mean": {
+    "E_hold": 12.84,
+    "E_lp": 12.76,
+    "gap_pct": 0.59,
+    "precool_K_h": 6.5,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "6/mean": {
+    "E_hold": 14.42,
+    "E_lp": 14.3,
+    "gap_pct": 0.87,
+    "precool_K_h": 8.8,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/mean": {
+    "E_hold": 15.79,
+    "E_lp": 15.66,
+    "gap_pct": 0.78,
+    "precool_K_h": 8.9,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 15.82,
+    "E_lp": 15.78,
+    "gap_pct": 0.24,
+    "precool_K_h": 3.6,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "9/mean": {
+    "E_hold": 14.07,
+    "E_lp": 14.02,
+    "gap_pct": 0.34,
+    "precool_K_h": 4.6,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 18.18,
+    "E_lp": 17.86,
+    "gap_pct": 1.79,
+    "precool_K_h": 13.0,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 0.58
+ },
+ "apartment/Jeddah/vmin20.0/gamma0.02": {
+  "days": {
+   "5/mean": {
+    "E_hold": 13.65,
+    "E_lp": 13.88,
+    "gap_pct": -1.64,
+    "precool_K_h": 7.6,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "6/mean": {
+    "E_hold": 15.34,
+    "E_lp": 15.59,
+    "gap_pct": -1.63,
+    "precool_K_h": 11.3,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/mean": {
+    "E_hold": 16.79,
+    "E_lp": 17.13,
+    "gap_pct": -1.98,
+    "precool_K_h": 10.6,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "8/mean": {
+    "E_hold": 16.83,
+    "E_lp": 17.04,
+    "gap_pct": -1.26,
+    "precool_K_h": 5.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "9/mean": {
+    "E_hold": 14.96,
+    "E_lp": 15.19,
+    "gap_pct": -1.53,
+    "precool_K_h": 6.1,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 19.34,
+    "E_lp": 19.6,
+    "gap_pct": -1.3,
+    "precool_K_h": 24.3,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -1.62
+ },
+ "apartment/Jeddah/vmin20.0/gamma0.0": {
+  "days": {
+   "5/mean": {
+    "E_hold": 12.84,
+    "E_lp": 12.7,
+    "gap_pct": 1.04,
+    "precool_K_h": 11.9,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "6/mean": {
+    "E_hold": 14.42,
+    "E_lp": 14.19,
+    "gap_pct": 1.59,
+    "precool_K_h": 16.4,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/mean": {
+    "E_hold": 15.79,
+    "E_lp": 15.56,
+    "gap_pct": 1.43,
+    "precool_K_h": 17.0,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 15.82,
+    "E_lp": 15.75,
+    "gap_pct": 0.42,
+    "precool_K_h": 6.6,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "9/mean": {
+    "E_hold": 14.07,
+    "E_lp": 13.99,
+    "gap_pct": 0.56,
+    "precool_K_h": 8.1,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 18.18,
+    "E_lp": 17.58,
+    "gap_pct": 3.34,
+    "precool_K_h": 24.3,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 1.03
+ },
+ "apartment/Jeddah/july_chained": {
+  "E_hold": 16.86,
+  "E_lp": 16.89,
+  "gap_pct": -0.17,
+  "V_profile": [
+   23.98,
+   23.95,
+   23.73,
+   23.53,
+   23.16,
+   22.71,
+   22.53,
+   22.55,
+   22.9,
+   23.55,
+   23.88,
+   23.98,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0,
+   24.0
+  ]
+ },
+ "floor/Riyadh/vmin22.0/gamma0.02": {
+  "days": {
+   "7/mean": {
+    "E_hold": 46.61,
+    "E_lp": 46.64,
+    "gap_pct": -0.05,
+    "precool_K_h": 11.9,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 53.83,
+    "E_lp": 53.76,
+    "gap_pct": 0.15,
+    "precool_K_h": 12.4,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "8/mean": {
+    "E_hold": 44.86,
+    "E_lp": 44.84,
+    "gap_pct": 0.04,
+    "precool_K_h": 12.1,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -0.01
+ },
+ "floor/Riyadh/vmin22.0/gamma0.0": {
+  "days": {
+   "7/mean": {
+    "E_hold": 43.82,
+    "E_lp": 43.21,
+    "gap_pct": 1.39,
+    "precool_K_h": 11.9,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 50.6,
+    "E_lp": 49.78,
+    "gap_pct": 1.63,
+    "precool_K_h": 12.4,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 42.17,
+    "E_lp": 41.52,
+    "gap_pct": 1.56,
+    "precool_K_h": 13.1,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 1.47
+ },
+ "floor/Riyadh/vmin20.0/gamma0.02": {
+  "days": {
+   "7/mean": {
+    "E_hold": 46.61,
+    "E_lp": 47.26,
+    "gap_pct": -1.4,
+    "precool_K_h": 17.4,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 53.83,
+    "E_lp": 54.35,
+    "gap_pct": -0.96,
+    "precool_K_h": 23.3,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "8/mean": {
+    "E_hold": 44.86,
+    "E_lp": 45.49,
+    "gap_pct": -1.4,
+    "precool_K_h": 20.6,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -1.4
+ },
+ "floor/Riyadh/vmin20.0/gamma0.0": {
+  "days": {
+   "7/mean": {
+    "E_hold": 43.82,
+    "E_lp": 42.66,
+    "gap_pct": 2.65,
+    "precool_K_h": 22.4,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 50.6,
+    "E_lp": 49.04,
+    "gap_pct": 3.09,
+    "precool_K_h": 23.3,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 42.17,
+    "E_lp": 40.93,
+    "gap_pct": 2.95,
+    "precool_K_h": 25.7,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 2.79
+ },
+ "floor/Jeddah/vmin22.0/gamma0.02": {
+  "days": {
+   "7/mean": {
+    "E_hold": 35.92,
+    "E_lp": 36.08,
+    "gap_pct": -0.43,
+    "precool_K_h": 8.1,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 41.58,
+    "E_lp": 41.45,
+    "gap_pct": 0.32,
+    "precool_K_h": 13.3,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "8/mean": {
+    "E_hold": 36.17,
+    "E_lp": 36.31,
+    "gap_pct": -0.4,
+    "precool_K_h": 3.2,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -0.42
+ },
+ "floor/Jeddah/vmin22.0/gamma0.0": {
+  "days": {
+   "7/mean": {
+    "E_hold": 33.77,
+    "E_lp": 33.48,
+    "gap_pct": 0.86,
+    "precool_K_h": 9.1,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 39.09,
+    "E_lp": 38.34,
+    "gap_pct": 1.92,
+    "precool_K_h": 13.3,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 34.0,
+    "E_lp": 33.91,
+    "gap_pct": 0.27,
+    "precool_K_h": 4.0,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 0.56
+ },
+ "floor/Jeddah/vmin20.0/gamma0.02": {
+  "days": {
+   "7/mean": {
+    "E_hold": 35.92,
+    "E_lp": 36.64,
+    "gap_pct": -1.98,
+    "precool_K_h": 10.1,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   },
+   "7/hottest": {
+    "E_hold": 41.58,
+    "E_lp": 42.08,
+    "gap_pct": -1.2,
+    "precool_K_h": 25.0,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 36.17,
+    "E_lp": 36.71,
+    "gap_pct": -1.5,
+    "precool_K_h": 5.9,
+    "high_mode_share": 0.0,
+    "n_solves": 6,
+    "converged": false
+   }
+  },
+  "season_gap_pct": -1.75
+ },
+ "floor/Jeddah/vmin20.0/gamma0.0": {
+  "days": {
+   "7/mean": {
+    "E_hold": 33.77,
+    "E_lp": 33.24,
+    "gap_pct": 1.58,
+    "precool_K_h": 17.7,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "7/hottest": {
+    "E_hold": 39.09,
+    "E_lp": 37.69,
+    "gap_pct": 3.57,
+    "precool_K_h": 25.0,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   },
+   "8/mean": {
+    "E_hold": 34.0,
+    "E_lp": 33.84,
+    "gap_pct": 0.47,
+    "precool_K_h": 7.2,
+    "high_mode_share": 0.0,
+    "n_solves": 1,
+    "converged": true
+   }
+  },
+  "season_gap_pct": 1.02
+ }
+}

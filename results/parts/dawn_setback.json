@@ -1,0 +1,76 @@
+{
+ "profile_K": [
+  0.0,
+  0.0,
+  0.0,
+  -2.0,
+  -2.0,
+  -1.5,
+  -1.0,
+  -1.0,
+  -0.5,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "apartment/compliant/Riyadh": {
+  "saving_pct": -0.94,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 1173
+ },
+ "apartment/compliant/Jeddah": {
+  "saving_pct": -1.74,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 1657
+ },
+ "apartment/noncompliant/Riyadh": {
+  "saving_pct": -1.62,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 2365
+ },
+ "apartment/noncompliant/Jeddah": {
+  "saving_pct": -2.4,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 2665
+ },
+ "building/compliant/Riyadh": {
+  "saving_pct": -0.99,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 10860
+ },
+ "building/compliant/Jeddah": {
+  "saving_pct": -1.8,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 15631
+ },
+ "building/noncompliant/Riyadh": {
+  "saving_pct": -1.6,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 24726
+ },
+ "building/noncompliant/Jeddah": {
+  "saving_pct": -2.32,
+  "hot_Ch": 0,
+  "base_hot_Ch": 0,
+  "bill": 28189
+ }
+}

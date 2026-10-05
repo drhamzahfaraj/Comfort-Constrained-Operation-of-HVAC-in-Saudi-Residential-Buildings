@@ -1,0 +1,38 @@
+{
+ "apartment": {
+  "zones": 16,
+  "units": 7,
+  "storeys": 1,
+  "doors": 15,
+  "steps_per_year": 28800,
+  "t_eval_1_s": 11.16,
+  "t_eval_batch_s": 18.85,
+  "batch_n": 49,
+  "t_per_policy_batched_s": 0.38
+ },
+ "floor": {
+  "zones": 33,
+  "units": 15,
+  "storeys": 1,
+  "doors": 30,
+  "steps_per_year": 28800,
+  "t_eval_1_s": 9.97,
+  "t_eval_batch_s": 24.18,
+  "batch_n": 49,
+  "t_per_policy_batched_s": 0.49
+ },
+ "building": {
+  "zones": 132,
+  "units": 60,
+  "storeys": 4,
+  "doors": 120,
+  "steps_per_year": 28800,
+  "t_eval_1_s": 13.35,
+  "t_eval_batch_s": 52.48,
+  "batch_n": 49,
+  "t_per_policy_batched_s": 1.07
+ },
+ "evaluations": {
+  "grid": 49
+ }
+}

@@ -1,0 +1,266 @@
+{
+ "Riyadh": {
+  "base_controller": {
+   "1.15": {
+    "hot_Ch": 68.6,
+    "saving_pct": 18.4,
+    "tons": 45.0,
+    "peak_load_ratio": 0.58,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 97.5
+   },
+   "1.25": {
+    "hot_Ch": 68.6,
+    "saving_pct": 18.4,
+    "tons": 45.0,
+    "peak_load_ratio": 0.58,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 97.5
+   },
+   "1.5": {
+    "hot_Ch": 24.5,
+    "saving_pct": 18.5,
+    "tons": 46.5,
+    "peak_load_ratio": 0.5,
+    "n_units_at_min_size": 54,
+    "max_room_C": 24.13,
+    "guest_room_share_pct": 94.0
+   },
+   "1.75": {
+    "hot_Ch": 4.7,
+    "saving_pct": 18.3,
+    "tons": 48.5,
+    "peak_load_ratio": 0.45,
+    "n_units_at_min_size": 46,
+    "max_room_C": 24.06,
+    "guest_room_share_pct": 68.6
+   },
+   "2": {
+    "hot_Ch": 0.5,
+    "saving_pct": 17.9,
+    "tons": 51.2,
+    "peak_load_ratio": 0.4,
+    "n_units_at_min_size": 41,
+    "max_room_C": 24.04,
+    "guest_room_share_pct": 65.4
+   },
+   "2.5": {
+    "hot_Ch": 0.0,
+    "saving_pct": 16.5,
+    "tons": 57.8,
+    "peak_load_ratio": 0.36,
+    "n_units_at_min_size": 31,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   },
+   "3": {
+    "hot_Ch": 0.0,
+    "saving_pct": 15.5,
+    "tons": 65.8,
+    "peak_load_ratio": 0.35,
+    "n_units_at_min_size": 17,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   }
+  },
+  "full_capacity_start": {
+   "1.15": {
+    "hot_Ch": 68.6,
+    "saving_pct": 17.8,
+    "tons": 45.0,
+    "peak_load_ratio": 0.58,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 97.5
+   },
+   "1.25": {
+    "hot_Ch": 68.6,
+    "saving_pct": 17.8,
+    "tons": 45.0,
+    "peak_load_ratio": 0.58,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 97.5
+   },
+   "1.5": {
+    "hot_Ch": 24.5,
+    "saving_pct": 17.9,
+    "tons": 46.5,
+    "peak_load_ratio": 0.5,
+    "n_units_at_min_size": 54,
+    "max_room_C": 24.13,
+    "guest_room_share_pct": 94.0
+   },
+   "1.75": {
+    "hot_Ch": 4.7,
+    "saving_pct": 17.7,
+    "tons": 48.5,
+    "peak_load_ratio": 0.45,
+    "n_units_at_min_size": 46,
+    "max_room_C": 24.06,
+    "guest_room_share_pct": 68.6
+   },
+   "2": {
+    "hot_Ch": 0.5,
+    "saving_pct": 17.1,
+    "tons": 51.2,
+    "peak_load_ratio": 0.4,
+    "n_units_at_min_size": 41,
+    "max_room_C": 24.04,
+    "guest_room_share_pct": 65.4
+   },
+   "2.5": {
+    "hot_Ch": 0.0,
+    "saving_pct": 15.5,
+    "tons": 57.8,
+    "peak_load_ratio": 0.36,
+    "n_units_at_min_size": 31,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   },
+   "3": {
+    "hot_Ch": 0.0,
+    "saving_pct": 14.0,
+    "tons": 65.8,
+    "peak_load_ratio": 0.35,
+    "n_units_at_min_size": 17,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   }
+  }
+ },
+ "Jeddah": {
+  "base_controller": {
+   "1.15": {
+    "hot_Ch": 17.8,
+    "saving_pct": 13.2,
+    "tons": 45.0,
+    "peak_load_ratio": 0.57,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 99.5
+   },
+   "1.25": {
+    "hot_Ch": 17.8,
+    "saving_pct": 13.2,
+    "tons": 45.0,
+    "peak_load_ratio": 0.57,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 99.5
+   },
+   "1.5": {
+    "hot_Ch": 12.1,
+    "saving_pct": 13.1,
+    "tons": 45.8,
+    "peak_load_ratio": 0.51,
+    "n_units_at_min_size": 57,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 98.9
+   },
+   "1.75": {
+    "hot_Ch": 1.4,
+    "saving_pct": 12.9,
+    "tons": 47.2,
+    "peak_load_ratio": 0.46,
+    "n_units_at_min_size": 51,
+    "max_room_C": 24.07,
+    "guest_room_share_pct": 89.3
+   },
+   "2": {
+    "hot_Ch": 0.2,
+    "saving_pct": 12.1,
+    "tons": 50.0,
+    "peak_load_ratio": 0.4,
+    "n_units_at_min_size": 43,
+    "max_room_C": 24.05,
+    "guest_room_share_pct": 69.4
+   },
+   "2.5": {
+    "hot_Ch": 0.0,
+    "saving_pct": 11.2,
+    "tons": 57.0,
+    "peak_load_ratio": 0.37,
+    "n_units_at_min_size": 31,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   },
+   "3": {
+    "hot_Ch": 0.0,
+    "saving_pct": 10.6,
+    "tons": 63.2,
+    "peak_load_ratio": 0.36,
+    "n_units_at_min_size": 22,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   }
+  },
+  "full_capacity_start": {
+   "1.15": {
+    "hot_Ch": 17.8,
+    "saving_pct": 12.7,
+    "tons": 45.0,
+    "peak_load_ratio": 0.57,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 99.5
+   },
+   "1.25": {
+    "hot_Ch": 17.8,
+    "saving_pct": 12.7,
+    "tons": 45.0,
+    "peak_load_ratio": 0.57,
+    "n_units_at_min_size": 60,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 99.5
+   },
+   "1.5": {
+    "hot_Ch": 12.1,
+    "saving_pct": 12.5,
+    "tons": 45.8,
+    "peak_load_ratio": 0.51,
+    "n_units_at_min_size": 57,
+    "max_room_C": 24.15,
+    "guest_room_share_pct": 98.9
+   },
+   "1.75": {
+    "hot_Ch": 1.4,
+    "saving_pct": 12.3,
+    "tons": 47.2,
+    "peak_load_ratio": 0.46,
+    "n_units_at_min_size": 51,
+    "max_room_C": 24.07,
+    "guest_room_share_pct": 89.3
+   },
+   "2": {
+    "hot_Ch": 0.2,
+    "saving_pct": 11.4,
+    "tons": 50.0,
+    "peak_load_ratio": 0.4,
+    "n_units_at_min_size": 43,
+    "max_room_C": 24.05,
+    "guest_room_share_pct": 69.4
+   },
+   "2.5": {
+    "hot_Ch": 0.0,
+    "saving_pct": 10.3,
+    "tons": 57.0,
+    "peak_load_ratio": 0.37,
+    "n_units_at_min_size": 31,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   },
+   "3": {
+    "hot_Ch": 0.0,
+    "saving_pct": 9.6,
+    "tons": 63.2,
+    "peak_load_ratio": 0.36,
+    "n_units_at_min_size": 22,
+    "max_room_C": 24.0,
+    "guest_room_share_pct": 0.0
+   }
+  }
+ }
+}

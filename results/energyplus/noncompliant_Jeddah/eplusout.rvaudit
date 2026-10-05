@@ -1,0 +1,13 @@
+ ReadVarsESO
+ processing:/home/claude/work/saudi-hvac-savings/experiments/energyplus/noncompliant_Jeddah/in.rvi
+ input file:/home/claude/work/saudi-hvac-savings/results/energyplus/noncompliant_Jeddah/eplusout.eso
+ output file:/home/claude/work/saudi-hvac-savings/results/energyplus/noncompliant_Jeddah/eplusout.csv
+ getting all vars from:/home/claude/work/saudi-hvac-savings/results/energyplus/noncompliant_Jeddah/eplusout.eso
+  number variables requested for output=          24
+ ReadVars Run Time=00hr 00min  0.02sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:/home/claude/work/saudi-hvac-savings/experiments/energyplus/noncompliant_Jeddah/in.mvi
+ Requested ESO file=/home/claude/work/saudi-hvac-savings/results/energyplus/noncompliant_Jeddah/eplusout.mtr
+ does not exist.  ReadVarsESO program terminated.
+ ReadVarsESO program terminated.

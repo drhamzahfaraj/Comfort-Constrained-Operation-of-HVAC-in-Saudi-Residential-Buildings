@@ -1,0 +1,11 @@
+key,value
+C_ref_kWhK,0.8
+volume.bldg_pct,0.0
+volume.best_policy[0],0
+volume.best_policy[1],0
+volume.apt_pct,0.0
+volume.base_bill,15698
+volume.n_infeasible,1
+volume.safe_violation_Kh,0.0
+volume.n_policies,49
+volume.linear_pct,0.0

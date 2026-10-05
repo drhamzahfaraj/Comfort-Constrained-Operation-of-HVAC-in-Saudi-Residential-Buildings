@@ -1,0 +1,94 @@
+{
+ "Riyadh": {
+  "top_floor": {
+   "n_units": 15,
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 0.82,
+   "night2_pct": 1.16,
+   "min_increase_pct": 0.12,
+   "bill": 10456,
+   "hot_Ch": 0
+  },
+  "west_rooms": {
+   "n_units": 12,
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 1.02,
+   "night2_pct": 1.95,
+   "min_increase_pct": 0.11,
+   "bill": 10456,
+   "hot_Ch": 0
+  },
+  "top_floor_favourable": {
+   "best_policy": [
+    0,
+    1.5
+   ],
+   "best_saving_pct": 0.21,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": -0.2,
+   "night2_pct": 1.15,
+   "min_increase_pct": -0.21,
+   "bill": 8961,
+   "hot_Ch": 0
+  }
+ },
+ "Jeddah": {
+  "top_floor": {
+   "n_units": 15,
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 1.14,
+   "night2_pct": 1.4,
+   "min_increase_pct": 0.18,
+   "bill": 15714,
+   "hot_Ch": 0
+  },
+  "west_rooms": {
+   "n_units": 12,
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 1.29,
+   "night2_pct": 2.07,
+   "min_increase_pct": 0.2,
+   "bill": 15714,
+   "hot_Ch": 0
+  },
+  "top_floor_favourable": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 0.5,
+   "night2_pct": 0.99,
+   "min_increase_pct": 0.0,
+   "bill": 13943,
+   "hot_Ch": 0
+  }
+ }
+}

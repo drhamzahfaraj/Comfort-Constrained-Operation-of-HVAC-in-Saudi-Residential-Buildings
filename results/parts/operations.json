@@ -1,0 +1,126 @@
+{
+ "without_with": {
+  "Riyadh": {
+   "apartment": {
+    "kwh_without": 12311,
+    "kwh_with": 5527,
+    "bill_without": 2548,
+    "bill_with": 1144,
+    "bill_saving_pct": 55.1,
+    "sar_saved": 1404
+   },
+   "building": {
+    "kwh_without": 127272,
+    "kwh_with": 50512,
+    "bill_without": 26345,
+    "bill_with": 10456,
+    "bill_saving_pct": 60.3,
+    "sar_saved": 15889
+   }
+  },
+  "Jeddah": {
+   "apartment": {
+    "kwh_without": 15122,
+    "kwh_with": 8117,
+    "bill_without": 3130,
+    "bill_with": 1680,
+    "bill_saving_pct": 46.3,
+    "sar_saved": 1450
+   },
+   "building": {
+    "kwh_without": 158626,
+    "kwh_with": 75912,
+    "bill_without": 32836,
+    "bill_with": 15714,
+    "bill_saving_pct": 52.1,
+    "sar_saved": 17122
+   }
+  }
+ },
+ "seasonal": {
+  "Riyadh": {
+   "apartment": {
+    "summer": 3374,
+    "shoulder": 1939,
+    "winter": 215,
+    "summer_share_pct": 61.0,
+    "monthly": [
+     78,
+     73,
+     129,
+     405,
+     731,
+     840,
+     935,
+     902,
+     697,
+     462,
+     211,
+     64
+    ]
+   },
+   "building": {
+    "summer": 31239,
+    "shoulder": 17301,
+    "winter": 1971,
+    "summer_share_pct": 61.8,
+    "monthly": [
+     741,
+     653,
+     1084,
+     3535,
+     6672,
+     7754,
+     8690,
+     8391,
+     6404,
+     4186,
+     1824,
+     577
+    ]
+   }
+  },
+  "Jeddah": {
+   "apartment": {
+    "summer": 3802,
+    "shoulder": 3296,
+    "winter": 1019,
+    "summer_share_pct": 46.8,
+    "monthly": [
+     311,
+     304,
+     457,
+     565,
+     867,
+     880,
+     963,
+     1011,
+     947,
+     855,
+     552,
+     403
+    ]
+   },
+   "building": {
+    "summer": 35610,
+    "shoulder": 30852,
+    "winter": 9450,
+    "summer_share_pct": 46.9,
+    "monthly": [
+     2923,
+     2714,
+     4236,
+     5307,
+     8105,
+     8206,
+     9008,
+     9495,
+     8902,
+     8030,
+     5175,
+     3812
+    ]
+   }
+  }
+ }
+}

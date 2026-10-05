@@ -1,0 +1,108 @@
+{
+ "Riyadh": {
+  "setpoint": 23.5,
+  "rows": {
+   "full": {
+    "bill": 10456,
+    "kwh": 50512,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 0.0
+   },
+   "current_practice": {
+    "bill": 11968,
+    "kwh": 57817,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 14.5
+   },
+   "highest_mode": {
+    "bill": 12801,
+    "kwh": 61839,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 22.4
+   },
+   "precode_envelope": {
+    "bill": 23994,
+    "kwh": 115915,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 129.5
+   },
+   "night_precool_2K": {
+    "bill": 10934,
+    "kwh": 52821,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 4.6
+   },
+   "prepeak_precool_2K": {
+    "bill": 10811,
+    "kwh": 52228,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 3.4
+   }
+  }
+ },
+ "Jeddah": {
+  "setpoint": 23.5,
+  "rows": {
+   "full": {
+    "bill": 15714,
+    "kwh": 75912,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 0.0
+   },
+   "current_practice": {
+    "bill": 17551,
+    "kwh": 84789,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 11.7
+   },
+   "highest_mode": {
+    "bill": 18440,
+    "kwh": 89080,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 17.3
+   },
+   "precode_envelope": {
+    "bill": 28566,
+    "kwh": 137998,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 81.8
+   },
+   "night_precool_2K": {
+    "bill": 16542,
+    "kwh": 79915,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 5.3
+   },
+   "prepeak_precool_2K": {
+    "bill": 16390,
+    "kwh": 79178,
+    "hot_Ch": 0,
+    "cold_Kh": 0.0,
+    "admissible": true,
+    "delta_pct": 4.3
+   }
+  }
+ }
+}

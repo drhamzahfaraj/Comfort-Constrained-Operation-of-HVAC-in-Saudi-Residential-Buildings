@@ -1,0 +1,17 @@
+key,value
+compliant/Riyadh.humidity_aware_setpoint_pct,12.4
+compliant/Riyadh.sensible_only_setpoint_pct,12.4
+compliant/Riyadh.latent_kwh_building,185
+compliant/Riyadh.latent_share_pct,0.4
+noncompliant/Riyadh.humidity_aware_setpoint_pct,9.2
+noncompliant/Riyadh.sensible_only_setpoint_pct,9.2
+noncompliant/Riyadh.latent_kwh_building,185
+noncompliant/Riyadh.latent_share_pct,0.2
+compliant/Jeddah.humidity_aware_setpoint_pct,10.1
+compliant/Jeddah.sensible_only_setpoint_pct,13.3
+compliant/Jeddah.latent_kwh_building,19551
+compliant/Jeddah.latent_share_pct,25.8
+noncompliant/Jeddah.humidity_aware_setpoint_pct,12.9
+noncompliant/Jeddah.sensible_only_setpoint_pct,15.0
+noncompliant/Jeddah.latent_kwh_building,19551
+noncompliant/Jeddah.latent_share_pct,14.2

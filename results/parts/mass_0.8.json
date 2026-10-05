@@ -1,0 +1,16 @@
+{
+ "C_ref_kWhK": 0.8,
+ "volume": {
+  "bldg_pct": 0.0,
+  "best_policy": [
+   0,
+   0
+  ],
+  "apt_pct": 0.0,
+  "base_bill": 15698,
+  "n_infeasible": 1,
+  "safe_violation_Kh": 0.0,
+  "n_policies": 49,
+  "linear_pct": 0.0
+ }
+}

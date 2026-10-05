@@ -1,0 +1,194 @@
+{
+ "two_node/Riyadh": {
+  "peak_share_pct": 24.9,
+  "peak_cut_prepeak2_pct": 26.7,
+  "energy_prepeak2_pct": 3.4,
+  "n_infeasible": 0,
+  "rows": {
+   "1": {
+    "best_policy": [
+     0,
+     0
+    ],
+    "saving_pct": 0.0,
+    "saving_SAR": 0,
+    "prepeak2_pct": 3.4,
+    "base_bill": 10456
+   },
+   "2": {
+    "best_policy": [
+     2,
+     3
+    ],
+    "saving_pct": 3.92,
+    "saving_SAR": 512,
+    "prepeak2_pct": -2.6,
+    "base_bill": 13057
+   },
+   "3": {
+    "best_policy": [
+     3,
+     3
+    ],
+    "saving_pct": 14.19,
+    "saving_SAR": 2221,
+    "prepeak2_pct": -6.6,
+    "base_bill": 15658
+   },
+   "5": {
+    "best_policy": [
+     3,
+     3
+    ],
+    "saving_pct": 27.46,
+    "saving_SAR": 5728,
+    "prepeak2_pct": -11.6,
+    "base_bill": 20860
+   }
+  }
+ },
+ "two_node/Jeddah": {
+  "peak_share_pct": 25.1,
+  "peak_cut_prepeak2_pct": 26.6,
+  "energy_prepeak2_pct": 4.3,
+  "n_infeasible": 0,
+  "rows": {
+   "1": {
+    "best_policy": [
+     0,
+     0
+    ],
+    "saving_pct": 0.0,
+    "saving_SAR": 0,
+    "prepeak2_pct": 4.3,
+    "base_bill": 15714
+   },
+   "2": {
+    "best_policy": [
+     2,
+     2.5
+    ],
+    "saving_pct": 2.49,
+    "saving_SAR": 490,
+    "prepeak2_pct": -1.9,
+    "base_bill": 19653
+   },
+   "3": {
+    "best_policy": [
+     2.5,
+     3
+    ],
+    "saving_pct": 11.77,
+    "saving_SAR": 2778,
+    "prepeak2_pct": -6.0,
+    "base_bill": 23592
+   },
+   "5": {
+    "best_policy": [
+     3,
+     3
+    ],
+    "saving_pct": 24.93,
+    "saving_SAR": 7844,
+    "prepeak2_pct": -11.2,
+    "base_bill": 31469
+   }
+  }
+ },
+ "one_node/Riyadh": {
+  "peak_share_pct": 28.9,
+  "peak_cut_prepeak2_pct": 93.1,
+  "energy_prepeak2_pct": 3.3,
+  "n_infeasible": 0,
+  "rows": {
+   "1": {
+    "best_policy": [
+     0,
+     0
+    ],
+    "saving_pct": 0.0,
+    "saving_SAR": 0,
+    "prepeak2_pct": 3.3,
+    "base_bill": 10627
+   },
+   "2": {
+    "best_policy": [
+     0,
+     2
+    ],
+    "saving_pct": 18.31,
+    "saving_SAR": 2507,
+    "prepeak2_pct": -18.3,
+    "base_bill": 13694
+   },
+   "3": {
+    "best_policy": [
+     0,
+     2.5
+    ],
+    "saving_pct": 32.34,
+    "saving_SAR": 5421,
+    "prepeak2_pct": -32.0,
+    "base_bill": 16762
+   },
+   "5": {
+    "best_policy": [
+     0,
+     2.5
+    ],
+    "saving_pct": 50.01,
+    "saving_SAR": 11450,
+    "prepeak2_pct": -48.4,
+    "base_bill": 22896
+   }
+  }
+ },
+ "one_node/Jeddah": {
+  "peak_share_pct": 27.6,
+  "peak_cut_prepeak2_pct": 82.6,
+  "energy_prepeak2_pct": 6.7,
+  "n_infeasible": 6,
+  "rows": {
+   "1": {
+    "best_policy": [
+     0,
+     0
+    ],
+    "saving_pct": 0.0,
+    "saving_SAR": 0,
+    "prepeak2_pct": 6.7,
+    "base_bill": 15849
+   },
+   "2": {
+    "best_policy": [
+     0,
+     1.5
+    ],
+    "saving_pct": 12.86,
+    "saving_SAR": 2600,
+    "prepeak2_pct": -12.6,
+    "base_bill": 20216
+   },
+   "3": {
+    "best_policy": [
+     0,
+     2
+    ],
+    "saving_pct": 25.02,
+    "saving_SAR": 6149,
+    "prepeak2_pct": -25.0,
+    "base_bill": 24583
+   },
+   "5": {
+    "best_policy": [
+     0,
+     2
+    ],
+    "saving_pct": 40.12,
+    "saving_SAR": 13368,
+    "prepeak2_pct": -40.1,
+    "base_bill": 33317
+   }
+  }
+ }
+}

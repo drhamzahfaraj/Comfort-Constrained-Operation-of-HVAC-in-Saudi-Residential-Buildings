@@ -1,0 +1,1105 @@
+\providecommand{\blindmode}{0}% 1 = anonymised manuscript for double-blind review
+\documentclass[10pt,a4paper,twocolumn]{article}
+\usepackage[margin=1.8cm,columnsep=0.6cm]{geometry}
+\usepackage{times}
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{microtype}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage[numbers,square,sort&compress]{natbib}
+\newcommand{\citey}[1]{\citeauthor{#1} (\citeyear{#1})~\citep{#1}}
+\setlength{\bibsep}{1pt plus 1pt}\renewcommand{\bibfont}{\small}
+\usepackage{xcolor}
+\usepackage{placeins}
+\usepackage{cuted}
+\setlength\stripsep{4pt}
+\usepackage{subcaption}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,filecolor=black,urlcolor=blue]{hyperref}
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}\renewcommand{\doi}[1]{\url{https://doi.org/#1}}
+\makeatletter% a label after an unnumbered \paragraph refers to the enclosing (sub)section, not to the last float
+\AddToHook{cmd/paragraph/before}{\ifnum\c@subsection>0 \protected@edef\@currentlabel{\thesubsection}\else\protected@edef\@currentlabel{\thesection}\fi}
+\makeatother
+\setlength{\parskip}{2pt}
+\raggedbottom% no stretched vertical glue to fill columns
+\renewcommand{\topfraction}{0.9}\renewcommand{\dbltopfraction}{0.9}\renewcommand{\textfraction}{0.07}%
+\renewcommand{\floatpagefraction}{0.75}\renewcommand{\dblfloatpagefraction}{0.75}\setcounter{dbltopnumber}{2}\setcounter{topnumber}{3}% let tall tables float near their text
+\theoremstyle{definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{observation}{Observation}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{runex}{Running example}
+\newtheorem*{runexc}{Running example (continued)}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+
+\title{\bfseries Comfort-Constrained Operation of Multi-Mode HVAC in a Saudi Apartment Building under a Volume Tariff and Parameter Uncertainty}
+
+\ifnum\blindmode=1
+\author{\normalsize Manuscript anonymised for double-blind review}
+\else
+\author{Hamzah Faraj \\[6pt]
+Department of Sciences and Technology, Ranyah University College, Taif University\\ P.O. Box 11099, 21944 Taif, Saudi Arabia\\[4pt]
+E-mail: f.hamzah@tu.edu.sa \; -- \; ORCID: \href{https://orcid.org/0009-0009-8832-0407}{\textcolor{blue}{0009-0009-8832-0407}}}
+\fi
+\date{}
+
+\newcommand{\exArea}{18}
+\newcommand{\exC}{1.33}
+\newcommand{\exKenv}{19.0}
+\newcommand{\exKwall}{11.8}
+\newcommand{\exKinf}{7.1}
+\newcommand{\exKslab}{36}
+\newcommand{\exKmaster}{22}
+\newcommand{\exKparty}{22}
+\newcommand{\exKbath}{12}
+\newcommand{\exKcorr}{10}
+\newcommand{\exKtot}{138}
+\newcommand{\exKratio}{7}
+\newcommand{\exTa}{36.4}
+\newcommand{\exL}{0.363}
+\newcommand{\exLcond}{0.245}
+\newcommand{\exG}{0.096}
+\newcommand{\exS}{0.022}
+\newcommand{\exWarm}{0.27}
+\newcommand{\exQone}{1.82}
+\newcommand{\exCoolRate}{1.10}
+\newcommand{\exU}{0.20}
+\newcommand{\exToff}{220}
+\newcommand{\exTon}{55}
+\newcommand{\exVfree}{43}
+\newcommand{\exTau}{70}
+\newcommand{\exWband}{79}
+\newcommand{\exBandPct}{2.6}
+\newcommand{\exVband}{23.01}
+\newcommand{\exWsafe}{83}
+\newcommand{\exSafePct}{7.7}
+\newcommand{\exVsafe}{22.05}
+\newcommand{\exAptKwh}{5{,}527}
+\newcommand{\exAptMaxMonth}{935}
+\newcommand{\exAptBill}{1{,}144}
+\newcommand{\exFlat}{0.207}
+\newcommand{\exPhi}{0.81}
+\newcommand{\exCopOne}{4.72}
+\newcommand{\exPOne}{0.077}
+\newcommand{\exWOne}{77}
+\newcommand{\exCopTwo}{4.04}
+\newcommand{\exPTwo}{0.090}
+\newcommand{\exWTwo}{90}
+\newcommand{\exCopThree}{3.26}
+\newcommand{\exPThree}{0.112}
+\newcommand{\exWThree}{112}
+\newcommand{\exThreeMore}{45}
+\newcommand{\exLcur}{0.391}
+\newcommand{\exPcur}{0.083}
+\newcommand{\exWcur}{83}
+\newcommand{\exTonH}{0.913}
+\newcommand{\exCycleH}{4.580}
+\newcommand{\exWperK}{19}
+\newcommand{\pzTa}{36.4}
+\newcommand{\pzIn}{127}
+\newcommand{\pzOut}{80}
+\newcommand{\pzGain}{47}
+\newcommand{\pzCond}{22}
+\newcommand{\pzPass}{14}
+\newcommand{\pzDoor}{91}
+\newcommand{\pzT}{25.0}
+\newcommand{\pzInnIn}{36}
+\newcommand{\pzInnT}{24.4}
+\newcommand{\pzExpName}{bath beside the kitchen}
+\newcommand{\pzInnName}{shared bath}
+\newcommand{\pwdT}{0.09}
+\newcommand{\pwZero}{0.9}
+\newcommand{\pwThree}{1.0}
+\newcommand{\hlSetLo}{9.8}
+\newcommand{\hlSetHi}{12.4}
+\newcommand{\hlNPre}{48}
+\newcommand{\hlEnvLo}{38}
+\newcommand{\hlEnvHi}{56}
+\newcommand{\hlPeakTwoLo}{3.4}
+\newcommand{\hlPeakTwoHi}{4.3}
+\newcommand{\hlNightTwoLo}{4.6}
+\newcommand{\hlNightTwoHi}{5.3}
+\newcommand{\hlPreMin}{0.51}
+\newcommand{\hlPeakHalfLo}{0.51}
+\newcommand{\hlPeakHalfHi}{0.74}
+\newcommand{\hlTouLo}{2}
+\newcommand{\hlTouHi}{27}
+\newcommand{\hlRentLo}{152}
+\newcommand{\hlRentHi}{234}
+\newcommand{\hlRentLoUSD}{41}
+\newcommand{\hlRentHiUSD}{62}
+\newcommand{\hlEnvAptLo}{998}
+\newcommand{\hlEnvAptHi}{2{,}612}
+\newcommand{\hlEnvAptLoUSD}{266}
+\newcommand{\hlEnvAptHiUSD}{697}
+\newcommand{\hlRentPctLo}{9.7}
+\newcommand{\hlRentPctHi}{13.2}
+\newcommand{\hlBoundNight}{3.8}
+\newcommand{\hlBoundPeak}{0.8}
+\newcommand{\hlBoundDawn}{4.7}
+\newcommand{\hlBoundNightJ}{2.4}
+\newcommand{\hlBoundDawnJ}{3.0}
+\newcommand{\hlBoundPeakJ}{-0.3}
+\newcommand{\hlRszLo}{11.2}
+\newcommand{\hlRszHi}{16.5}
+\newcommand{\hlRszfLo}{0.2}
+\newcommand{\hlRszfHi}{2.1}
+\newcommand{\hlRszMargin}{2.5}
+\newcommand{\hlTightSp}{23}
+\newcommand{\hlGuardColdR}{0.12}
+\newcommand{\hlGuardColdJ}{41}
+\newcommand{\hlGuardMinJ}{18.2}
+\newcommand{\hlGuardKwhHi}{14}
+\newcommand{\hlGuardBillHi}{0.02}
+\newcommand{\hlFanLo}{12}
+\newcommand{\hlFanHi}{15}
+\newcommand{\hlSbLo}{64}
+\newcommand{\hlSbHi}{96}
+\newcommand{\hlBoxLo}{-6.0}
+\newcommand{\hlBoxHi}{+1.3}
+\newcommand{\hlInvLo}{11}
+\newcommand{\hlInvHi}{15}
+\newcommand{\hlFineFr}{23.95}
+\newcommand{\hlFineLo}{3.4}
+\newcommand{\hlFineHi}{5.3}
+\newcommand{\hlRHJeddah}{41}
+\newcommand{\hlRHJeddahLow}{21}
+\newcommand{\hlIntLatR}{0.2}
+\newcommand{\hlIntLatJ}{3.2}
+\newcommand{\hlLBLo}{0.0}
+\newcommand{\hlLBHi}{0.3}
+\newcommand{\hlLBtLo}{0.0}
+\newcommand{\hlLBtHi}{0.3}
+\newcommand{\hlLBzHi}{1.9}
+\newcommand{\hlLBztHi}{3.6}
+\newcommand{\hlLBSeasR}{0.0}
+\newcommand{\hlLBSeasJ}{0.0}
+\newcommand{\hlDawnLo}{0.99}
+\newcommand{\hlDawnHi}{1.80}
+\newcommand{\hlBtLoP}{-0.2}
+\newcommand{\hlBtHiP}{+4.3}
+\newcommand{\hlRoomLo}{6}
+\newcommand{\hlRoomHi}{12}
+\newcommand{\hlBathCut}{96}
+\newcommand{\hlBathUnitLo}{2.8}
+\newcommand{\hlBathUnitHi}{4.9}
+\newcommand{\hlCycAbsJ}{20}
+\newcommand{\hlJointHi}{0.8}
+\newcommand{\hlOneNode}{0.08}
+\newcommand{\rbFlatR}{2.1}
+\newcommand{\rbFlatJ}{3.2}
+\newcommand{\hlUQn}{128}
+\newcommand{\hlUQSaveHi}{0}
+\newcommand{\hlUQMax}{0.0}
+\newcommand{\hlUQRankLo}{100}
+\newcommand{\hlUQInvLo}{6.5}
+\newcommand{\hlUQInvHi}{19.9}
+\newcommand{\hlUQSetLo}{8}
+\newcommand{\hlUQSetHi}{13}
+\begin{document}
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle
+\begin{abstract}
+\noindent
+Air-conditioning dominates Saudi household electricity. We ask which lever lowers it in apartment buildings under the volume tariff households pay: setpoint, operating mode, envelope, equipment or timing. A four-storey building meeting the Saudi Building Code is modelled room by room, with coupled two-node rooms, split heat pumps as installed (thermostats, inverter and fixed-speed compressors, cycling and standby losses), typical-year Riyadh and Jeddah weather and per-apartment meters, and checked against EnergyPlus. The code envelope saves $\hlEnvLo$--$\hlEnvHi\%$ of HVAC electricity against the pre-code envelope, raising the cooling and heating setpoints from $22$ and $20.5$ to $23.5$ and $22.5\,^{\circ}$C saves $\hlSetLo$--$\hlSetHi\%$, and inverter units replacing fixed-speed ones save $\hlInvLo$--$\hlInvHi\%$ on assumed part-load data; the lowest mode that holds the room is cheapest. In the base model none of the $\hlNPre$ thermostat pre-cooling settings saves, and $2\,$K before the peak costs $\hlPeakTwoLo$--$\hlPeakTwoHi\%$. A perfect-foresight linear program bounds what any schedule of an idealised loss-free model saves at $\hlLBzHi\%$ of sensible cooling electricity within the band and $\hlLBztHi\%$ down to $20\,^{\circ}$C (design days, one apartment and one floor). An illustrative time-of-use tariff makes pre-cooling save $\hlTouLo$--$\hlTouHi\%$, locating the null result in the tariff. A global uncertainty analysis of $17$ assumed inputs ($\hlUQn$ Latin-hypercube samples per city) keeps the lever ordering in every comparison within the safe set, and no pre-cooling setting tested saves in any sample. The results hold for an energy-only tariff, every room occupied and conditioned at all hours, a hard $24\,^{\circ}$C ceiling and coverage-sized units.
+\end{abstract}
+
+\noindent\textbf{Keywords:} multi-mode HVAC; setpoint; building envelope; pre-cooling; uncertainty analysis; Saudi Building Code
+\vspace{1.2em}
+\end{@twocolumnfalse}
+]
+
+
+\section{Introduction}\label{sec:intro}
+Air-conditioning dominates residential electricity use in Saudi Arabia. Space cooling takes about two-thirds ($66\%$) of household consumption in the national stock model~\citep{stockmodel2020} and more than $70\%$ in recent building studies~\citep{passive_saudi2025,retrofit_jeddah2023}. A large literature, and a growing range of ``smart'' thermostats, propose to reduce it by \emph{scheduling} the air-conditioners (pre-cooling rooms before the afternoon, shifting load to cheaper hours, coordinating the units of neighbouring rooms) and report double-digit reductions in peak demand or cost~\citep{braun1990,naderi2022precool,mayes2024precool}. These savings, however, are obtained under particular envelopes, particular setpoints and, above all, particular tariffs, most often prices that vary with the time of day.
+
+\paragraph{Motivation.} Before households, builders or regulators invest in scheduling, they need to know whether it pays under the conditions that Saudi households actually face and, if it does not, which lever does. Three features of these conditions make the question pressing. First, the residential tariff is a two-tier \emph{volume} tariff: it prices how much energy a household uses, not when~\citep{sec_tariff}. Second, the summer climate and a hard comfort ceiling leave no room to let occupied rooms warm up, so the only temporal action available is to pre-cool. Third, many urban households live in apartment buildings. Every room is coupled to its neighbours through walls, slabs and open doors, a third of the floor area (baths, corridors, halls) has no air-conditioner, and every apartment has its own meter, so a saving must be computed room by room and meter by meter. For a single room at constant conditions it is intuitive that pre-cooling cannot pay when only energy is priced. For such a building it is not: rooms are coupled, a third of them have no unit, the coefficient of performance (COP) changes with the hour and the mode, and a study of Saudi homes under the same tariff reports coordination savings of several percent~\citep{rl2026hvac}. We are not aware of a study that separates the scheduling, setpoint and envelope levers under these three conditions together (Section~\ref{sec:related}). This paper asks: for a representative Saudi apartment building, with its floor plan, its air-conditioners and the tariff its households pay, how much can heating, ventilation and air-conditioning (HVAC) save, in summer and in winter, and through which of five levers: the setpoint, the operating mode of the units, the envelope, the equipment, or the timing of operation?
+
+We answer with a simulation-based analysis, supported by theory, of one building in two climates, hot-dry Riyadh and hot-humid Jeddah, and in three cases: Case~1, one apartment; Case~2, the typical floor of two apartments; and Case~3, the whole four-storey building. The building meets the residential envelope requirements of the Saudi Building Code (SBC) for climate Zone~1, and the same building with the envelope of the existing uninsulated stock serves as the comparison. Throughout, the bill is minimised over the policies that keep every conditioned room within the safe set $[20,24]\,^{\circ}$C, which contains the $22$--$24\,^{\circ}$C comfort band (Section~\ref{sec:problem}).
+
+The contributions are:
+\begin{enumerate}[label=(\arabic*),leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+\item \emph{Evidence.} A decomposition of the achievable saving by lever across the three cases, two cities and two seasons, for an energy-only (volume) tariff, every room occupied and conditioned at all hours (A4), the hard $24\,^{\circ}$C ceiling and catalogue units sized by coverage. The savings come from the envelope ($\hlEnvLo$--$\hlEnvHi\%$), the setpoint ($\hlSetLo$--$\hlSetHi\%$, raising the cooling setpoint from $22$ to $23.5\,^{\circ}$C and the heating setpoint from $20.5$ to $22.5\,^{\circ}$C) and the equipment (inverter units in place of the fixed-speed ones, $\hlInvLo$--$\hlInvHi\%$; sizing by load alone, $\hlRszfLo$--$\hlRszfHi\%$); the cheapest mode is the lowest mode that holds the room. Timing is worth little in the base model: no thermostat pre-cooling setting saves, even after correcting for the smaller extra heat that EnergyPlus finds for a setback, and a perfect-foresight benchmark bounds what any schedule of an idealised loss-free model could gain (Section~\ref{sec:lowerbound}). An illustrative time-of-use tariff makes pre-cooling save in the same model, which locates the null result in the tariff. A factorial decomposition of the levers with Shapley attribution separates their interactions (Section~\ref{sec:ablation}), and a global uncertainty analysis over $17$ assumed inputs tests whether the conclusions survive parameter uncertainty (Section~\ref{sec:sensitivity}).
+\item \emph{Model and method.} A room-resolved heating-and-cooling model of a four-storey building built directly from a representative floor plan, with two-node rooms, wall, slab and open-door coupling, measured weather with angle-dependent window gains and long-wave sky exchange, an ISO~13370 ground, a latent load from the measured humidity, catalogue units as installed (thermostats with a differential, inverter and fixed-speed compressors, cycling losses, standby power, capacity derating) and per-meter billing, compared with EnergyPlus, including its response to setbacks, and with the stock energy use. The method uses one optimisation, a perfect-foresight optimal-control linear program over an idealised form of the problem: with a COP that depends on the outdoor air only it gives an upper bound on the saving of any schedule of that model, and with the engine's COP an achievable saving below that bound. Against it, the pre-cooling settings that a thermostat can realise are evaluated by annual simulation on normal and hard instances.
+\item \emph{Theory.} An energy accounting for multi-mode units under a hard ceiling, which adapts the storage-efficiency view of energy flexibility~\citep{ledreau2016flex,reynders2018flex} to the multi-mode framework of \citet{mousa2016optimal,mousa2017optimal} (timed actions, leaps, runs and limit-average costs), instantiated with the Saudi tariff. A room's mean power over a leap cycle is its heat gain at the cycle's mean temperature divided by the COP of the mode used, so the optimal stationary schedule holds the highest level whose cycle stays under the ceiling in the lowest mode that holds the room (Theorem~\ref{thm:optleap}); for a thermostat this places the comfort frontier half its differential below the ceiling. For every tariff that prices energy alone, pre-cooling adds cost wherever it admits more heat than it gains in efficiency, and a bound limits what it can gain elsewhere (Theorems~\ref{obs:precool} and~\ref{thm:policy}); savings can come only from removing less heat or removing it more efficiently (Proposition~\ref{prop:sources}). Conditioned neighbours at a common level exchange no net heat (Section~\ref{prop:coupling}), and a heat budget bounds what the rooms without a unit can reach (Section~\ref{prop:passive}).
+\end{enumerate}
+Section~\ref{sec:related} positions the work and Section~\ref{sec:methodology} outlines the methodology (Fig.~\ref{fig:pipeline}). Section~\ref{sec:context} describes the case study, Section~\ref{sec:model} the model and the problem, and Section~\ref{sec:theory} the theory. Section~\ref{sec:setup} sets out the experiments, Section~\ref{sec:vv} verifies and validates the model, Section~\ref{sec:results} reports the results, Section~\ref{sec:discussion} discusses them and their limits, and Section~\ref{sec:conclusion} concludes. Appendices~\ref{app:nomen} and~\ref{app:proofs} give the symbols and the proofs. The supplementary material (Sections~S1--S8) and the repository, which regenerates every number in the paper, hold the supporting tables, inputs and results.
+\section{Related Work and Positioning}\label{sec:related}
+\paragraph{HVAC control: from thermostats to policy-level scheduling.}
+Residential HVAC control has progressed from bang-bang thermostats, through programmable setback and setpoint scheduling, to model-predictive and learning-based controllers and, in the systems literature, to multi-mode and green scheduling of the plant. Each step adds control sophistication, but none by itself answers the economic question of \emph{how much} a household's bill can fall and \emph{through which lever}.
+
+\paragraph{Scheduling of multi-mode and hybrid systems.}
+HVAC control is a hybrid system of discrete switching and continuous dynamics~\citep{henzinger_2000}. Optimal scheduling has been solved for constant- and linear-rate multi-mode systems~\citep{alur2012optimal,wojtczak2013optimal}, where a system is schedulable from the interior of the safe set exactly when dwell times exist whose rate vectors sum to zero, and for bounded-rate systems~\citep{alur2013safe}; optimal control was extended to simple linear hybrid systems and to discrete switching costs by \citet{mousa2016optimal,mousa2017optimal}. Green scheduling recasts peak reduction as the scheduling of coupled zones with periodic or event-based schedules~\citep{nghiem2011green,nghiem2012scalable,nghiem2013event}. We adopt this formalism for the plant: Definition~\ref{def:sched} specialises the zero-sum condition to a single room, and the coupled-zone dynamics of \citet{nghiem2011green} carry the thermal shift between rooms. We then embed it in a floor plan, catalogue equipment, the actual tariff and a latent-load model, where the economic content of a saving lies.
+
+\paragraph{Predictive and learning-based control.}
+Model predictive control (MPC) is the most studied advanced approach (reviewed by \citet{drgona2020mpc}), from \citey{oldewurtel2010reducing}, \citey{ma2012model} and \citey{MOROSAN20101445} to the decentralised formulation of \citey{CHANDAN2014820}. \citey{zheng2024empc} extend it to reduced-order resistance--capacitance (RC) economic MPC, and \citey{wang2024mldr} to machine-learning surrogates for demand response. Statistical model checking and reinforcement-style synthesis, as in the tool of \citey{david2015uppaal}, handle continuous state at the cost of large state spaces. For the same Saudi residential setting, a recent study (2026)~\citep{rl2026hvac} developed a reinforcement-learning coordinator based on physics-informed proximal policy optimisation (PI-PPO) that learns a stationary scheduling policy for multi-zone split units under the two-tier tariff. That work and the present paper are complementary. It contributes a learning-based controller; Section~\ref{sec:discussion} relates its savings to the levers separated here. More broadly, the savings reported across this literature vary widely and are seldom decomposed by lever or tested for their dependence on the tariff.
+
+\paragraph{Pre-cooling and passive thermal storage.}
+A large demand-side-management literature promotes \emph{pre-cooling}, that is, driving zone temperatures down during off-peak hours so that the building's thermal mass stores ``coolth'' and daytime cooling is reduced. It began with the optimal thermal-storage control of \citey{braun1990} and has developed through decades of simulation and field trials, including simplified optimal strategies~\citep{keeney1996simplified}, predictive control of active and passive storage~\citep{henze2004evaluation} and residential field tests~\citep{turner2015peak}. The reviews and rate-structure studies of this literature find that the cost savings come mainly from time-of-use prices and demand charges, and that pre-cooling usually raises the energy used~\citep{braun2003load,morgan2007impact,turner2015peak}. Recent studies by \citey{naderi2022precool} and \citey{mayes2024precool} confirm that its value depends on time-of-use pricing and thermal mass. The premises of this literature matter. Braun lists the opportunities of pre-cooling as (i) reducing coincident \emph{peak demand}, (ii) exploiting cheaper \emph{night-time rates}, (iii) offsetting mechanical cooling with \emph{free night cooling}, and (iv) improving the \emph{efficiency of mechanical cooling} through cooler night-time condensing conditions and part-load operation. These opportunities depend on the tariff and the climate. Under a residential volume tariff the first two do not apply (see below), and night temperatures in the Saudi cooling season are far too high for free cooling, so only the fourth, a diurnal COP swing, remains. Theorem~\ref{obs:precool} bounds what it can yield, and a perfect-foresight linear program bounds what an idealised schedule can attain (Section~\ref{sec:lowerbound}). The present study formalises and quantifies this known mechanism for the Saudi tariff and building; it does not claim it as new.
+
+\paragraph{Energy flexibility and pre-cooling in hot climates.}
+The energy-flexibility literature treats the thermal mass as a store and accounts for what it costs. \citet{ledreau2016flex} quantify the flexibility that short-term storage in the thermal mass gives residential buildings and the extra energy it entails, and \citet{reynders2018flex} review the definitions and indicators of flexibility, among them the capacity and the efficiency of structural thermal storage. In hot climates, \citet{arababadi2017precool} show that envelope efficiency measures make residential pre-cooling more effective in a hot arid climate, and \citet{cole2014community} coordinate the air-conditioners of a residential community to relieve the grid, both with the aim of moving load away from the peak. The theory of Section~\ref{sec:theory} adapts this storage-efficiency accounting to multi-mode units under a hard ceiling: pre-cooling pays only where the efficiency it gains outweighs the extra heat it admits.
+
+\paragraph{Tariffs, demand response, and the value of flexibility.}
+The tariff, rather than the controller, creates the economic value of shifting load. Time-of-use, critical-peak and real-time prices, or demand charges, reward temporal flexibility, whereas a pure volume tariff does not. Tariff-aware and peak-aware control, such as the price-responsive MPC of \citey{oldewurtel2010reducing} and the peak-reduction green scheduling of \citeauthor{nghiem2011green} (2011, 2013)~\citep{nghiem2011green,nghiem2013event}, therefore presupposes a price or peak signal to exploit. Saudi residential customers face a two-tier \emph{volume} tariff with no time signal, as published by \citey{sec_tariff}, so this premise does not hold for their bill (Theorem~\ref{thm:policy}).
+
+\paragraph{Saudi envelope, stock and simulation studies.}
+Work on the SBC envelope and the existing stock provides the envelope requirements, construction U-values and stock energy use on which we build (2019--2022)~\citep{alayed2021thermal,alsanea_insulation2022,alyami2021building,sbc_envelope2021}. The stock model of \citey{stockmodel2020} puts the residential energy use intensity (EUI) at $125.6$--$182.4$\,kWh/m\textsuperscript{2}yr across the four regions and uses it to evaluate national retrofit programmes. Building-scale simulations report that combined passive measures cut the cooling demand of a Saudi villa by $68\%$ (IES-VE; \citey{passive_saudi2025}) and that retrofit packages save $25$--$66\%$ in a low-rise Jeddah apartment building (DesignBuilder/EnergyPlus; \citey{retrofit_jeddah2023}), with cooling accounting for more than $70\%$ of residential electricity in both. \citey{aldubyan_stayhome2022} show that operation matters: stay-home living by itself raised residential demand materially during 2020. \citey{krarti_peak2022} optimise retrofits for the electrical peak demand of the housing stock, \citet{alaidroos2015envelope} optimise residential envelopes for Saudi cities, and \citet{krarti2020ac} evaluate the costs and benefits of moving Saudi homes to high-efficiency air-conditioners. Outside the Kingdom, \citet{hoyt2015setpoint} show by simulation that extending the cooling and heating setpoints saves a substantial share of HVAC energy. This literature establishes the magnitudes and the levers one at a time and treats the envelope largely in isolation. It does not decompose the levers under the same comfort ceiling against the actual tariff. Nor does it test whether the temporal-scheduling lever that dominates the demand-response literature carries any value under the volume tariff these customers face.
+
+\paragraph{Research gap and positioning.}
+Three gaps recur across these strands. \emph{(G1)~Lever conflation}: reported savings mix envelope, setpoint and schedule, so a headline percentage cannot be attributed to a cause that a policymaker can act on. \emph{(G2)~Tariff-blindness}: the value of temporal flexibility is assumed rather than tested against the customer's actual tariff, even though it is the tariff that creates or removes that value. \emph{(G3)~Weak grounding}: envelope parameters and comfort targets are often assumed rather than derived from the governing code and climate. This study addresses all three with a code-grounded, room-resolved model with the equipment and thermostats as installed, compared with EnergyPlus on identical inputs; a decomposition by lever under the same comfort ceiling; and a test of scheduling under the tariff that Saudi households pay, with a theoretical bound for every energy-only tariff and a perfect-foresight benchmark. The Saudi retrofit studies of \citet{stockmodel2020} and \citet{krarti_peak2022} quantify \emph{how much} envelope and equipment upgrades save; the contribution here is a controlled \emph{decomposition} of the operational levers, which shows that, in the base model, moving cooling in time is worth little under the prevailing tariff, and nothing in the form thermostats offer, whereas the setpoint, the equipment and the envelope pay. Table~\ref{tab:positioning} places the study against these strands; the advance lies in the study design rather than in the optimiser.
+
+\begin{table*}[t]
+\centering
+\caption{State-of-the-art comparison: positioning against representative prior work. \checkmark: yes; $\circ$: partly; --: no. Param.: envelope parameters derived from the code and cited sources; EUI: energy use checked against the stock; Tariff: the real tariff is used; Levers: savings decomposed by lever (E: envelope only); Tariff dep.: dependence of the saving on the tariff (A: one tariff or price signal assumed, not tested; T: compared across tariffs; B: bounded for every energy-priced tariff, with a perfect-foresight benchmark and a time-of-use contrast).}
+\label{tab:positioning}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l c c c c c c@{}}
+\toprule
+Ref. & Method (study strand) & Years & Param. & EUI & Tariff & Levers & Tariff dep. \\
+\midrule
+\citep{braun1990,keeney1996simplified,braun2003load,henze2004evaluation,morgan2007impact,turner2015peak,naderi2022precool,mayes2024precool,ledreau2016flex,reynders2018flex,arababadi2017precool,cole2014community} & Pre-cooling, thermal storage, flexibility & 1990--2024 & $\circ$ & -- & $\circ$ & -- & T \\
+\citep{oldewurtel2010reducing,ma2012model,MOROSAN20101445,drgona2020mpc,zheng2024empc,wang2024mldr} & Building MPC & 2010--24 & $\circ$ & $\circ$ & $\circ$ & -- & A \\
+\citep{alaidroos2015envelope,sbc_envelope2021,alsanea_insulation2022,stockmodel2020,retrofit_jeddah2023,passive_saudi2025} & Saudi envelope and code & 2015--25 & \checkmark & \checkmark & -- & E & -- \\
+\citep{rl2026hvac} & Learning-based coordination (Saudi homes) & 2026 & $\circ$ & -- & \checkmark & $\circ$ & A \\
+\midrule
+\textbf{This work} & Multi-mode theory, optimal control, room-resolved simulation & 2026 & \checkmark & \checkmark & \checkmark & \checkmark & B \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\section{Methodology}\label{sec:methodology}
+The study proceeds in six stages (Fig.~\ref{fig:pipeline}), each described in the section named in the figure. The timing lever is pre-cooling, the only re-timing that the hard $24\,^{\circ}$C ceiling permits when every room is occupied (A4). One optimisation method is used: a perfect-foresight optimal-control linear program over an idealised form of the bill-minimisation problem, which bounds what any schedule of that model can save and, with the engine's COP, finds an achievable saving below that bound (Section~\ref{sec:lpbench}). The thermostat policies a household can choose are not optimised but evaluated: each is simulated for a year with the realistic controller and billed per meter, and the cheapest admissible one is kept (Algorithm~\ref{alg:eval} and Section~\ref{alg:opt}). Each lever (setpoint, mode, envelope, equipment, timing) is then changed on its own against a stated baseline in three cases, two cities and both seasons; a factorial decomposition and a global uncertainty analysis test the interactions between the levers and the robustness of the conclusions (Section~\ref{sec:results}). One reproducible pipeline carries the inputs to every number in the paper.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_pipeline}
+\caption{Methodology. The inputs (Section~\ref{sec:context}) define a room-resolved model of the building (1), which is written as a multi-mode system and a bill-minimisation problem within a hard safe set (2, Section~\ref{sec:model}). The theory (3, Section~\ref{sec:theory}) characterises the optimal schedule and bounds what pre-cooling can gain; the computation (4, Section~\ref{sec:setup}) solves an idealised form of the problem once, as a perfect-foresight optimal-control program, and evaluates by annual simulation the pre-cooling settings a thermostat can realise. After the model is verified and validated (5, Section~\ref{sec:vv}), the experiments (6, Section~\ref{sec:results}) change one lever at a time and check the theory's conditions.}
+\label{fig:pipeline}
+\end{figure*}
+\section{Case Study: Climate, Comfort and the Building}\label{sec:context}
+This section describes the case study: the two climates, the comfort band, and the building with its air-conditioners, its two envelopes and the three cases in which it is analysed. The model of Section~\ref{sec:model} is built on it, and all results are computed for it.
+
+\subsection{Climate of Riyadh and Jeddah}\label{sec:weather}
+The SBC divides the Kingdom into climate zones, and all Saudi cities are cooling-dominated~\citep{alayed2021thermal,stockmodel2020}. Riyadh and Jeddah are the two largest cities and represent the two main residential climates, interior hot-arid and coastal hot-humid. Riyadh has large daily and seasonal swings, a small winter heating need and shoulder months close to the comfort band. Jeddah is warm and humid all year, so it needs cooling and dehumidification throughout, and its latent load is large where Riyadh's is negligible. Riyadh's cool winter also shows the winter side of the envelope, since insulation that helps in summer keeps internal gains in the building in winter. The pair therefore tests the levers in two different ways and shows whether the results hold across climates.
+
+The model is driven by hourly weather for Riyadh and Jeddah from typical meteorological years (TMYx) assembled from measured records. The files give dry-bulb and dew-point temperature, pressure, and global, direct and diffuse solar radiation, and they are the same files read by the EnergyPlus benchmark (Section~\ref{sec:validation}). Fig.~\ref{fig:weather} plots the three components that drive the model: air temperature against the comfort band, relative humidity, and solar radiation; the monthly values are tabulated in the supplementary material (Section~S3). Riyadh is hot and dry: its monthly mean rises from $14.7\,^{\circ}$C in January to $36.4\,^{\circ}$C in July, with daily maxima above $43\,^{\circ}$C and relative humidity near $12\%$ in summer. Jeddah is milder but humid: its mean never falls below $23.5\,^{\circ}$C and its relative humidity stays between $54\%$ and $70\%$ all year. Both receive $4$--$8\,$kWh/m\textsuperscript{2} of solar radiation per day.
+
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{fig_weather}
+\caption{Annual weather of Riyadh and Jeddah (TMYx typical years). (a)~Monthly mean air temperature and mean daily range against the comfort band: Riyadh crosses the band seasonally and exceeds $43\,^{\circ}$C on summer afternoons, while Jeddah's monthly mean never falls below it. (b)~Relative humidity: Riyadh is dry in summer and Jeddah humid all year, which drives its latent load. (c)~Daily solar irradiation, $4$--$8\,$kWh/m\textsuperscript{2} in both cities, which drives the solar gains.}
+\label{fig:weather}
+\end{figure*}
+
+\subsection{Comfort range: ASHRAE, SBC, and the one-sided ceiling}\label{sec:comfortrange}
+ASHRAE~55 defines comfort through the predicted mean vote (PMV): a space complies when the PMV stays within $\pm0.5$, that is, at most $10\%$ predicted percentage dissatisfied (PPD)~\citep{standard55,ISO7730}. For summer clothing ($0.5\,$clo), light activity ($1.1$--$1.2\,$met), still air and $50\%$ relative humidity, this spans roughly $23$--$27\,^{\circ}$C of \emph{operative} temperature, and about $19$--$24\,^{\circ}$C in winter clothing ($1.0\,$clo). The SBC regulates the building fabric (Section~\ref{sec:stock}) rather than the setpoint, which is left to the occupant and to efficiency guidance.
+
+We adopt a comfort band $[V_{\text{low}},V_{\text{high}}]=[22,24]\,^{\circ}$C of air temperature and treat its upper bound as a \emph{hard} ceiling rather than the centre of a symmetric deadband. There are three reasons for this choice in Saudi homes. First, in sunlit construction with warm inner surfaces the operative temperature exceeds the air temperature on summer afternoons, most in rooms under an uninsulated roof; in the insulated building studied here the excess is small (Section~\ref{sec:operative}), so a $24\,^{\circ}$C ceiling sits in the lower half of the ASHRAE summer zone, but in the uninsulated stock and under a roof it moves a $24\,^{\circ}$C room towards the upper part of that zone, and letting rooms coast above the ceiling during the peak would take them towards its edge. The hard ceiling is therefore a conservative choice for the insulated building and a protective one for the stock. Second, at Jeddah's $54$--$70\%$ relative humidity (Fig.~\ref{fig:weather}b) evaporative cooling of the body is suppressed and the comfortable dry-bulb ceiling is lower still. Third, in the summer heat conditioned rooms are refuges for vulnerable occupants. The ceiling also matches the lower end of the $24$--$26\,^{\circ}$C range recommended by efficiency guidance in the neighbouring Gulf state of Qatar~\citep{tarsheed_setpoint}. This choice ensures that no saving is gained at the expense of comfort; the operative temperature it implies is checked in Section~\ref{sec:operative}. The safe set is imposed on the conditioned rooms, where occupants stay; the band is their comfort target. The passive zones, the rooms without a unit (Section~\ref{sec:passive}), are compared with the band but not constrained by the safe set, and the supplementary material (Section~S1) reports how the controller brings them close to it.
+
+Flexibility is therefore \emph{one-sided}. Both bounds of the safe set $[V_{\min},V_{\max}]=[20,24]\,^{\circ}$C are hard (Section~\ref{sec:problem}), so a controller may pre-cool into $[20,22)\,^{\circ}$C, below the band, but never let an occupied room rise above the ceiling. Every re-timing of cooling in this paper is therefore a pre-cooling action (cool into the headroom, then return to the setpoint) and never an upward coast (illustrated in Section~\ref{sec:runex}). Since every room is taken to be occupied at all hours (A4), no room is allowed to float.
+
+\subsection{The building: layout, air-conditioners, envelope and analysis cases}\label{sec:building}
+The study object is a four-storey apartment building with two apartments per floor, a common housing type in Saudi cities (Fig.~\ref{fig:layouts}). The building was designed for this study as a set of layered DXF drawings (plans, section and elevation), with room sizes, wall types, storey height and stair dimensions that follow the Saudi Building Code (Fig.~\ref{fig:layouts}a). Each apartment has a master bedroom reached through a lobby that also serves its bath, two further bedrooms (Bed~2 and Bed~3), a living room open to a dining area and joined to an enclosed west balcony, a kitchen, a guest room, three further baths, a maid room, and a corridor, hall and entrance; the room dimensions are listed in the supplementary material (Section~S3). The two apartments of a floor mirror each other about a common stair ($4.25\times9.05\,$m) on the south side, on a $19.15\times28.00\,$m footprint (Fig.~\ref{fig:layouts}b). Four floors of $3.40\,$m ($3.00\,$m clear) form the building, entered from the south (Fig.~\ref{fig:layouts}c). The top of the plan faces north. Apartments are numbered by storey, from 1 (ground) to 4 (top), with A on the west and B on the east.
+
+Each room is one thermal zone of the model (Section~\ref{sec:prelim}), a rectangle (or union of rectangles) on the wall centrelines of the drawing, so that each zone's clear size is that of the drawing; the enclosed balcony is an unconditioned zone. Each window enters with its own width and orientation, which gives a window-to-wall ratio of $17.3\%$ for the building. The model derives each zone's floor area, its exterior walls and their orientations, and every shared wall and slab from the rectangles, so no adjacency is entered by hand. An apartment covers $231\,\text{m}^2$ on wall centrelines (without the balcony), a floor has $33$ zones and the building has $132$.
+
+Every bedroom, the living room, the dining area, the kitchen and the guest room has its own split unit, chosen from a four-model product catalogue by rated coverage (Table~\ref{tab:acspec}; $1\,$ton $=3.517\,$kW of cooling). The drawing gives the living room and the dining area a unit each; together they cover $36\,\text{m}^2$, the upper limit of the largest unit's coverage, so one unit would have no margin. They are modelled as two zones joined by a $5.00\,$m opening. The baths, the maid room, the lobby, the corridor, the hall and the balcony have no unit. Interior doors are open, with the widths of the drawing ($0.70$--$0.90\,$m) and the $2.032\,$m height that SBC~201 sets for egress doors~\citep{sbc201_2018}; the wall-free openings of the open plan (corridor and hall to the living and dining area, living to dining) are $2.20$--$5.00\,$m wide and $3.00\,$m high. The apartment entrance and balcony doors are closed. The stair is conditioned and billed on a common meter, and each apartment has its own meter, to which the tariff applies. Each apartment therefore has seven units ($14.0\,$tons), and the building has $60$ units on nine meters.
+
+The 1.5-, 2.0- and 2.5-ton units are inverter split heat pumps, modelled with four operating modes numbered $0$--$3$: off and three on modes, low, medium and high. The 3-ton unit is a fixed-speed rotary-compressor heat pump; its three fan speeds do not modulate the compressor, so it is modelled as an on/off unit that runs at full capacity whenever it runs. Sizing by rated coverage is how such units are chosen in practice; with the SBC envelope it leaves them several times larger than the peak load, and a right-sized alternative is tested in Section~\ref{sec:sensitivity}. Their efficiency is anchored to the air-conditioner standard of the Saudi Standards, Metrology and Quality Organization (SASO), SASO~2663, whose 2014 edition set a minimum split-unit energy efficiency ratio (EER) of $11.5\,$(Btu/h)/W at test condition T1~\citep{saso2663_2014}; the 2021 edition moved to seasonal ratings~\citep{saso2663}. At full load and the T1 rating condition ($35\,^{\circ}$C outdoors, $27\,^{\circ}$C indoors) the modelled COP is $3.37$, which equals an EER of $11.5$; at the $23.5\,^{\circ}$C reference setpoint it is $3.13$. The higher efficiency of the low and medium modes follows the assumed part-load ratios of Eq.~\eqref{eq:cop} (Section~\ref{sec:prelim}). The heating capacity of each unit is taken as $1.14$ times its cooling capacity ($6.0\,$kW for the $1.5$-ton unit), an assumed value.
+
+\paragraph{Passive zones.}\label{sec:passive} About a third of each apartment's floor area has no unit: the four baths, the maid room, the lobby, the corridor and the entrance hall. These \emph{passive zones} are cooled in summer and heated in winter only by the thermal shift from their neighbours (Section~\ref{sec:dynamics}). Their temperatures are therefore outputs of the model, not controlled quantities. Section~\ref{sec:passivetheory} states what they can reach, and Section~\ref{sec:comfortperf} reports them.
+
+\begin{table*}[!t]
+\centering\small
+\caption{Air-conditioner catalogue and the rooms each unit serves. All units are split heat pumps for heating and cooling. The 1.5- to 2.5-ton units are inverter units with four operating modes (off, low, medium, high; capacity fractions $0$, $0.35$, $0.65$ and $1$); the 3-ton unit has a fixed-speed rotary compressor and runs on/off at full capacity. Heating capacity: $1.14$ times the cooling capacity (assumed). The stair ($38.5\,\text{m}^2$) lies just above the rated coverage of its unit, and the dining area ($11.0\,\text{m}^2$) below that of the smallest unit.}
+\label{tab:acspec}
+\begin{tabularx}{\textwidth}{l l l R}
+\toprule
+Unit & Cooling / heating capacity & Rated coverage & Rooms served \\
+\midrule
+1.5 ton & $5.28$ / $6.0\,$kW & $16$--$18\,\text{m}^2$ & Bed~2, Bed~3, kitchen, dining area \\
+2.0 ton & $7.03$ / $8.0\,$kW & $19$--$22\,\text{m}^2$ & none (no room of the plan falls in this range) \\
+2.5 ton & $8.79$ / $10.0\,$kW & $22$--$30\,\text{m}^2$ & master bedroom, living room \\
+3.0 ton & $10.55$ / $12.0\,$kW & $30$--$36\,\text{m}^2$ & guest room, stair \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{figure*}[!t]
+\centering
+\newlength{\cadW}\setlength{\cadW}{0.31\textwidth}\newlength{\cadH}\setlength{\cadH}{0.40\textwidth}%
+\newcommand{\cadpanel}[1]{{\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.4pt}\fcolorbox{black!35}{white}{\parbox[c][\cadH][c]{\cadW}{\centering\includegraphics[width=0.94\cadW,height=0.96\cadH,keepaspectratio]{#1}}}}}%
+\begin{subfigure}[b]{0.32\textwidth}\centering\cadpanel{fig_cad_apartment}\caption{Case~1: apartment~A}\end{subfigure}\hfill
+\begin{subfigure}[b]{0.32\textwidth}\centering\cadpanel{fig_cad_floor}\caption{Case~2: typical floor}\end{subfigure}\hfill
+\begin{subfigure}[b]{0.32\textwidth}\centering\cadpanel{fig_cad_elevation}\caption{Case~3: elevation and section}\end{subfigure}
+\caption{The building analysed in the three cases (drawings generated as layered DXF files; clear dimensions in metres). (a)~Apartment~A, analysed alone in Case~1. (b)~The typical floor: two mirror-image apartments around the common stair; north is up. (c)~South elevation (top) and section A--A through the stair (bottom) of the four-storey building (floor-to-floor height $3.40\,$m, $3.00\,$m clear; windows from $0.90$ to $2.40\,$m above each floor). The zone rectangles of the model follow the wall centrelines of (b).}
+\label{fig:layouts}
+\end{figure*}
+
+\paragraph{Envelope.}\label{sec:stock} SBC~602 is the Kingdom's energy-conservation code for low-rise residential buildings~\citep{sbc602_2018}. It sets the envelope performance (wall, roof and glazing U-values and the glazing solar heat gain) for three climate zones~\citep{alayed2021thermal,stockmodel2020}. The earlier SBC~601 of 2007, which did not cover low-rise residential buildings, specified the less strict wall and roof U-values of $0.53$ and $0.31\,\text{W/m}^2\text{K}$~\citep{alayed2021thermal}. The walls, roof and glazing of the building meet the residential requirements for climate Zone~1 (SBC~602, as tabulated by \citet{stockmodel2020}), the hottest zone, which includes Riyadh. We apply the same requirements in both cities as a common reference: a wall U-value of $0.34\,\text{W/m}^2\text{K}$~\citep{sbc602_2018,alayed2021thermal,stockmodel2020}, roof and window U-values of $0.20$ and $2.67\,\text{W/m}^2\text{K}$ and a glazing solar heat-gain coefficient (SHGC) of $0.25$~\citep{stockmodel2020}, with the windows of the drawing (window-to-wall ratio $17.3\%$). Partitions and floor slabs keep the uninsulated U-values of the existing stock, and the ground slab is uninsulated (Table~\ref{tab:params}). This SBC-compliant building is the main case of the study. To quantify the value of the code, the same building is also simulated with the envelope of the existing, largely uninsulated stock: wall, roof and window U-values of $2.146$, $2.123$ and $5.778\,\text{W/m}^2\text{K}$ and an SHGC of $0.62$, taken from the calibrated model of an existing Riyadh residence~\citep{alyami2021building}. Nothing else is changed, so the difference isolates the envelope.
+
+\paragraph{Analysis cases.}\label{sec:steps} The same building is analysed as three cases of increasing extent (Fig.~\ref{fig:layouts}). \emph{Case~1} is one apartment, A of an intermediate storey, on its own (Fig.~\ref{fig:layouts}a). This is the unit that receives a household bill. Its walls and slabs shared with the other apartment, the core and the storeys above and below face conditioned space and are treated as adiabatic. \emph{Case~2} is the typical floor (Fig.~\ref{fig:layouts}b): both apartments side by side and the core, with the heat exchange between them. Its slabs remain adiabatic. \emph{Case~3} is the whole building (Fig.~\ref{fig:layouts}c): four storeys of two apartments, with ground contact on the lowest storey, the roof above the highest, and heat exchange through every slab. The representative apartment is 2A, on the first storey above the ground, which is neither in contact with the ground nor under the roof. Each case is run in both cities, for both envelopes (SBC-compliant and pre-code, Section~\ref{sec:stock}), over the whole TMYx year, so both summer cooling and winter heating are simulated.
+\section{Model and Problem Formulation}\label{sec:model}
+This section turns the building of Section~\ref{sec:context} into a formal model and states the optimisation problem. It uses the multi-mode formalism of \citet{alur2012optimal}, \citet{wojtczak2013optimal} and \citet{mousa2017optimal} and the coupled-zone model of \citet{nghiem2011green}; only the parts the theory needs are stated here, and the full formal definitions (zone network, multi-mode system, timed actions, schedules, runs and their costs, schedulability) with the continuations of the running example are in the supplementary material, Section~S4.
+
+\subsection{Modelling assumptions}\label{sec:assumptions}
+The theory of Section~\ref{sec:theory} rests on five assumptions, of which the simulation relaxes the first three. \textbf{(A1)}~Each zone is well mixed; the theory reads it as one lumped temperature $V_i$, the simulation as two nodes, air and structure (Section~\ref{sec:dynamics}). \textbf{(A2)}~The COP is quasi-static, a function of mode and ambient temperature (Eq.~\ref{eq:cop}) with no cycling loss; the simulation adds its dependence on the indoor air, cycling losses, standby power and capacity derating (Section~\ref{sec:params}). \textbf{(A3)}~Within one leap cycle the heat gain $L$ and the ambient temperature are constant. This holds only roughly for a lightly loaded room, whose cycle can last hours (about $\exCycleH\,$h for the running example), so applying the cycle results hour by hour is an approximation; the simulation does not use (A3). \textbf{(A4)}~Every apartment is occupied and every room is occupied and conditioned at all hours, with every conditioned zone following the same policy, so adjacent conditioned zones operate at the same level; the conclusions inherit this idealisation (Section~\ref{sec:limitations}). \textbf{(A5)}~Building properties that are uncertain in practice (window sizes and U-values, solar absorptance, internal gains, interior doors all open) are held at the values of the drawing and of Table~\ref{tab:params}; they are varied in Section~\ref{sec:sensitivity}.
+
+\subsection{Zones, units and the multi-mode system}\label{sec:prelim}
+The building is a finite set of zones $\mathcal{Z}=\{1,\dots,N\}$ (rooms). The \emph{conditioned} zones $\mathcal{Z}_c$ each have their own unit; the \emph{passive} zones $\mathcal{Z}_u$ (baths, maid room, lobby, corridor and hall) have none. Zone $i$ has a thermal capacitance $C_i$ and a temperature $V_i(t)$; adjacent zones $i\ne j$, sharing a partition or slab, are coupled by the conductance $K_{ij}=K_{ji}$ (U-value times area, zero otherwise), and each zone exchanges heat with the outdoors through $K^{\mathrm{env}}_i$ (infiltration alone for interior zones).
+
+Each conditioned zone is served by a split heat-pump unit with four modes $M=\{0,1,2,3\}$ (off, low, medium, high; a fixed-speed unit has only $0$ and $3$). In mode $m$ it removes heat at the rate $f_m\psi(T_a)Q_i$ when cooling and adds $f_mQ^{\mathrm{h}}_i$ when heating, where $Q_i$ is its rated cooling capacity, $\psi(T_a)=[1-0.01(T_a-35)]_{0.8}^{1.1}$ derates it with the outdoor temperature, $Q^{\mathrm{h}}_i=1.14\,Q_i$, and $0=f_0<f_1<f_2<f_3=1$ are the capacity fractions ($0.35$, $0.65$, $1$). It draws $f_m\psi Q_i/\mathrm{COP}_m$ when cooling and $f_mQ^{\mathrm{h}}_i/\mathrm{COP}_m$ when heating, with
+\begin{subequations}\label{eq:cop}
+\begin{align}
+\mathrm{COP}^{\text{cool}}_m(T_a,V_i)&=c_m\,\varphi(T_a)\,g(V_i),\quad \mathrm{COP}^{\text{heat}}_m=h_m,\\
+\varphi(T_a)&=\bigl[1-0.02\,(T_a-27)\bigr]_{0.60}^{1.15},\\
+g(V_i)&=\bigl[1-\gamma\,(27-V_i)\bigr]_{0.8}^{1.1},\quad \gamma=0.02\,\text{K}^{-1},
+\end{align}
+\end{subequations}
+where $[x]_a^b=\min\{b,\max\{a,x\}\}$, $c_1=5.81>c_2=4.98>c_3=4.01$ and $h_1=4.6>h_2=4.0>h_3=3.2$: a unit is most efficient at low output. The cooling coefficients are anchored to the Saudi efficiency minimum (Section~\ref{sec:building}); $\varphi$ lowers the COP as the outdoor air warms and $g$ as the room's air falls below the $27\,^{\circ}$C rating condition ($g=0.93$ at $23.5\,^{\circ}$C; $\gamma$ is assumed and varied in Section~\ref{sec:sensitivity}). The building is then a multi-mode system~\citep{mousa2017optimal} with one mode per unit, the heat balance of Eq.~\eqref{eq:heat} as rate function, a cost $\pi_i(m)$ per unit time for each unit and mode, the safe set $\mathcal{S}=[V_{\min},V_{\max}]$ and an initial state $V_0$.
+
+\subsection{Thermal dynamics: inter-zone coupling and latent load}\label{sec:dynamics}
+Following \citet{nghiem2011green} and the two-node simplification of ISO~13790~\citep{iso13790_2008}, each zone has an air node $V_i$, which the thermostat senses and the unit acts on, and a structure node $W_i$, the inner layers of its walls and slabs:
+\begin{subequations}\label{eq:heat}
+\begin{align}
+C^{\mathrm{a}}_i\dot V_i&=K^{\mathrm{w}}_i(T_a-V_i)+K^{\mathrm{am}}_i(W_i-V_i)+\textstyle\sum_{j\in\mathcal{D}_i}q_{ji}\nonumber\\
+&\quad+(1-f_r)G_i-S^{\mathrm{sky}}_i-s_i\,\beta_i\,f_{u_i}\hat Q_i,\label{eq:heat-a}\\
+C^{\mathrm{m}}_i\dot W_i&=q^{\mathrm{env}}_i+\textstyle\sum_{j\ne i}K_{ij}(W_j-W_i)+K^{\mathrm{am}}_i(V_i-W_i)\nonumber\\
+&\quad+S^{\mathrm{w}}_i+f_rG_i,\label{eq:heat-b}\\
+q^{\mathrm{env}}_i&=K^{\mathrm{o}}_i(T_a-W_i)+S^{\mathrm{o}}_i+K^{\mathrm{grd}}_i(T_g-W_i).\label{eq:heat-c}
+\end{align}
+\end{subequations}
+Here $K^{\mathrm{w}}_i$ covers windows and infiltration ($n_{\mathrm{ach}}=0.4$ air changes per hour, ACH), $K^{\mathrm{am}}_i$ joins air and structure, $\mathcal{D}_i$ are the rooms joined by an open door (Eq.~\eqref{eq:door}), $G_i$ are the internal gains with radiant share $f_r$, $S^{\mathrm{sky}}_i$ is the long-wave loss of the windows, $S^{\mathrm{w}}_i$ the window solar gain (SHGC with angle-dependent transmission~\citep{ashrae_fund2021}), and $S^{\mathrm{o}}_i$ the sol-air excess of walls and roof, net of the sky loss $\varepsilon F_{\text{sky}}(\sigma T_a^4-I_{\text{IR}})$ with the measured infrared radiation $I_{\text{IR}}$, $\varepsilon=0.9$ and $F_{\text{sky}}=1$ (roof) or $0.5$ (walls, windows)~\citep{iso13790_2008}. $T_a$ and $T_g$ are the ambient and ground temperatures ($K^{\mathrm{grd}}_i\ne0$ on the ground storey only), $u_i(t)\in M$ is the unit's mode ($u_i\equiv0$ in passive zones), $s_i=\pm1$ for cooling or heating, $\beta_i\in[0,1]$ the fraction of the step the unit runs, and $\hat Q_i$ is $\psi(T_a)Q_i$ in cooling and $Q^{\mathrm{h}}_i$ in heating. Apart from the door exchange the rates are affine in the temperatures, so the building is close to a linear-rate multi-mode system~\citep{wojtczak2013optimal}.
+
+Through a door of width $W_d$ and height $H_d$, buoyancy carries the heat~\citep{brown1962natural}
+\begin{equation}\label{eq:door}
+q_{ji}=\rho c_p\,\tfrac{C_{\mathrm{dis}}}{3}W_d\sqrt{\tfrac{gH_d^3}{\bar T}}\;(V_j-V_i)\,|V_j-V_i|^{1/2}
+\end{equation}
+from room $j$ into room $i$ ($C_{\mathrm{dis}}=0.6$, $\bar T=297\,$K); at $1\,$K a $0.90\,$m door carries about $110\,$W, several times more than a partition wall. We call the exchange through walls, slabs and doors the \emph{thermal shift} between rooms; because $K_{ij}=K_{ji}$ and $q_{ji}=-q_{ij}$, it moves heat between rooms without creating or removing it.
+
+Humid infiltration air imposes a latent load on each conditioned zone whenever the outdoor humidity ratio $\omega_a$ exceeds the indoor target $\omega^\ast=9.6\,$g/kg ($55\%$ relative humidity at $23\,^{\circ}$C, below $60\%$ anywhere in the band, and independent of the setpoint):
+\begin{equation}\label{eq:latent}
+L^{\mathrm{lat}}_i = \tfrac{n_{\mathrm{ach}}}{3600}\, \rho\, \mathrm{Vol}_i\, \max(\omega_a - \omega^\ast,\,0)\, h_{fg},
+\end{equation}
+with the zone's air volume $\mathrm{Vol}_i$ and the latent heat $h_{fg}$. The target is assumed met, the latent electricity is priced at a fixed latent COP, internal moisture is omitted and passive zones are not dehumidified; these assumptions are tested in Section~\ref{sec:sensitivity}.
+
+\subsection{Parameters and their provenance}\label{sec:params}
+Every parameter is fixed a priori from the code, the product catalogue, the floor plan, the measured weather, cited statistics or a stated nominal value (Table~\ref{tab:params}); none is fitted to the quantities against which the model is later checked. Each conductance is a U-value times an area from the plan (storey height $3.40\,$m, clear height $3.00\,$m), and capacitance, internal gains and latent air mass scale with floor area. The capacitance, $270\,$kJ/(m$^2$K) of floor, lies at the heavy-class default of ISO~13790 ($260$)~\citep{iso13790_2008}, whose reduced-order room model remains the usual choice at this scale although the standard has been superseded by ISO~52016-1; $5\%$ of it sits on the air node (our choice, since the standard's air node is massless), the air--structure coupling is the ISO surface coefficients in series, and half of the internal gains are radiant. Internal gains average $5.4\,\text{W/m}^2$ with an afternoon peak, derived from the Saudi end-use split~\citep{stockmodel2020}, raised in the kitchen and reduced in baths and circulation. The ground slab follows ISO~13370~\citep{iso13370_2017} against the monthly ground temperature of the weather file. Each unit draws $3\,$W on standby, and its hourly electricity is divided by the part-load factor $\mathrm{PLF}=1-C_d(1-\mathrm{RTF})$, where RTF is the fraction of the hour it runs, with $C_d=0.25$ for the fixed-speed units, the rating default for single-speed equipment~\citep{ahri210240}, and an assumed $C_d=0.15$ for the inverter units, which cycle at or below their minimum speed (both varied in the sensitivity and uncertainty analyses, Section~\ref{sec:sensitivity}). The rated COPs include the indoor fan, which runs only with the compressor.
+
+\begin{table*}[t]
+\centering
+\caption{Parameters and their provenance. Compliant envelope: Saudi residential requirements for climate Zone~1~\citep{sbc602_2018,stockmodel2020,alayed2021thermal}; pre-code: calibrated model of an existing Saudi residential building~\citep{alyami2021building}. Each conductance is $K=UA/1000$ [kW/K] with $A$ from the floor plan.}
+\label{tab:params}
+\small
+\begin{tabularx}{\linewidth}{L{4.6cm} l l R}
+\toprule
+Quantity & SBC & Pre-code & Source / justification \\
+\midrule
+Wall / roof / window U [W/m\textsuperscript{2}K] & 0.34 / 0.20 / 2.67 & 2.146 / 2.123 / 5.778 & SBC Zone~1~\citep{stockmodel2020}; existing stock~\citep{alyami2021building} \\
+Glazing SHGC & 0.25 & 0.62 & SBC Zone~1~\citep{stockmodel2020}; existing stock~\citep{alyami2021building} \\
+Exterior wall incl.\ $17.3\%$ glazing [W/m\textsuperscript{2}K] & 0.74 & 2.78 & derived (area-weighted, building mean) \\
+Partition / slab U [W/m\textsuperscript{2}K] & \multicolumn{2}{c}{1.728 / 2.047} & existing stock~\citep{alyami2021building} \\
+Ground slab U [W/m\textsuperscript{2}K]; ground temperature & \multicolumn{2}{c}{0.40;\ monthly, 2\,m} & ISO~13370~\citep{iso13370_2017}, uninsulated slab; TMYx ground record \\
+Capacitance $C$ [kWh/K per 20\,m\textsuperscript{2}] & \multicolumn{2}{c}{1.5 ($270\,$kJ/m\textsuperscript{2}K)} & heavy class of ISO~13790~\citep{iso13790_2008}; block/concrete construction \\
+Air-node share of $C$; air--structure coupling & \multicolumn{2}{c}{$5\%$;\ $9.9\,$W/m\textsuperscript{2}K of floor} & ISO~13790 two-node simplification, heavy class~\citep{iso13790_2008} \\
+Infiltration $n_{\mathrm{ach}}$ [ACH] & \multicolumn{2}{c}{0.4} & nominal, new construction (stock: 0.8~\citep{stockmodel2020}); sensible and latent \\
+Interior doors / openings $W_d\times H_d$ [m]; $C_{\mathrm{dis}}$ & \multicolumn{2}{c}{$0.70$--$0.90\times2.032$ / $2.20$--$5.00\times3.00$;\ 0.6} & drawing; height SBC~201~\citep{sbc201_2018}; \citet{brown1962natural} \\
+Internal gains, mean [W/m\textsuperscript{2}] & \multicolumn{2}{c}{5.4} & end-use split~\citep{stockmodel2020} \\
+Opaque solar absorptance & \multicolumn{2}{c}{0.7} & nominal (idealised, A5) \\
+Exterior film / ground reflectance & \multicolumn{2}{c}{17\,W/m\textsuperscript{2}K / 0.2} & nominal (sol-air temperature and diffuse gains) \\
+Sky long-wave: $\varepsilon$; $F_{\text{sky}}$ roof / walls, windows & \multicolumn{2}{c}{0.9;\ 1 / 0.5} & ISO~13790~\citep{iso13790_2008}; hourly infrared radiation of the TMYx file \\
+Window solar & \multicolumn{2}{c}{angle-dependent} & normalised SHGC curve of double glazing~\citep{ashrae_fund2021} \\
+Unit sizes [ton] & \multicolumn{2}{c}{1.5 / 2.0 / 2.5 / 3.0} & catalogue, by coverage (Table~\ref{tab:acspec}) \\
+Mode capacity fractions $f_1/f_2/f_3$ & \multicolumn{2}{c}{0.35 / 0.65 / 1.0} & inverter units (Eq.~\eqref{eq:cop}); fixed-speed: $f_3$ only \\
+Cycling degradation $C_d$: inverter / fixed-speed & \multicolumn{2}{c}{0.15 / 0.25} & part-load factor per hour; inverter assumed, fixed-speed \citet{ahri210240} \\
+Standby power; capacity derating & \multicolumn{2}{c}{3\,W per unit;\ $\mp1\%$/K about $35\,^{\circ}$C, $[0.8,1.1]$} & nominal \\
+Restart delay; mode escalation & \multicolumn{2}{c}{3\,min;\ $0.4$/$1.0\,$K, full if lagging} & anti-short-cycle timer; nominal \\
+Thermostat differential; setpoint step & \multicolumn{2}{c}{1.0\,K;\ 0.5\,K} & typical room thermostat; state updated every 3 min \\
+Cooling COP (modes 1/2/3) & \multicolumn{2}{c}{$5.81/4.98/4.01\times\varphi(T_a)\,g(V)$} & SASO~2663 minimum at full load~\citep{saso2663_2014}; ratios and $\gamma$ assumed, Eq.~\eqref{eq:cop} \\
+Heating COP (modes 1/2/3) & \multicolumn{2}{c}{4.6 / 4.0 / 3.2} & nominal heat-pump values \\
+Heating / cooling capacity $Q^{\mathrm{h}}_i/Q_i$ & \multicolumn{2}{c}{1.14} & nominal inverter heat pump ($6.0$ vs $5.28\,$kW at $1.5\,$t) \\
+Latent (dehumidification) COP, $\mathrm{COP}_{\mathrm{lat}}$ & \multicolumn{2}{c}{3.4} & nominal, all modes (Eq.~\eqref{eq:latent}) \\
+Reference setpoints: cooling / heating [$^\circ$C] & \multicolumn{2}{c}{23.5 / 22.5} & ceiling and band floor $\mp$ half the differential \\
+Indoor humidity target $\omega^\ast$ & \multicolumn{2}{c}{$9.6\,$g/kg} & $55\%$ RH at $23\,^{\circ}$C; within the $12\,$g/kg applicability limit of the ASHRAE~55 graphic method~\citep{standard55} \\
+Weather & \multicolumn{2}{c}{TMYx hourly} & measured (Fig.~\ref{fig:weather}; supplementary material, Section~S3) \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Leap cycles, levels and the comfort frontier}\label{sec:runex}
+A unit's operation is a \emph{schedule} of \emph{timed actions} $(m,t)$, each keeping the unit in mode $m$ for a time $t$; it is \emph{safe} if its run, the sequence of states it produces from the initial state, stays in $\mathcal{S}$, and its cost is the energy price times its long-run mean electrical power $J_\infty$~\citep{mousa2016optimal,mousa2017optimal,alur2012optimal}. The theory needs one kind of schedule (Fig.~\ref{fig:defs}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_defs}
+\caption{Leap cycles (schematic). The comfort band $[V_{\text{low}},V_{\text{high}}]$ lies inside the safe set $[V_{\min},V_{\max}]$ with a hard ceiling, $V_{\text{high}}=V_{\max}$. The labels $V_0,\dots,V_5$ are successive states of one zone's run, starting from the initial state $V_0$, the thermostat's lower switching point: drifts $(0,t_{\mathrm{off}})$ (red) and cooling leaps $(m,t_{\mathrm{on}})$ (blue) form a leap cycle of amplitude $\Delta$ under the ceiling. Pre-cooling lowers the setpoint by $\delta$ (dashed), at most to the floor $V_{\min}$.}
+\label{fig:defs}
+\end{figure}
+
+\begin{definition}[Leap cycle, level, schedulability and comfort frontier]\label{def:optleap}\label{def:sched}
+Let a conditioned zone in the cooling season have heat gain $L(V)$, the net heat entering it per unit time with its unit off. A \emph{leap cycle} of amplitude $\Delta>0$ under a top temperature $V^{\top}$ is a drift $(0,t_{\mathrm{off}})$ from $V^{\top}-\Delta$ up to $V^{\top}$ followed by a cooling leap $(m,t_{\mathrm{on}})$ back down; repeated for ever, it is an infinite schedule. Its \emph{level} $\bar V$ is its time-mean temperature, about $V^{\top}-\Delta/2$. The zone is \emph{schedulable} in mode $m$ if $f_m\psi Q_i>L(\bar V)$, so that the mode can bring it back; this is the zero-sum dwell-time condition of \citet{alur2012optimal} for one zone, with \emph{duty} $d_m=L/(f_m\psi Q_i)<1$ and utilisation $U_i=L/Q_i$. The \emph{comfort frontier} $\bar V^\ast$ is the highest level whose cycle stays at or below $V_{\text{high}}$. In the heating season drift and leap exchange roles.
+\end{definition}
+
+\begin{runex}
+Bed~2 of the representative apartment 2A (Section~\ref{sec:building}, Fig.~\ref{fig:layouts}a), $\exArea\,\text{m}^2$ on the north side next to the party wall, has one exterior wall and a $1.5$-ton unit ($Q=5.28\,\text{kW}$). With the SBC envelope, $C=\exC\,\text{kWh/K}$ and $K^{\mathrm{env}}=\exKenv\,\text{W/K}$ (wall and window \exKwall, infiltration \exKinf), while its six neighbours are coupled to it by $\exKtot\,\text{W/K}$, about \exKratio\ times its envelope conductance. In mean July conditions in Riyadh ($T_a=\exTa\,^{\circ}$C), read as one lumped room at a level of $23.5\,^{\circ}$C, it gains $L=\exL\,\text{kW}$ (conduction and infiltration \exLcond, internal gains \exG, solar minus sky loss \exS; the conditioned neighbours, at the same level, add no net heat). Unit off it warms at $\exWarm\,\text{K/h}$; mode~1 removes $\exQone\,\text{kW}$ and cools it at $\exCoolRate\,\text{K/h}$, with duty $d_1=\exU$. For the $1\,$K differential one leap cycle is $\langle(0,\exToff\,\text{min}),(1,\exTon\,\text{min})\rangle$.
+\end{runex}
+
+\subsection{The Saudi two-tier tariff}\label{sec:tariff}
+The electrical power of unit $i$ is $P_i(t)=f_{u_i(t)}\hat Q_i/\mathrm{COP}_{u_i(t)}$ (Eq.~\eqref{eq:cop}) plus its latent share. A metering map $\mu$ assigns every unit to the meter that bills it, one per apartment and one common meter for the stair, and meter $r$ uses $E_{r,k}=\int_{\text{month }k}\sum_{i:\mu(i)=r}P_i(t)\,dt$ in month $k$. The residential tariff, set by the Saudi Electricity Regulatory Authority and billed by the Saudi Electricity Company, is a two-tier \emph{volume} tariff applied to each meter separately~\citep{sec_tariff}:
+\begin{subequations}\label{eq:tariff}
+\begin{align}
+\Pi^{\text{vol}}&=1.15\sum_{r=1}^{R}\sum_{k=1}^{12}b(E_{r,k}),\label{eq:tariff-a}\\
+b(E)&=0.18\min(E,6000)+0.30\,(E-6000)^{+},\label{eq:tariff-b}
+\end{align}
+\end{subequations}
+in SAR a year, where $(x)^{+}=\max(x,0)$ and $1.15$ adds the $15\%$ value-added tax. The tariff prices energy alone: it has no time-of-use component, no demand charge and, unlike the multi-mode costs of \citet{mousa2017optimal}, no charge per switch; the energy a unit loses by cycling is counted through the part-load factor. Fixed meter charges are excluded. For a meter in tier~1, as every meter of the SBC-compliant building is (Section~\ref{sec:comfortperf}), the price is $\lambda=0.207\,$SAR/kWh (US\$0.055 at the pegged rate of SAR~3.75 per US\$, used throughout), the cost of unit $i$ in mode $m$ is $\pi_i(m)=\lambda f_m\psi(T_a)Q_i/\mathrm{COP}_m(T_a)$, and the bill is the sum of the costs of the units' schedules.
+
+\begin{runexc}
+Apartment 2A of the SBC-compliant building in Riyadh (Case~3) uses $\exAptKwh\,$kWh of HVAC electricity a year at the reference setpoints, never more than $\exAptMaxMonth\,$kWh in a month, so even if HVAC were only a third of its use the meter would stay in tier~1. Its HVAC bill is $\exAptKwh\times0.207\approx\exAptBill\,$SAR, and any policy's bill is proportional to its energy.
+\end{runexc}
+
+\subsection{Controller}\label{sec:controller}
+Rather than choosing every unit's timed actions directly, a combinatorial problem over $|M|^{|\mathcal{Z}_c|}$ mode vectors per step, every unit applies one compact \emph{policy} $\theta=(V^{\text{cool}},\allowbreak V^{\text{heat}},\allowbreak\delta_{\text{night}},\allowbreak\delta_{\text{peak}})$ to its zone: cooling and heating setpoints and the depth pair $\delta=(\delta_{\text{night}},\delta_{\text{peak}})$ by which the cooling setpoint is lowered from 22:00 to 06:00 (night pre-cooling) and from 10:00 to 13:00 (pre-peak pre-cooling). Setpoints and depths move in $0.5\,$K steps. Each unit is an on/off thermostat with a $1\,$K differential centred on its active setpoint (in cooling: on at the setpoint plus $0.5\,$K, off at the setpoint minus $0.5\,$K), the switching instant resolved within the $3$-minute step and at most one change of state per step, which also gives the usual $3$-minute restart delay. While on, an inverter unit chooses its mode from the rise its room's air would make within the step without cooling: low, medium if that rise would reach $0.4\,$K above the switch-on point, high if $1.0\,$K, and full capacity if its room is still above the switch-on point at the start of a step; a fixed-speed unit runs at full capacity. Heating works in the same way about the heating setpoint.
+
+The units follow the usual seasonal changeover. In months whose mean air temperature is below the band floor $V_{\text{low}}$ (November to March in Riyadh; none in Jeddah) they heat and cool automatically, with the active heating setpoint at least $1\,$K below the active cooling setpoint. In the other months they cool, and heat only as a \emph{floor guard}: a low-limit heating setpoint of $21\,^{\circ}$C (on at $20.5$, off at $21.5\,^{\circ}$C), capped at $1\,$K below the active cooling setpoint. Pre-cooling acts only in cooling mode, with depths capped so that the cooling setpoint never falls below $V_{\min}+0.5\,$K; the controller therefore never cools a room below $V_{\min}$. At the reference and the ordinary policies the guard holds the floor: without it, rooms of the uninsulated pre-code building fall below $V_{\min}$ ($\hlGuardColdR\,$K$\cdot$h a year in Riyadh; $\hlGuardColdJ\,$K$\cdot$h and down to $\hlGuardMinJ\,^{\circ}$C in Jeddah); it never acts in the SBC-compliant building at the reference policy. During deep night pre-cooling (cooling setpoint $20.5$--$21.5\,^{\circ}$C), however, the cap moves the guard's switch-on point below $20.5\,^{\circ}$C, and a room can still drift below $20\,^{\circ}$C on a cool night, as some deep night pre-cooling policies of the pre-code building in Jeddah do, while other pre-cooling policies of the pre-code building, in both cities, let a room pass the ceiling; all such policies are inadmissible and excluded. Each unit needs only its own zone temperature and the clock, and the policy induces for every unit an infinite schedule of leap cycles. With $\delta=(0,0)$ the controller is an ordinary thermostat.
+
+\subsection{The optimisation problem, feasibility and admissibility}\label{sec:optproblem}\label{sec:problem}
+The problem, in the form of \citet{mousa2017optimal}, is to choose the policy that minimises the annual bill:
+\begin{alignat}{2}
+&\min_{\theta}&\quad&\Pi(\theta)=\Pi^{\text{vol}}\bigl(\{E_{r,k}(\theta)\}\bigr)\label{eq:obj}\\
+&\text{s.t.}&&\text{(C1) Eqs.~\eqref{eq:heat}--\eqref{eq:latent} hold }\forall i\in\mathcal{Z},\nonumber\\
+&&&\text{(C2) }V_i(t)\le V_{\text{high}}=24\,^{\circ}\text{C}\ \ \forall i\in\mathcal{Z}_c,\nonumber\\
+&&&\text{(C3) }V_i(t)\ge V_{\min}=20\,^{\circ}\text{C}\ \ \forall i\in\mathcal{Z}_c,\nonumber\\
+&&&\text{(C4) }u_i(t)\in M\ \forall i\in\mathcal{Z}_c;\ \ u_i\equiv0\ \forall i\in\mathcal{Z}_u,\nonumber
+\end{alignat}
+for all times $t$. (C2) is the comfort ceiling, (C3) the safe floor and (C4) the finite modes.
+
+\paragraph{Admissibility.} The safe set $[V_{\min},V_{\text{high}}]=[20,24]\,^{\circ}$C is hard for every policy, at its ceiling and at its floor. A policy is \emph{admissible} if every conditioned zone stays within it at every step of the simulated year: the excursions above the ceiling, $\sum_i\int\max(V_i-V_{\text{high}},0)\,dt$, and below the floor, $\sum_i\int\max(V_{\min}-V_i,0)\,dt$, must both be zero up to floating-point round-off; every other policy is excluded, and problem~\eqref{eq:obj} asks for the cheapest admissible policy. The band floor $V_{\text{low}}=22\,^{\circ}$C is the comfort target rather than a constraint: in the heating months it is held by the heating setpoint, $V^{\text{heat}}=22.5\,^{\circ}$C (the band floor plus half the differential), and in the cooling months by the building's own gains, while pre-cooling may use $[V_{\min},V_{\text{low}})$, an allowance that can only favour scheduling.
+
+\paragraph{Feasibility.}\label{sec:taskmodel} Each conditioned zone is a \emph{task} demanding cooling at the rate of its heat gain $L_i(t)$~\citep{alur2012optimal,nghiem2012scalable}; each unit serves one zone and no power budget is shared, so schedulability (Definition~\ref{def:sched}) applies zone by zone. A zone is \emph{feasible} if its unit has the hourly capacity to hold it at the ceiling whatever the weather; a sufficient condition is
+\begin{equation}\label{eq:feasible}
+\max_t\,L_i(t)\;<\;\psi(T_a)\,Q_i \qquad\text{at }V_i=V_{\text{high}},
+\end{equation}
+(not necessary, since the capacitance can carry a zone through a short peak). A building is feasible if every conditioned zone is. Feasibility is a property of the envelope and the unit sizes; admissibility is a property of a policy's simulated run. An infeasible building saturates on the hottest afternoons and has no admissible policy, and the instance is reported as infeasible; a feasible building can still have no admissible policy at a given setpoint, when the controller's escalation lag lets a room pass the ceiling within a step (Section~\ref{sec:resinstances}). Section~\ref{sec:comfortperf} evaluates both.
+\section{Theoretical Results}\label{sec:theory}
+This section states what the structure of problem~\eqref{eq:obj} implies before any computation. The results are energy accounting adapted to multi-mode units under a hard comfort ceiling, in the spirit of the storage-efficiency accounting of the energy-flexibility literature~\citep{ledreau2016flex,reynders2018flex}: they follow from the conservation of energy and the ordering of the mode efficiencies, and they reduce the computation of Section~\ref{sec:setup} to checking the conditions they state. The proofs read a zone as one lumped node with constant rates over a cycle (A1--A3); the simulation does not (two nodes, nonlinear door flows, a COP that follows the outdoor and indoor air hour by hour, cycling with a differential, a restart delay and cycling losses), so Section~\ref{sec:results} tests the theory beyond the conditions under which it is proved. Proofs are in Appendix~\ref{app:proofs}.
+
+\subsection{The thermal shift between rooms}\label{sec:passivetheory}
+\paragraph{Coupled neighbours.}\label{prop:coupling} Under (A4) the net heat a conditioned zone exchanges with its conditioned neighbours vanishes in the mean, up to the difference in their thermostat cycles, whatever the coupling conductances: the exchange $K_{ij}(V_j-V_i)$ has zero mean when both zones are held at a common level. The thermal shift therefore changes a zone's load only through neighbours at a different temperature: passive zones, the roof, the ground and the outdoors.
+
+\paragraph{Passive zones.}\label{prop:passive} Averaging the heat balance of a passive zone over a month, over which its stored heat changes negligibly, gives its heat budget (supplementary material, Section~S4): in the cooling season a passive zone with any exposure or gain is warmer than the conditioned rooms that take its heat; its temperature depends on the temperatures the units hold, not on their capacity; and it stays the closer to their setpoint, the more of its heat it sheds to them through walls or open doors. Section~\ref{sec:comfortperf} and the supplementary material, Section~S1, test these statements.
+
+\subsection{The cheapest stationary operation of a room}\label{sec:optleapsec}\label{sec:infinite}
+\begin{theorem}[Optimal leap and level]\label{thm:optleap}
+Under (A1)--(A4), let a conditioned zone run a periodic leap cycle in mode $m$ at level $\bar V$ (Definition~\ref{def:optleap}). Then
+\begin{equation}\label{eq:meanpower}
+\bar P(\bar V,m)=\frac{L(\bar V)}{\mathrm{COP}_m(T_a)}.
+\end{equation}
+(i)~The amplitude $\Delta$ enters only through the level; for a cycle that reaches the ceiling, $\bar V=V_{\text{high}}-\Delta/2$ to first order. Hence a leap $(\bar V^\ast,m^\ast)$ is optimal if and only if $\bar V^\ast$ is the comfort frontier and $m^\ast=\min\{m: f_m\psi Q_i>L(\bar V^\ast)\}$ is the lowest mode that holds the room; for a thermostat whose differential $\Delta_{\text{th}}$ is centred on its setpoint, $\bar V^\ast=V_{\text{high}}-\Delta_{\text{th}}/2$, the highest admissible setpoint. (ii)~If the ambient conditions are also constant over the horizon, every safe infinite schedule $\sigma$ satisfies $J_\infty(\sigma)\ge L(V_{\text{high}})/\mathrm{COP}_1(T_a)$ (with $\mathrm{COP}_1$ replaced by that of the lowest mode that holds the room if mode~1 does not hold it at the ceiling), a bound approached by low-mode cycles of vanishing amplitude at the ceiling; with a given differential the optimal leap repeated for ever attains the least long-run power, so the optimal infinite-horizon control is stationary. With a diurnal swing of the COP this bound no longer holds, and Theorem~\ref{obs:precool} bounds what re-timing can gain instead.
+\end{theorem}
+The identity is exact because $L$ is affine in $V$, so the mean gain over a cycle is the gain at the mean temperature. The indoor factor $g$ of Eq.~\eqref{eq:cop}, which the theorem omits, makes a warmer level cheaper still and so strengthens part~(i).
+
+\begin{corollary}[What a cycle costs]\label{cor:leaps}
+Under (A2), which has no cycling loss, and with no charge per switch (Section~\ref{sec:tariff}), the cost of a safe schedule depends only on the level at which it holds each zone and on the modes it uses: the number of cycles does not enter, and reassigning heat removal between units (``coordination'') lowers the cost only if it lets a unit use a lower mode. With cycling losses, $\bar P=L/(\mathrm{COP}_m\,\mathrm{PLF})$ with $\mathrm{PLF}=1-C_d(1-L/f_m\psi Q_i)$, which also favours the lowest mode that holds the room, since it runs longest.
+\end{corollary}
+
+With the $1\,$K differential and $0.5\,$K steps of the modelled thermostats, Theorem~\ref{thm:optleap} places the frontier at $23.5\,^{\circ}$C, the reference setpoint; a finer thermostat would move it towards the ceiling (Section~\ref{sec:frontier}).
+
+\begin{runexc}
+For Bed~2 in July ($L=\exL\,$kW at $23.5\,^{\circ}$C, $\varphi=\exPhi$; evaluated without the indoor factor $g$, i.e.\ $\gamma=0$, which narrows every difference below), Eq.~\eqref{eq:meanpower} gives $\exPOne\,$kW in mode~1, $\exPTwo\,$kW in mode~2 and $\exPThree\,$kW in mode~3: the same comfort costs $\exThreeMore\%$ more in the highest mode, and $m^\ast=1$. The cycle durations give the same value, $(\exQone\,\text{kW}\times\exTonH\,\text{h}/\exCopOne)/\exCycleH\,\text{h}=\exPOne\,$kW. At the $22\,^{\circ}$C of current practice the gain rises to $\exLcur\,$kW and the mean power to $\exPcur\,$kW. A cycle across the whole comfort band averages $\exVband\,^{\circ}$C and draws $\exBandPct\%$ more than the thermostat cycle; one across the whole safe set, as the deepest pre-cooling does, averages $\exVsafe\,^{\circ}$C and draws $\exSafePct\%$ more, although it switches far less often.
+\end{runexc}
+
+\subsection{What re-timing can gain under a volume tariff}\label{sec:retiming}\label{lem:inert}
+Under a tariff of monthly energy alone, the timing of the leaps within a month affects the cost only through the heat removed and the mean efficiency at which it is removed (Eq.~\eqref{eq:tariff}). Pre-cooling trades these two terms.
+
+\begin{theorem}[Pre-cooling bound]\label{obs:precool}
+Let a conditioned zone be pre-cooled by $\delta>0$ in the cooling season, removing the extra stored heat $C_i\delta$ in a window at a mean COP $\mathrm{COP}_w$ and displacing removal that would otherwise occur at a mean COP no lower than $\mathrm{COP}_p$, and let $\Delta H\ge0$ be the extra heat the colder zone admits. Under a hard comfort ceiling the change in electrical energy satisfies
+\begin{equation}\label{eq:precoolbound}
+\Delta E\;\ge\;C_i\delta\,(\eta_w-\eta_p)+\Delta H\min(\eta_w,\eta_p),
+\end{equation}
+with $\eta_w=1/\mathrm{COP}_w$ and $\eta_p=1/\mathrm{COP}_p$. Pre-cooling cannot save if it is done less efficiently than the removal it displaces; otherwise it saves at most $C_i\delta(\eta_p-\eta_w)$, and nothing when the fraction of stored coolth lost as extra heat, $\Delta H/(C_i\delta)$, is at least the relative COP gain $\mathrm{COP}_w/\mathrm{COP}_p-1$.
+\end{theorem}
+
+\begin{theorem}[Optimal level and conditional optimality of no pre-cooling]\label{thm:policy}
+Under (A1)--(A5), let the tariff be any non-decreasing function of the meter energies alone (the Saudi two-tier tariff, a linear or any tiered price). (i)~Among the policies of problem~\eqref{eq:obj} without pre-cooling, the cheapest is the frontier policy $(\bar V^\ast,V^{\text{heat}},0,0)$, with every unit at the comfort frontier. (ii)~A pre-cooling policy costs at least as much as the frontier policy wherever its pre-cooling satisfies the no-gain condition of Theorem~\ref{obs:precool}, strictly so if the tariff is strictly increasing; elsewhere its saving is at most the bound of Theorem~\ref{obs:precool}. Tariffs that weight energy by the time of use or by a coincident peak lie outside the theorem; neither applies to Saudi households.
+\end{theorem}
+
+Part~(ii) is an accounting statement, not a prediction: it excludes a saving where pre-cooling admits more heat than it gains in efficiency and bounds it elsewhere, so whether a saving exists is decided by measuring the two terms. The condition fails mainly when pre-cooling stays in the lowest mode at an hour whose COP is well above the afternoon COP. For the whole building in July, ignoring the extra heat, the bound for a $2\,$K pre-cool is \hlBoundNight\% of the day's HVAC electricity in the night window, \hlBoundDawn\% in the four coolest hours around dawn (04:00--08:00) and \hlBoundPeak\% before the peak in Riyadh, and \hlBoundNightJ, \hlBoundDawnJ\ and \hlBoundPeakJ\% in Jeddah. Section~\ref{sec:resched} measures the two terms for the thermostat, and Section~\ref{sec:lowerbound} computes, with perfect foresight, how much of the bound an idealised schedule attains.
+
+\subsection{Where the savings come from}\label{sec:savingsource}
+\begin{proposition}[Sources of saving]\label{prop:sources}
+Under (A1)--(A5) and a tariff of Theorem~\ref{thm:policy}, the annual HVAC energy is $E=\sum_{i\in\mathcal{Z}_c}\int L_i(t)/\mathrm{COP}_{u_i(t)}(T_a)\,dt$ plus the latent and standby loads, and the bill is non-decreasing in $E$. A policy therefore saves only if it (a)~lowers the heat to be removed, $\sum_i\int L_i\,dt$, or (b)~removes it at a higher COP. A warmer level and a better envelope do (a); a lower mode does (b); with cycling losses, (c)~a higher part-load factor, from longer runs in the lowest mode that holds the room, is a third source (Corollary~\ref{cor:leaps}). Moving heat removal in time can raise (b) only through the ambient swing of $\varphi$, lowers it through $g$ because the room is colder, and raises the heat in (a); Theorem~\ref{obs:precool} bounds the net effect.
+\end{proposition}
+\section{Experimental Setup}\label{sec:setup}\label{sec:method}
+This section sets out how the results of Sections~\ref{sec:vv} and~\ref{sec:results} are obtained: baselines and test instances, policy evaluation and the single optimisation method, selection and full-year re-evaluation, and the experiments.
+
+\subsection{Baselines and test instances}\label{sec:baselines}
+Every saving is measured against a stated baseline, with everything else held equal:
+\begin{enumerate}[label=(B\arabic*),leftmargin=2.2em,itemsep=1pt,topsep=2pt]
+\item \emph{current practice}: cooling at $22\,^{\circ}$C and heating at $20.5\,^{\circ}$C without scheduling, the baseline of the setpoint lever. In a survey of Jeddah households $45\%$ preferred $22$--$24\,^{\circ}$C and about $43\%$ $21\,^{\circ}$C or less~\citep{sbc_envelope2021}, so $22\,^{\circ}$C is representative rather than extreme. Its cycle takes rooms below the band floor in summer and lets them cool to $20\,^{\circ}$C in winter, so it is a practice reference, not a policy that meets the band. The setpoint lever therefore moves the cooling setpoint from $22$ to $23.5\,^{\circ}$C and the heating setpoint from $20.5$ to $22.5\,^{\circ}$C; the ablation of Section~\ref{sec:ablation} changes the cooling setpoint alone;
+\item the \emph{reference policy}: cooling at $23.5\,^{\circ}$C and heating at $22.5\,^{\circ}$C without scheduling, whose $1\,$K cycle just fills the band; the baseline of every scheduling feature;
+\item the \emph{pre-code envelope} at the reference policy, the baseline of the envelope lever;
+\item each scheduling feature switched on alone, for the decomposition by lever;
+\item \emph{isolated rooms}, with no walls, slabs or doors between them, the baseline of the thermal shift;
+\item \emph{EnergyPlus}~26.1 on the same inputs, the external benchmark (Section~\ref{sec:validation}).
+\end{enumerate}
+For the timing lever, the perfect-foresight benchmark (Section~\ref{sec:lpbench}) gives what an idealised schedule could achieve beyond the thermostat policies.
+
+\paragraph{Test instances.}\label{sec:instances} The problem is tested on instances of two kinds, both for the whole building (Case~3). An instance is \emph{normal} if every unit holds the ceiling with capacity to spare, its peak hourly sensible load staying below $85\%$ of its rated capacity, and \emph{hard} otherwise, or if the reference policy is not admissible (Section~\ref{sec:problem}). The instances cross the two envelopes and the two cities with two weather years: the TMYx year, and a heat-wave year with the measured air temperature raised by $3\,$K in every hour (humidity, radiation and ground unchanged; the seasonal changeover follows the warmer months, so Riyadh's heating season shrinks to December--February). Four further instances (TMYx year) replace the catalogue units by units sized to each building's own peak hourly sensible load with a $15\%$ margin. In each of the twelve instances the thermostat policies are compared as described below.
+
+\subsection{Policy evaluation and optimisation}\label{sec:evaluation}
+The thermostat policies a household can choose are evaluated by annual simulation and compared, not optimised; the theory of Section~\ref{sec:theory} locates their optimum beforehand. The study uses one optimisation method, the perfect-foresight optimal control of Algorithm~\ref{alg:pfb}, which computes the least-cost schedule of every unit for an idealised, linear form of the problem. Algorithm~\ref{alg:eval} evaluates a policy: it integrates the coupled sensible dynamics and the latent load over five days per month sampled evenly from the TMYx year ($3$-minute steps, monthly energies scaled), starting from $23\,^{\circ}$C in January and carrying the state from one sampled day to the next, accrues cost per meter through the tariff and records the excursions that decide admissibility. Many policies are evaluated in one vectorised run.
+
+\begin{algorithm*}[t]
+\caption{\textsc{EvaluatePolicy}$(\theta,\mathcal{D},\Delta t)$ for a given case, city, envelope and tariff}\label{alg:eval}
+\KwIn{policy $\theta=(V^{\text{cool}},V^{\text{heat}},\delta_{\text{night}},\delta_{\text{peak}})$; case (zones $\mathcal{Z}$, meters $r$); climate; envelope; tariff; sampled days $\mathcal{D}$; step $\Delta t=3\,$min}
+\KwOut{annual bill $\Pi$ (SAR), energy $E$ (kWh), excursions above $V_{\text{high}}$ and below $V_{\min}$ (K$\cdot$h; admissible iff both are zero)}
+initialise $V,W\leftarrow 23\,^{\circ}$C in every zone; all units off; $E_{r,k}\leftarrow 0$\;
+\For{each hour $h$ of the days in $\mathcal{D}$}{
+  set $T_a,\ T_g,\ G,\ S^{\mathrm{o}},\ S^{\mathrm{w}},\ S^{\mathrm{sky}},\ \omega_a$ from the climate; add each unit's standby energy\;
+  \eIf{seasonal changeover: the month's mean $T_a<V_{\text{low}}$}{
+    automatic heating and cooling: $V^{\text{c}}\leftarrow V^{\text{cool}}$, $V^{\text{h}}\leftarrow\min(V^{\text{heat}},V^{\text{c}}-1\,\text{K})$; no pre-cooling\;
+  }{
+    $V^{\text{c}}\leftarrow\max\bigl(V^{\text{cool}}-\delta_{\text{night}}\mathbb{1}_{22\text{--}06}(h)-\delta_{\text{peak}}\mathbb{1}_{10\text{--}13}(h),\ V_{\min}+0.5\,\text{K}\bigr)$\;
+    floor guard: $V^{\text{h}}\leftarrow\min(21\,^{\circ}\text{C},\ V^{\text{c}}-1\,\text{K})$\;
+  }
+  \For{each substep of length $\Delta t$}{
+    compute the door exchange (Eq.~\eqref{eq:door}) and the air temperature each zone would reach with its unit off\;
+    apply each thermostat's $1\,$K deadband: cooling on at $V^{\text{c}}+0.5\,$K and off at $V^{\text{c}}-0.5\,$K; heating on at $V^{\text{h}}-0.5\,$K and off at $V^{\text{h}}+0.5\,$K; resolve the switching instant $\beta_i\Delta t$ within the step, at most one change of state per unit and step (the $3$-min restart delay)\;
+    choose the mode from the rise the step would cause without the unit (inverter: low; medium from $0.4\,$K and high from $1.0\,$K above the switch-on point; full capacity if a running unit's room starts the step above its switch-on point; fixed-speed: full)\;
+    update $V$ (Eq.~\eqref{eq:heat-a}), then $W$ (Eq.~\eqref{eq:heat-b}); accumulate electricity with the cooling COP $c_m\varphi(T_a)\,g(V_i)$ or heating COP $h_m$ (Eq.~\eqref{eq:cop}) and each unit's runtime; accrue the excursions of the conditioned zones above $V_{\text{high}}$ and below $V_{\min}$\;
+  }
+  divide each unit's energy of the hour by $1-C_d(1-\mathrm{RTF})$; add the latent energy $\sum_i L^{\mathrm{lat}}_i/\mathrm{COP}_{\mathrm{lat}}$ (Eq.~\eqref{eq:latent}); accrue $E_{r,k}$, scaled from the sampled days to the month\;
+}
+$\Pi\leftarrow$ tariff over $\{E_{r,k}\}$ (Eq.~\eqref{eq:tariff})\;
+\Return $\Pi,\ E,\ \text{excursions}$\;
+\end{algorithm*}
+
+\paragraph{Thermostat policies.}\label{alg:opt} The setpoints are fixed at the reference values and the pre-cooling windows at 22:00--06:00 and 10:00--13:00, and every unit applies the same depth pair $\delta=(\delta_{\text{night}},\delta_{\text{peak}})$. Because the thermostat moves in $0.5\,$K steps, the realisable pairs form the lattice $\Theta=\{0,0.5,\dots,3\}^2\,$K of $49$ settings, $48$ pre-cooling pairs and $\delta=(0,0)$, no pre-cooling; the rest of the paper refers to this lattice. All $49$ settings are evaluated by Algorithm~\ref{alg:eval} in one vectorised run, only the admissible ones are kept, and the cheapest of them wins (none, if no setting is admissible). This exhaustive comparison is exact, deterministic and free of tuning parameters, so a search heuristic would add nothing at this size. The setpoint is not part of it: by Theorem~\ref{thm:optleap} its optimum is the comfort frontier, found by the sweep of Section~\ref{sec:design}. The \emph{selected policy} $\theta^\ast$ combines the frontier setpoint with the winning depth pair. Per-room depths and other windows are not compared, apart from the top-floor and west-room subsets of the supplementary material (Section~S6); because this class could hide a better schedule, the optimisation is posed over every schedule.
+
+\paragraph{Optimisation: perfect-foresight optimal control.}\label{sec:lpbench}\label{sec:optjust} To find what \emph{any} schedule could save, an idealised form of problem~\eqref{eq:obj} is posed on design days as the linear program
+\begin{align}
+&\min_{q,x}\ \sum_{t}\Delta t\sum_{i\in\mathcal{Z}_c}P_i\bigl(q_{it},T_a(t)\bigr)/g_{it}\label{eq:lp}\\
+&\text{s.t.}\ \ \mathbf{C}\frac{x_{t}-x_{t-1}}{\Delta t}=b_{t}-\mathbf{G}x_t-\mathbf{B}q_{t},\quad x_0=x_T,\nonumber\\
+&\phantom{\text{s.t.}\ \ }v_{\min}\le V_{it}\le V_{\text{high}},\quad 0\le q_{it}\le \psi(T_a)Q_i,\nonumber
+\end{align}
+over the heat removal $q_{it}$ of every unit and the air and structure temperatures $x_t=(V_t,W_t)$ of every zone, with the weather known in advance (Algorithm~\ref{alg:pfb}). $\mathbf{G}$, $\mathbf{C}$, $b$ and $\mathbf{B}$ are the conductances, capacitances, drives and unit inputs of Eq.~\eqref{eq:heat}; $P_i$, the convex hull of the four modes, is piecewise linear with slopes rising with the mode; and $g_{it}$ is the indoor COP factor of Eq.~\eqref{eq:cop}. The program may run any mode at any time, pre-cool any room down to $v_{\min}$ ($22\,^{\circ}$C, the band floor, or $20\,^{\circ}$C, the floor of the safe set) at the hours of highest COP, and coordinate the rooms. Its units, like those of the reference that holds the ceiling, modulate continuously, without cycling losses, standby or a differential, so a gain from bunching runtime to cut cycling losses is not represented (the simulated thermostat policies include it). The schedule-independent latent load is excluded. With $\gamma=0$ the gap is a rigorous upper bound on the saving that any schedule of the idealised model can achieve at any $\gamma\ge0$: since $g(V)\le g(V_{\text{high}})$ for $V\le V_{\text{high}}$ and the reference holds $V_{\text{high}}$, scaling the cost by $1/g$ raises every schedule's electricity at least as much as the reference's. With $\gamma=0.02$ the program is not linear: it is re-solved with $g$ evaluated at the previous solution, every iterate is priced with its own indoor factor, and the cheapest iterate is a schedule the idealised units can follow, so its gap is an achievable saving. On the periodic design days the optimal saving at $\gamma=0.02$ lies between that achievable saving, which is at least zero (the reference itself) and, down to $20\,^{\circ}$C, at least the saving of the schedule found within the band, and the $\gamma=0$ bound. Case~1 is solved for the mean day of every month from May to September, the hottest July day and the $31$ days of July as one horizon (heat may be stored across days), and Case~2, which adds the coordination between apartments and the core, for the mean and hottest July day and the mean August day. Case~3 is not solved here; it adds no form of coordination that the floor lacks, but its top-floor rooms under the roof are not covered.
+
+\begin{algorithm}[t]
+\caption{\textsc{PerfectForesightBenchmark}$(\text{case},H,v_{\min},\gamma)$}\label{alg:pfb}
+\KwIn{case (zones, units); design day or horizon $H$ with its weather; pre-cooling floor $v_{\min}$; indoor COP slope $\gamma$}
+\KwOut{gap $=(E_{\text{hold}}-E_{\text{best}})/E_{\text{hold}}$}
+build the linear two-node model of Eq.~\eqref{eq:heat}: implicit Euler, $15$-min steps, periodic horizon ($x_0=x_T$), door exchange linearised about $\Delta T_0=0.5\,$K\;
+build the convex mode-hull cost $P_i(q,T_a)$ of each unit\;
+$g_{it}\leftarrow g(V_{\text{high}})$ for all $i,t$; solve the LP~\eqref{eq:lp} by interior point $\to(V,q,E)$; $E_{\text{best}}\leftarrow$ cost of $(V,q)$ priced with $g(V)$\;
+\If{$\gamma>0$}{
+  \Repeat{the LP objective changes by less than $10^{-4}$ (relative), or $6$ solves in total, the first included}{
+    $g_{it}\leftarrow g(V_{it})$; re-solve the LP $\to(V,q,E)$\;
+    $E_{\text{best}}\leftarrow\min\bigl(E_{\text{best}},\ \text{cost of }(V,q)\text{ priced with }g(V)\bigr)$\;
+  }
+}
+$E_{\text{hold}}\leftarrow$ same linear model, each room held at $V_{\text{high}}$ whenever it needs cooling (active-set solve per step), cost divided by $g(V_{\text{high}})$\;
+\Return gap\;
+\end{algorithm}
+
+\subsection{Policy selection, full-year re-evaluation and cost}\label{sec:gasetup}
+No surrogate or learned model is trained: every policy is evaluated by the annual physics simulation. The only fitted quantity is the policy itself. \emph{Selection}: the policy is selected on $60$ days, five per month sampled evenly from the TMYx year. \emph{Full-year re-evaluation}: the selected policy and all its competitors are re-simulated on all $365$ days of the year, which include the $60$ selection days; we report whether the optimum and the ranking survive and the errors of the sampled-year estimates (Section~\ref{sec:trainevalres}).
+
+\paragraph{Computational complexity.}\label{sec:complexity} One annual evaluation costs $O\bigl(n_p(N^2+D)\,T/\Delta t\bigr)$ for $n_p$ policies, $N$ zones and $D$ doors ($28{,}800$ steps), so comparing the $49$ policies costs one batch run; the optimal-control program is a sparse linear program with $O(N\,T/\Delta t_{\text{LP}})$ variables, solved to optimality in polynomial time. The controller in the building needs $O(N)$ comparisons per step. Measured times are in Section~\ref{sec:time} and the supplementary material, Section~S8.
+
+\subsection{Experimental design}\label{sec:design}
+Besides the three cases of Section~\ref{sec:steps} and the test instances, the experiments comprise the following.
+\emph{The comfort frontier} is found by raising the cooling setpoint in $0.5\,$K steps and keeping the highest admissible value; a \emph{fine thermostat} ($0.1\,$K differential, $0.05\,$K steps) shows how it depends on the control precision.
+\emph{A ramped pre-peak setback} lowers the setpoint by $0.5\,$K per hour up to 13:00, sparing the higher modes; \emph{a pre-specified dawn setback} applies the timing the benchmark selects under the realistic controller ($2\,$K at 03:00, returned in $0.5\,$K steps by 09:00, every cooling-month day, Case~3).
+\emph{The passive zones} are compared with and without the controller: all units off, interior doors closed, the reference setpoint, current practice, and a $1$-ton unit, a size below the catalogue range, in every bath (supplementary material, Section~S1).
+\emph{Sizing}: units are sized by load at the first of the margins $1.15$, $1.5$, $2.0$, $2.5$ and $3.0$ times each zone's peak hourly load at which no room leaves the safe set ($0.25$-ton steps from $0.75\,$ton), also with a controller that starts each unit at full capacity.
+\emph{One-at-a-time sensitivity runs} vary the equipment (cycling loss, unit type, standby, derating, part-load COP, indoor fan), the controller (differential, escalation thresholds, modes), the zone model (nodes, air share and coupling, capacitance, the COP's indoor slope $\gamma$), the envelope and air (thermal bridges, absorptance, internal gains, infiltration, door schedules, ground model, wall coupling, latent and humidity models) and the weather (a wider daily swing, a heat wave, an imposed day--night COP swing), as well as the tariff; the full list, apart from the capacitance and imposed COP-swing runs reported in the text (Section~\ref{sec:sensitivity}), is in the supplementary material, Section~S6. The setpoint lever and the $2\,$K pre-peak cost are also recomputed at $6$- and $1$-minute steps (the $1$-minute step moves the latter by at most $1.5$ percentage points). Three further sets test the pre-cooling result where it is most likely to fail (supplementary material, Section~S6): the choices most favourable to pre-cooling combined, the lattice applied to the top-floor or west-facing units only, and a finer controller resolution ($1$-minute step, minimum on- and off-times, a start-based cycling loss calibrated to the part-load factor).
+\emph{A global uncertainty analysis} varies $17$ assumed inputs jointly over uniform ranges by a Latin hypercube of $128$ samples per city (fixed seed); its outputs, the setpoint, envelope and inverter levers, the best admissible pre-cool and the cost of $2\,$K of pre-cooling, are summarised by the median, the $5$--$95\%$ range, the share of samples in which any of the pre-cooling settings tested saves, and partial rank correlation coefficients (ranges in the supplementary material, Section~S7).
+\emph{A $2^4$ factorial lever decomposition} crosses envelope, equipment (the 3-ton units as inverter units), setpoint and pre-cooling ($2\,$K pre-peak or none) and attributes the bill saving to the four levers by Shapley values.
+\emph{External checks}: the operative temperature is estimated from the inner-surface temperatures, and a \emph{stock-equivalent} run gives the pre-code building the equipment efficiency and air-tightness of the Saudi stock model~\citep{stockmodel2020} (rated EER $8.5$, latent COP $2.49$, $0.8\,$ACH), with nothing fitted.
+
+\subsection{Reproducibility}\label{sec:repro}
+Every parameter, the floor plan and the run matrix are read from configuration files, and every result is written by resumable analysis blocks from which the figures, tables and every number in the text are generated. The pipeline is deterministic: rerunning it reproduces every stored value exactly, except the measured calculation times. A test suite checks the geometry, the engine, the optimal-leap identity, the thermostat result, the passive-zone heat budget, both seasons, the test instances, the full-year re-evaluation, the benchmark and the headline results, and a single command (\texttt{make reproduce}) regenerates everything, including the PDF.
+\section{Model Verification and Validation}\label{sec:vv}
+No apartment of the modelled building is metered, so the model cannot be calibrated against measurements of its own. It is checked instead by the three approaches used to test building simulation programs~\citep{judkoff2006validation}, on which ANSI/ASHRAE Standard~140 is built~\citep{ashrae140_2023}: analytical verification, comparative testing against EnergyPlus on identical inputs, and empirical comparison with the energy use of the Saudi housing stock.
+
+\subsection{Verification}\label{sec:verification}
+\paragraph{Physical consistency.} With every unit switched off, the top-storey master bedroom of the pre-code Jeddah building averages $38.3\,^{\circ}$C in July and peaks at $43.6\,^{\circ}$C, so active cooling is required, the premise of Definition~\ref{def:sched}.
+
+\paragraph{Numerical convergence.}\label{sec:convergence} All results use a $3$-minute step, which also sets how often a unit can switch, so changing it changes the controller as well as the integration. A $1$-minute step, at which the $3$-minute restart delay spans three steps and binds, changes the annual HVAC energy by at most $2.9\%$, and a $6$-minute step by at most $2.6\%$; at a $1$-minute step the setpoint lever changes by at most $0.6$ and the cost of a $2\,$K pre-peak pre-cool by at most $1.5$ percentage points, but the pre-cool costs at least $2.1\%$ at every step tested.
+
+\paragraph{Heat balance.} The engine conserves the inter-zone exchanges of Section~\ref{sec:dynamics} to rounding: the July heat budget of every bath of the representative apartment closes to within $0.6\,$W ($1.3\%$ of its inflow; Section~\ref{sec:passivetheory}).
+
+\subsection{Validation}\label{sec:validation}
+Three comparative tests against EnergyPlus~26.1 and a comparison with the housing stock test the model's physics and magnitudes; the savings are differences between runs of the same model, in which a common bias largely cancels.
+
+\paragraph{BESTEST-style comparative test.} On the single-zone cases 600 (lightweight) and 900 (heavyweight) of Standard~140, run in both programs on the Riyadh weather, the engine's annual cooling differs from that of EnergyPlus by $-0.2\%$ and $+4.3\%$ and its peak hourly cooling by $-11.3\%$ and $-10.4\%$; free-floating, its annual maximum temperature is $5.5$ and $4.5\,$K lower. The engine thus reproduces annual loads closely but damps the sharpest peaks, its structure being one node and its exterior film coefficient fixed (supplementary material, Section~S5).
+
+\paragraph{Like-for-like comparison with EnergyPlus.} The second test isolates the engine from the zoning. EnergyPlus and the engine are run on the building as one well-mixed zone per storey (the $18.85\times27.70\,$m centreline body with the drawing's window-to-wall ratios and the storey's capacitance, gains, infiltration and ground slab), both holding the reference setpoints with ideal equipment (Fig.~\ref{fig:epcompare}; simulation settings in the supplementary material, Section~S5). On the same geometry the two engines differ by $-6.0$ to $+1.3$\% in delivered sensible cooling in the four configurations. The room-resolved model delivers $5.8$--$12.3$\% \emph{less} cooling than the storey box, because a third of the floor area is passive and floats above the setpoint, admitting less heat than if it were held there. The envelope effect agrees closely: SBC compliance cuts delivered cooling by $56.1\%$ in Riyadh and $54.1\%$ in Jeddah in EnergyPlus and $50.3\%$ in Riyadh and $49.6\%$ in Jeddah in the room-resolved model.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_epcompare}
+\caption{Like-for-like comparison with EnergyPlus~26.1: delivered sensible cooling under ideal control at the reference setpoints. On the same storey-box geometry the two engines agree within a few percent; the room-resolved plan delivers less, because its passive rooms float above the setpoint.}
+\label{fig:epcompare}
+\end{figure}
+
+\paragraph{Response to setbacks.} The scheduling result rests on how much extra heat a colder room admits. The third test therefore applies the $2\,$K pre-peak and night setbacks of the thermostat lattice to the storey box in both programs, under ideal control and with the seasonal changeover of the model (Table~\ref{tab:setback}). Both find that every setback removes more heat than holding the reference setpoint, EnergyPlus by $1.2$--$5.0$\% and the engine by $1.5$--$7.0$\%: the engine overstates this extra heat, EnergyPlus finding $64$--$96$\% of it. Section~\ref{sec:resched} tests whether this could change the sign of the scheduling result.
+
+\begin{table}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Response to setbacks on the storey box (ideal control): extra sensible cooling delivered by a $2\,$K setback relative to the reference setpoint [\%]. E+: EnergyPlus~26.1; this: the engine of the model.}
+\label{tab:setback}
+\begin{tabularx}{\linewidth}{l l C C C C}
+\toprule
+ & & \multicolumn{2}{c}{Pre-peak, $2\,$K} & \multicolumn{2}{c}{Night, $2\,$K} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Envelope & City & E+ & this & E+ & this \\
+\midrule
+SBC & Riyadh & $+1.2$ & $+1.5$ & $+3.3$ & $+4.4$ \\
+SBC & Jeddah & $+1.9$ & $+2.2$ & $+5.0$ & $+6.6$ \\
+Pre-code & Riyadh & $+1.6$ & $+1.7$ & $+3.1$ & $+4.7$ \\
+Pre-code & Jeddah & $+2.4$ & $+2.5$ & $+4.5$ & $+7.0$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Stock energy use.} The stock model of \citet{stockmodel2020} puts the whole-building energy use intensity (EUI) of Saudi residential buildings at $125.6$--$182.4\,$kWh/m\textsuperscript{2}yr across the four regions, with $136.0$ for the Middle region, which contains Riyadh, and $159.6$ for the West, which contains Jeddah. With its HVAC energy divided by $0.70$, the share of residential electricity that space conditioning takes (Section~\ref{sec:intro}), the pre-code building, with new units at the SASO minimum and $0.4\,$ACH, uses 82 (Riyadh) and 98\,kWh/m\textsuperscript{2}yr; with the equipment and air-tightness of existing homes (Section~\ref{sec:design}) it uses 121 and 161\,kWh/m\textsuperscript{2}yr, $-11\%$ and $+1\%$ against its region's average ($-6\%$ and $+7\%$ with a share of $0.66$): agreement in magnitude rather than calibration, since the regional averages mix villas, apartments and traditional houses.
+
+\subsection{Absolute and relative errors}\label{sec:errors}
+Table~\ref{tab:errors} collects the error of every quantity that the study estimates against a reference; the comparison of the thermostat policies is exhaustive over the lattice, and the optimal-control programs with the indoor COP factor are approximate through their fixed-point iteration. None of these errors is large enough to change the ordering of the levers.
+
+\begin{table*}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Absolute and relative errors of the model's estimates against their references (pairs of values: Riyadh / Jeddah, or case 600 / 900 and 640 / 940; the BESTEST-style cases are detailed in the supplementary material, Section~S5).}
+\label{tab:errors}
+\begin{tabularx}{\linewidth}{L{4.6cm} L{4.2cm} C C}
+\toprule
+Quantity & Reference & Absolute error & Relative error \\
+\midrule
+Annual energy, 60 sampled days & full year (365 days) & $-1953$ / $+400\,$kWh & $-3.7\%$ / $+0.5\%$ \\
+Annual energy, $3$-min step & $1$-min step & -- & $\le2.89\%$ \\
+Passive-zone heat budget & exact balance & $\le0.6\,$W & $\le1.3\%$ \\
+Annual cooling, BESTEST-style 600 / 900 & EnergyPlus & $-0.02$ / $+0.41\,$MWh & $-0.2\%$ / $+4.3\%$ \\
+Annual cooling, BESTEST-style 640 / 940 & EnergyPlus & $-0.01$ / $+0.41\,$MWh & $-0.1\%$ / $+4.3\%$ \\
+Extra heat removed by a $2\,$K setback, storey box & EnergyPlus & $0.1$--$2.5$ points & $4$--$56$\% \\
+Delivered cooling, storey box & EnergyPlus, same geometry & $-11.8$ to $+1.3$\,kWh/m\textsuperscript{2}yr & $-6.0$ to $+1.3$\% \\
+Stock-equivalent EUI & regional average~\citep{stockmodel2020} & $-15$ / $+1\,$kWh/m\textsuperscript{2}yr & $-11\%$ / $+1\%$ \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\section{Results}\label{sec:results}
+All results use the room-resolved model of Section~\ref{sec:model}, the TMYx weather of Riyadh and Jeddah and the per-meter volume tariff. The main case is the SBC-compliant building; the pre-code envelope (Section~\ref{sec:stock}) is reported alongside to show what code compliance is worth. Savings are bill-based and measured against the baselines of Section~\ref{sec:baselines}; every optimum and every saving attributed to a selected policy is between admissible policies (Section~\ref{sec:problem}); runs that leave the safe set are excluded and shown as ``--''. Energy is reported as the HVAC energy intensity, the electricity of the units (sensible, latent and standby) per square metre of floor.
+
+\subsection{Comfort and feasibility}\label{sec:comfort}
+\paragraph{Conditioned rooms.}\label{sec:comfortperf}\label{sec:minutil} At the reference policy every conditioned room of the SBC-compliant building stays at or below $24.0\,^{\circ}$C all year. The building is feasible with a wide margin: in its peak hour the busiest unit removes $19\%$ (Riyadh) and $19\%$ (Jeddah) of its rated capacity, because units sized by coverage are several times larger than the loads of an insulated building, and the units are off $77\%$ and $71\%$ of the time. Even the pre-code building holds the ceiling with these units, its busiest unit peaking at $55\%$ of its capacity, so with coverage-sized units the envelope is an energy lever; the comfort margin it buys appears when the units are sized by load (Section~\ref{sec:resinstances}). No meter reaches the $6{,}000\,$kWh tier-2 threshold: the busiest meter of the compliant building uses at most $1{,}137\,$kWh of HVAC electricity in a month, and no apartment meter of either building would exceed $4{,}579\,$kWh even if HVAC were only $66\%$ of the household's electricity~\citep{stockmodel2020}.
+
+\paragraph{Comfort frontier.}\label{sec:frontier} Raising the cooling setpoint by the thermostat's $0.5\,$K step to $24\,^{\circ}$C lets the rooms rise $0.5\,$K above the ceiling in every cycle ($84{,}964$ and $119{,}545\,$K$\cdot$h a year), so the comfort frontier is the reference setpoint itself, the frontier that Theorem~\ref{thm:optleap} gives for a $1\,$K differential centred on the setpoint. A finer thermostat ($0.1\,$K differential, $0.05\,$K steps) at $23.5\,^{\circ}$C holds the room lower and costs more, $5.1\%$ in Riyadh and $3.0\%$ in Jeddah; its own frontier is $23.95\,^{\circ}\mathrm{C}$ in both cities, where its bill differs from that of the base thermostat by $-0.5\%$ in Riyadh and $-0.5\%$ in Jeddah. Finer control moves the setpoint but hardly the time-mean temperature, which is what the theorem prices.
+
+\paragraph{Passive zones.} With their doors open the rooms without a unit stay close to their conditioned neighbours (Section~\ref{prop:passive}): in apartment 2A (Riyadh) the lobby, corridor and hall average $23.7$--$23.8\,^{\circ}\mathrm{C}$ over the year, the interior baths and the maid room $23.9$--$24.0\,^{\circ}\mathrm{C}$, and the two baths with an exterior wall $24.2\,^{\circ}\mathrm{C}$, peaking at $25.8$--$26.2\,^{\circ}\mathrm{C}$. Isolated from their neighbours (baseline B5) they would average $33.7\,^{\circ}$C instead of $24.7\,^{\circ}$C (Jeddah); the thermal shift that cools them raises the building's energy by $13.5\%$.
+
+\paragraph{Operative temperature.}\label{sec:operative} The operative temperature, estimated from the inner-surface temperatures of each room, peaks at $25.0$--$25.1\,^{\circ}\mathrm{C}$ in the conditioned rooms at the reference setpoint, in the top-floor rooms under the roof, and exceeds $25\,^{\circ}$C in fewer than $0.05\%$ of the room-hours, inside the $23$--$27\,^{\circ}$C operative range of the ASHRAE summer comfort zone (Section~\ref{sec:comfortrange}).
+
+\subsection{Savings in the three cases}\label{sec:scalability}
+\paragraph{Cases 1 and 2.}\label{sec:stepa}\label{sec:stepb} For one apartment, modelled as an intermediate unit whose shared walls and slabs face conditioned space, the HVAC energy intensity is $23.8\,$kWh/m\textsuperscript{2}yr in Riyadh and $34.8$ in Jeddah, and the setpoint lever, from current practice to the reference setpoints, saves $12.2\%$ in Riyadh and $9.8\%$ in Jeddah (Table~\ref{tab:scopes}). Adding the neighbouring apartment and the core (Case~2) changes the representative apartment's energy by only $0.9\%$ (Riyadh) and $0.6\%$ (Jeddah), since the conditioned rooms on either side of the party wall differ by a fraction of a kelvin (Section~\ref{prop:coupling}), and moves the setpoint lever by at most $0.2$ points. In both cases the best admissible thermostat policy is no pre-cooling: the no-gain condition of Theorem~\ref{thm:policy} holds for every pre-cooling policy.
+
+\paragraph{Case 3: the whole building.}\label{sec:stepc} The building adds the roof, the ground and the vertical coupling of four storeys. Its HVAC energy intensity is $25.1$ and $37.7\,$kWh/m\textsuperscript{2}yr, and the setpoint lever saves $12.4\%$ in Riyadh and $10.5\%$ in Jeddah. The insulated roof keeps the top apartment's HVAC energy within $13\%$ (Riyadh) and $9\%$ (Jeddah) of an intermediate one, whereas in the pre-code building the top apartment uses $1.5$--$1.7$ times as much; this is why the envelope saving of the whole building ($56.4\%$, $45.0\%$) exceeds that of one apartment ($50.5\%$, $38.3\%$).
+
+\begin{table*}[t]
+\centering
+\caption{The three cases (SBC-compliant building; pre-code value in parentheses). HVAC energy intensity: electricity of the units per floor area. Setpoint: saving of the setpoint lever, from current practice (cooling $22$, heating $20.5\,^{\circ}$C) to the reference setpoints ($23.5$ and $22.5\,^{\circ}$C). Pre-cooling: saving of the best admissible thermostat policy of the lattice. Envelope: SBC versus pre-code at the reference setpoints.}
+\label{tab:scopes}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{l l C C C C}
+\toprule
+City & Case & HVAC intensity [kWh/m\textsuperscript{2}yr] & Setpoint & Pre-cooling & Envelope \\
+\midrule
+Riyadh & 1: apartment & 23.8 (48.0) & 12.2\% & 0\% & 50.5\% \\
+       & 2: floor & 23.3 (46.9) & 12.4\% & 0\% & 50.4\% \\
+       & 3: building & 25.1 (57.5) & 12.4\% & 0\% & 56.4\% \\
+\midrule
+Jeddah & 1: apartment & 34.8 (56.4) & 9.8\% & 0\% & 38.3\% \\
+       & 2: floor & 35.6 (58.4) & 9.8\% & 0\% & 38.9\% \\
+       & 3: building & 37.7 (68.5) & 10.5\% & 0\% & 45.0\% \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\paragraph{Savings per apartment.}\label{sec:perapt} Every apartment has its own meter, so the levers can be priced per household (Table~\ref{tab:tenants}). The setpoint lever lowers an apartment's annual HVAC bill by $152$--$190\,$SAR (US\$41--51) in Riyadh and $186$--$234\,$SAR (US\$50--62) in Jeddah, most on the ground floor, whose rooms at $22\,^{\circ}$C also draw heat from the ground. The envelope is worth far more: the same apartment in the pre-code building would cost $1{,}084$--$2{,}612\,$SAR (US\$289--697) more a year in Riyadh and $998$--$2{,}432\,$SAR more in Jeddah, most of all under the roof.
+
+\begin{table*}[t]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Annual HVAC bill and savings per apartment in the SBC-compliant building (Case~3; apartments numbered by storey, 1 = ground, 4 = top; A west, B east). Bill: at current practice [SAR/yr]. Setpoint: saving of the setpoint lever [SAR/yr] (\% of the bill). Envelope: extra bill of the same apartment in the pre-code building at the reference setpoints [SAR/yr] (\% of the pre-code bill). Percentages from unrounded bills.}
+\label{tab:tenants}
+\begin{tabularx}{\textwidth}{l C C C C C C}
+\toprule
+ & \multicolumn{3}{c}{Riyadh} & \multicolumn{3}{c}{Jeddah} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Apartment & Bill & Setpoint & Envelope & Bill & Setpoint & Envelope \\
+\midrule
+1A & 1{,}433 & 190 (13.2\%) & 1{,}132 (47.7\%) & 2{,}028 & 231 (11.4\%) & 998 (35.7\%) \\
+1B & 1{,}394 & 181 (13.0\%) & 1{,}084 (47.2\%) & 2{,}076 & 234 (11.3\%) & 1{,}088 (37.1\%) \\
+2A & 1{,}306 & 162 (12.4\%) & 1{,}171 (50.6\%) & 1{,}869 & 189 (10.1\%) & 1{,}047 (38.4\%) \\
+2B & 1{,}266 & 156 (12.3\%) & 1{,}123 (50.3\%) & 1{,}920 & 191 (9.9\%) & 1{,}135 (39.6\%) \\
+3A & 1{,}307 & 159 (12.1\%) & 1{,}316 (53.4\%) & 1{,}871 & 186 (9.9\%) & 1{,}203 (41.7\%) \\
+3B & 1{,}268 & 152 (12.0\%) & 1{,}263 (53.1\%) & 1{,}921 & 187 (9.7\%) & 1{,}289 (42.6\%) \\
+4A & 1{,}462 & 168 (11.5\%) & 2{,}612 (66.9\%) & 2{,}044 & 212 (10.4\%) & 2{,}355 (56.2\%) \\
+4B & 1{,}423 & 162 (11.4\%) & 2{,}555 (67.0\%) & 2{,}095 & 214 (10.2\%) & 2{,}432 (56.4\%) \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\paragraph{Seasons.}\label{sec:reslatent} Table~\ref{tab:summary} splits the setpoint and envelope levers by season. In summer (June--September), which carries the largest share of the energy, the setpoint lever saves $9.8$--$10.6$\% in Riyadh and $7.9$--$8.5$\% in Jeddah. In winter (December--February) it saves $11.9$--$26.6$\% and $16.7$--$17.6$\% of the little energy then used, partly heating in Riyadh, where the reference policy holds the band floor. Winter is a substantial heating season only for the pre-code building in Riyadh ($11{,}116\,$kWh of heating a year, against $1{,}367\,$kWh in the SBC-compliant building). The latent load is negligible in Riyadh ($0.4\%$ of the HVAC energy) and $26\%$ in Jeddah, where it dilutes the setpoint lever ($10.1\%$ for apartment 2A with it, $13.3\%$ without); the seasonal operation and the modes used are in the supplementary material, Section~S6.
+
+\begin{table*}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Savings of the setpoint and envelope levers by case, city and season (SBC-compliant building; \% of the HVAC energy of the case in that season; annual savings in Table~\ref{tab:scopes}). Summer: June--September; winter: December--February. Reference: HVAC energy at the reference policy [kWh]. Under the tier-1 volume tariff the bill saving equals the energy saving.}
+\label{tab:summary}
+\begin{tabularx}{\linewidth}{l l *{7}{C}}
+\toprule
+ & & Annual & \multicolumn{3}{c}{Summer} & \multicolumn{3}{c}{Winter} \\
+\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(lr){7-9}
+City & Case & Reference & Setpoint & Envelope & Reference & Setpoint & Envelope & Reference \\
+\midrule
+Riyadh & 1 & 5{,}484 & 9.8\% & 49.2\% & 3{,}313 & 26.6\% & 77.4\% & 222 \\
+       & 2 & 11{,}711 & 10.0\% & 48.9\% & 7{,}126 & 25.8\% & 78.5\% & 459 \\
+       & 3 & 50{,}512 & 10.6\% & 54.1\% & 31{,}239 & 11.9\% & 82.8\% & 1{,}971 \\
+\midrule
+Jeddah & 1 & 8{,}041 & 7.9\% & 40.0\% & 3{,}758 & 16.7\% & 33.6\% & 1{,}011 \\
+       & 2 & 17{,}945 & 7.9\% & 40.1\% & 8{,}352 & 16.7\% & 36.5\% & 2{,}268 \\
+       & 3 & 75{,}912 & 8.5\% & 46.3\% & 35{,}610 & 17.6\% & 41.1\% & 9{,}450 \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{The timing lever}\label{sec:resched}
+\paragraph{Thermostat pre-cooling.} None of the pre-cooling settings of the lattice saves anything, in any case, city or envelope (Table~\ref{tab:scopes}); over all $365$ days, where all of them stay within the safe set in the SBC-compliant building, every one of them raises its bill, by at least $0.52\%$, and on the sampled days the shallowest step, a $0.5\,$K pre-peak pre-cool, costs $0.51\%$ in Riyadh and $0.74\%$ in Jeddah. At a depth of $2\,$K, night pre-cooling costs $4.6\%$ in Riyadh and $5.3\%$ in Jeddah and pre-peak pre-cooling $3.4\%$ in Riyadh and $4.3\%$ in Jeddah. Table~\ref{tab:precooldecomp} splits each feature into the two terms of Theorem~\ref{obs:precool}: every depth run ($0.5$--$2\,$K, step and ramped setbacks, default controller and low mode only) raises the heat removed, by $0.12$--$8.67$\%, because colder rooms admit more heat, while the mean COP rises slightly at night and falls or stays level before the peak: the heat added outweighs the COP gained. Tests where this result is most likely to fail (supplementary material, Section~S6) cover inverter units held in their lowest mode, ramped and dawn setbacks, the extra heat scaled to what EnergyPlus finds, pre-cooling of the top floor or the west rooms alone, and a $1$-minute controller with minimum on- and off-times and a cycling loss charged per start (inadmissible in Riyadh, where it is excluded). None of the admissible ones saves, and scaled to EnergyPlus's extra heat a $2\,$K pre-peak pre-cool still costs $2.9$--$3.8$\%. Apart from the one-node variant ($0.08\%$; Section~\ref{sec:sensitivity}), only with every choice most favourable to pre-cooling combined (one node per zone, a COP independent of the indoor air, inverter units held in their lowest mode and no cycling loss) does the best policy save, at most $0.77\%$. Because every unit pre-cools at the same time, a $2\,$K pre-peak pre-cool also raises the building's largest hourly electrical demand, from $21.4$ to $34.1\,$kW in Riyadh and from $22.0$ to $35.3\,$kW in Jeddah.
+
+\begin{table*}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\caption{Why thermostat pre-cooling does not pay (SBC-compliant building, Case~3, volume tariff): change in the annual bill, in the heat removed and in the mean cooling COP when each feature is switched on alone, relative to no scheduling. Default: the controller of Section~\ref{sec:controller}; low only: inverter units held in their lowest mode. Every row is admissible: it stays within the safe set, (C2) and (C3).}
+\label{tab:precooldecomp}
+\begin{tabularx}{\linewidth}{l l C C C C}
+\toprule
+City & Feature & Bill, default & Bill, low only & Heat removed, low only & Mean COP, low only \\
+\midrule
+Riyadh & Pre-peak, $0.5\,$K & $+0.51\%$ & $+0.48\%$ & $+0.40\%$ & 3.44 $\to$ 3.44 \\
+       & Pre-peak, $2\,$K & $+3.40\%$ & $+1.95\%$ & $+1.96\%$ & 3.44 $\to$ 3.44 \\
+       & Night, $0.5\,$K & $+0.95\%$ & $+0.97\%$ & $+1.32\%$ & 3.44 $\to$ 3.45 \\
+       & Night, $2\,$K & $+4.57\%$ & $+3.88\%$ & $+5.71\%$ & 3.44 $\to$ 3.49 \\
+\midrule
+Jeddah & Pre-peak, $0.5\,$K & $+0.74\%$ & $+0.65\%$ & $+0.61\%$ & 3.63 $\to$ 3.62 \\
+       & Pre-peak, $2\,$K & $+4.30\%$ & $+2.84\%$ & $+3.05\%$ & 3.63 $\to$ 3.60 \\
+       & Night, $0.5\,$K & $+1.15\%$ & $+1.11\%$ & $+1.92\%$ & 3.63 $\to$ 3.64 \\
+       & Night, $2\,$K & $+5.27\%$ & $+4.72\%$ & $+8.67\%$ & 3.63 $\to$ 3.70 \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{runexc}
+Apartment 2A of the compliant building in Riyadh (Case~3) pays $1{,}144\,$SAR (US\$305) a year at the reference policy. A thermostat that pre-cools by $2\,$K before the afternoon adds about $39\,$SAR a year to that bill and nothing to comfort: under the Saudi tariff the right setting is to switch night and pre-peak pre-cooling off.
+\end{runexc}
+
+\paragraph{Perfect-foresight benchmark.}\label{sec:lowerbound} The linear program of Section~\ref{sec:lpbench} schedules the idealised units of Cases~1 and~2 with perfect knowledge of the weather and compares the result with holding the ceiling with the same units (Table~\ref{tab:lowerbound} shows selected design days; all are in the supplementary material, Section~S2, and the ranges below are over all of them). With a COP that depends on the outdoor air only ($\gamma=0$), its optimum is a rigorous upper bound on what any schedule of the idealised model could save: at most $1.9\%$ of the sensible cooling electricity on a design day with the rooms kept in the comfort band and $3.6\%$ down to the $20\,^{\circ}$C floor of the safe set, and $0.58$--$1.07$\% and $1.03$--$2.07$\% over the season in Case~1. With the engine's indoor COP factor ($\gamma=0.02$) the program is not linear. Re-solving it with the factor evaluated at the previous solution, and pricing every iterate with its own indoor factor, gives schedules that the idealised units can follow. The achievable saving is that of the best valid schedule found: at least zero, since holding the ceiling is itself a valid schedule, and down to $20\,^{\circ}$C at least the saving of the schedule found within the band, which is valid there too. It is $0.00$--$0.32$\% within the band and $0.00$--$0.32$\% down to $20\,^{\circ}$C on a design day, and $0.00\%$ in Riyadh and $0.00\%$ in Jeddah within the band over the season in Case~1. On every periodic design day solved, the optimal saving at $\gamma=0.02$ therefore lies between that day's achievable saving and its $\gamma=0$ bound; the $31$-day horizon below has no $\gamma=0$ run and is not bracketed. With July treated as one $31$-day horizon (Case~1), which lets heat be stored across days, the program finds no schedule cheaper than holding the ceiling either. The program saves in the way Theorem~\ref{obs:precool} allows: it pulls the rooms down around dawn, when the outdoor air is coolest and the COP highest (the rooms are coldest at 05:00 in the Riyadh July profile), never uses more than the lowest mode, and lets the rooms rise to the ceiling through the hottest hours. Its linearisation and its iteration are checked in the supplementary material, Section~S2. The benchmark's continuous low-mode modulation without cycling losses is part of what it measures: a dawn setback fixed in advance, which imitates its timing on a simulated thermostat, raises the bill of the whole building (Case~3) by $0.99$--$1.80$\% (supplementary material, Section~S6).
+
+\begin{table*}[t]
+\centering\footnotesize\setlength{\tabcolsep}{2.5pt}
+\caption{Perfect-foresight benchmark (SBC-compliant building): saving [\%] of the sensible cooling electricity that an ideal schedule achieves over holding the $24\,^{\circ}$C ceiling with the same idealised units, with the rooms pre-cooled at most to the band floor ($22\,^{\circ}$C) or to the floor of the safe set ($20\,^{\circ}$C), with a COP that depends on the outdoor air only ($\gamma=0$) or the COP of the engine ($\gamma=0.02$, falling by $2\%$/K of indoor air below $27\,^{\circ}$C). The $\gamma=0$ columns are rigorous upper bounds on the saving of any schedule of the idealised model; the $\gamma=0.02$ columns are achievable savings, those of the best valid schedule found (iterates priced with their own indoor factor): at least the reference, $0$, and at $20\,^{\circ}$C at least the $22\,^{\circ}$C schedule of the same day. Hold: electricity of the reference at $\gamma=0.02$ [kWh/day]. Season: May--September mean days weighted by the reference energy of their month (Case~1); July, 31 days: the whole month as one horizon (Case~1, $\gamma=0.02$, band floor only). Selected design days; every design day is in the supplementary material, Section~S2.}
+\label{tab:lowerbound}
+\begin{tabularx}{\linewidth}{l l C C C C C C C C C C}
+\toprule
+ & & \multicolumn{5}{c}{Riyadh} & \multicolumn{5}{c}{Jeddah} \\
+\cmidrule(lr){3-7}\cmidrule(lr){8-12}
+ & & & \multicolumn{2}{c}{$\gamma=0.02$ (achievable)} & \multicolumn{2}{c}{$\gamma=0$ (bound)} & & \multicolumn{2}{c}{$\gamma=0.02$ (achievable)} & \multicolumn{2}{c}{$\gamma=0$ (bound)} \\
+\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){9-10}\cmidrule(lr){11-12}
+Case & Day & Hold & $22\,^{\circ}$C & $20\,^{\circ}$C & $22\,^{\circ}$C & $20\,^{\circ}$C & Hold & $22\,^{\circ}$C & $20\,^{\circ}$C & $22\,^{\circ}$C & $20\,^{\circ}$C \\
+\midrule
+1: apartment & Jul, mean day & 22.3 & 0.00 & 0.00 & 1.26 & 2.41 & 16.8 & 0.00 & 0.00 & 0.78 & 1.43 \\
+ & Jul, hottest day & 25.4 & 0.06 & 0.06 & 1.50 & 2.86 & 19.3 & 0.23 & 0.23 & 1.79 & 3.34 \\
+& Season & -- & 0.00 & 0.00 & 1.07 & 2.07 & -- & 0.00 & 0.00 & 0.58 & 1.03 \\
+& July, 31 days & 22.3 & 0.00 & -- & -- & -- & 16.9 & 0.00 & -- & -- & -- \\
+\midrule
+2: floor & Jul, mean day & 46.6 & 0.00 & 0.00 & 1.39 & 2.65 & 35.9 & 0.00 & 0.00 & 0.86 & 1.58 \\
+ & Jul, hottest day & 53.8 & 0.15 & 0.15 & 1.63 & 3.09 & 41.6 & 0.32 & 0.32 & 1.92 & 3.57 \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Ablation study}\label{sec:ablation}
+The selected policy $\theta^\ast$ has four components: the frontier setpoint (the $23.5\,^{\circ}$C reference), no pre-cooling, units in the lowest mode that holds the room, and the SBC envelope. Table~\ref{tab:ablation} changes one of them at a time (Case~3; the simulation is deterministic, so each variant is a single annual run). The envelope matters most: the pre-code envelope raises the bill by $129.5\%$ in Riyadh and $81.8\%$ in Jeddah. Lowering the cooling setpoint alone to $22\,^{\circ}$C costs $14.5\%$ in Riyadh and $11.7\%$ in Jeddah, which differs from the setpoint lever of Table~\ref{tab:scopes} because that lever also moves the heating setpoint and is expressed relative to current practice. Running every inverter unit in its highest mode costs $22.4\%$ in Riyadh and $17.3\%$ in Jeddah; this largely reproduces the assumed ratio of mode efficiencies (Theorem~\ref{thm:optleap}) and, since an inverter unit chooses its mode by itself, ranks a property of the controller rather than a household decision. The pre-cooling rows carry the penalties of Section~\ref{sec:resched}. No variant is cheaper than $\theta^\ast$.
+
+\begin{table*}[t]
+\centering\footnotesize
+\caption{Ablation of the selected policy $\theta^\ast$ (whole building, Case~3, volume tariff). Each variant changes one component and keeps the others, including the heating setpoint. Bill: annual HVAC bill (SAR); $\Delta$: its change relative to $\theta^\ast$; Exc.: excursion above the $24\,^{\circ}$C ceiling / below the $20\,^{\circ}$C floor (K$\cdot$h), summed over conditioned rooms; every row stays within the safe set, so every variant is admissible. Deterministic simulation, one annual run per variant; lowest bill in bold.}
+\label{tab:ablation}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l r r r r r r@{}}
+\toprule
+ & & \multicolumn{3}{c}{Riyadh} & \multicolumn{3}{c}{Jeddah} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Variant & Changed component & Bill $\downarrow$ & $\Delta$ (\%) & Exc.\ above/below & Bill $\downarrow$ & $\Delta$ (\%) & Exc.\ above/below \\
+\midrule
+Full solution ($\theta^\ast$, SBC) & -- & \textbf{10{,}456} & -- & 0/0 & \textbf{15{,}714} & -- & 0/0 \\
+\midrule
+Current-practice cooling & $23.5\to22\,^{\circ}$C & 11{,}968 & $+14.5$ & 0/0 & 17{,}551 & $+11.7$ & 0/0 \\
+Highest mode & lowest $\to$ highest mode & 12{,}801 & $+22.4$ & 0/0 & 18{,}440 & $+17.3$ & 0/0 \\
+Pre-code envelope & SBC $\to$ pre-code & 23{,}994 & $+129.5$ & 0/0 & 28{,}566 & $+81.8$ & 0/0 \\
+Night pre-cooling & none $\to$ $2\,$K at night & 10{,}934 & $+4.6$ & 0/0 & 16{,}542 & $+5.3$ & 0/0 \\
+Pre-peak pre-cooling & none $\to$ $2\,$K before peak & 10{,}811 & $+3.4$ & 0/0 & 16{,}390 & $+4.3$ & 0/0 \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\paragraph{Factorial decomposition.}\label{sec:factorial} The one-at-a-time levers are measured against different baselines. A full $2^4$ factorial of four levers (envelope, the 3-ton units as inverter units, the setpoints of current practice or of the reference, and a $2\,$K pre-peak pre-cool or none; Case~3, all $16$ combinations admissible) puts them on one base. Going from the pre-code building with catalogue units, current-practice setpoints and pre-peak pre-cooling to the SBC building with inverter units, the reference setpoints and no pre-cooling lowers the bill by $66.8\%$ in Riyadh and $58.6\%$ in Jeddah. Table~\ref{tab:factorial} attributes this saving to the levers by their Shapley values, the average of each lever's marginal saving over every order in which the levers can be applied. The envelope takes $74.6\%$ in Riyadh and $68.6\%$ in Jeddah of it, and dropping pre-cooling the least, $2.3\%$ in Riyadh and $3.8\%$ in Jeddah. The levers are sub-additive: each saves less once another has lowered the load, most for the envelope with the equipment in Riyadh and the envelope with the setpoints in Jeddah (an interaction of up to $7.0\%$ of the starting bill), while pre-cooling interacts with the other levers by at most $0.9\%$. In both cities the envelope comes first and timing last; the equipment saves more than the setpoints in Riyadh, and the two, close to each other, swap places in SAR in Jeddah, as in the one-at-a-time results. The Shapley value of the timing lever is the avoided penalty of its start level, the $2\,$K pre-peak pre-cool; the mode lever is not part of the factorial, since the controller sets the mode.
+
+\begin{table}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Factorial ($2^4$) decomposition of the bill saving (Case~3). Levers, from start to end state: pre-code $\to$ SBC envelope; fixed-speed $\to$ inverter 3-ton units; setpoints $22/20.5\to23.5/22.5\,^{\circ}$C; $2\,$K pre-peak pre-cool $\to$ none. Shapley value: each lever's marginal saving averaged over all orders (SAR/yr and share of the total); main effect: mean saving of the lever over the eight combinations of the others (\% of the bill without it).}
+\label{tab:factorial}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l r r r r r r@{}}
+\toprule
+ & \multicolumn{3}{c}{Riyadh} & \multicolumn{3}{c}{Jeddah} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Lever & SAR & Share & Main & SAR & Share & Main \\
+\midrule
+Envelope & 13{,}346 & $74.6\%$ & $56.0\%$ & 13{,}503 & $68.6\%$ & $45.7\%$ \\
+Inverter 3-ton units & 2{,}395 & $13.4\%$ & $13.5\%$ & 2{,}667 & $13.5\%$ & $11.1\%$ \\
+Setpoints & 1{,}742 & $9.7\%$ & $10.2\%$ & 2{,}774 & $14.1\%$ & $11.0\%$ \\
+No pre-cooling & 416 & $2.3\%$ & $2.6\%$ & 747 & $3.8\%$ & $3.4\%$ \\
+\midrule
+Total & 17{,}899 & $100\%$ & & 19{,}692 & $100\%$ & \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Generalisation: scale and test instances}\label{sec:generalisation}
+\paragraph{Scale and saturation.}\label{sec:threshold} Across the three cases the model grows from $16$ to $33$ to $132$ zones and from $7$ to $15$ to $60$ units, yet the optimum stays at no pre-cooling in every case, city and envelope: what changes with scale is the load on each unit, not the value of re-timing, and how close the units come to their capacity depends on the envelope and on how they are sized (Table~\ref{tab:instances}).
+
+\paragraph{Normal and hard instances.}\label{sec:resinstances} All eight instances with the catalogue units are normal: even in the heat-wave year, $3\,$K hotter in every hour, the peak load ratio stays at $0.26$ in the SBC-compliant building (Riyadh) and at most $0.62$ in the pre-code building, because units sized by coverage leave a wide margin even for the uninsulated envelope. Hard instances arise when the units are sized tightly, each to $1.15$ times its room's largest hourly load, after derating, rounded up to $0.25\,$ton (at least $0.75\,$ton). All four such instances are hard. Their peak load ratio rises to $0.57$--$0.79$, so they satisfy the feasibility condition~\eqref{eq:feasible} on hourly loads, yet the rooms exceed the ceiling by $18$--$81$\,K$\cdot$h a year. These excursions are not a shortage of hourly capacity. Starting each unit at full capacity leaves them unchanged, so they do not arise at start-up: they arise while a running unit escalates from a lower mode, with the switch-on point at the ceiling itself (supplementary material, Section~S6). At the reference setpoints no lattice setting, with or without pre-cooling, is admissible in any of the four. A lower cooling setpoint, which moves the switch-on point below the ceiling, restores admissibility: the highest admissible setpoint is $23\,^{\circ}$C in all of them, where the tightly sized units still save $10.2$--$16.7$\% against the catalogue units at the reference policy, so for these units the optimum moves to a lower setpoint rather than to another lattice setting. In every instance with an admissible reference policy the best thermostat schedule is no pre-cooling.
+
+\begin{table*}[t]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Normal and hard test instances (Case~3, the whole building). Catalogue: the eight instances with the catalogue units (two envelopes, two cities, TMYx and TMYx $+3\,$K weather) in one row, with ranges over them; every instance is in the supplementary material, Section~S6. Units: catalogue (sized by coverage) or sized to the building's own peak hourly load with a $15\%$ margin. Peak load ratio: largest hourly sensible load of any unit over its rated capacity; excursion of the reference policy above $24\,^{\circ}$C and below $20\,^{\circ}$C; best policy: the cheapest admissible thermostat policy, night/pre-peak depth (none: no pre-cooling; --: no lattice setting at the reference setpoints is admissible; in brackets, the highest admissible cooling setpoint without pre-cooling, where one exists); admissible policies: number of the $49$ lattice policies that keep every conditioned room within the safe set on the sampled days (the others are excluded). No unit reaches a load ratio of $0.85$.}
+\label{tab:instances}
+\begin{tabularx}{\linewidth}{l l l l c c c c C}
+\toprule
+Envelope & City & Units & Weather & Class & Peak load ratio & Exc.\ above/below [K$\cdot$h] & Best policy & Admissible policies \\
+\midrule
+SBC, pre-code & both & catalogue & both & normal & $0.19$--$0.62$ & 0/0 & none & $30$--$49$ of $49$ \\
+\midrule
+SBC & Riyadh & by load & TMYx & hard & 0.58 & 69/0 & -- ($23\,^{\circ}$C) & $0$ of $49$ \\
+SBC & Jeddah & by load & TMYx & hard & 0.57 & 18/0 & -- ($23\,^{\circ}$C) & $0$ of $49$ \\
+Pre-code & Riyadh & by load & TMYx & hard & 0.79 & 81/0 & -- ($23\,^{\circ}$C) & $0$ of $49$ \\
+Pre-code & Jeddah & by load & TMYx & hard & 0.75 & 29/0 & -- ($23\,^{\circ}$C) & $0$ of $49$ \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Thermostat comparison: full-year re-evaluation and calculation time}\label{sec:optimisation}
+\paragraph{Selection and full-year re-evaluation.}\label{sec:stability}\label{sec:trainevalres} The comparison is exhaustive over the $49$ realisable thermostat policies, and its best policy, no pre-cooling, is the same in all four envelope--climate configurations and in every case and test instance with an admissible reference policy. Selected on the $60$ sampled days and re-evaluated on all $365$ days of the year, which include them (Section~\ref{sec:gasetup}), the optimum for the SBC-compliant building is unchanged in both cities, and the policies keep almost the same cost ranking (Spearman rank correlation $0.999$ in Riyadh and $0.999$ in Jeddah). The sampled-year estimate of the building's annual HVAC energy at the reference policy differs from the full-year value by $-3.7\%$ (Riyadh) and $+0.5\%$ (Jeddah), and the relative cost of every pre-cooling policy by at most $0.56$ percentage points; unless labelled as full-year, absolute energies and bills are sampled-year values.
+ Admissibility, checked on the sampled days, also holds on all $365$ days for every run the results rely on: the $16$ runs of the factorial, the units sized by load at the selected margin and the dawn setback stay within the safe set in both cities.
+
+\paragraph{Calculation time.}\label{sec:time} One annual evaluation of the whole building takes $13.4\,$s for one policy and $52.5\,$s for all $49$ policies of the lattice together, the optimal-control program for one day $8.9\,$s in Case~1 and $116.7\,$s in Case~2, and selecting the modes of all $60$ units at one control step $8.4\,\mu$s (supplementary material, Section~S8).
+
+\subsection{Sensitivity analysis}\label{sec:sensitivity}
+The sensitivity analysis varies, one at a time, the inputs that assumption (A5) idealises: the zone model, the controller, the equipment, the envelope and air, and the weather (37 variants of the SBC-compliant building; Table~\ref{tab:robust} shows the decisive ones, and the full table is in the supplementary material, Section~S6). In 35 of the 36 admissible variants the best thermostat pre-cool saves nothing, and a $2\,$K pre-peak pre-cool costs $2.0$--$6.7$\%; the only exception, a one-node zone whose COP does not depend on the room temperature, saves at most $0.08\%$, and its $2\,$K pre-peak pre-cool still costs $1.8\%$. The variant sized by load, $15\%$ margin, is inadmissible: the reference policy already lets a room pass the ceiling, by $69\,$K$\cdot$h a year in Riyadh and $18\,$K$\cdot$h a year in Jeddah, so no lever or cost is reported for it (``--'' in Table~\ref{tab:robust}). The setpoint lever stays between $8.0$ and $17.0\%$.
+
+\paragraph{Equipment.} In the SBC-compliant building the installed equipment matters more than its operation. Without cycling losses the building would use less energy, $15.2\%$ in Riyadh and $11.8\%$ in Jeddah, and replacing the twelve fixed-speed 3-ton units by inverter units of the same size would save $15.0\%$ in Riyadh and $11.4\%$ in Jeddah; these guest-room and stair units, the most oversized, use $39$--$40$\% of the units' electricity for $33\%$ of the conditioned floor area. Units sized by load keep every room within the safe set only with a margin of $2.5$ times each room's peak hourly load (the smallest margin that keeps every room within the safe set lies between $2$ and $2.5$), a property of the modelled controller, whose switch-on point is at the ceiling, rather than of the units (supplementary material, Section~S6). Against the catalogue's $124$ tons, such units would save $16.5\%$ in Riyadh and $11.2\%$ in Jeddah as inverter units throughout, and $2.1\%$ in Riyadh and $0.2\%$ in Jeddah with the fixed-speed zones keeping fixed-speed units, which isolates the effect of size. Sized tightly, with a $15\%$ margin, they are inadmissible at the reference setpoint: the rooms pass the ceiling for $18$--$69$\,K$\cdot$h a year, and a cooling setpoint of $23\,^{\circ}$C restores admissibility (Section~\ref{sec:resinstances}). An indoor fan of $30\,$W that runs whenever the compressor is off in the cooling months, as many wall-mounted units do by default, adds $11.8\%$ in Riyadh and $14.7\%$ in Jeddah, comparable to the setpoint lever, although whether the catalogue units do so was not established. None of these changes the ordering of the operational levers or makes pre-cooling pay.
+
+\paragraph{Controller.} With escalation at $0.2$/$0.6\,$K a $2\,$K pre-peak pre-cool costs $3.1\%$ in Riyadh and $4.4\%$ in Jeddah, at $0.8$/$2.0\,$K $2.3\%$ in Riyadh and $3.2\%$ in Jeddah, and with the inverter units held in their lowest mode $2.0\%$ in Riyadh and $2.8\%$ in Jeddah. Without the indoor-temperature factor of the COP the setpoint lever falls to $9.5\%$ in Riyadh and $8.1\%$ in Jeddah and the $2\,$K pre-peak penalty to $2.2\%$ in Riyadh and $3.0\%$ in Jeddah; at $3\%$/K the lever rises to $14.0\%$ in Riyadh and $11.8\%$ in Jeddah and the penalty to $4.1\%$ in Riyadh and $5.1\%$ in Jeddah. The cycle length, set by the time step, moves the absolute bill but not the sign of pre-cooling (supplementary material, Section~S6).
+
+\paragraph{Zone model, envelope and weather.} With one node per zone, so that a pull-down stores coolth in the whole mass at once, a $2\,$K pre-peak pre-cool still costs $3.3\%$ in Riyadh and $6.7\%$ in Jeddah, because the colder room also lowers the COP. The air-node share of the capacitance ($2$ to $30\%$) and the air--structure coupling (halved or doubled) leave the best pre-cool at $0.00$\%; thermal bridges and the solar absorptance move the energy by a few percent; infiltration between $0.2$ and $0.8\,$ACH moves Jeddah's intensity from $30.4$ to $52.4$ through the latent load; and a $30\%$ wider daily swing, alone or in a heat wave, leaves the scheduling result unchanged. A room capacitance of $144$ to $450\,$kJ/(m$^2$K) leaves the best pre-cool at $0$\% (Jeddah), and an imposed day--night COP swing makes pre-cooling pay only far beyond the physical range (from a COP at $22\,^{\circ}$C $4.0$ times that at $40\,^{\circ}$C in Jeddah and not at all up to a ratio of $6.7$ in Riyadh, against a ratio of $1.5$ for the model's curve).
+
+\begin{table*}[t]
+\centering\footnotesize\setlength{\tabcolsep}{2.5pt}
+\caption{Sensitivity analysis (SBC-compliant building, Case~3): HVAC energy intensity [kWh/m\textsuperscript{2}yr], setpoint lever, saving of the best thermostat pre-cool ($0.5$--$2\,$K in either window), and the change in cost of a $2\,$K pre-peak pre-cool. $C_d$: cycling degradation coefficient; sized by load: at $2.5$ times the peak hourly load, the first tested margin that keeps every room within the safe set, unless stated; --: inadmissible, the reference policy lets a room pass the ceiling, so the run is excluded and nothing but its excursion (in the text) is reported. Selected variants; all 37 are in the supplementary material, Section~S6.}
+\label{tab:robust}
+\begin{tabularx}{\linewidth}{L{4.6cm} *{8}{C}}
+\toprule
+ & \multicolumn{4}{c}{Riyadh} & \multicolumn{4}{c}{Jeddah} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+Variant & Int. & Setp. & Pre-cool & $2\,$K & Int. & Setp. & Pre-cool & $2\,$K \\
+\midrule
+Reference (base case) & 25.1 & 12.4\% & 0.00\% & $+3.4\%$ & 37.7 & 10.5\% & 0.00\% & $+4.3\%$ \\
+\midrule
+One node, COP independent of indoor air & 23.8 & 8.2\% & 0.08\% & $+1.8\%$ & 36.1 & 8.0\% & 0.00\% & $+5.0\%$ \\
+Escalation at $0.2$ / $0.6\,$K & 26.0 & 12.6\% & 0.00\% & $+3.1\%$ & 38.5 & 10.8\% & 0.00\% & $+4.4\%$ \\
+COP independent of indoor air & 23.6 & 9.5\% & 0.00\% & $+2.2\%$ & 36.0 & 8.1\% & 0.00\% & $+3.0\%$ \\
+Indoor COP factor $3\%$/K & 25.9 & 14.0\% & 0.00\% & $+4.1\%$ & 38.6 & 11.8\% & 0.00\% & $+5.1\%$ \\
+\midrule
+No cycling loss ($C_d=0$) & 21.3 & 12.5\% & 0.00\% & $+4.0\%$ & 33.2 & 10.1\% & 0.00\% & $+4.8\%$ \\
+3-ton units as inverter units & 21.3 & 12.4\% & 0.00\% & $+4.5\%$ & 33.4 & 10.0\% & 0.00\% & $+5.2\%$ \\
+Sized by load, all inverter & 20.9 & 11.7\% & 0.00\% & $+2.9\%$ & 33.5 & 9.6\% & 0.00\% & $+3.0\%$ \\
+Sized by load, fixed-speed kept & 24.5 & 11.9\% & 0.00\% & $+2.6\%$ & 37.6 & 10.1\% & 0.00\% & $+2.9\%$ \\
+Sized by load, $15\%$ margin & -- & -- & -- & -- & -- & -- & -- & -- \\
+Indoor fan on while compressor off & 28.0 & 10.9\% & 0.00\% & $+3.3\%$ & 43.2 & 8.8\% & 0.00\% & $+4.1\%$ \\
+\midrule
+Infiltration $0.8\,$ACH & 31.5 & 10.0\% & 0.00\% & $+3.4\%$ & 52.4 & 10.2\% & 0.00\% & $+3.8\%$ \\
+Heat wave $+3\,$K, swing $\times1.3$ & 33.4 & 12.2\% & 0.00\% & $+3.1\%$ & 46.7 & 9.7\% & 0.00\% & $+4.1\%$ \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\paragraph{Humidity.} A diagnostic humidity balance per zone (supplementary material, Section~S6) tests the assumption that the indoor humidity target is met. It holds in Riyadh, where the conditioned rooms exceed $60\%$ relative humidity in $0.8\%$ of the cooling-season hours, but not in Jeddah, where the oversized units run too briefly: at a sensible heat ratio of $0.75$ the rooms exceed $60\%$ in $41\%$ of the hours, so holding the target needs dedicated dehumidification, whose electricity the latent term prices. The setpoint lever hardly moves this diagnostic, and pre-peak pre-cooling worsens it.
+
+\paragraph{Cost model.}\label{sec:senscost} Under three energy-priced tariffs (a flat price of $0.18\,$SAR/kWh before VAT, the actual two tiers, and the two tiers with the threshold lowered from $6{,}000$ to $500\,$kWh a month, which the apartment meters exceed in summer) no pre-cooling remains optimal, with $0\%$ saving, as Theorem~\ref{thm:policy} implies for any tariff of energy alone once its no-gain condition holds. The stricter tiers only raise the $2\,$K pre-peak penalty, to $4.4\%$ in Riyadh and $5.3\%$ in Jeddah at the $500\,$kWh threshold, because part of the extra energy is billed in the higher tier.
+
+\paragraph{Contrast: a time-of-use tariff.} To check that the null result is a property of the tariff rather than of the model, the same lattice is priced under an illustrative time-of-use tariff that charges the cooling-month energy used from 13:00 to 17:00 at $r$ times the off-peak price, the window of the Saudi time-of-use programme for large industrial and commercial customers, which did not include households~\citep{sec_tou2010}. At $r=1$ the result is that of the volume tariff. At $r=2$, $3$ and $5$ the best schedule pre-cools before the peak and saves $2$--$27$\% with the base-case zones ($13$--$50$\% with one node per zone, whose air holds the full capacitance). The same model that finds no value in re-timing under the Saudi tariff therefore finds it as soon as the tariff prices the hour.
+
+\paragraph{Global uncertainty analysis.}\label{sec:uq} The one-at-a-time runs leave the joint effect of the assumed inputs open. Seventeen of them (the indoor COP slope, the outdoor COP slope, the low-mode COP ratio, the medium-mode COP ratio, the cycling losses of the inverter and of the fixed-speed units, the escalation thresholds, the air-node share, the latent COP, infiltration, internal gains, thermal bridges, absorptance, door exchange, capacity derating, and the daily swing and level of the weather) were varied together over the ranges given in the supplementary material, Section~S7, by a Latin hypercube of $128$ samples per city; the per-sample results are in the repository. The reference policy is admissible in every sample; the pre-code building, which serves only as the envelope comparison, leaves the safe set in $66$--$68$ of them, and as the safe set requires, those comparisons are excluded: the envelope lever is taken over the other $60$--$62$ samples. Table~\ref{tab:uq} gives the median and the $5$--$95\,\%$ range of each result. None of the pre-cooling settings tested in each sample ($0.5$--$2\,$K, night or pre-peak) saves in any of the $256$ samples; a $2\,$K pre-peak pre-cool costs in every sample, and the ordering envelope, then setpoints, then timing holds in every sample in which all the compared runs are admissible. The setpoint lever depends most on the indoor COP slope $\gamma$ and the infiltration (ACH), the cost of pre-peak pre-cooling on the indoor COP slope $\gamma$ and the air-node share of capacitance (partial rank correlations, Riyadh; both cities in the supplementary material, Section~S7).
+
+\begin{table}[t]
+\centering\footnotesize\setlength{\tabcolsep}{1.5pt}
+\caption{Global uncertainty analysis (SBC-compliant building, Case~3, $128$ Latin-hypercube samples of $17$ assumed inputs per city): median and $5$--$95\,\%$ range of each result [\%], over the samples in which both compared runs are admissible (envelope: $62$ and $60$ samples in Riyadh and Jeddah; all others: $128$). Levers are savings; pre-cooling rows are the saving of the best admissible pre-cool and the cost of a $2\,$K pre-cool. Ranges of the inputs and the partial rank correlations: supplementary material, Section~S7.}
+\label{tab:uq}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l r r r r@{}}
+\toprule
+ & \multicolumn{2}{c}{Riyadh} & \multicolumn{2}{c}{Jeddah} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Result & Median & $5$--$95\,\%$ & Median & $5$--$95\,\%$ \\
+\midrule
+Setpoint lever & $10.8$ & $7.9$--$13.4$ & $9.6$ & $7.6$--$11.7$ \\
+Envelope lever & $54.3$ & $49.5$--$60.3$ & $42.4$ & $35.6$--$51.5$ \\
+3-ton units as inverter units & $14.6$ & $8.7$--$19.9$ & $10.6$ & $6.5$--$15.2$ \\
+Best pre-cool ($0.5$--$2\,$K) & $0.0$ & $0.0$--$0.0$ & $0.0$ & $0.0$--$0.0$ \\
+$2\,$K pre-peak pre-cool, cost & $2.5$ & $1.7$--$4.3$ & $3.1$ & $1.9$--$5.3$ \\
+$2\,$K night pre-cool, cost & $4.5$ & $2.3$--$6.9$ & $4.4$ & $2.5$--$6.7$ \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\section{Discussion}\label{sec:discussion}
+The results raise three questions: why they differ from the larger scheduling savings in the literature, what the volume tariff rewards, and where the findings apply. The section answers them in turn and ends with the limits of the study.
+
+\subsection{Reconciling with the literature's double-digit claims}
+The apparent conflict with studies that report large scheduling savings disappears once the levers are separated. Where such studies start from a low setpoint or a leaky envelope, part of their ``scheduling'' saving is the setpoint or envelope saving measured separately here. Where they assume time-of-use or real-time prices, the benefit comes from a tariff Saudi households do not face. Where they let rooms float to the comfort limit through the peak or switch empty rooms off, the saving comes from warmer rooms or vacancy, excluded here by the hard ceiling and (A4), not from moving cooling in time. The same reading explains the larger coordination savings reported for Saudi homes under the same two-tier tariff~\citep{rl2026hvac}: about $4.3\%$ for a five-zone villa and $1.0\%$ for a twenty-zone building with a $23$--$25\,^{\circ}$C band, and $13.4\%$ and $7.8\%$ with a wider band. That study coordinated on/off units against uncoordinated thermostats, partly near and above the $6{,}000\,$kWh threshold, which no apartment meter here reaches; its wide-band savings come mostly from the level at which rooms are held, and its narrow-band building saving is of the order of our perfect-foresight benchmark under the COP assumption most favourable to pre-cooling (Table~\ref{tab:lowerbound}).
+
+\subsection{What the volume tariff rewards}
+Under a tariff that prices energy alone, the theory predicts, and in the base model the simulations confirm, that the best thermostat policy is the fixed frontier policy of Theorem~\ref{thm:policy}: the setpoint whose cycle just fills the band, no pre-cooling, and the lowest mode that holds the room. It needs no forecast, and a thermostat that pre-cools by default, a feature suited to time-varying prices, raises the Saudi bill (Table~\ref{tab:ablation}). The household's levers are therefore the setpoints (cooling $22\to23.5\,^{\circ}$C and heating $20.5\to22.5\,^{\circ}$C, baseline B1 to B2) and, where the unit offers the setting, keeping the indoor fan from running while the compressor is off. For owners and code bodies the envelope, a one-off decision, is worth the most, and the equipment comes next: units chosen by rated coverage cycle at a fraction of their capacity, and inverter units sized by load would save more than their size alone accounts for (Section~\ref{sec:sensitivity}). The equipment figures rest on assumed part-load ratios, cycling coefficients and escalation thresholds rather than on measured data for the catalogue units; varied jointly in the uncertainty analysis (Table~\ref{tab:uq}), the inverter lever spans $\hlUQInvLo$--$\hlUQInvHi\%$ ($5$--$95\,\%$ range over both cities), so its size is uncertain but its sign is not; against the setpoints its rank depends on the measure (percentage of HVAC electricity or SAR).
+For designers, the heat budget of Section~\ref{prop:passive} explains what passive zones can achieve: a bath or corridor stays close to the band only if most of its heat can pass to conditioned rooms, through its walls or an open door, and little heat enters it from outdoors.
+
+\subsection{Where the findings do and do not apply}\label{sec:scope}
+The optimal policy of Theorem~\ref{thm:policy} rests on conditions that can be checked for any building:
+\begin{enumerate}[label=(\roman*),leftmargin=1.8em,itemsep=1pt,topsep=2pt]
+\item the tariff prices energy alone, as the Saudi residential tariff does in every tier (Theorem~\ref{thm:policy}, Section~\ref{sec:senscost});
+\item the $24\,^{\circ}$C ceiling is hard in rooms that are occupied and conditioned at all hours (A4), so they may not float above the band during the peak;
+\item the units' efficiency falls with the mode, and cycling losses fall with the runtime, so the lowest mode that holds the room is the cheapest (Theorem~\ref{thm:optleap}, Corollary~\ref{cor:leaps});
+\item the neighbouring apartments are occupied and conditioned, so the coupling between them carries little heat (Section~\ref{prop:coupling});
+\item pre-cooling is done by a thermostat setback; with $\gamma=0$, the perfect-foresight benchmark bounds what any schedule of the idealised model could gain from the day--night swing of the COP, and with the engine's indoor COP slope it finds a smaller achievable saving (Section~\ref{sec:lowerbound}, Theorem~\ref{obs:precool}); neither that bound nor Theorem~\ref{obs:precool} covers the cycling-loss source~(c) of Proposition~\ref{prop:sources}, and the benchmark does not cover the top floor of Case~3;
+\item the building is feasible (Eq.~\eqref{eq:feasible}) and an admissible policy exists at the reference setpoints (Section~\ref{sec:problem}).
+\end{enumerate}
+Condition~(vi) separates two properties. The tightly sized units of Section~\ref{sec:resinstances} are feasible, yet no policy at the reference setpoints is admissible, because the modelled controller switches on at the ceiling itself and a running unit escalates from a lower mode with a lag within a step; this is why units sized by load need a margin of $\hlRszMargin$ times the peak hourly load (Section~\ref{sec:sensitivity}). A $\hlTightSp\,^{\circ}$C setpoint restores admissibility for the tightly sized units, as would a switch-on point below the ceiling, while no lattice setting does. At the floor, the guard of Section~\ref{sec:controller} holds $V_{\min}$ at the reference and the ordinary policies, while the deep night pre-cooling policies of the pre-code building that still pass it, and the other pre-cooling policies of that building that pass the ceiling, are inadmissible and excluded. The policy must be re-derived where another condition fails: under time-of-use or coincident-peak tariffs, next to vacant apartments or with empty rooms switched off, and for central plants with thermal storage.
+
+\subsection{Limitations and future work}\label{sec:limitations}
+\emph{Internal validity} (whether the model attributes each saving to the right cause). Each room is a two-node zone after ISO~13790; the walls have no layered conduction and the windows no reveal shading or curtains. The sign of the thermostat result rests on the structure being a separate node or on the COP falling in a colder room, both physically founded: only a one-node zone with a COP that ignores the room temperature lets a shallow pre-cool save, and then by a trivial amount (Section~\ref{sec:sensitivity}). The engine agrees with EnergyPlus on the storey geometry and the BESTEST cases (Section~\ref{sec:validation}), but the BESTEST cases run on Riyadh weather, so the acceptance ranges of Standard~140 do not apply, and the engine overstates the extra heat that a setback removes; scaled to EnergyPlus, pre-cooling still costs (supplementary material, Section~S6). The part-load ratios of the modes, the escalation thresholds, the indoor COP slope, the cycling coefficients, standby and derating are assumed rather than measured; the cycling loss is charged through the runtime fraction and the shortest cycle is set by the $3$-minute step, so starts per hour are numerical, and the absolute size of the cycling loss is the least certain equipment input. None of the one-at-a-time variants changes the ordering of the levers or makes thermostat pre-cooling pay, and the global analysis varies the assumed inputs jointly, over ranges that are themselves judgements. The latent load is priced at a fixed latent COP with the humidity target assumed met; in Jeddah the units' sensible runtime alone does not meet it, so a higher setpoint is credited with no loss of dehumidification and the Jeddah results hold for sensible comfort, with humidity priced but not constrained. Heating COP and capacity do not depend on the outdoor temperature and there is no defrost, which affects only Riyadh's small heating energy; the timing result is a cooling-season result.
+
+\emph{External validity} (whether the result carries over). Every room is occupied and conditioned at all hours (A4); switching empty rooms off and vacant apartments are outside the study, and a fair assessment needs a validated pull-down of single rooms and a moisture model for the hours a unit is off. One representative building, designed for this study rather than surveyed, is modelled; villas, high-rise blocks and mixed stocks are not covered, although the conditions of Section~\ref{sec:scope} can be checked for each. The thermostat comparison covers the uniform, fixed-window lattice of Section~\ref{sec:evaluation} with ramped and dawn setbacks, and two spatial subsets. The perfect-foresight benchmark covers the design days of Cases~1 and~2 and the $31$-day July horizon of Case~1, not the top-floor rooms under the roof, with idealised units and linearised door flows; its $\gamma=0$ result bounds the idealised model only, and neither it nor the thermostat comparison establishes what a closed-loop predictive controller on discrete, cycling units would achieve. One typical year per city is used, with a wider swing and a heat wave as weather tests.
+
+\emph{Construct validity} (whether the measured quantities represent the intended ones). Comfort is the air temperature against a fixed band rather than the predicted mean vote, with the operative temperature estimated separately (Section~\ref{sec:operative}). ``SBC-compliant'' refers to the walls, roof and glazing; slabs and partitions keep the uninsulated construction of the stock (Section~\ref{sec:stock}). The model is compared with EnergyPlus and with the stock energy use, not with metered apartments, so the bills in SAR are indicative; the ordering of the levers and the relative savings are the robust results.
+
+Future work follows from these limits, in order of priority: (1)~occupancy-based operation with measured routines, vacant apartments and validated room pull-down; (2)~field data from monitored apartments or a room-resolved EnergyPlus model; (3)~a coil model with mode-dependent dehumidification and a humidity limit; (4)~the costs and payback of the envelope and equipment levers; (5)~model-predictive control with forecast error on the discrete, cycling units, tested against the small margin the benchmark leaves to re-timing~\citep{rl2026hvac}; and (6)~multi-year weather.
+
+\section{Conclusion}\label{sec:conclusion}
+We asked how much the operation of multi-mode heat pumps can save in a Saudi apartment building under the volume tariff, and which lever produces the saving. The theory shows that, without re-timing, the cheapest policy holds every room at the top of the comfort band in the lowest mode that holds the room, and bounds what pre-cooling can gain under any energy-only tariff; the room-resolved simulations of one apartment, one floor and the whole building in Riyadh and Jeddah find (Tables~\ref{tab:scopes} and~\ref{tab:summary}):
+\begin{enumerate}[label=(\arabic*),leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+\item \emph{Setpoint level.} Moving from current practice (cooling at $22$, heating at $20.5\,^{\circ}$C) to the reference setpoints ($23.5$ and $22.5\,^{\circ}$C) saves $12.2$--$12.4$\% of the HVAC energy in Riyadh and $9.8$--$10.5$\% in Jeddah across the three cases, $152$--$234\,$SAR a year per apartment. With a $1\,$K thermostat differential and $0.5\,$K steps this is also the comfort frontier; only finer control would allow more.
+\item \emph{Envelope.} The SBC envelope saves $50.4$--$56.4$\% (Riyadh) and $38.3$--$45.0$\% (Jeddah) of the HVAC energy of the same building with the pre-code envelope, $998$--$2{,}612\,$SAR a year per apartment.
+\item \emph{Pre-cooling.} No thermostat pre-cooling policy pays under the volume tariff in the base model; in the sensitivity analysis the only exception, a one-node zone whose COP does not depend on the room temperature, saves at most $0.08\%$, and with every choice most favourable to pre-cooling combined the best policy saves $0.77\%$ in Riyadh and $0.03\%$ in Jeddah. $2\,$K of pre-peak pre-cooling adds $3.4$--$4.3$\%, and still $2.9$--$3.8$\% if its extra heat is scaled to EnergyPlus. On the solved periodic design days no schedule of the idealised model could save more than $1.9\%$ within the band and $3.6\%$ down to $20\,^{\circ}$C (the upper bound with a COP of the outdoor air only); with the engine's indoor COP factor the achievable saving, that of the best valid schedule found, is at most $0.3\%$ in either case, and a dawn setback fixed in advance on a simulated thermostat costs $0.99$--$1.80$\% (Case~3).
+\item \emph{Equipment.} In the SBC-compliant building, units sized by load at $2.5$ times the peak load, the first of the tested margins that keeps every room within the safe set, would use $11.2$--$16.5$\% less energy as inverter units, $0.2$--$2.1$\% of it from their size alone; replacing only the fixed-speed 3-ton units by inverter units saves $11.4$--$15.0$\%, and an indoor fan left running adds $11.8$--$14.7$\%.
+\item \emph{Passive zones.} Holding their neighbours at the setpoint through walls and open doors, the controller removes $96$\% of the baths' excursion above the band; a small unit in each bath would remove the rest for $2.8$--$4.9$\% more energy (supplementary material, Section~S1).
+\end{enumerate}
+The operating mode is set by the controller, not the household: the lowest mode that holds the room is optimal, and holding the highest mode costs more (Table~\ref{tab:ablation}). A factorial decomposition on one base places the envelope first and timing last (Table~\ref{tab:factorial}), and a global uncertainty analysis of $17$ assumed inputs leaves that ordering unchanged in every comparison within the safe set, and none of the pre-cooling settings tested in each of its $2\times\hlUQn$ samples saves (Table~\ref{tab:uq}). These findings hold for an energy-only tariff, every room occupied and conditioned at all hours, a hard $24\,^{\circ}$C ceiling and catalogue units sized by coverage, and the timing result holds in the base model. For Saudi households and code bodies the implications are to improve the envelope, above all under the roof (the top-floor apartments carry the largest envelope penalty), size units by load with enough margin for the controller, raise the setpoints (cooling $22\to23.5\,^{\circ}$C, heating $20.5\to22.5\,^{\circ}$C), switch off pre-cooling and keep the indoor fan on automatic; moving cooling in time pays substantially only under a tariff that prices the time of use or the peak (Section~\ref{sec:senscost}).
+\section*{Statements and Declarations}
+\paragraph{Funding.} \ifnum\blindmode=1 Removed for double-blind review; given on the title page.\else The author acknowledges the Deanship of Graduate Studies and Scientific Research, Taif University, for funding this work.\fi
+
+\paragraph{Competing interests.} \ifnum\blindmode=1 No competing interests are declared.\else The author declares no competing interests.\fi
+
+\paragraph{Author contributions.} \ifnum\blindmode=1 Removed for double-blind review; given on the title page.\else H.~Faraj is the sole author and carried out the conceptualisation, methodology, software, validation, formal analysis, writing and editing.\fi
+
+\paragraph{Ethics approval and consent.} Not applicable. The study involves no human participants, personal data or animals.
+
+\paragraph{Data availability.} Parameters and their sources are in Table~\ref{tab:params}, the plan and the units in Section~\ref{sec:building}, and the tariff in Section~\ref{sec:tariff}. The paper is accompanied by supplementary material and a repository. The supplementary material contains the passive zones (Section~S1), the full perfect-foresight benchmark table (S2), the building geometry and weather (S3), the formal definitions and running examples (S4), the validation details (S5), the full sensitivity and robustness tables (S6), the uncertainty-analysis input ranges and partial rank correlation coefficients (S7) and the calculation time (S8); the per-sample uncertainty results are in the repository. The repository contains the code, the configuration files (floor plan, parameters and run matrix), the TMYx weather files, the EnergyPlus inputs and every result as JSON and CSV files, and will be deposited with a citable DOI on publication. Every result is regenerated by the pipeline.
+
+\paragraph{Code availability.} The simulation model, the analysis pipeline and the scripts that generate every figure, table and quoted number are in the repository and will be deposited with the data. A test suite checks the plan geometry, the engine, the main theoretical identities and the headline results.
+
+\paragraph{Use of generative AI.} Claude (Anthropic) was used to assist with code development, structuring and language editing. All model design, results, validation and interpretation were carried out without it, and \ifnum\blindmode=1 the author(s) take\else the author takes\fi\ full responsibility for the content.
+
+\appendix
+\section{Nomenclature}\label{app:nomen}
+Table~\ref{tab:nomenclature} lists the symbols used in more than one section.
+
+\begin{table*}[!t]
+\caption{Nomenclature.}\label{tab:nomenclature}
+\small
+\begin{tabularx}{\linewidth}{@{}L{1.9cm}L{6.1cm}@{\hspace{3mm}}L{1.9cm}R@{}}
+\toprule
+Symbol & Meaning & Symbol & Meaning \\
+\midrule
+$\mathcal{Z},\mathcal{Z}_c,\mathcal{Z}_u$ & zones; conditioned; passive & $V_i$; $W_i$ & air; structure temperature of zone $i$ [$^{\circ}$C] \\
+$C_i$; $C^{\mathrm{a}}_i,C^{\mathrm{m}}_i$ & thermal capacitance; its air and structure parts [kWh/K] & $K^{\mathrm{env}}_i$ & zone--outdoor conductance [kW/K]$^{\dagger}$ \\
+$K^{\mathrm{w}}_i,K^{\mathrm{o}}_i$ & window and infiltration; opaque conductance [kW/K] & $K^{\mathrm{am}}_i$ & air--structure conductance [kW/K] \\
+$S^{\mathrm{o}}_i,S^{\mathrm{w}}_i,S^{\mathrm{sky}}_i$ & opaque sol-air, window solar, window sky drives [kW] & $f_r$; $\beta_i$ & radiant share of gains; run fraction of a step \\
+$K_{ij}$ & coupling conductance of zones $i,j$ [kW/K] & $K^{\mathrm{grd}}_i$ & zone--ground conductance [kW/K] \\
+$G_i,S_i$ & internal, solar gains [kW] & $L$ & heat gain of a zone [kW] \\
+$q^{\mathrm{env}}_i$ & heat entering via envelope and ground [kW] & $q_{ji}$ & heat carried through a door [kW] \\
+$M$, $m$ & mode set $\{0,1,2,3\}$; a mode & $f_m$ & capacity fraction of mode $m$ \\
+$Q_i$; $Q^{\mathrm{h}}_i$ & cooling; heating capacity of unit $i$ [kW] & $\mathrm{COP}_m$ & coefficient of performance \\
+$\psi$; $g$, $\gamma$ & capacity derating with $T_a$; indoor COP factor, its slope [K$^{-1}$] & $C_d$; PLF; RTF & cycling degradation; part-load factor; runtime fraction \\
+$(m,t)$ & timed action: mode $m$ for time $t$ & $\Delta$; $\Delta_{\text{th}}$ & amplitude of a leap cycle; thermostat differential [K] \\
+$\sigma$ & schedule (finite or infinite) & $\pi_i(m)$ & cost per unit time, unit $i$, mode $m$ \\
+$\theta^\ast$ & selected policy (frontier setpoint, best depths) & $\lambda$ & energy price [SAR/kWh] \\
+$\bar V$; $\bar V^\ast$ & level (time-mean temperature) of a leap cycle; highest admissible level (comfort frontier) & $U$; $d_m$ & utilisation; duty in mode $m$ \\
+$[V_{\text{low}},V_{\text{high}}]$ & comfort band $[22,24]\,^{\circ}$C & $[V_{\min},V_{\max}]$ & safe set $[20,24]\,^{\circ}$C \\
+$\theta$ & policy $(V^{\text{cool}},V^{\text{heat}},\delta_{\text{night}},\delta_{\text{peak}})$ & $E_{r,k}$ & energy of meter $r$ in month $k$ [kWh] \\
+$\Pi$ & annual bill [SAR] & $T_a,T_g$ & outdoor, ground temperature [$^{\circ}$C] \\
+$u_i(t)$; $s_i(t)$ & mode of unit $i$; $+1$ cooling, $-1$ heating & $c_m$, $h_m$; $\varphi$ & cooling, heating COP coefficients; derating \\
+$\omega_a$, $\omega^\ast$ & outdoor, indoor humidity ratio [kg/kg] & $n_{\mathrm{ach}}$ & infiltration [air changes per hour] \\
+$\delta=(\delta_{\text{night}},\delta_{\text{peak}})$ & pre-cooling depth pair [K] & U-value & thermal transmittance [W/m$^2$K] (not $U_i$) \\
+$V^{\text{cool}}$, $V^{\text{heat}}$ & cooling, heating setpoint [$^{\circ}$C] & $\mathrm{COP}_{\mathrm{lat}}$ & latent (dehumidification) COP \\
+$J_\infty$ & long-run mean electrical power [kW] & $x_t$; $q_{it}$; $v_{\min}$ & nodal temperatures; heat removal; pre-cooling floor (benchmark) \\
+$V_0$ & initial state of a run (not a setpoint) & $\Pi^{\text{vol}}$ & annual bill under the volume tariff [SAR] \\
+\bottomrule
+\end{tabularx}
+\par{\footnotesize $^{\dagger}$Conductances are quoted in W/K in the running example. Symbols used only locally are defined where they appear.}
+\end{table*}
+\section{Proofs}\label{app:proofs}
+\begin{proof}[Proof of Theorem~\ref{thm:optleap}]
+Over one period $T$ of the cycle the stored heat returns to its initial value, so the heat removed equals the heat gained: $\int_0^Tf_m\psi Q_i\,\mathbb{1}_{\text{on}}\,dt=\int_0^TL(V(t))\,dt$. With the outdoor conditions and the neighbours' levels constant (A3, A4), $L(V)=a-bV$ is affine with $b=K^{\mathrm{env}}_i+K^{\mathrm{grd}}_i>0$, so $\int_0^TL(V(t))\,dt=T\,L(\bar V)$. The electrical energy of the cycle is the heat removed divided by $\mathrm{COP}_m$, and dividing by $T$ gives Eq.~\eqref{eq:meanpower}. (i)~For a cycle between $V_{\text{high}}-\Delta$ and $V_{\text{high}}$ both legs are exponential and, to first order in $\Delta$, linear in time, so $\bar V=V_{\text{high}}-\Delta/2$. The numerator of Eq.~\eqref{eq:meanpower} decreases with the level: when every conditioned zone is raised by $\mathrm{d}\bar V$ (A4), the exchange with conditioned neighbours is unchanged, each passive zone, whose monthly mean temperature is by its heat budget (supplementary material, Section~S4) a weighted mean of its neighbours' and the outdoor and ground temperatures, rises by at most $\mathrm{d}\bar V$, and the envelope and ground inflows fall by $b\,\mathrm{d}\bar V$; hence $\mathrm{d}L/\mathrm{d}\bar V\le-b<0$. The denominator decreases with the mode, since $c_1>c_2>c_3$. Hence $\bar P$ is minimised by the highest admissible level and, at that level, by the lowest mode that holds the room; a mode with $f_m\psi Q_i\le L$ cannot complete the cycle and violates the ceiling. A thermostat with differential $\Delta_{\text{th}}$ centred on its setpoint cycles between the setpoint $\pm\Delta_{\text{th}}/2$, so its highest admissible setpoint is $V_{\text{high}}-\Delta_{\text{th}}/2$, which is also its level. (ii)~With constant ambient conditions, integrating the heat balance of an arbitrary safe infinite schedule over $[0,T]$ gives the heat removed as $\int_0^TL(V(t))\,dt$ plus a change in stored heat that stays bounded because $V$ stays in the safe set. Dividing by $T$ and letting $T\to\infty$, the long-run mean heat removed equals the long-run mean of $L(V(t))$, at least $L(V_{\text{high}})$ because $L$ decreases with $V$ and $V\le V_{\text{high}}$. Since $\mathrm{COP}_1\ge\mathrm{COP}_m$, the electrical power is at least the heat removed divided by $\mathrm{COP}_1$. By (i), mode-1 cycles at the ceiling approach this bound as $\Delta\to0$; with a given differential no schedule holds a higher mean than the optimal leap, and any schedule that holds the zone below $\bar V^\ast$ for a positive fraction of time raises the mean of $L(V(t))$ and therefore $J_\infty$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:leaps}]
+By Eq.~\eqref{eq:meanpower} the mean power of each zone is fixed by its level and mode; summing over zones and time gives the cost, in which neither the number of cycles nor the assignment of heat to units appears. The PLF rises with the runtime fraction $L/f_m\psi Q_i$, which is largest in the lowest mode.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{obs:precool}]
+Over a periodic cycle the heat removed equals the heat gained (the coupling between conditioned zones held at a common level cancels under (A4), Section~\ref{prop:coupling}). Pre-cooling lowers $V_i$ for part of the cycle, so the zone gains $\Delta H\ge0$ more heat, and because the ceiling is hard it cannot compensate by rising above $V_{\text{high}}$ later. In the window the unit removes $C_i\delta$ plus the part $\Delta H_w$ of the extra heat admitted there, at $\mathrm{COP}_w$; later it removes $C_i\delta$ less, minus the part $\Delta H_r=\Delta H-\Delta H_w$ admitted during the recovery, at a COP of at least $\mathrm{COP}_p$. Hence $\Delta E\ge(C_i\delta+\Delta H_w)\eta_w-(C_i\delta-\Delta H_r)\eta_p$, which rearranges to Eq.~\eqref{eq:precoolbound}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:policy}]
+By Eq.~\eqref{eq:tariff} the bill depends on the policy only through the meter energies $E_{r,k}$, each the heat removed by the meter's units in month $k$ divided by their mean effective COP, so the timing of the leaps within a month matters only through these two quantities. By Theorem~\ref{thm:optleap}, applied hour by hour to the level at which a zone is held (which requires (A3), so that for long cycles this step is an approximation), each unit's mean power, and hence each meter's energy, decreases as its level rises. A bill that is non-decreasing in every $E_{r,k}$ is therefore minimised at the highest level allowed by (C2), $\bar V^\ast$; this is (i). By Theorem~\ref{obs:precool}, any $\delta_{\text{night}}>0$ or $\delta_{\text{peak}}>0$ that satisfies its no-gain condition gives $\Delta E\ge0$ for every affected meter and so does not lower the bill, and raises it if the tariff is strictly increasing and $\Delta E>0$. The argument is applied zone by zone: under (A4) the conditioned zones are held at a common level, so the coupling between them carries no net heat (Section~\ref{prop:coupling}) and a meter's energy is, to that approximation, the sum of its zones' terms; coupling to zones of other meters cancels only in the sum over the building. Where the no-gain condition fails, Theorem~\ref{obs:precool} gives $\Delta E\ge-C_i\delta(\eta_p-\eta_w)$ for each zone, the stated bound. Nothing in the argument uses the tariff beyond its monotonicity in energy, which is (ii).
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:sources}]
+By Theorem~\ref{thm:optleap}, the mean electrical power of zone $i$ over a cycle is $L_i/\mathrm{COP}_{u_i}$, and summing over cycles and zones gives $E$. The heat gain $L_i$ decreases as $V_i$ rises and as $K^{\mathrm{env}}_i$ falls, and $\mathrm{COP}_m$ decreases with $m$ (Eq.~\ref{eq:cop}). Pre-cooling lowers $V_i$ below the setpoint for part of the day and so raises $L_i$ there (Theorem~\ref{obs:precool}). No other term of $E$ depends on the policy.
+\end{proof}
+\FloatBarrier
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
+

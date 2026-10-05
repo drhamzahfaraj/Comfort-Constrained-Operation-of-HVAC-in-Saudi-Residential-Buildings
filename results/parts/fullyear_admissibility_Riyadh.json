@@ -1,0 +1,103 @@
+{
+ "Riyadh": {
+  "runs": {
+   "compliant/right_sized/reference": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/right_sized_keep_fixed/reference": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/catalogue/current": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/catalogue/reference": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/catalogue/current_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/catalogue/reference_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/inverter/current": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/inverter/reference": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/inverter/current_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/inverter/reference_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/catalogue/current": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/catalogue/reference": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/catalogue/current_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/catalogue/reference_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/inverter/current": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/inverter/reference": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/inverter/current_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "noncompliant/inverter/reference_prepeak2": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   },
+   "compliant/catalogue/dawn_setback": {
+    "admissible": true,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0
+   }
+  },
+  "all_admissible": true,
+  "inadmissible": []
+ }
+}

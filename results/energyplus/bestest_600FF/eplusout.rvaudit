@@ -1,0 +1,13 @@
+ ReadVarsESO
+ processing:/home/claude/work/saudi-hvac-savings/experiments/energyplus/bestest_600FF/in.rvi
+ input file:/home/claude/work/saudi-hvac-savings/results/energyplus/bestest_600FF/eplusout.eso
+ output file:/home/claude/work/saudi-hvac-savings/results/energyplus/bestest_600FF/eplusout.csv
+ getting all vars from:/home/claude/work/saudi-hvac-savings/results/energyplus/bestest_600FF/eplusout.eso
+  number variables requested for output=           1
+ ReadVars Run Time=00hr 00min  0.07sec
+ ReadVarsESO program completed successfully.
+ ReadVarsESO
+ processing:/home/claude/work/saudi-hvac-savings/experiments/energyplus/bestest_600FF/in.mvi
+ Requested ESO file=/home/claude/work/saudi-hvac-savings/results/energyplus/bestest_600FF/eplusout.mtr
+ does not exist.  ReadVarsESO program terminated.
+ ReadVarsESO program terminated.

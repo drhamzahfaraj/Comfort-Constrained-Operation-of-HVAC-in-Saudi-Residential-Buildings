@@ -1,0 +1,8 @@
+# Table 8. Savings of the setpoint and envelope levers by case, city and season (SBC-compliant building; % of the HVAC energy of the case in that season; annual savings in Table [tab:scopes]). Summer: June-September; winter: December-February. Reference: HVAC energy at the reference policy [kWh]. Under the tier-1 volume tariff the bill saving equals the energy saving.
+City,Case,Annual: Reference,Summer: Setpoint,Summer: Envelope,Summer: Reference,Winter: Setpoint,Winter: Envelope,Winter: Reference
+Riyadh,1,"5,484",9.8%,49.2%,"3,313",26.6%,77.4%,222
+Riyadh,2,"11,711",10.0%,48.9%,"7,126",25.8%,78.5%,459
+Riyadh,3,"50,512",10.6%,54.1%,"31,239",11.9%,82.8%,"1,971"
+Jeddah,1,"8,041",7.9%,40.0%,"3,758",16.7%,33.6%,"1,011"
+Jeddah,2,"17,945",7.9%,40.1%,"8,352",16.7%,36.5%,"2,268"
+Jeddah,3,"75,912",8.5%,46.3%,"35,610",17.6%,41.1%,"9,450"

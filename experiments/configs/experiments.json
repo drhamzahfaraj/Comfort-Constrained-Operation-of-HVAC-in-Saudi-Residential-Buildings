@@ -1,0 +1,146 @@
+{
+ "_comment": "Run matrix for reproduce.py (resumable: each block writes results/parts/<block>.json; the parts are merged into results/results.json). Geometry of the reference building is in building.json; physics in parameters.json. main_envelope: the building studied (SBC-compliant); the other envelope serves only as the pre-code comparison.",
+ "cities": [
+  "Riyadh",
+  "Jeddah"
+ ],
+ "envelopes": [
+  "compliant",
+  "noncompliant"
+ ],
+ "tariffs": [
+  "volume"
+ ],
+ "precool_grid": {
+  "_note": "Pre-cooling depths realisable on a thermostat with 0.5 K steps (night window and pre-peak window); the 7 x 7 lattice (49 distinct policies, including no pre-cooling) is searched exhaustively. The deepest depth, 3 K from the 23.5 degC reference, puts the setpoint at 20.5 degC, so with the 0.5 K switching margin no room falls below the 20 degC floor of the safe set.",
+  "night_depth": [
+   0,
+   0.5,
+   1,
+   1.5,
+   2,
+   2.5,
+   3
+  ],
+  "prepeak_depth": [
+   0,
+   0.5,
+   1,
+   1.5,
+   2,
+   2.5,
+   3
+  ]
+ },
+ "linear_price_sar_kwh": 0.2,
+ "thermal_mass_sweep": [
+  0.8,
+  1.5,
+  2.5
+ ],
+ "window_uncertainty": {
+  "wfrac": [
+   0.1,
+   0.15,
+   0.25
+  ],
+  "uwin_multiplier": [
+   0.8,
+   1.0,
+   1.8
+  ]
+ },
+ "cop_swing": [
+  [
+   0.02,
+   0.7,
+   1.15
+  ],
+  [
+   0.05,
+   0.6,
+   1.4
+  ],
+  [
+   0.08,
+   0.5,
+   1.7
+  ],
+  [
+   0.12,
+   0.4,
+   2.2
+  ],
+  [
+   0.2,
+   0.3,
+   3.0
+  ]
+ ],
+ "cop_swing_grid": [
+  0,
+  2,
+  4
+ ],
+ "convergence_check_dt_h": [
+  0.1,
+  0.05,
+  0.016666666666666666
+ ],
+ "hvac_fraction": 0.7,
+ "internal_gain_sweep": {
+  "_note": "annual-mean internal gain [W/m2]; the last value is the previous (un-sourced) 21 W/m2 assumption, kept as an extreme upper bound",
+  "mean_W_m2": [
+   4.0,
+   5.4,
+   6.5,
+   21.2
+  ]
+ },
+ "absorptance_sweep": [
+  0.3,
+  0.5,
+  0.7,
+  0.9
+ ],
+ "main_envelope": "compliant",
+ "sensitivity_depths": [
+  0.5,
+  1.0,
+  1.5,
+  2.0
+ ],
+ "dawn_setback": {
+  "_note": "Pre-specified dawn setback (cooling months): the cooling setpoint is lowered by depth_K at start_h and returned to the setpoint in 0.5 K thermostat steps by end_h.",
+  "depth_K": 2.0,
+  "start_h": 3,
+  "end_h": 9
+ },
+ "fan_continuous_kW": 0.03,
+ "thermal_bridge_wall_factor": 1.2,
+ "right_sizing": {
+  "_note": "Units sized to each zone's largest hourly sensible load at the reference setpoint (typical year), times a margin, rounded up to 0.25 ton (minimum 0.75 ton). The comfort-equivalent margin is the first of `margins`, tried in increasing order, at which no room leaves the safe set (no excursion above 24 degC); `curve_margins` give the excursion-margin curve with the base controller and with a full-capacity start; `tight_margin` gives the hard test instances.",
+  "margins": [
+   1.15,
+   1.5,
+   2.0,
+   2.5,
+   3.0
+  ],
+  "curve_margins": [
+   1.15,
+   1.25,
+   1.5,
+   1.75,
+   2.0,
+   2.5,
+   3.0
+  ],
+  "tight_margin": 1.15
+ },
+ "uncertainty": {
+  "n_samples": 128,
+  "seed": 2026,
+  "_note": "Latin hypercube over the assumed inputs of reproduce.UQ_PARAMS (uniform ranges), SBC-compliant building, Case 3, sampled year; outputs per city; PRCC by rank regression."
+ }
+}

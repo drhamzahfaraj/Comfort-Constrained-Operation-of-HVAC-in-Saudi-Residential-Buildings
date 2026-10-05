@@ -1,0 +1,54 @@
+{
+ "Riyadh": {
+  "linear": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "prepeak_extra_pct": 3.4
+  },
+  "saudi_two_tier": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "prepeak_extra_pct": 3.4
+  },
+  "two_tier_500": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "prepeak_extra_pct": 4.4
+  }
+ },
+ "Jeddah": {
+  "linear": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "prepeak_extra_pct": 4.3
+  },
+  "saudi_two_tier": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "prepeak_extra_pct": 4.3
+  },
+  "two_tier_500": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "prepeak_extra_pct": 5.3
+  }
+ }
+}

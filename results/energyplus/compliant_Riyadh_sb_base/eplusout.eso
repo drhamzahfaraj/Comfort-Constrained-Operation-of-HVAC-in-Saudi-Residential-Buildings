@@ -1,0 +1,60 @@
+Program Version,EnergyPlus, Version 26.1.0-6f2e40d102, YMD=2026.10.05 02:09
+1,5,Environment Title[],Latitude[deg],Longitude[deg],Time Zone[],Elevation[m]
+2,8,Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],Hour[],StartMinute[],EndMinute[],DayType
+3,5,Cumulative Day of Simulation[],Month[],Day of Month[],DST Indicator[1=yes 0=no],DayType  ! When Daily Report Variables Requested
+4,2,Cumulative Days of Simulation[],Month[]  ! When Monthly Report Variables Requested
+5,1,Cumulative Days of Simulation[] ! When Run Period Report Variables Requested
+6,1,Calendar Year of Simulation[] ! When Annual Report Variables Requested
+243,11,F0,Zone Electric Equipment Total Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+244,11,F1,Zone Electric Equipment Total Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+245,11,F2,Zone Electric Equipment Total Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+246,11,F3,Zone Electric Equipment Total Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+247,11,F0,Enclosure Windows Total Transmitted Solar Radiation Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+248,11,F1,Enclosure Windows Total Transmitted Solar Radiation Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+249,11,F2,Enclosure Windows Total Transmitted Solar Radiation Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+250,11,F3,Enclosure Windows Total Transmitted Solar Radiation Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+251,11,F0,Zone Infiltration Sensible Heat Loss Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+252,11,F0,Zone Infiltration Sensible Heat Gain Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+253,11,F1,Zone Infiltration Sensible Heat Loss Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+254,11,F1,Zone Infiltration Sensible Heat Gain Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+255,11,F2,Zone Infiltration Sensible Heat Loss Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+256,11,F2,Zone Infiltration Sensible Heat Gain Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+257,11,F3,Zone Infiltration Sensible Heat Loss Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+258,11,F3,Zone Infiltration Sensible Heat Gain Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+579,11,F0IDEAL,Zone Ideal Loads Supply Air Sensible Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+580,11,F0IDEAL,Zone Ideal Loads Supply Air Sensible Cooling Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+679,11,F1IDEAL,Zone Ideal Loads Supply Air Sensible Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+680,11,F1IDEAL,Zone Ideal Loads Supply Air Sensible Cooling Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+683,11,F2IDEAL,Zone Ideal Loads Supply Air Sensible Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+684,11,F2IDEAL,Zone Ideal Loads Supply Air Sensible Cooling Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+687,11,F3IDEAL,Zone Ideal Loads Supply Air Sensible Heating Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+688,11,F3IDEAL,Zone Ideal Loads Supply Air Sensible Cooling Energy [J] !RunPeriod [Value,Min,Month,Day,Hour,Minute,Max,Month,Day,Hour,Minute]
+End of Data Dictionary
+1,YEAR,  24.72,  46.73,   3.00, 634.60
+5,365
+243,68548667903.9983,9999.0, 0, 0, 0, 0,2295000.0, 1, 1,15,10
+244,68548667903.9983,9999.0, 0, 0, 0, 0,2295000.0, 1, 1,15,10
+245,68548667903.9983,9999.0, 0, 0, 0, 0,2295000.0, 1, 1,15,10
+246,68548667903.9983,9999.0, 0, 0, 0, 0,2295000.0, 1, 1,15,10
+247,28807571562.383446,0.0, 1, 1, 1,10,1853547.8341549186, 2, 5,16,10
+248,28807571562.383446,0.0, 1, 1, 1,10,1853547.8341549179, 2, 5,16,10
+249,28807571562.383415,0.0, 1, 1, 1,10,1853547.8341549165, 2, 5,16,10
+250,28807571562.38345,0.0, 1, 1, 1,10,1853547.8341549186, 2, 5,16,10
+251,15714484208.355581,0.0, 1, 4,15,40,2530844.2521321,12,29, 8,60
+252,33567748473.193573,0.0, 1, 1, 1,10,2445026.974786317, 6,14,15,60
+253,15811444537.238022,0.0, 1, 4,15,40,2533829.9608324077,12,29, 8,60
+254,33490378913.25767,0.0, 1, 1, 1,10,2442794.434078593, 6,14,15,60
+255,15849188299.395344,0.0, 1, 4,15,40,2536816.1453432203,12,29, 8,60
+256,33413023698.738144,0.0, 1, 1, 1,10,2440561.5865251287, 6,14,15,60
+257,15801373665.375172,0.0, 1, 4,15,40,2539802.805778286,12,29, 8,60
+258,33335697379.860954,0.0, 1, 1, 1,10,2438328.432062659, 6,14,15,60
+579,7866673402.813627,0.0, 1, 1, 9,60,3542773.113085953,12,29, 7,40
+580,164704515684.12112,0.0, 1, 1, 1,10,9819803.744628172, 7,19,16,60
+679,7129777389.199144,0.0, 1, 1, 9,50,3498801.5579463737,12,29, 7,40
+680,156681486333.79593,0.0, 1, 1, 1,10,9343519.25286872, 6,14,16,50
+683,7543033009.541821,0.0, 1, 1, 9,50,3669780.6292026415,12,30, 7,40
+684,157692000208.92117,0.0, 1, 1, 1,10,9492405.633862734, 6,14,16,40
+687,10666555473.357456,0.0, 1, 1, 9,60,4653880.902827577,12,30, 7,40
+688,173717474267.93057,0.0, 1, 1, 1,10,10942012.460529406, 6,14,15,60
+End of Data
+ Number of Records Written=          24

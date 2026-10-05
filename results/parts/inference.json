@@ -1,0 +1,14 @@
+{
+ "apartment": {
+  "units": 7,
+  "inference_us": 7.2
+ },
+ "floor": {
+  "units": 15,
+  "inference_us": 7.1
+ },
+ "building": {
+  "units": 60,
+  "inference_us": 8.4
+ }
+}

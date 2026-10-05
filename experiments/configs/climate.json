@@ -1,0 +1,27 @@
+{
+ "_comment": "Climate inputs of the simulator (loaded by src/hvac_savings/model.py). The model is driven by the MEASURED TMYx hourly weather in experiments/weather/ (dry-bulb and dew-point temperature, pressure, global/direct/diffuse solar radiation) -- the same files the EnergyPlus benchmark reads. REP representative days per month (parameters.json) are sampled evenly through each month of the TMYx year and scaled to the month. Tg = ground-contact temperature under the ground-floor slab.",
+ "days_in_month": [
+  31,
+  28,
+  31,
+  30,
+  31,
+  30,
+  31,
+  31,
+  30,
+  31,
+  30,
+  31
+ ],
+ "cities": {
+  "Riyadh": {
+   "epw": "SAU_RI_Riyadh.AB.404380_TMYx.epw",
+   "Tg": 26.0
+  },
+  "Jeddah": {
+   "epw": "SAU_MK_Jeddah-Abdulaziz.Intl.AP.410240_TMYx.epw",
+   "Tg": 29.0
+  }
+ }
+}

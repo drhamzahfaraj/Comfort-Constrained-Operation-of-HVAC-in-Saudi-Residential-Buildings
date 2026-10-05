@@ -1,0 +1,61 @@
+
+Version, 26.1;
+Timestep, 6;
+Building, BESTEST900, 0, Country, 0.04, 0.4, FullExterior, 25, 6;
+SimulationControl, No, No, No, No, Yes, No, 1;
+RunPeriod, Year, 1, 1, , 12, 31, , , , , , , ;
+GlobalGeometryRules, UpperLeftCorner, CounterClockWise, World;
+Site:GroundTemperature:BuildingSurface, 19.27, 19.72, 21.78, 24.06, 29.02, 32.20, 33.77, 33.42, 31.15, 27.73, 23.87, 20.84;
+ScheduleTypeLimits, Frac, 0, 1, Continuous;
+ScheduleTypeLimits, Temp, -60, 200, Continuous;
+ScheduleTypeLimits, Any, , , Continuous;
+Schedule:Constant, Always1, Frac, 1.0;
+Schedule:Constant, CoolSet, Temp, 27.0;
+Schedule:Constant, HeatSet, Temp, 20.0;
+Schedule:Constant, CtrlType, Any, 4;
+Material, Plaster12, Smooth, 0.012, 0.16, 950, 840, 0.9, 0.6, 0.6;
+Material, Plaster10, Smooth, 0.010, 0.16, 950, 840, 0.9, 0.6, 0.6;
+Material, FG66, Rough, 0.066, 0.04, 12, 840, 0.9, 0.6, 0.6;
+Material, FG1118, Rough, 0.1118, 0.04, 12, 840, 0.9, 0.6, 0.6;
+Material, Siding, Rough, 0.009, 0.14, 530, 900, 0.9, 0.6, 0.6;
+Material, Deck, Rough, 0.019, 0.14, 530, 900, 0.9, 0.6, 0.6;
+Material, Timber, Smooth, 0.025, 0.14, 650, 1200, 0.9, 0.6, 0.6;
+Material, Ins1003, Rough, 1.003, 0.04, 10, 1400, 0.9, 0.6, 0.6;
+Material, Ins1007, Rough, 1.007, 0.04, 10, 1400, 0.9, 0.6, 0.6;
+Material, Foam615, Rough, 0.0615, 0.04, 10, 1400, 0.9, 0.6, 0.6;
+Material, Block100, Rough, 0.100, 0.51, 1400, 1000, 0.9, 0.6, 0.6;
+Material, Slab80, Rough, 0.080, 1.13, 1400, 1000, 0.9, 0.6, 0.6;
+Construction, W600, Siding, FG66, Plaster12;
+Construction, R600, Deck, FG1118, Plaster10;
+Construction, F600, Ins1003, Timber;
+Construction, W900, Siding, Foam615, Block100;
+Construction, F900, Ins1007, Slab80;
+WindowMaterial:SimpleGlazingSystem, SG, 3.000, 0.789, 0.8;
+Construction, GLZ, SG;
+Zone, Z, 0, 0,0,0, 1, 1, 2.7, 129.60000000000002;
+BuildingSurface:Detailed, SWall, Wall, W900, Z, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0,0,2.7, 0,0,0, 8.0,0,0, 8.0,0,2.7;
+BuildingSurface:Detailed, EWall, Wall, W900, Z, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    8.0,0,2.7, 8.0,0,0, 8.0,6.0,0, 8.0,6.0,2.7;
+BuildingSurface:Detailed, NWall, Wall, W900, Z, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    8.0,6.0,2.7, 8.0,6.0,0, 0,6.0,0, 0,6.0,2.7;
+BuildingSurface:Detailed, WWall, Wall, W900, Z, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0,6.0,2.7, 0,6.0,0, 0,0,0, 0,0,2.7;
+BuildingSurface:Detailed, Floor, Floor, F900, Z, , Ground, , NoSun, NoWind, 0, 4,
+    8.0,0,0, 0,0,0, 0,6.0,0, 8.0,6.0,0;
+BuildingSurface:Detailed, Roof, Roof, R600, Z, , Outdoors, , SunExposed, WindExposed, 0, 4,
+    0,6.0,2.7, 0,0,2.7, 8.0,0,2.7, 8.0,6.0,2.7;
+FenestrationSurface:Detailed, Win0, Window, GLZ, SWall, , , , , 4,
+    0.5,0,2.2, 0.5,0,0.2, 3.5,0,0.2, 3.5,0,2.2;
+FenestrationSurface:Detailed, Win1, Window, GLZ, SWall, , , , , 4,
+    4.5,0,2.2, 4.5,0,0.2, 7.5,0,0.2, 7.5,0,2.2;
+
+ZoneInfiltration:DesignFlowRate, ZInf, Z, Always1, AirChanges/Hour, , , , 0.5, 1, 0, 0, 0;
+OtherEquipment, ZGain, None, Z, Always1, EquipmentLevel, 200, , , 0, 0.6, 0;
+ZoneControl:Thermostat, ZTh, Z, CtrlType, ThermostatSetpoint:DualSetpoint, DualSP;
+ThermostatSetpoint:DualSetpoint, DualSP, HeatSet, CoolSet;
+ZoneHVAC:IdealLoadsAirSystem, ZIdeal, , Zsup, , , 50, 13, 0.0156, 0.0077, NoLimit, , , NoLimit, , , , , ConstantSensibleHeatRatio, 1.0, None, , , , , ;
+ZoneHVAC:EquipmentConnections, Z, Zeq, Zsup, , Zair, Zret;
+ZoneHVAC:EquipmentList, Zeq, SequentialLoad, ZoneHVAC:IdealLoadsAirSystem, ZIdeal, 1, 1, , ;
+Output:Variable, *, Zone Ideal Loads Supply Air Sensible Cooling Energy, Hourly;
+Output:Variable, *, Zone Ideal Loads Supply Air Sensible Heating Energy, Hourly;

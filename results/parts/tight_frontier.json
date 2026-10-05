@@ -1,0 +1,146 @@
+{
+ "compliant/Riyadh": {
+  "setpoints": [
+   22.0,
+   22.5,
+   23.0,
+   23.5
+  ],
+  "admissible": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "hot_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   68.58
+  ],
+  "cold_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "bill": [
+   9730,
+   9286,
+   8886,
+   8531
+  ],
+  "frontier_setpoint": 23.0,
+  "frontier_bill": 8886,
+  "catalogue_reference_bill": 10456,
+  "saving_vs_catalogue_pct": 15.0
+ },
+ "compliant/Jeddah": {
+  "setpoints": [
+   22.0,
+   22.5,
+   23.0,
+   23.5
+  ],
+  "admissible": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "hot_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   17.75
+  ],
+  "cold_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "bill": [
+   15109,
+   14608,
+   14117,
+   13639
+  ],
+  "frontier_setpoint": 23.0,
+  "frontier_bill": 14117,
+  "catalogue_reference_bill": 15714,
+  "saving_vs_catalogue_pct": 10.2
+ },
+ "noncompliant/Riyadh": {
+  "setpoints": [
+   22.0,
+   22.5,
+   23.0,
+   23.5
+  ],
+  "admissible": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "hot_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   81.2
+  ],
+  "cold_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "bill": [
+   21594,
+   20765,
+   19998,
+   19289
+  ],
+  "frontier_setpoint": 23.0,
+  "frontier_bill": 19998,
+  "catalogue_reference_bill": 23994,
+  "saving_vs_catalogue_pct": 16.7
+ },
+ "noncompliant/Jeddah": {
+  "setpoints": [
+   22.0,
+   22.5,
+   23.0,
+   23.5
+  ],
+  "admissible": [
+   true,
+   true,
+   true,
+   false
+  ],
+  "hot_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   28.73
+  ],
+  "cold_Kh": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "bill": [
+   26929,
+   25760,
+   24625,
+   23524
+  ],
+  "frontier_setpoint": 23.0,
+  "frontier_bill": 24625,
+  "catalogue_reference_bill": 28566,
+  "saving_vs_catalogue_pct": 13.8
+ }
+}

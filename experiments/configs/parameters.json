@@ -1,0 +1,232 @@
+{
+ "_comment": "Physical and economic parameters of the simulator. Loaded by src/hvac_savings/model.py. Editing a value here changes the model run (see README section 6). Structural machinery (integration, topology construction) stays in code; climate profiles are in climate.json.",
+ "envelopes": {
+  "compliant": {
+   "U_WALL": 0.34,
+   "U_ROOF": 0.2,
+   "U_WIN": 2.67,
+   "SHGC": 0.25,
+   "_source": "Saudi residential envelope requirements, climate Zone 1 (Riyadh, Makkah incl. Jeddah): walls 0.34, roof 0.20, windows 2.67 W/m2K, glazing SHGC 0.25 (Krarti et al. 2020, Energy 195:116980, Table 1)"
+  },
+  "noncompliant": {
+   "U_WALL": 2.146,
+   "U_ROOF": 2.123,
+   "U_WIN": 5.778,
+   "SHGC": 0.62,
+   "_source": "Existing uninsulated Saudi residential construction (Riyadh villa): 25 mm stucco + 200 mm hollow concrete block + 20 mm plaster wall; 220 mm cast-concrete roof; 6 mm single-pane glazing, SHGC 0.62 (Alyami & Omer 2021, Environ. Res.: Infrastruct. Sustain. 1:035001, Table A1)"
+  }
+ },
+ "building": {
+  "A_WALL": 15.0,
+  "A_FLR": 20.0,
+  "WFRAC": null,
+  "U_PART": 1.728,
+  "U_SLAB": 2.047,
+  "U_GRND": 2.767,
+  "C_zone": 1.5,
+  "floor_height_m": 3.4,
+  "air_density": 1.2,
+  "air_cp_kJkgK": 1.005,
+  "_internal_U_source": "Uninsulated internal elements, same in both envelopes: 200 mm hollow-block partition 1.728, 220 mm cast-concrete floor slab 2.047, ground floor 2.767 W/m2K (Alyami & Omer 2021, Table A1)",
+  "_WFRAC_note": "null: glazing taken window by window from the drawing (building.json windows_m); a number overrides it by scaling the drawing's windows to that building window-to-wall ratio",
+  "clear_height_m": 3.0,
+  "_height_note": "floor_height_m: floor-to-floor (exterior wall area); clear_height_m: clear room height (air volume, partitions, door openings) -- 3.40 = 0.10 finish + 0.30 slab + 3.00 clear (author's section A-A)"
+ },
+ "plant": {
+  "Q_COOL": 5.27,
+  "Q_HEAT": 6.0,
+  "FR": [
+   0.0,
+   0.35,
+   0.65,
+   1.0
+  ],
+  "COOLc": [
+   null,
+   5.81,
+   4.98,
+   4.01
+  ],
+  "HEATc": [
+   null,
+   4.6,
+   4.0,
+   3.2
+  ],
+  "cop_ambient": {
+   "beta": 0.02,
+   "ref_C": 27,
+   "lo": 0.6,
+   "hi": 1.15
+  },
+  "mode_escalation": [
+   0.4,
+   1.0
+  ],
+  "_COOLc_source": "Cooling COP coefficients c_m: scaled so that full-load COP at the T1 rating condition (35 C), c_3*phi(35)=4.01*0.84=3.37, equals the SASO 2663 minimum EER of 11.5 (Btu/h)/W for split units; the part-load ratios c_1:c_2:c_3 = 1.45:1.24:1 are an assumed inverter characteristic.",
+  "cycling_Cd": {
+   "inverter": 0.15,
+   "fixed_speed": 0.25,
+   "_source": "Part-load factor PLF = 1 - Cd (1 - RTF) applied to each unit's electricity in every hour (RTF: fraction of the hour the unit runs). 0.25 is the long-standing default degradation coefficient of the rating procedure for single-speed units (AHRI 210/240-2017); 0.15 is assumed for the inverter units and applied to all their on/off cycling (an inverter unit that cycles does so at or below its minimum speed); both are varied in the sensitivity analysis."
+  },
+  "standby_W_per_unit": 3.0,
+  "_standby_note": "Standby power of each split unit (controls and indoor electronics), drawn in every hour; rated COPs include the indoor fan while the unit runs (fan auto).",
+  "capacity_derating": {
+   "beta": 0.01,
+   "ref_C": 35.0,
+   "lo": 0.8,
+   "hi": 1.1,
+   "_note": "Cooling capacity falls by 1 % per K of outdoor temperature above the 35 C rating condition (nominal); heating capacity is not derated."
+  },
+  "cop_indoor": {
+   "gamma_per_K": 0.02,
+   "ref_C": 27.0,
+   "lo": 0.8,
+   "hi": 1.1,
+   "_source": "Cooling COP falls by about 2 % per K of indoor air temperature below the 27 C dry-bulb indoor condition of the SASO 2663 T1 rating (lower evaporating temperature); assumed, varied 0-3 %/K in the sensitivity analysis. Heating COP is not adjusted."
+  }
+ },
+ "gains": {
+  "GAINb": 0.07,
+  "GAINd": 0.12,
+  "_note": "kW per 20 m2 of floor: 3.5 W/m2 continuous + a diurnal component peaking at 6 W/m2 (annual mean ~5.4 W/m2). Derived, not tuned: equipment + lighting are 22% of Saudi residential electricity (Krarti et al. 2020, stockmodel2020), i.e. 2.7-4.6 W/m2 at the reported stock EUI of 109-185 kWh/m2/yr, plus ~1.5-2 W/m2 from occupants. Swept in the robustness analysis (gains block)."
+ },
+ "ventilation_latent": {
+  "ACH": 0.4,
+  "HFG": 2450.0,
+  "COP_LAT": 3.4,
+  "humidity_target": {
+   "T_C": 23.0,
+   "RH": 0.55
+  }
+ },
+ "comfort": {
+  "COMFORT": [
+   22.0,
+   24.0
+  ],
+  "SAFE": [
+   20.0,
+   24.0
+  ]
+ },
+ "tariff": {
+  "volume": {
+   "tier1_price": 0.18,
+   "tier2_price": 0.3,
+   "threshold_kwh": 6000,
+   "vat": 1.15
+  }
+ },
+ "policies": {
+  "CURRENT": [
+   22.0,
+   20.5,
+   0,
+   0
+  ],
+  "CODE": [
+   23.5,
+   22.5,
+   0,
+   0
+  ],
+  "_CODE_note": "Reference policy: cooling setpoint 23.5 C and heating setpoint 22.5 C. With the 1 K thermostat differential (+/-0.5 K) the cooling unit switches on at 24.0 C and off at 23.0 C, and the heating unit on at 22.0 C and off at 23.0 C, so a conditioned room stays within the [22, 24] C band in both seasons."
+ },
+ "topology": {
+  "floors": 3,
+  "rows": 3,
+  "cols": 3
+ },
+ "numerics": {
+  "DT": 0.05,
+  "REP": 5,
+  "V_init_C": 23.0
+ },
+ "schedule": {
+  "gain_solar_phase_hr": 8,
+  "precool_night_start": 22,
+  "precool_morning_end": 6,
+  "prepeak_hours": [
+   10,
+   13
+  ],
+  "_note_prepeak": "Pre-peak pre-cooling: setpoint lowered by delta_peak during prepeak_hours, then back to the normal setpoint (no float above it: the 24 C ceiling is hard)."
+ },
+ "solar": {
+  "_comment": "Solar heat gain from the measured TMYx radiation. Opaque walls/roof: sol-air temperature T_sa = T_a + alpha*I/h_out minus the long-wave loss to the sky (roof, walls and windows); windows: SHGC*I on the glazed area. alpha is uncertain (surface colour/finish) and is swept in the robustness analysis.",
+  "absorptance_opaque": 0.7,
+  "h_out_W_m2K": 17.0,
+  "SHGC": 0.35,
+  "ground_reflectance": 0.2,
+  "glazing_angular": {
+   "theta_deg": [
+    0,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "ratio": [
+    1.0,
+    0.975,
+    0.93,
+    0.835,
+    0.66,
+    0.34,
+    0.0
+   ],
+   "diffuse_ratio": 0.87,
+   "_source": "Angle-dependent solar heat gain of double glazing relative to normal incidence and its hemispherical (diffuse) average, from the angle-dependent SHGC tables of ASHRAE Handbook - Fundamentals (2021), Ch. 15 (clear and low-e double glazing have nearly the same normalised curve); applied to the beam and to the diffuse and ground-reflected irradiance on each window."
+  },
+  "sky_longwave": {
+   "emissivity": 0.9,
+   "F_sky_roof": 1.0,
+   "F_sky_vertical": 0.5,
+   "_source": "Long-wave exchange of the outer surfaces with the sky, hour by hour: q = eps F_sky (sigma T_a^4 - IR_h)/h_out, with IR_h the horizontal infrared radiation of the TMYx weather file; sky view factor 1 for the roof and 0.5 for walls and windows (ISO 13790:2008, 11.3.5; ISO 52016-1:2017). Replaces a constant sky correction."
+  }
+ },
+ "doors": {
+  "width_m": 0.813,
+  "height_m": 2.032,
+  "Cd": 0.6,
+  "open_fraction": 1.0,
+  "mean_air_temperature_K": 297.0,
+  "_comment": "Bidirectional air exchange through open interior doorways driven by the temperature difference (Brown & Solvason 1962): Q = (Cd W/3) sqrt(g H^3 |dT| / T), heat = rho cp Q dT. Door clear opening 813 x 2032 mm (SBC 201 Section 1010, adopting IBC 1010.1.1). Interior doors open; apartment entrance and balcony doors closed. width_m/height_m are fallbacks only: every door and opening of building.json carries its own drawn width (and the 3.00 m clear height for wall-free openings)."
+ },
+ "stock_equivalent": {
+  "EER": 8.5,
+  "ACH": 0.8,
+  "_source": "Apartment prototype of the Saudi residential stock model: window AC, EER 8.5; infiltration 0.8 ACH (Krarti et al. 2020, Energy 195:116980, Table 7)"
+ },
+ "thermostat": {
+  "differential_K": 1.0,
+  "setpoint_step_K": 0.5,
+  "auto_deadband_K": 1.0,
+  "_source": "Residential split-unit thermostats: setpoints in 0.5 or 1 K steps, an on/off differential of about 1 K (+/-0.5 K about the setpoint), and an automatic changeover deadband of 1-2 K. A compressor restart delay of 3 min is coded (a unit that has switched off cannot restart until it has been off for 3 min); at the 3-min time step it coincides with the rule that a unit changes state at most once per step, so it adds no constraint. While a unit that is already running cannot hold its room (the room is above its upper switching point at the start of a step), it runs at full capacity (mode 3).",
+  "min_off_min": 3,
+  "floor_guard_setpoint_C": 21.0,
+  "_floor_guard": "Low-limit (floor-guard) heating in the months without automatic heating: the reverse-cycle unit heats only when its room falls to 20.5 degC (setpoint 21.0 degC minus half the differential) and stops at 21.5 degC, so the 20 degC safe floor (C3) is enforced in every month as the cooling thermostat enforces the 24 degC ceiling. The automatic deadband to the active cooling setpoint is kept (guard setpoint at most the cooling setpoint minus the deadband). null: no heating outside the heating months."
+ },
+ "zone_model": {
+  "nodes": 2,
+  "air_fraction": 0.05,
+  "h_is_W_m2K": 3.45,
+  "A_t_per_floor": 4.5,
+  "h_ms_W_m2K": 9.1,
+  "A_m_per_floor": 3.0,
+  "radiant_fraction": 0.5,
+  "_source": "Two-node zone after the 5R1C network of ISO 13790 (surface and mass nodes merged): the room air (with furniture, 5 % of the capacitance) is coupled to the structure (95 %) through the series of h_is A_t and h_ms A_m, with h_is = 3.45 W/m2K, A_t = 4.5 A_f, h_ms = 9.1 W/m2K and A_m = 3.0 A_f (heavy class). Windows, infiltration, doors and the unit act on the air node; opaque walls, roof, ground slab, partitions and floor slabs, the solar gain through windows and the radiant half of the internal gains act on the structure node."
+ },
+ "ground": {
+  "method": "ISO13370",
+  "lambda_W_mK": 2.0,
+  "R_si": 0.17,
+  "R_f": 0.1,
+  "R_se": 0.04,
+  "epw_depth_m": 2.0,
+  "_source": "Slab-on-ground transmittance of ISO 13370 for an uninsulated slab, U = 2 lambda/(pi B' + d_t) ln(pi B'/d_t + 1), with B' = A/(0.5 P) of the building footprint and d_t = w + lambda (R_si + R_f + R_se); the ground temperature follows the monthly undisturbed values at 2 m depth given in the TMYx weather file."
+ }
+}

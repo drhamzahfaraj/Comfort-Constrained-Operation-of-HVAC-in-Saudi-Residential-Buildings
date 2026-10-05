@@ -1,0 +1,10 @@
+# Table 7. Annual HVAC bill and savings per apartment in the SBC-compliant building (Case 3; apartments numbered by storey, 1 = ground, 4 = top; A west, B east). Bill: at current practice [SAR/yr]. Setpoint: saving of the setpoint lever [SAR/yr] (% of the bill). Envelope: extra bill of the same apartment in the pre-code building at the reference setpoints [SAR/yr] (% of the pre-code bill). Percentages from unrounded bills.
+Apartment,Riyadh: Bill,Riyadh: Setpoint,Riyadh: Envelope,Jeddah: Bill,Jeddah: Setpoint,Jeddah: Envelope
+1A,"1,433",190 (13.2%),"1,132 (47.7%)","2,028",231 (11.4%),998 (35.7%)
+1B,"1,394",181 (13.0%),"1,084 (47.2%)","2,076",234 (11.3%),"1,088 (37.1%)"
+2A,"1,306",162 (12.4%),"1,171 (50.6%)","1,869",189 (10.1%),"1,047 (38.4%)"
+2B,"1,266",156 (12.3%),"1,123 (50.3%)","1,920",191 (9.9%),"1,135 (39.6%)"
+3A,"1,307",159 (12.1%),"1,316 (53.4%)","1,871",186 (9.9%),"1,203 (41.7%)"
+3B,"1,268",152 (12.0%),"1,263 (53.1%)","1,921",187 (9.7%),"1,289 (42.6%)"
+4A,"1,462",168 (11.5%),"2,612 (66.9%)","2,044",212 (10.4%),"2,355 (56.2%)"
+4B,"1,423",162 (11.4%),"2,555 (67.0%)","2,095",214 (10.2%),"2,432 (56.4%)"

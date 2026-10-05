@@ -1,0 +1,580 @@
+{
+ "_comment": "Geometry of the reference apartment building, taken from the author's drawing set (src/drawings/, DXF) (typical-floor plan, apartment plan and south elevation; clear room sizes as dimensioned there). Two mirror-image apartments per floor (A west, B east) around a common stair and lobby. Each space is one or more rectangles [x0,y0,x1,y1] in metres on WALL CENTRELINES (exterior walls 0.30 m, party and stair walls 0.25 m, partitions 0.15 m; outer footprint 19.15 m x 28.00 m, so the centreline outline runs from 0.15 to 19.00 m and from 0.15 to 27.85 m); apartment A and the core are listed, B is mirrored about mirror_x. The top of the plan faces north (+y); the main entrance and the stair face south. The west balcony (1.50 m clear) is enclosed by the exterior wall and modelled as an unconditioned zone. Areas, shared walls, exterior faces and orientations are DERIVED from the rectangles. cond = own split unit (none in the baths, maid room, lobby, corridor and hall); ton from the product catalogue by rated coverage (1.5 t 16-18 m2, 2 t 19-22 m2, 2.5 t 22-30 m2, 3 t 30-36 m2) of the clear area. clear_m = clear size on the drawing. gain_factor scales the per-area internal gain. Each space is coupled to the same space on the floor above through the slab. Each apartment has its own meter; the stair is on a common meter. windows_m = window widths per orientation (apartment A; W and E swap for B), height window_height_m.",
+ "reference_zone_area_m2": 20.0,
+ "reference_ext_wall_m2": 15.0,
+ "reference_floors": 4,
+ "representative_apartment": {
+  "side": "A",
+  "floor_index": 1,
+  "_note": "first floor above ground: neither ground-contact nor roof-exposed (typical intermediate apartment)"
+ },
+ "plan": {
+  "footprint_m": [
+   19.15,
+   28.0
+  ],
+  "main_body_m": [
+   18.85,
+   27.7
+  ],
+  "centreline_origin_m": [
+   0.15,
+   0.15
+  ],
+  "mirror_x": 9.575,
+  "plan_up_is": "N",
+  "storey_height_m": 3.4,
+  "balcony_depth_m": 0.0,
+  "_note": "Author's drawing set (src/drawings/: make_dxf.py, make_dxf_single.py, make_building.py -> DXF): 19.15 x 28.00 m outside; floor-to-floor 3.40 m (0.10 finish + 0.30 slab + 3.00 clear); windows sill +0.90, head +2.40; the west balcony is enclosed by the exterior wall (4.00 m window) and is modelled as an unconditioned zone.",
+  "window_height_m": 1.5,
+  "opening_height_m": 3.0
+ },
+ "catalogue_units": {
+  "1.5": {
+   "coverage_m2": [
+    16,
+    18
+   ],
+   "compressor": "inverter"
+  },
+  "2.0": {
+   "coverage_m2": [
+    19,
+    22
+   ],
+   "compressor": "inverter"
+  },
+  "2.5": {
+   "coverage_m2": [
+    22,
+    30
+   ],
+   "compressor": "inverter"
+  },
+  "3.0": {
+   "coverage_m2": [
+    30,
+    36
+   ],
+   "_note": "3 ton, 220 V, rotary (fixed-speed) compressor, cooling and heating, fan speeds low/mid/high (catalogue entry supplied by the author); modelled as an on/off unit that runs at full capacity whenever it runs",
+   "compressor": "fixed_speed"
+  }
+ },
+ "apartment": {
+  "rooms": [
+   {
+    "name": "master_bedroom",
+    "rects": [
+     [
+      0.15,
+      22.625,
+      5.375,
+      27.85
+     ]
+    ],
+    "cond": true,
+    "ton": 2.5,
+    "gain_factor": 1.0,
+    "source": "drawing",
+    "clear_m": [
+     5.0,
+     5.0
+    ],
+    "net_area_m2": 25.0,
+    "windows_m": {
+     "N": [
+      2.0
+     ]
+    }
+   },
+   {
+    "name": "bedroom_2",
+    "rects": [
+     [
+      5.375,
+      23.625,
+      9.575,
+      27.85
+     ]
+    ],
+    "cond": true,
+    "ton": 1.5,
+    "gain_factor": 1.0,
+    "source": "drawing",
+    "clear_m": [
+     4.0,
+     4.0
+    ],
+    "net_area_m2": 16.0,
+    "windows_m": {
+     "N": [
+      2.0
+     ]
+    }
+   },
+   {
+    "name": "master_bath",
+    "rects": [
+     [
+      0.15,
+      20.975,
+      2.875,
+      22.625
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.5,
+    "source": "drawing",
+    "clear_m": [
+     2.5,
+     1.5
+    ],
+    "net_area_m2": 3.75,
+    "windows_m": {
+     "W": [
+      0.9
+     ]
+    }
+   },
+   {
+    "name": "lobby",
+    "rects": [
+     [
+      2.875,
+      20.975,
+      5.375,
+      22.625
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.3,
+    "source": "drawing: lobby between the master bedroom, its bath and the corridor",
+    "clear_m": [
+     2.35,
+     1.5
+    ],
+    "net_area_m2": 3.525
+   },
+   {
+    "name": "bath_2",
+    "rects": [
+     [
+      7.325,
+      21.475,
+      9.575,
+      23.625
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.5,
+    "source": "drawing",
+    "clear_m": [
+     2.0,
+     2.0
+    ],
+    "net_area_m2": 4.0
+   },
+   {
+    "name": "maid_room",
+    "rects": [
+     [
+      7.325,
+      19.325,
+      9.575,
+      21.475
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 1.0,
+    "source": "drawing",
+    "clear_m": [
+     2.0,
+     2.0
+    ],
+    "net_area_m2": 4.0
+   },
+   {
+    "name": "corridor",
+    "rects": [
+     [
+      5.375,
+      19.325,
+      7.325,
+      23.625
+     ],
+     [
+      4.375,
+      16.825,
+      9.575,
+      19.325
+     ],
+     [
+      4.375,
+      19.325,
+      5.375,
+      20.975
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.3,
+    "source": "drawing: corridor (1.75 m clear), its widening beside Bed 3 and the circulation area north of the living room",
+    "clear_m": null,
+    "net_area_m2": null
+   },
+   {
+    "name": "bedroom_3",
+    "rects": [
+     [
+      0.15,
+      16.825,
+      4.375,
+      20.975
+     ]
+    ],
+    "cond": true,
+    "ton": 1.5,
+    "gain_factor": 1.0,
+    "source": "drawing",
+    "clear_m": [
+     4.0,
+     4.0
+    ],
+    "net_area_m2": 16.0,
+    "windows_m": {
+     "W": [
+      1.8
+     ]
+    }
+   },
+   {
+    "name": "balcony",
+    "rects": [
+     [
+      0.15,
+      11.675,
+      1.95,
+      16.825
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.0,
+    "source": "drawing: west balcony enclosed by the exterior wall with a 4.00 m window; unconditioned, closed sliding door to the living room; excluded from the floor area used for EUI (not habitable interior space)",
+    "clear_m": [
+     1.5,
+     5.0
+    ],
+    "net_area_m2": 7.5,
+    "windows_m": {
+     "W": [
+      4.0
+     ]
+    },
+    "floor_area": false
+   },
+   {
+    "name": "living",
+    "rects": [
+     [
+      1.95,
+      11.675,
+      7.175,
+      16.825
+     ]
+    ],
+    "cond": true,
+    "ton": 2.5,
+    "gain_factor": 1.0,
+    "source": "drawing",
+    "clear_m": [
+     5.0,
+     5.0
+    ],
+    "net_area_m2": 25.0
+   },
+   {
+    "name": "living_open",
+    "rects": [
+     [
+      7.175,
+      11.675,
+      9.575,
+      16.825
+     ]
+    ],
+    "cond": true,
+    "ton": 1.5,
+    "gain_factor": 1.0,
+    "source": "drawing: dining area (2.20 x 5.00), open to the living room over its full width. The drawing gives the living room and the dining area a unit each; together (36 m2) they sit at the upper limit of the largest catalogue unit's coverage, so they are modelled as two zones joined by the opening",
+    "clear_m": [
+     2.2,
+     5.0
+    ],
+    "net_area_m2": 11.0
+   },
+   {
+    "name": "kitchen",
+    "rects": [
+     [
+      0.15,
+      7.525,
+      4.375,
+      11.675
+     ]
+    ],
+    "cond": true,
+    "ton": 1.5,
+    "gain_factor": 1.5,
+    "source": "drawing",
+    "clear_m": [
+     4.0,
+     4.0
+    ],
+    "net_area_m2": 16.0,
+    "windows_m": {
+     "W": [
+      1.8
+     ]
+    }
+   },
+   {
+    "name": "entrance_hall",
+    "rects": [
+     [
+      4.375,
+      7.525,
+      7.325,
+      11.675
+     ],
+     [
+      2.375,
+      5.375,
+      7.325,
+      7.525
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.3,
+    "source": "drawing: hall and entrance",
+    "clear_m": null,
+    "net_area_m2": null
+   },
+   {
+    "name": "bath_3",
+    "rects": [
+     [
+      7.325,
+      9.475,
+      9.575,
+      11.675
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.5,
+    "source": "drawing: bath between the dining area and the stair",
+    "clear_m": [
+     2.0,
+     2.0
+    ],
+    "net_area_m2": 4.0
+   },
+   {
+    "name": "guest_room",
+    "rects": [
+     [
+      0.15,
+      0.15,
+      7.325,
+      5.375
+     ]
+    ],
+    "cond": true,
+    "ton": 3.0,
+    "gain_factor": 1.0,
+    "source": "drawing: 34.5 m2, within the 30-36 m2 rated coverage of the 3 t unit",
+    "clear_m": [
+     6.9,
+     5.0
+    ],
+    "net_area_m2": 34.5,
+    "windows_m": {
+     "W": [
+      2.0
+     ],
+     "S": [
+      2.0
+     ]
+    }
+   },
+   {
+    "name": "bath_4",
+    "rects": [
+     [
+      0.15,
+      5.375,
+      2.375,
+      7.525
+     ]
+    ],
+    "cond": false,
+    "ton": 0.0,
+    "gain_factor": 0.5,
+    "source": "drawing: bath between the kitchen and the guest room",
+    "clear_m": [
+     2.0,
+     2.0
+    ],
+    "net_area_m2": 4.0,
+    "windows_m": {
+     "W": [
+      0.8
+     ]
+    }
+   }
+  ],
+  "doors": [
+   {
+    "a": "master_bedroom",
+    "b": "lobby",
+    "width_m": 0.9,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "master_bath",
+    "b": "lobby",
+    "width_m": 0.7,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "lobby",
+    "b": "corridor",
+    "width_m": 0.9,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "bedroom_2",
+    "b": "corridor",
+    "width_m": 0.9,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "bath_2",
+    "b": "corridor",
+    "width_m": 0.8,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "maid_room",
+    "b": "corridor",
+    "width_m": 0.8,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "bedroom_3",
+    "b": "corridor",
+    "width_m": 0.9,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "kitchen",
+    "b": "entrance_hall",
+    "width_m": 0.9,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "bath_3",
+    "b": "entrance_hall",
+    "width_m": 0.8,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "bath_4",
+    "b": "entrance_hall",
+    "width_m": 0.7,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "guest_room",
+    "b": "entrance_hall",
+    "width_m": 0.9,
+    "height_m": null,
+    "kind": "door"
+   },
+   {
+    "a": "corridor",
+    "b": "living",
+    "width_m": 2.65,
+    "height_m": 3.0,
+    "kind": "opening"
+   },
+   {
+    "a": "corridor",
+    "b": "living_open",
+    "width_m": 2.2,
+    "height_m": 3.0,
+    "kind": "opening"
+   },
+   {
+    "a": "living",
+    "b": "living_open",
+    "width_m": 5.0,
+    "height_m": 3.0,
+    "kind": "opening"
+   },
+   {
+    "a": "entrance_hall",
+    "b": "living",
+    "width_m": 2.65,
+    "height_m": 3.0,
+    "kind": "opening"
+   }
+  ],
+  "_doors_note": "Interior doors (width from the drawing, height 2.032 m, SBC 201) and wall-free openings of the open plan (width from the drawing, full 3.00 m clear height) of apartment A, mirrored for B. Apartment entrance and balcony sliding doors are closed."
+ },
+ "core": {
+  "rooms": [
+   {
+    "name": "stair",
+    "rects": [
+     [
+      7.325,
+      0.15,
+      11.825,
+      9.475
+     ]
+    ],
+    "cond": true,
+    "ton": 3.0,
+    "gain_factor": 0.3,
+    "source": "drawing: common stair and lobby (38.5 m2 clear, just beyond the 36 m2 coverage of the largest unit, 3 t), on the common meter",
+    "clear_m": [
+     4.25,
+     9.05
+    ],
+    "net_area_m2": 38.463,
+    "windows_m": {
+     "S": [
+      2.0
+     ]
+    }
+   }
+  ]
+ }
+}

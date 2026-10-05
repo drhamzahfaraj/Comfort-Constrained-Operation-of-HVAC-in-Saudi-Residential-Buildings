@@ -1,0 +1,36 @@
+{
+ "Riyadh": {
+  "train_days": 60,
+  "eval_days": 365,
+  "full_year_best_policy": [
+   0.0,
+   0.0
+  ],
+  "full_year_sched_pct": 0.0,
+  "spearman_rank": 0.999,
+  "kwh_sampled": 50512,
+  "kwh_full": 52465,
+  "abs_err_kwh": -1953,
+  "rel_err_pct": -3.72,
+  "bill_abs_err_SAR": -404,
+  "bill_rel_err_pct": -3.72,
+  "precool_cost_rel_err_pp": 0.56
+ },
+ "Jeddah": {
+  "train_days": 60,
+  "eval_days": 365,
+  "full_year_best_policy": [
+   0.0,
+   0.0
+  ],
+  "full_year_sched_pct": 0.0,
+  "spearman_rank": 0.999,
+  "kwh_sampled": 75912,
+  "kwh_full": 75512,
+  "abs_err_kwh": 400,
+  "rel_err_pct": 0.53,
+  "bill_abs_err_SAR": 83,
+  "bill_rel_err_pct": 0.53,
+  "precool_cost_rel_err_pp": 0.38
+ }
+}

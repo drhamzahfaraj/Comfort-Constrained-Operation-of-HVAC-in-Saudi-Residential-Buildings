@@ -1,0 +1,66 @@
+{
+ "compliant/Riyadh": {
+  "best_policy": [
+   0,
+   0
+  ],
+  "saving_pct": 0.0,
+  "bill": 10860,
+  "prepeak1_pct": 1.15,
+  "prepeak2_pct": 3.35,
+  "min_increase_pct": 0.52,
+  "n_admissible": 49,
+  "reference_admissible": true,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "max_room_C": 24.0
+ },
+ "compliant/Jeddah": {
+  "best_policy": [
+   0,
+   0
+  ],
+  "saving_pct": 0.0,
+  "bill": 15631,
+  "prepeak1_pct": 1.63,
+  "prepeak2_pct": 4.12,
+  "min_increase_pct": 0.69,
+  "n_admissible": 49,
+  "reference_admissible": true,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "max_room_C": 24.0
+ },
+ "noncompliant/Riyadh": {
+  "best_policy": [
+   0,
+   0
+  ],
+  "saving_pct": 0.0,
+  "bill": 24726,
+  "prepeak1_pct": 1.06,
+  "prepeak2_pct": 2.39,
+  "min_increase_pct": 0.51,
+  "n_admissible": 29,
+  "reference_admissible": true,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "max_room_C": 24.0
+ },
+ "noncompliant/Jeddah": {
+  "best_policy": [
+   0,
+   0
+  ],
+  "saving_pct": 0.0,
+  "bill": 28189,
+  "prepeak1_pct": 1.54,
+  "prepeak2_pct": 3.45,
+  "min_increase_pct": 0.74,
+  "n_admissible": 29,
+  "reference_admissible": true,
+  "hot_Kh": 0.0,
+  "cold_Kh": 0.0,
+  "max_room_C": 24.0
+ }
+}

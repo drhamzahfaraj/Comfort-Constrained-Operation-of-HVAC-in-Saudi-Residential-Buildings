@@ -1,0 +1,10 @@
+# Table 9. Why thermostat pre-cooling does not pay (SBC-compliant building, Case 3, volume tariff): change in the annual bill, in the heat removed and in the mean cooling COP when each feature is switched on alone, relative to no scheduling. Default: the controller of Section [sec:controller]; low only: inverter units held in their lowest mode. Every row is admissible: it stays within the safe set, (C2) and (C3).
+City,Feature,"Bill, default","Bill, low only","Heat removed, low only","Mean COP, low only"
+Riyadh,"Pre-peak, 0.5 K",+0.51%,+0.48%,+0.40%,3.44 -> 3.44
+Riyadh,"Pre-peak, 2 K",+3.40%,+1.95%,+1.96%,3.44 -> 3.44
+Riyadh,"Night, 0.5 K",+0.95%,+0.97%,+1.32%,3.44 -> 3.45
+Riyadh,"Night, 2 K",+4.57%,+3.88%,+5.71%,3.44 -> 3.49
+Jeddah,"Pre-peak, 0.5 K",+0.74%,+0.65%,+0.61%,3.63 -> 3.62
+Jeddah,"Pre-peak, 2 K",+4.30%,+2.84%,+3.05%,3.63 -> 3.60
+Jeddah,"Night, 0.5 K",+1.15%,+1.11%,+1.92%,3.63 -> 3.64
+Jeddah,"Night, 2 K",+5.27%,+4.72%,+8.67%,3.63 -> 3.70

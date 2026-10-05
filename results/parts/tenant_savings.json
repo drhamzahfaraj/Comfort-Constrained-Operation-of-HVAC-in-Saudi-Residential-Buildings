@@ -1,0 +1,154 @@
+{
+ "Riyadh": {
+  "apartments": {
+   "1A": {
+    "bill_current": 1433,
+    "bill_reference": 1244,
+    "bill_precode": 2376,
+    "setpoint_pct": 13.2,
+    "setpoint_SAR": 190,
+    "envelope_pct": 47.7,
+    "envelope_SAR": 1132
+   },
+   "1B": {
+    "bill_current": 1394,
+    "bill_reference": 1213,
+    "bill_precode": 2297,
+    "setpoint_pct": 13.0,
+    "setpoint_SAR": 181,
+    "envelope_pct": 47.2,
+    "envelope_SAR": 1084
+   },
+   "2A": {
+    "bill_current": 1306,
+    "bill_reference": 1144,
+    "bill_precode": 2315,
+    "setpoint_pct": 12.4,
+    "setpoint_SAR": 162,
+    "envelope_pct": 50.6,
+    "envelope_SAR": 1171
+   },
+   "2B": {
+    "bill_current": 1266,
+    "bill_reference": 1111,
+    "bill_precode": 2234,
+    "setpoint_pct": 12.3,
+    "setpoint_SAR": 156,
+    "envelope_pct": 50.3,
+    "envelope_SAR": 1123
+   },
+   "3A": {
+    "bill_current": 1307,
+    "bill_reference": 1148,
+    "bill_precode": 2464,
+    "setpoint_pct": 12.1,
+    "setpoint_SAR": 159,
+    "envelope_pct": 53.4,
+    "envelope_SAR": 1316
+   },
+   "3B": {
+    "bill_current": 1268,
+    "bill_reference": 1115,
+    "bill_precode": 2378,
+    "setpoint_pct": 12.0,
+    "setpoint_SAR": 152,
+    "envelope_pct": 53.1,
+    "envelope_SAR": 1263
+   },
+   "4A": {
+    "bill_current": 1462,
+    "bill_reference": 1293,
+    "bill_precode": 3905,
+    "setpoint_pct": 11.5,
+    "setpoint_SAR": 168,
+    "envelope_pct": 66.9,
+    "envelope_SAR": 2612
+   },
+   "4B": {
+    "bill_current": 1423,
+    "bill_reference": 1261,
+    "bill_precode": 3816,
+    "setpoint_pct": 11.4,
+    "setpoint_SAR": 162,
+    "envelope_pct": 67.0,
+    "envelope_SAR": 2555
+   }
+  }
+ },
+ "Jeddah": {
+  "apartments": {
+   "1A": {
+    "bill_current": 2028,
+    "bill_reference": 1797,
+    "bill_precode": 2795,
+    "setpoint_pct": 11.4,
+    "setpoint_SAR": 231,
+    "envelope_pct": 35.7,
+    "envelope_SAR": 998
+   },
+   "1B": {
+    "bill_current": 2076,
+    "bill_reference": 1842,
+    "bill_precode": 2930,
+    "setpoint_pct": 11.3,
+    "setpoint_SAR": 234,
+    "envelope_pct": 37.1,
+    "envelope_SAR": 1088
+   },
+   "2A": {
+    "bill_current": 1869,
+    "bill_reference": 1680,
+    "bill_precode": 2727,
+    "setpoint_pct": 10.1,
+    "setpoint_SAR": 189,
+    "envelope_pct": 38.4,
+    "envelope_SAR": 1047
+   },
+   "2B": {
+    "bill_current": 1920,
+    "bill_reference": 1729,
+    "bill_precode": 2864,
+    "setpoint_pct": 9.9,
+    "setpoint_SAR": 191,
+    "envelope_pct": 39.6,
+    "envelope_SAR": 1135
+   },
+   "3A": {
+    "bill_current": 1871,
+    "bill_reference": 1685,
+    "bill_precode": 2888,
+    "setpoint_pct": 9.9,
+    "setpoint_SAR": 186,
+    "envelope_pct": 41.7,
+    "envelope_SAR": 1203
+   },
+   "3B": {
+    "bill_current": 1921,
+    "bill_reference": 1734,
+    "bill_precode": 3023,
+    "setpoint_pct": 9.7,
+    "setpoint_SAR": 187,
+    "envelope_pct": 42.6,
+    "envelope_SAR": 1289
+   },
+   "4A": {
+    "bill_current": 2044,
+    "bill_reference": 1832,
+    "bill_precode": 4188,
+    "setpoint_pct": 10.4,
+    "setpoint_SAR": 212,
+    "envelope_pct": 56.2,
+    "envelope_SAR": 2355
+   },
+   "4B": {
+    "bill_current": 2095,
+    "bill_reference": 1881,
+    "bill_precode": 4313,
+    "setpoint_pct": 10.2,
+    "setpoint_SAR": 214,
+    "envelope_pct": 56.4,
+    "envelope_SAR": 2432
+   }
+  }
+ }
+}

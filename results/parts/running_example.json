@@ -1,0 +1,126 @@
+{
+ "room": "bedroom_2 (apartment 2A)",
+ "levels_mode1": [
+  {
+   "level": "current practice",
+   "setpoint_C": 22.0,
+   "switch_on_C": 22.5,
+   "load_kW": 0.391,
+   "t_on_h": 0.931,
+   "t_off_h": 3.4,
+   "mean_power_kW": 0.083
+  },
+  {
+   "level": "reference setpoint",
+   "setpoint_C": 23.5,
+   "switch_on_C": 24.0,
+   "load_kW": 0.363,
+   "t_on_h": 0.913,
+   "t_off_h": 3.667,
+   "mean_power_kW": 0.077
+  }
+ ],
+ "band_cycles": {
+  "V_free_C": 42.6,
+  "V_mode1_inf_C": -53.3,
+  "tau_h": 70.1,
+  "cop_mode1": 4.72,
+  "capacity_mode1_kW": 1.82,
+  "V_min_C": 20.0,
+  "V_low_C": 22.0,
+  "V_high_C": 24.0,
+  "cycles": [
+   {
+    "cycle": "thermostat cycle",
+    "V_bottom_C": 23.0,
+    "V_top_C": 24.0,
+    "t_off_h": 3.668,
+    "t_on_h": 0.913,
+    "mean_temp_C": 23.5,
+    "mean_power_kW": 0.0769,
+    "power_at_mean_level_kW": 0.0769,
+    "below_band_pct": 0.0,
+    "vs_thermostat_pct": 0.0
+   },
+   {
+    "cycle": "comfort band",
+    "V_bottom_C": 22.0,
+    "V_top_C": 24.0,
+    "t_off_h": 7.153,
+    "t_on_h": 1.838,
+    "mean_temp_C": 23.01,
+    "mean_power_kW": 0.0789,
+    "power_at_mean_level_kW": 0.0789,
+    "below_band_pct": 0.0,
+    "vs_thermostat_pct": 2.6
+   },
+   {
+    "cycle": "safe set",
+    "V_bottom_C": 20.0,
+    "V_top_C": 24.0,
+    "t_off_h": 13.643,
+    "t_on_h": 3.726,
+    "mean_temp_C": 22.05,
+    "mean_power_kW": 0.0828,
+    "power_at_mean_level_kW": 0.0828,
+    "below_band_pct": 48.2,
+    "vs_thermostat_pct": 7.7
+   }
+  ]
+ },
+ "area_m2": 17.7,
+ "unit_ton": 1.5,
+ "compressor": "inverter",
+ "C_kWh_K": 1.331,
+ "K_env_W_K": 19.0,
+ "K_wall_W_K": 11.8,
+ "K_inf_W_K": 7.1,
+ "neighbours_W_K": {
+  "A1.bedroom_2": 36.3,
+  "A2.master_bedroom": 21.9,
+  "A2.bath_2": 11.7,
+  "A2.corridor": 10.1,
+  "B2.bedroom_2": 21.9,
+  "A3.bedroom_2": 36.3
+ },
+ "Ta_july": 36.4,
+ "internal_gain_kW": 0.096,
+ "solar_july_kW": 0.022,
+ "load_kW": 0.363,
+ "warming_rate_off_K_h": 0.27,
+ "cop_factor_july": 0.81,
+ "cap_factor_july": 0.99,
+ "differential_K": 1.0,
+ "leaps": [
+  {
+   "mode": 1,
+   "capacity_kW": 1.82,
+   "cop": 4.72,
+   "cool_rate_K_h": 1.1,
+   "t_on_h": 0.913,
+   "t_off_h": 3.667,
+   "elec_per_cycle_kWh": 0.352,
+   "mean_power_kW": 0.077
+  },
+  {
+   "mode": 2,
+   "capacity_kW": 3.381,
+   "cop": 4.04,
+   "cool_rate_K_h": 2.27,
+   "t_on_h": 0.441,
+   "t_off_h": 3.667,
+   "elec_per_cycle_kWh": 0.369,
+   "mean_power_kW": 0.09
+  },
+  {
+   "mode": 3,
+   "capacity_kW": 5.201,
+   "cop": 3.26,
+   "cool_rate_K_h": 3.64,
+   "t_on_h": 0.275,
+   "t_off_h": 3.667,
+   "elec_per_cycle_kWh": 0.44,
+   "mean_power_kW": 0.112
+  }
+ ]
+}

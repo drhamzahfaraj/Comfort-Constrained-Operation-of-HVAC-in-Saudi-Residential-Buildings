@@ -1,0 +1,197 @@
+{
+ "apartment": {
+  "spaces": 16,
+  "units": 7,
+  "area": 230.8,
+  "meters": 3,
+  "compliant": {
+   "kwh": 5484,
+   "bill": 1135,
+   "EUI": 23.8,
+   "rep_apartment_kwh": 5484,
+   "rep_apartment_bill": 1135,
+   "setpoint_pct": 12.2,
+   "frontier_setpoint": 23.5,
+   "frontier_extra_pct": 0.0,
+   "volume": {
+    "bldg_pct": 0.0,
+    "best_policy": [
+     0,
+     0
+    ],
+    "apt_pct": 0.0,
+    "base_bill": 1135,
+    "n_infeasible": 0,
+    "safe_violation_Kh": 0.0,
+    "n_policies": 49,
+    "linear_pct": 0.0
+   },
+   "hot_excursion_Ch": 0,
+   "peak_load_ratio": 0.16,
+   "saturated_units": 0,
+   "warmest_room": 24.0,
+   "peak_hourly_kw": 2.2,
+   "max_meter_month_kwh": 916
+  },
+  "noncompliant": {
+   "kwh": 11071,
+   "bill": 2292,
+   "EUI": 48.0,
+   "rep_apartment_kwh": 11071,
+   "rep_apartment_bill": 2292,
+   "setpoint_pct": 9.1,
+   "frontier_setpoint": 23.5,
+   "frontier_extra_pct": 0.0,
+   "volume": {
+    "bldg_pct": 0.0,
+    "best_policy": [
+     0,
+     0
+    ],
+    "apt_pct": 0.0,
+    "base_bill": 2292,
+    "n_infeasible": 0,
+    "safe_violation_Kh": 0.0,
+    "n_policies": 49,
+    "linear_pct": 0.0
+   },
+   "hot_excursion_Ch": 0,
+   "peak_load_ratio": 0.34,
+   "saturated_units": 0,
+   "warmest_room": 24.0,
+   "peak_hourly_kw": 4.6,
+   "max_meter_month_kwh": 1812
+  },
+  "envelope_pct": 50.5
+ },
+ "floor": {
+  "spaces": 33,
+  "units": 15,
+  "area": 503.6,
+  "meters": 3,
+  "compliant": {
+   "kwh": 11711,
+   "bill": 2424,
+   "EUI": 23.3,
+   "rep_apartment_kwh": 5435,
+   "rep_apartment_bill": 1125,
+   "setpoint_pct": 12.4,
+   "frontier_setpoint": 23.5,
+   "frontier_extra_pct": 0.0,
+   "volume": {
+    "bldg_pct": 0.0,
+    "best_policy": [
+     0,
+     0
+    ],
+    "apt_pct": 0.0,
+    "base_bill": 2424,
+    "n_infeasible": 0,
+    "safe_violation_Kh": 0.0,
+    "n_policies": 49,
+    "linear_pct": 0.0
+   },
+   "hot_excursion_Ch": 0,
+   "peak_load_ratio": 0.16,
+   "saturated_units": 0,
+   "warmest_room": 24.0,
+   "peak_hourly_kw": 4.9,
+   "max_meter_month_kwh": 909
+  },
+  "noncompliant": {
+   "kwh": 23605,
+   "bill": 4886,
+   "EUI": 46.9,
+   "rep_apartment_kwh": 10996,
+   "rep_apartment_bill": 2276,
+   "setpoint_pct": 9.3,
+   "frontier_setpoint": 23.5,
+   "frontier_extra_pct": 0.0,
+   "volume": {
+    "bldg_pct": 0.0,
+    "best_policy": [
+     0,
+     0
+    ],
+    "apt_pct": 0.0,
+    "base_bill": 4886,
+    "n_infeasible": 0,
+    "safe_violation_Kh": 0.0,
+    "n_policies": 49,
+    "linear_pct": 0.0
+   },
+   "hot_excursion_Ch": 0,
+   "peak_load_ratio": 0.34,
+   "saturated_units": 0,
+   "warmest_room": 24.0,
+   "peak_hourly_kw": 9.9,
+   "max_meter_month_kwh": 1800
+  },
+  "envelope_pct": 50.4
+ },
+ "building": {
+  "spaces": 132,
+  "units": 60,
+  "area": 2014.4,
+  "meters": 9,
+  "compliant": {
+   "kwh": 50512,
+   "bill": 10456,
+   "EUI": 25.1,
+   "rep_apartment_kwh": 5527,
+   "rep_apartment_bill": 1144,
+   "setpoint_pct": 12.4,
+   "frontier_setpoint": 23.5,
+   "frontier_extra_pct": 0.0,
+   "volume": {
+    "bldg_pct": 0.0,
+    "best_policy": [
+     0,
+     0
+    ],
+    "apt_pct": 0.0,
+    "base_bill": 10456,
+    "n_infeasible": 0,
+    "safe_violation_Kh": 0.0,
+    "n_policies": 49,
+    "linear_pct": 0.0
+   },
+   "hot_excursion_Ch": 0,
+   "peak_load_ratio": 0.19,
+   "saturated_units": 0,
+   "warmest_room": 24.0,
+   "peak_hourly_kw": 21.4,
+   "max_meter_month_kwh": 1060
+  },
+  "noncompliant": {
+   "kwh": 115915,
+   "bill": 23994,
+   "EUI": 57.5,
+   "rep_apartment_kwh": 11183,
+   "rep_apartment_bill": 2315,
+   "setpoint_pct": 8.9,
+   "frontier_setpoint": 23.5,
+   "frontier_extra_pct": 0.0,
+   "volume": {
+    "bldg_pct": 0.0,
+    "best_policy": [
+     0,
+     0
+    ],
+    "apt_pct": 0.0,
+    "base_bill": 23994,
+    "n_infeasible": 7,
+    "safe_violation_Kh": 0.0,
+    "n_policies": 49,
+    "linear_pct": 0.0
+   },
+   "hot_excursion_Ch": 0,
+   "peak_load_ratio": 0.55,
+   "saturated_units": 0,
+   "warmest_room": 24.0,
+   "peak_hourly_kw": 49.9,
+   "max_meter_month_kwh": 3022
+  },
+  "envelope_pct": 56.4
+ }
+}

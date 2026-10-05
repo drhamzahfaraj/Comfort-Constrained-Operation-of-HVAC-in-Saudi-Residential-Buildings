@@ -1,0 +1,16 @@
+{
+ "apartment/day": {
+  "n_vars": 5088,
+  "n_constraints": 3072,
+  "n_solves": 6,
+  "t_solve_s": 8.91,
+  "t_per_solve_s": 1.48
+ },
+ "floor/day": {
+  "n_vars": 10656,
+  "n_constraints": 6336,
+  "n_solves": 6,
+  "t_solve_s": 116.69,
+  "t_per_solve_s": 19.45
+ }
+}

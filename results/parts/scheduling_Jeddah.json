@@ -1,0 +1,50 @@
+{
+ "compliant": {
+  "volume": {
+   "bldg_pct": 0.0,
+   "best_policy": [
+    0,
+    0
+   ],
+   "apt_pct": 0.0,
+   "base_bill": 15714,
+   "n_infeasible": 0,
+   "safe_violation_Kh": 0.0,
+   "n_policies": 49,
+   "linear_pct": 0.0
+  }
+ },
+ "noncompliant": {
+  "volume": {
+   "bldg_pct": 0.0,
+   "best_policy": [
+    0,
+    0
+   ],
+   "apt_pct": 0.0,
+   "base_bill": 28566,
+   "n_infeasible": 13,
+   "safe_violation_Kh": 0.15,
+   "n_policies": 49,
+   "linear_pct": 0.0
+  }
+ },
+ "levers_bldg_pct": {
+  "night_precool_volume": 5.3,
+  "prepeak_precool_volume": 4.3,
+  "hot_excursion": [
+   0,
+   0,
+   0
+  ]
+ },
+ "running_example_apartment": {
+  "volume_bill": 1680,
+  "precool_increase_pct": 4.3
+ },
+ "demand": {
+  "peak_base_kw": 22.0,
+  "peak_precool_kw": 35.3,
+  "ratio": 1.6
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "compliant/Riyadh": {
+  "with_guard": {
+   "admissible": true,
+   "cold_Kh": 0.0,
+   "min_room_C": 22.0,
+   "bill": 10860,
+   "kwh": 52465,
+   "heat_kwh": 2290
+  },
+  "without_guard": {
+   "admissible": true,
+   "cold_Kh": 0.0,
+   "min_room_C": 22.0,
+   "bill": 10860,
+   "kwh": 52465,
+   "heat_kwh": 2290
+  },
+  "guard_heat_kwh": 0,
+  "guard_bill_pct": 0.0
+ },
+ "compliant/Jeddah": {
+  "with_guard": {
+   "admissible": true,
+   "cold_Kh": 0.0,
+   "min_room_C": 22.38,
+   "bill": 15631,
+   "kwh": 75512,
+   "heat_kwh": 0
+  },
+  "without_guard": {
+   "admissible": true,
+   "cold_Kh": 0.0,
+   "min_room_C": 22.38,
+   "bill": 15631,
+   "kwh": 75512,
+   "heat_kwh": 0
+  },
+  "guard_heat_kwh": 0,
+  "guard_bill_pct": 0.0
+ },
+ "noncompliant/Riyadh": {
+  "with_guard": {
+   "admissible": true,
+   "cold_Kh": 0.0,
+   "min_room_C": 20.5,
+   "bill": 24726,
+   "kwh": 119452,
+   "heat_kwh": 12686
+  },
+  "without_guard": {
+   "admissible": false,
+   "cold_Kh": 0.12,
+   "min_room_C": 19.83,
+   "bill": 24726,
+   "kwh": 119451,
+   "heat_kwh": 12685
+  },
+  "guard_heat_kwh": 1,
+  "guard_bill_pct": 0.0
+ },
+ "noncompliant/Jeddah": {
+  "with_guard": {
+   "admissible": true,
+   "cold_Kh": 0.0,
+   "min_room_C": 20.5,
+   "bill": 28189,
+   "kwh": 136176,
+   "heat_kwh": 14
+  },
+  "without_guard": {
+   "admissible": false,
+   "cold_Kh": 41.48,
+   "min_room_C": 18.15,
+   "bill": 28184,
+   "kwh": 136156,
+   "heat_kwh": 0
+  },
+  "guard_heat_kwh": 14,
+  "guard_bill_pct": 0.02
+ }
+}

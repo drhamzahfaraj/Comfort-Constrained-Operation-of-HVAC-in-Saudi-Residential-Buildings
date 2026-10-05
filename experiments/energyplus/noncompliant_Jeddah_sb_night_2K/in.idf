@@ -1,0 +1,372 @@
+
+Version, 26.1;
+Timestep, 6;
+Building, ApartmentBlock, 0, City, 0.04, 0.4, FullExterior, 25, 6;
+SimulationControl, No, No, No, Yes, Yes, No, 1;
+RunPeriod, Year, 1, 1, , 12, 31, , , , , , , ;
+GlobalGeometryRules, UpperLeftCorner, CounterClockWise, World;
+Site:GroundTemperature:BuildingSurface, 26.16, 25.46, 25.60, 26.18, 28.08, 29.80, 31.18, 31.91, 31.76, 30.79, 29.22, 27.56;
+ScheduleTypeLimits, Frac, 0, 1, Continuous;
+ScheduleTypeLimits, Temp, -60, 200, Continuous;
+ScheduleTypeLimits, Any, , , Continuous;
+Schedule:Constant, Always1, Frac, 1.0;
+Schedule:Day:Interval, DiurnalDay, Frac, No,
+    1:00, 0.000,
+    2:00, 0.000,
+    3:00, 0.000,
+    4:00, 0.000,
+    5:00, 0.000,
+    6:00, 0.000,
+    7:00, 0.000,
+    8:00, 0.000,
+    9:00, 0.000,
+    10:00, 0.259,
+    11:00, 0.500,
+    12:00, 0.707,
+    13:00, 0.866,
+    14:00, 0.966,
+    15:00, 1.000,
+    16:00, 0.966,
+    17:00, 0.866,
+    18:00, 0.707,
+    19:00, 0.500,
+    20:00, 0.259,
+    21:00, 0.000,
+    22:00, 0.000,
+    23:00, 0.000,
+    24:00, 0.000;
+Schedule:Week:Daily, DiurnalWk, DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay,DiurnalDay;
+Schedule:Year, DiurnalYr, Frac, DiurnalWk, 1,1,12,31;
+Schedule:Compact, CoolSet, Temp,
+    Through: 1/31, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 2/28, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 3/31, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 4/30, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 5/31, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 6/30, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 7/31, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 8/31, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 9/30, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 10/31, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 11/30, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50,
+    Through: 12/31, For: AllDays,
+    Until: 06:00, 21.50,
+    Until: 22:00, 23.50,
+    Until: 24:00, 21.50;
+Schedule:Compact, HeatSet, Temp,
+    Through: 1/31, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 2/28, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 3/31, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 4/30, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 5/31, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 6/30, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 7/31, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 8/31, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 9/30, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 10/31, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 11/30, For: AllDays,
+    Until: 24:00, 10.00,
+    Through: 12/31, For: AllDays,
+    Until: 24:00, 10.00;
+Schedule:Constant, CtrlType, Any, 4;
+Material:NoMass, MW, MediumRough, 0.2960, 0.9, 0.7, 0.7;
+Material:NoMass, MR, MediumRough, 0.3010, 0.9, 0.7, 0.7;
+Material:NoMass, MG, Rough, 2.3164, 0.9, 0.7, 0.7;
+Material:NoMass, MS, Rough, 0.1485, 0.9, 0.7, 0.7;
+Construction, EXTWALL, MW;
+Construction, ROOF, MR;
+Construction, GRNDFLOOR, MG;
+Construction, SLAB, MS;
+Material, CONC, MediumRough, 0.2, 1.95, 2300, 880, 0.9, 0.7, 0.7;
+Construction, MASS, CONC;
+WindowMaterial:SimpleGlazingSystem, SG, 5.778, 0.62, 0.7;
+Construction, GLAZING, SG;
+Zone, F0, 0,0,0,0, 1, 1, 3.4, 1566.4;
+Zone, F1, 0,0,0,0, 1, 1, 3.4, 1566.4;
+Zone, F2, 0,0,0,0, 1, 1, 3.4, 1566.4;
+Zone, F3, 0,0,0,0, 1, 1, 3.4, 1566.4;
+BuildingSurface:Detailed, F0W0, Wall, EXTWALL, F0, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,0.0000,3.4000,
+    0.0000,0.0000,0.0000,
+    18.8500,0.0000,0.0000,
+    18.8500,0.0000,3.4000;
+FenestrationSurface:Detailed, F0G0, Window, GLAZING, F0W0, , , , , 4,
+    0.5000,0.0000,2.0114,
+    0.5000,0.0000,1.3886,
+    18.3500,0.0000,1.3886,
+    18.3500,0.0000,2.0114;
+BuildingSurface:Detailed, F0W1, Wall, EXTWALL, F0, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,0.0000,3.4000,
+    18.8500,0.0000,0.0000,
+    18.8500,27.7000,0.0000,
+    18.8500,27.7000,3.4000;
+FenestrationSurface:Detailed, F0G1, Window, GLAZING, F0W1, , , , , 4,
+    18.8500,0.5000,2.0059,
+    18.8500,0.5000,1.3941,
+    18.8500,27.2000,1.3941,
+    18.8500,27.2000,2.0059;
+BuildingSurface:Detailed, F0W2, Wall, EXTWALL, F0, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,27.7000,3.4000,
+    18.8500,27.7000,0.0000,
+    0.0000,27.7000,0.0000,
+    0.0000,27.7000,3.4000;
+FenestrationSurface:Detailed, F0G2, Window, GLAZING, F0W2, , , , , 4,
+    18.3500,27.7000,2.0114,
+    18.3500,27.7000,1.3886,
+    0.5000,27.7000,1.3886,
+    0.5000,27.7000,2.0114;
+BuildingSurface:Detailed, F0W3, Wall, EXTWALL, F0, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,27.7000,3.4000,
+    0.0000,27.7000,0.0000,
+    0.0000,0.0000,0.0000,
+    0.0000,0.0000,3.4000;
+FenestrationSurface:Detailed, F0G3, Window, GLAZING, F0W3, , , , , 4,
+    0.0000,27.2000,2.0059,
+    0.0000,27.2000,1.3941,
+    0.0000,0.5000,1.3941,
+    0.0000,0.5000,2.0059;
+BuildingSurface:Detailed, F0Flr, Floor, GRNDFLOOR, F0, , Ground, , NoSun, NoWind, 1.0, 4,
+    18.8500,0.0000,0.0000,
+    0.0000,0.0000,0.0000,
+    0.0000,27.7000,0.0000,
+    18.8500,27.7000,0.0000;
+BuildingSurface:Detailed, F0Ceil, Ceiling, SLAB, F0, , Surface, F1Flr, NoSun, NoWind, 0, 4,
+    0.0000,27.7000,3.4000,
+    0.0000,0.0000,3.4000,
+    18.8500,0.0000,3.4000,
+    18.8500,27.7000,3.4000;
+BuildingSurface:Detailed, F1W0, Wall, EXTWALL, F1, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,0.0000,6.8000,
+    0.0000,0.0000,3.4000,
+    18.8500,0.0000,3.4000,
+    18.8500,0.0000,6.8000;
+FenestrationSurface:Detailed, F1G0, Window, GLAZING, F1W0, , , , , 4,
+    0.5000,0.0000,5.4114,
+    0.5000,0.0000,4.7886,
+    18.3500,0.0000,4.7886,
+    18.3500,0.0000,5.4114;
+BuildingSurface:Detailed, F1W1, Wall, EXTWALL, F1, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,0.0000,6.8000,
+    18.8500,0.0000,3.4000,
+    18.8500,27.7000,3.4000,
+    18.8500,27.7000,6.8000;
+FenestrationSurface:Detailed, F1G1, Window, GLAZING, F1W1, , , , , 4,
+    18.8500,0.5000,5.4059,
+    18.8500,0.5000,4.7941,
+    18.8500,27.2000,4.7941,
+    18.8500,27.2000,5.4059;
+BuildingSurface:Detailed, F1W2, Wall, EXTWALL, F1, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,27.7000,6.8000,
+    18.8500,27.7000,3.4000,
+    0.0000,27.7000,3.4000,
+    0.0000,27.7000,6.8000;
+FenestrationSurface:Detailed, F1G2, Window, GLAZING, F1W2, , , , , 4,
+    18.3500,27.7000,5.4114,
+    18.3500,27.7000,4.7886,
+    0.5000,27.7000,4.7886,
+    0.5000,27.7000,5.4114;
+BuildingSurface:Detailed, F1W3, Wall, EXTWALL, F1, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,27.7000,6.8000,
+    0.0000,27.7000,3.4000,
+    0.0000,0.0000,3.4000,
+    0.0000,0.0000,6.8000;
+FenestrationSurface:Detailed, F1G3, Window, GLAZING, F1W3, , , , , 4,
+    0.0000,27.2000,5.4059,
+    0.0000,27.2000,4.7941,
+    0.0000,0.5000,4.7941,
+    0.0000,0.5000,5.4059;
+BuildingSurface:Detailed, F1Flr, Floor, SLAB, F1, , Surface, F0Ceil, NoSun, NoWind, 0, 4,
+    18.8500,0.0000,3.4000,
+    0.0000,0.0000,3.4000,
+    0.0000,27.7000,3.4000,
+    18.8500,27.7000,3.4000;
+BuildingSurface:Detailed, F1Ceil, Ceiling, SLAB, F1, , Surface, F2Flr, NoSun, NoWind, 0, 4,
+    0.0000,27.7000,6.8000,
+    0.0000,0.0000,6.8000,
+    18.8500,0.0000,6.8000,
+    18.8500,27.7000,6.8000;
+BuildingSurface:Detailed, F2W0, Wall, EXTWALL, F2, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,0.0000,10.2000,
+    0.0000,0.0000,6.8000,
+    18.8500,0.0000,6.8000,
+    18.8500,0.0000,10.2000;
+FenestrationSurface:Detailed, F2G0, Window, GLAZING, F2W0, , , , , 4,
+    0.5000,0.0000,8.8114,
+    0.5000,0.0000,8.1886,
+    18.3500,0.0000,8.1886,
+    18.3500,0.0000,8.8114;
+BuildingSurface:Detailed, F2W1, Wall, EXTWALL, F2, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,0.0000,10.2000,
+    18.8500,0.0000,6.8000,
+    18.8500,27.7000,6.8000,
+    18.8500,27.7000,10.2000;
+FenestrationSurface:Detailed, F2G1, Window, GLAZING, F2W1, , , , , 4,
+    18.8500,0.5000,8.8059,
+    18.8500,0.5000,8.1941,
+    18.8500,27.2000,8.1941,
+    18.8500,27.2000,8.8059;
+BuildingSurface:Detailed, F2W2, Wall, EXTWALL, F2, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,27.7000,10.2000,
+    18.8500,27.7000,6.8000,
+    0.0000,27.7000,6.8000,
+    0.0000,27.7000,10.2000;
+FenestrationSurface:Detailed, F2G2, Window, GLAZING, F2W2, , , , , 4,
+    18.3500,27.7000,8.8114,
+    18.3500,27.7000,8.1886,
+    0.5000,27.7000,8.1886,
+    0.5000,27.7000,8.8114;
+BuildingSurface:Detailed, F2W3, Wall, EXTWALL, F2, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,27.7000,10.2000,
+    0.0000,27.7000,6.8000,
+    0.0000,0.0000,6.8000,
+    0.0000,0.0000,10.2000;
+FenestrationSurface:Detailed, F2G3, Window, GLAZING, F2W3, , , , , 4,
+    0.0000,27.2000,8.8059,
+    0.0000,27.2000,8.1941,
+    0.0000,0.5000,8.1941,
+    0.0000,0.5000,8.8059;
+BuildingSurface:Detailed, F2Flr, Floor, SLAB, F2, , Surface, F1Ceil, NoSun, NoWind, 0, 4,
+    18.8500,0.0000,6.8000,
+    0.0000,0.0000,6.8000,
+    0.0000,27.7000,6.8000,
+    18.8500,27.7000,6.8000;
+BuildingSurface:Detailed, F2Ceil, Ceiling, SLAB, F2, , Surface, F3Flr, NoSun, NoWind, 0, 4,
+    0.0000,27.7000,10.2000,
+    0.0000,0.0000,10.2000,
+    18.8500,0.0000,10.2000,
+    18.8500,27.7000,10.2000;
+BuildingSurface:Detailed, F3W0, Wall, EXTWALL, F3, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,0.0000,13.6000,
+    0.0000,0.0000,10.2000,
+    18.8500,0.0000,10.2000,
+    18.8500,0.0000,13.6000;
+FenestrationSurface:Detailed, F3G0, Window, GLAZING, F3W0, , , , , 4,
+    0.5000,0.0000,12.2114,
+    0.5000,0.0000,11.5886,
+    18.3500,0.0000,11.5886,
+    18.3500,0.0000,12.2114;
+BuildingSurface:Detailed, F3W1, Wall, EXTWALL, F3, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,0.0000,13.6000,
+    18.8500,0.0000,10.2000,
+    18.8500,27.7000,10.2000,
+    18.8500,27.7000,13.6000;
+FenestrationSurface:Detailed, F3G1, Window, GLAZING, F3W1, , , , , 4,
+    18.8500,0.5000,12.2059,
+    18.8500,0.5000,11.5941,
+    18.8500,27.2000,11.5941,
+    18.8500,27.2000,12.2059;
+BuildingSurface:Detailed, F3W2, Wall, EXTWALL, F3, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    18.8500,27.7000,13.6000,
+    18.8500,27.7000,10.2000,
+    0.0000,27.7000,10.2000,
+    0.0000,27.7000,13.6000;
+FenestrationSurface:Detailed, F3G2, Window, GLAZING, F3W2, , , , , 4,
+    18.3500,27.7000,12.2114,
+    18.3500,27.7000,11.5886,
+    0.5000,27.7000,11.5886,
+    0.5000,27.7000,12.2114;
+BuildingSurface:Detailed, F3W3, Wall, EXTWALL, F3, , Outdoors, , SunExposed, WindExposed, 0.5, 4,
+    0.0000,27.7000,13.6000,
+    0.0000,27.7000,10.2000,
+    0.0000,0.0000,10.2000,
+    0.0000,0.0000,13.6000;
+FenestrationSurface:Detailed, F3G3, Window, GLAZING, F3W3, , , , , 4,
+    0.0000,27.2000,12.2059,
+    0.0000,27.2000,11.5941,
+    0.0000,0.5000,11.5941,
+    0.0000,0.5000,12.2059;
+BuildingSurface:Detailed, F3Flr, Floor, SLAB, F3, , Surface, F2Ceil, NoSun, NoWind, 0, 4,
+    18.8500,0.0000,10.2000,
+    0.0000,0.0000,10.2000,
+    0.0000,27.7000,10.2000,
+    18.8500,27.7000,10.2000;
+BuildingSurface:Detailed, F3Rf, Roof, ROOF, F3, , Outdoors, , SunExposed, WindExposed, 0, 4,
+    0.0000,27.7000,13.6000,
+    0.0000,0.0000,13.6000,
+    18.8500,0.0000,13.6000,
+    18.8500,27.7000,13.6000;
+ZoneInfiltration:DesignFlowRate, F0Inf, F0, Always1, AirChanges/Hour, , , , 0.4, , , , ;
+InternalMass, F0Mass, MASS, F0, , 348.3;
+ElectricEquipment, F0Base, F0, Always1, EquipmentLevel, 1409, , , 0.0, 0.5, 0.0, ;
+ElectricEquipment, F0Diu, F0, DiurnalYr, EquipmentLevel, 2416, , , 0.0, 0.5, 0.0, ;
+ZoneControl:Thermostat, F0Th, F0, CtrlType, ThermostatSetpoint:DualSetpoint, DualSP;
+ZoneHVAC:IdealLoadsAirSystem, F0Ideal, , F0sup, , , 50, 13, 0.0156, 0.0077, NoLimit, , , NoLimit, , , , , ConstantSensibleHeatRatio, 1.0, None, , , , , ;
+ZoneHVAC:EquipmentConnections, F0, F0eq, F0sup, , F0air, F0ret;
+ZoneHVAC:EquipmentList, F0eq, SequentialLoad, ZoneHVAC:IdealLoadsAirSystem, F0Ideal, 1, 1, , ;
+ZoneInfiltration:DesignFlowRate, F1Inf, F1, Always1, AirChanges/Hour, , , , 0.4, , , , ;
+InternalMass, F1Mass, MASS, F1, , 348.3;
+ElectricEquipment, F1Base, F1, Always1, EquipmentLevel, 1409, , , 0.0, 0.5, 0.0, ;
+ElectricEquipment, F1Diu, F1, DiurnalYr, EquipmentLevel, 2416, , , 0.0, 0.5, 0.0, ;
+ZoneControl:Thermostat, F1Th, F1, CtrlType, ThermostatSetpoint:DualSetpoint, DualSP;
+ZoneHVAC:IdealLoadsAirSystem, F1Ideal, , F1sup, , , 50, 13, 0.0156, 0.0077, NoLimit, , , NoLimit, , , , , ConstantSensibleHeatRatio, 1.0, None, , , , , ;
+ZoneHVAC:EquipmentConnections, F1, F1eq, F1sup, , F1air, F1ret;
+ZoneHVAC:EquipmentList, F1eq, SequentialLoad, ZoneHVAC:IdealLoadsAirSystem, F1Ideal, 1, 1, , ;
+ZoneInfiltration:DesignFlowRate, F2Inf, F2, Always1, AirChanges/Hour, , , , 0.4, , , , ;
+InternalMass, F2Mass, MASS, F2, , 348.3;
+ElectricEquipment, F2Base, F2, Always1, EquipmentLevel, 1409, , , 0.0, 0.5, 0.0, ;
+ElectricEquipment, F2Diu, F2, DiurnalYr, EquipmentLevel, 2416, , , 0.0, 0.5, 0.0, ;
+ZoneControl:Thermostat, F2Th, F2, CtrlType, ThermostatSetpoint:DualSetpoint, DualSP;
+ZoneHVAC:IdealLoadsAirSystem, F2Ideal, , F2sup, , , 50, 13, 0.0156, 0.0077, NoLimit, , , NoLimit, , , , , ConstantSensibleHeatRatio, 1.0, None, , , , , ;
+ZoneHVAC:EquipmentConnections, F2, F2eq, F2sup, , F2air, F2ret;
+ZoneHVAC:EquipmentList, F2eq, SequentialLoad, ZoneHVAC:IdealLoadsAirSystem, F2Ideal, 1, 1, , ;
+ZoneInfiltration:DesignFlowRate, F3Inf, F3, Always1, AirChanges/Hour, , , , 0.4, , , , ;
+InternalMass, F3Mass, MASS, F3, , 348.3;
+ElectricEquipment, F3Base, F3, Always1, EquipmentLevel, 1409, , , 0.0, 0.5, 0.0, ;
+ElectricEquipment, F3Diu, F3, DiurnalYr, EquipmentLevel, 2416, , , 0.0, 0.5, 0.0, ;
+ZoneControl:Thermostat, F3Th, F3, CtrlType, ThermostatSetpoint:DualSetpoint, DualSP;
+ZoneHVAC:IdealLoadsAirSystem, F3Ideal, , F3sup, , , 50, 13, 0.0156, 0.0077, NoLimit, , , NoLimit, , , , , ConstantSensibleHeatRatio, 1.0, None, , , , , ;
+ZoneHVAC:EquipmentConnections, F3, F3eq, F3sup, , F3air, F3ret;
+ZoneHVAC:EquipmentList, F3eq, SequentialLoad, ZoneHVAC:IdealLoadsAirSystem, F3Ideal, 1, 1, , ;
+
+ThermostatSetpoint:DualSetpoint, DualSP, HeatSet, CoolSet;
+Output:Variable, *, Zone Ideal Loads Supply Air Sensible Cooling Energy, RunPeriod;
+Output:Variable, *, Zone Ideal Loads Supply Air Sensible Heating Energy, RunPeriod;
+Output:Variable, *, Enclosure Windows Total Transmitted Solar Radiation Energy, RunPeriod;
+Output:Variable, *, Zone Infiltration Sensible Heat Gain Energy, RunPeriod;
+Output:Variable, *, Zone Infiltration Sensible Heat Loss Energy, RunPeriod;
+Output:Variable, *, Zone Electric Equipment Total Heating Energy, RunPeriod;
+OutputControl:Table:Style, Comma;
+Output:Table:SummaryReports, AllSummary;

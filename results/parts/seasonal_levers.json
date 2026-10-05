@@ -1,0 +1,108 @@
+{
+ "Riyadh": {
+  "apartment": {
+   "annual": {
+    "setpoint_pct": 12.2,
+    "envelope_pct": 50.5,
+    "kwh_reference": 5484
+   },
+   "summer": {
+    "setpoint_pct": 9.8,
+    "envelope_pct": 49.2,
+    "kwh_reference": 3313
+   },
+   "winter": {
+    "setpoint_pct": 26.6,
+    "envelope_pct": 77.4,
+    "kwh_reference": 222
+   }
+  },
+  "floor": {
+   "annual": {
+    "setpoint_pct": 12.4,
+    "envelope_pct": 50.4,
+    "kwh_reference": 11711
+   },
+   "summer": {
+    "setpoint_pct": 10.0,
+    "envelope_pct": 48.9,
+    "kwh_reference": 7126
+   },
+   "winter": {
+    "setpoint_pct": 25.8,
+    "envelope_pct": 78.5,
+    "kwh_reference": 459
+   }
+  },
+  "building": {
+   "annual": {
+    "setpoint_pct": 12.4,
+    "envelope_pct": 56.4,
+    "kwh_reference": 50512
+   },
+   "summer": {
+    "setpoint_pct": 10.6,
+    "envelope_pct": 54.1,
+    "kwh_reference": 31239
+   },
+   "winter": {
+    "setpoint_pct": 11.9,
+    "envelope_pct": 82.8,
+    "kwh_reference": 1971
+   }
+  }
+ },
+ "Jeddah": {
+  "apartment": {
+   "annual": {
+    "setpoint_pct": 9.8,
+    "envelope_pct": 38.3,
+    "kwh_reference": 8041
+   },
+   "summer": {
+    "setpoint_pct": 7.9,
+    "envelope_pct": 40.0,
+    "kwh_reference": 3758
+   },
+   "winter": {
+    "setpoint_pct": 16.7,
+    "envelope_pct": 33.6,
+    "kwh_reference": 1011
+   }
+  },
+  "floor": {
+   "annual": {
+    "setpoint_pct": 9.8,
+    "envelope_pct": 38.9,
+    "kwh_reference": 17945
+   },
+   "summer": {
+    "setpoint_pct": 7.9,
+    "envelope_pct": 40.1,
+    "kwh_reference": 8352
+   },
+   "winter": {
+    "setpoint_pct": 16.7,
+    "envelope_pct": 36.5,
+    "kwh_reference": 2268
+   }
+  },
+  "building": {
+   "annual": {
+    "setpoint_pct": 10.5,
+    "envelope_pct": 45.0,
+    "kwh_reference": 75912
+   },
+   "summer": {
+    "setpoint_pct": 8.5,
+    "envelope_pct": 46.3,
+    "kwh_reference": 35610
+   },
+   "winter": {
+    "setpoint_pct": 17.6,
+    "envelope_pct": 41.1,
+    "kwh_reference": 9450
+   }
+  }
+ }
+}

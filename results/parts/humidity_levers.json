@@ -1,0 +1,74 @@
+{
+ "Riyadh/SHR0.75": {
+  "current_22C": {
+   "rh60_pct_hours": 0.9,
+   "coil_share_pct": 96.0
+  },
+  "reference_23.5C": {
+   "rh60_pct_hours": 0.8,
+   "coil_share_pct": 94.5
+  },
+  "prepeak_2K": {
+   "rh60_pct_hours": 0.8,
+   "coil_share_pct": 92.4
+  },
+  "night_2K": {
+   "rh60_pct_hours": 0.7,
+   "coil_share_pct": 86.8
+  }
+ },
+ "Riyadh/SHR0.65": {
+  "current_22C": {
+   "rh60_pct_hours": 0.6,
+   "coil_share_pct": 96.7
+  },
+  "reference_23.5C": {
+   "rh60_pct_hours": 0.7,
+   "coil_share_pct": 95.5
+  },
+  "prepeak_2K": {
+   "rh60_pct_hours": 0.7,
+   "coil_share_pct": 93.7
+  },
+  "night_2K": {
+   "rh60_pct_hours": 0.6,
+   "coil_share_pct": 87.3
+  }
+ },
+ "Jeddah/SHR0.75": {
+  "current_22C": {
+   "rh60_pct_hours": 43.0,
+   "coil_share_pct": 84.8
+  },
+  "reference_23.5C": {
+   "rh60_pct_hours": 41.1,
+   "coil_share_pct": 82.3
+  },
+  "prepeak_2K": {
+   "rh60_pct_hours": 44.6,
+   "coil_share_pct": 76.0
+  },
+  "night_2K": {
+   "rh60_pct_hours": 41.4,
+   "coil_share_pct": 76.6
+  }
+ },
+ "Jeddah/SHR0.65": {
+  "current_22C": {
+   "rh60_pct_hours": 19.9,
+   "coil_share_pct": 90.0
+  },
+  "reference_23.5C": {
+   "rh60_pct_hours": 21.2,
+   "coil_share_pct": 87.6
+  },
+  "prepeak_2K": {
+   "rh60_pct_hours": 27.5,
+   "coil_share_pct": 82.8
+  },
+  "night_2K": {
+   "rh60_pct_hours": 23.9,
+   "coil_share_pct": 82.0
+  }
+ }
+}

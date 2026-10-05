@@ -1,0 +1,34 @@
+{
+ "apartment/Riyadh": {
+  "vmin22_dT0.5": 0.28,
+  "vmin22_dT0.2": 0.19,
+  "vmin22_dT1.0": 0.32,
+  "E_hold_kwh_day": 22.26,
+  "engine_hold_kwh_day": 22.0,
+  "engine_vs_linear_pct": -1.2
+ },
+ "apartment/Jeddah": {
+  "vmin22_dT0.5": 0.03,
+  "vmin22_dT0.2": -0.01,
+  "vmin22_dT1.0": 0.05,
+  "E_hold_kwh_day": 16.79,
+  "engine_hold_kwh_day": 16.29,
+  "engine_vs_linear_pct": -3.0
+ },
+ "floor/Riyadh": {
+  "vmin22_dT0.5": 0.35,
+  "vmin22_dT0.2": 0.26,
+  "vmin22_dT1.0": 0.38,
+  "E_hold_kwh_day": 46.61,
+  "engine_hold_kwh_day": 45.15,
+  "engine_vs_linear_pct": -3.1
+ },
+ "floor/Jeddah": {
+  "vmin22_dT0.5": 0.06,
+  "vmin22_dT0.2": 0.03,
+  "vmin22_dT1.0": 0.09,
+  "E_hold_kwh_day": 35.92,
+  "engine_hold_kwh_day": 35.58,
+  "engine_vs_linear_pct": -0.9
+ }
+}

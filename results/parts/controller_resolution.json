@@ -1,0 +1,146 @@
+{
+ "Riyadh": {
+  "step3_plf": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 3.4,
+   "night2_pct": 4.57,
+   "min_increase_pct": 0.51,
+   "bill": 10456,
+   "hot_Ch": 0,
+   "bill_vs_base_pct": -0.0,
+   "setpoint_pct": 12.4,
+   "starts_per_unit_h": 2.01
+  },
+  "step3_start": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 2.45,
+   "night2_pct": 3.48,
+   "min_increase_pct": 0.43,
+   "bill": 13806,
+   "hot_Ch": 0,
+   "bill_vs_base_pct": 32.04,
+   "setpoint_pct": 12.2,
+   "starts_per_unit_h": 2.01
+  },
+  "step1_plf": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 2.11,
+   "night2_pct": 3.66,
+   "min_increase_pct": 0.48,
+   "bill": 10675,
+   "hot_Ch": 0,
+   "bill_vs_base_pct": 2.09,
+   "setpoint_pct": 12.2,
+   "starts_per_unit_h": 2.31
+  },
+  "step1_minon3_start": {
+   "best_policy": null,
+   "best_saving_pct": null,
+   "n_admissible": 0,
+   "reference_admissible": false,
+   "prepeak2_pct": 1.37,
+   "night2_pct": 5.43,
+   "min_increase_pct": 0.72,
+   "bill": 14541,
+   "hot_Ch": 636,
+   "bill_vs_base_pct": 39.07,
+   "hot_months": [
+    1,
+    2,
+    12
+   ],
+   "fixed_speed_share_pct": 100.0,
+   "max_room_C": 24.84,
+   "setpoint_pct": 2.4,
+   "starts_per_unit_h": 2.14
+  }
+ },
+ "Jeddah": {
+  "step3_plf": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 4.3,
+   "night2_pct": 5.27,
+   "min_increase_pct": 0.74,
+   "bill": 15714,
+   "hot_Ch": 0,
+   "bill_vs_base_pct": -0.0,
+   "setpoint_pct": 10.5,
+   "starts_per_unit_h": 2.63
+  },
+  "step3_start": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 2.82,
+   "night2_pct": 4.43,
+   "min_increase_pct": 0.6,
+   "bill": 19885,
+   "hot_Ch": 0,
+   "bill_vs_base_pct": 26.54,
+   "setpoint_pct": 10.8,
+   "starts_per_unit_h": 2.63
+  },
+  "step1_plf": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 49,
+   "reference_admissible": true,
+   "prepeak2_pct": 2.85,
+   "night2_pct": 4.35,
+   "min_increase_pct": 0.63,
+   "bill": 16098,
+   "hot_Ch": 0,
+   "bill_vs_base_pct": 2.45,
+   "setpoint_pct": 10.4,
+   "starts_per_unit_h": 2.94
+  },
+  "step1_minon3_start": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_saving_pct": 0.0,
+   "n_admissible": 12,
+   "reference_admissible": true,
+   "prepeak2_pct": 2.45,
+   "night2_pct": 4.95,
+   "min_increase_pct": 0.6,
+   "bill": 18914,
+   "hot_Ch": 0,
+   "bill_vs_base_pct": 20.37,
+   "setpoint_pct": 10.8,
+   "starts_per_unit_h": 2.63
+  }
+ }
+}

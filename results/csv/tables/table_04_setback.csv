@@ -1,0 +1,6 @@
+# Table 4. Response to setbacks on the storey box (ideal control): extra sensible cooling delivered by a 2 K setback relative to the reference setpoint [%]. E+: EnergyPlus 26.1; this: the engine of the model.
+Envelope,City,"Pre-peak, 2 K: E+","Pre-peak, 2 K: this","Night, 2 K: E+","Night, 2 K: this"
+SBC,Riyadh,+1.2,+1.5,+3.3,+4.4
+SBC,Jeddah,+1.9,+2.2,+5.0,+6.6
+Pre-code,Riyadh,+1.6,+1.7,+3.1,+4.7
+Pre-code,Jeddah,+2.4,+2.5,+4.5,+7.0

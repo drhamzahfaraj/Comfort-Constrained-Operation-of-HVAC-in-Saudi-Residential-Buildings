@@ -1,0 +1,443 @@
+{
+ "compliant/Riyadh": {
+  "rooms": {
+   "master_bedroom": {
+    "cond": true,
+    "util": 0.038,
+    "T_mean": 23.4,
+    "T_max": 24.0
+   },
+   "bedroom_2": {
+    "cond": true,
+    "util": 0.037,
+    "T_mean": 23.4,
+    "T_max": 24.0
+   },
+   "master_bath": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.2,
+    "T_max": 26.2
+   },
+   "lobby": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.8,
+    "T_max": 24.8
+   },
+   "bath_2": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.9,
+    "T_max": 24.7
+   },
+   "maid_room": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.0,
+    "T_max": 24.8
+   },
+   "corridor": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.7,
+    "T_max": 24.3
+   },
+   "bedroom_3": {
+    "cond": true,
+    "util": 0.048,
+    "T_mean": 23.4,
+    "T_max": 24.0
+   },
+   "balcony": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 26.7,
+    "T_max": 35.4
+   },
+   "living": {
+    "cond": true,
+    "util": 0.05,
+    "T_mean": 23.5,
+    "T_max": 24.0
+   },
+   "living_open": {
+    "cond": true,
+    "util": 0.017,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "kitchen": {
+    "cond": true,
+    "util": 0.056,
+    "T_mean": 23.5,
+    "T_max": 24.0
+   },
+   "entrance_hall": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.7,
+    "T_max": 24.4
+   },
+   "bath_3": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.0,
+    "T_max": 24.8
+   },
+   "guest_room": {
+    "cond": true,
+    "util": 0.047,
+    "T_mean": 23.5,
+    "T_max": 24.0
+   },
+   "bath_4": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.2,
+    "T_max": 25.8
+   }
+  },
+  "util_min": 0.017,
+  "util_max": 0.06,
+  "spread": 3.58,
+  "core_mean": 0.036,
+  "perimeter_mean": 0.045
+ },
+ "noncompliant/Riyadh": {
+  "rooms": {
+   "master_bedroom": {
+    "cond": true,
+    "util": 0.089,
+    "T_mean": 23.2,
+    "T_max": 24.0
+   },
+   "bedroom_2": {
+    "cond": true,
+    "util": 0.073,
+    "T_mean": 23.2,
+    "T_max": 24.0
+   },
+   "master_bath": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.6,
+    "T_max": 28.2
+   },
+   "lobby": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.9,
+    "T_max": 25.6
+   },
+   "bath_2": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.9,
+    "T_max": 24.9
+   },
+   "maid_room": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.0,
+    "T_max": 24.9
+   },
+   "corridor": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.6,
+    "T_max": 24.3
+   },
+   "bedroom_3": {
+    "cond": true,
+    "util": 0.096,
+    "T_mean": 23.3,
+    "T_max": 24.0
+   },
+   "balcony": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 28.3,
+    "T_max": 44.5
+   },
+   "living": {
+    "cond": true,
+    "util": 0.079,
+    "T_mean": 23.4,
+    "T_max": 24.0
+   },
+   "living_open": {
+    "cond": true,
+    "util": 0.02,
+    "T_mean": 23.5,
+    "T_max": 24.0
+   },
+   "kitchen": {
+    "cond": true,
+    "util": 0.104,
+    "T_mean": 23.3,
+    "T_max": 24.0
+   },
+   "entrance_hall": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.7,
+    "T_max": 24.7
+   },
+   "bath_3": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.0,
+    "T_max": 25.1
+   },
+   "guest_room": {
+    "cond": true,
+    "util": 0.107,
+    "T_mean": 23.3,
+    "T_max": 24.0
+   },
+   "bath_4": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.5,
+    "T_max": 27.5
+   }
+  },
+  "util_min": 0.02,
+  "util_max": 0.172,
+  "spread": 8.76,
+  "core_mean": 0.071,
+  "perimeter_mean": 0.102
+ },
+ "compliant/Jeddah": {
+  "rooms": {
+   "master_bedroom": {
+    "cond": true,
+    "util": 0.043,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "bedroom_2": {
+    "cond": true,
+    "util": 0.043,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "master_bath": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.7,
+    "T_max": 25.8
+   },
+   "lobby": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.1,
+    "T_max": 24.7
+   },
+   "bath_2": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.2,
+    "T_max": 24.6
+   },
+   "maid_room": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.3,
+    "T_max": 24.7
+   },
+   "corridor": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.9,
+    "T_max": 24.2
+   },
+   "bedroom_3": {
+    "cond": true,
+    "util": 0.054,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "balcony": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 27.7,
+    "T_max": 33.1
+   },
+   "living": {
+    "cond": true,
+    "util": 0.053,
+    "T_mean": 23.7,
+    "T_max": 24.0
+   },
+   "living_open": {
+    "cond": true,
+    "util": 0.021,
+    "T_mean": 23.7,
+    "T_max": 24.0
+   },
+   "kitchen": {
+    "cond": true,
+    "util": 0.063,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "entrance_hall": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.9,
+    "T_max": 24.4
+   },
+   "bath_3": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.2,
+    "T_max": 24.7
+   },
+   "guest_room": {
+    "cond": true,
+    "util": 0.054,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "bath_4": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.6,
+    "T_max": 25.5
+   }
+  },
+  "util_min": 0.021,
+  "util_max": 0.072,
+  "spread": 3.42,
+  "core_mean": 0.042,
+  "perimeter_mean": 0.053
+ },
+ "noncompliant/Jeddah": {
+  "rooms": {
+   "master_bedroom": {
+    "cond": true,
+    "util": 0.087,
+    "T_mean": 23.5,
+    "T_max": 24.0
+   },
+   "bedroom_2": {
+    "cond": true,
+    "util": 0.075,
+    "T_mean": 23.5,
+    "T_max": 24.0
+   },
+   "master_bath": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 25.3,
+    "T_max": 27.6
+   },
+   "lobby": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.3,
+    "T_max": 25.4
+   },
+   "bath_2": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.3,
+    "T_max": 24.8
+   },
+   "maid_room": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.3,
+    "T_max": 24.9
+   },
+   "corridor": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 23.9,
+    "T_max": 24.3
+   },
+   "bedroom_3": {
+    "cond": true,
+    "util": 0.098,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "balcony": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 29.8,
+    "T_max": 40.3
+   },
+   "living": {
+    "cond": true,
+    "util": 0.089,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "living_open": {
+    "cond": true,
+    "util": 0.02,
+    "T_mean": 23.7,
+    "T_max": 24.0
+   },
+   "kitchen": {
+    "cond": true,
+    "util": 0.107,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "entrance_hall": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.1,
+    "T_max": 24.6
+   },
+   "bath_3": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 24.4,
+    "T_max": 25.0
+   },
+   "guest_room": {
+    "cond": true,
+    "util": 0.112,
+    "T_mean": 23.6,
+    "T_max": 24.0
+   },
+   "bath_4": {
+    "cond": false,
+    "util": 0.0,
+    "T_mean": 25.1,
+    "T_max": 27.0
+   }
+  },
+  "util_min": 0.02,
+  "util_max": 0.195,
+  "spread": 9.54,
+  "core_mean": 0.082,
+  "perimeter_mean": 0.109
+ },
+ "coupling": {
+  "total_change_pct": 13.49,
+  "core_util_on": 0.042,
+  "core_util_off": 0.022,
+  "perim_util_on": 0.053,
+  "perim_util_off": 0.048,
+  "spread_on": 3.42,
+  "spread_off": 3.76,
+  "toilet_T_mean_on": 24.7,
+  "toilet_T_mean_off": 33.7
+ },
+ "wet_rooms_without_vs_with_ac": {
+  "Riyadh": {
+   "apartment_pct": 3.8,
+   "building_pct": 2.7
+  },
+  "Jeddah": {
+   "apartment_pct": 5.8,
+   "building_pct": 4.7
+  }
+ }
+}

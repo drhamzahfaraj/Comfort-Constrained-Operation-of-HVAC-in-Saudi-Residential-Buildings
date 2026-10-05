@@ -1,0 +1,92 @@
+{
+ "Riyadh": {
+  "Ta_July": 36.4,
+  "baths": {
+   "master_bath": {
+    "T_july": 25.26,
+    "T_max": 26.2,
+    "in_outdoor_W": 76,
+    "in_gains_W": 48,
+    "out_walls_to_conditioned_W": 32,
+    "out_walls_to_passive_W": 9,
+    "out_door_W": 83,
+    "closure_W": 0.4
+   },
+   "bath_2": {
+    "T_july": 24.4,
+    "T_max": 24.7,
+    "in_outdoor_W": 23,
+    "in_gains_W": 13,
+    "out_walls_to_conditioned_W": 1,
+    "out_walls_to_passive_W": -1,
+    "out_door_W": 36,
+    "closure_W": -0.0
+   },
+   "bath_3": {
+    "T_july": 24.48,
+    "T_max": 24.8,
+    "in_outdoor_W": 24,
+    "in_gains_W": 13,
+    "out_walls_to_conditioned_W": 9,
+    "out_walls_to_passive_W": -2,
+    "out_door_W": 30,
+    "closure_W": 0.1
+   },
+   "bath_4": {
+    "T_july": 25.03,
+    "T_max": 25.8,
+    "in_outdoor_W": 80,
+    "in_gains_W": 47,
+    "out_walls_to_conditioned_W": 22,
+    "out_walls_to_passive_W": 14,
+    "out_door_W": 91,
+    "closure_W": 0.5
+   }
+  }
+ },
+ "Jeddah": {
+  "Ta_July": 33.1,
+  "baths": {
+   "master_bath": {
+    "T_july": 25.04,
+    "T_max": 25.8,
+    "in_outdoor_W": 54,
+    "in_gains_W": 46,
+    "out_walls_to_conditioned_W": 27,
+    "out_walls_to_passive_W": 7,
+    "out_door_W": 66,
+    "closure_W": -0.6
+   },
+   "bath_2": {
+    "T_july": 24.32,
+    "T_max": 24.6,
+    "in_outdoor_W": 17,
+    "in_gains_W": 13,
+    "out_walls_to_conditioned_W": 1,
+    "out_walls_to_passive_W": 0,
+    "out_door_W": 30,
+    "closure_W": -0.4
+   },
+   "bath_3": {
+    "T_july": 24.38,
+    "T_max": 24.7,
+    "in_outdoor_W": 17,
+    "in_gains_W": 13,
+    "out_walls_to_conditioned_W": 8,
+    "out_walls_to_passive_W": -1,
+    "out_door_W": 25,
+    "closure_W": -0.3
+   },
+   "bath_4": {
+    "T_july": 24.85,
+    "T_max": 25.5,
+    "in_outdoor_W": 58,
+    "in_gains_W": 45,
+    "out_walls_to_conditioned_W": 19,
+    "out_walls_to_passive_W": 12,
+    "out_door_W": 73,
+    "closure_W": -0.6
+   }
+  }
+ }
+}

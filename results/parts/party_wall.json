@@ -1,0 +1,12 @@
+{
+ "Riyadh": {
+  "mean_abs_dT_K": 0.09,
+  "x0_pct": 0.9,
+  "x3_pct": -1.0
+ },
+ "Jeddah": {
+  "mean_abs_dT_K": 0.09,
+  "x0_pct": 0.6,
+  "x3_pct": -0.7
+ }
+}

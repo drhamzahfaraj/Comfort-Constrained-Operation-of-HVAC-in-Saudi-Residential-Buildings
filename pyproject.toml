@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hvac-savings"
+version = "1.0.0"
+description = "Simulation and reproduction code for 'HVAC Savings in Saudi Residential Buildings'"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "Hamzah Faraj", email = "f.hamzah@tu.edu.sa" }]
+keywords = ["HVAC", "building energy", "thermal comfort", "electricity tariff",
+            "demand response", "EnergyPlus", "Saudi Arabia"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = ["numpy>=1.21", "matplotlib>=3.4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+drawings = ["ezdxf>=1.4", "shapely>=2.0", "pymupdf>=1.24"]
+
+[project.scripts]
+hvac-reproduce = "hvac_savings.reproduce:main"
+hvac-benchmark = "hvac_savings.comparative:main"
+hvac-figures   = "hvac_savings.figures:main"
+hvac-optimise  = "experiments.optimiser.optimiser:main"
+
+[tool.setuptools]
+package-dir = { "hvac_savings" = "src/hvac_savings", "experiments" = "experiments", "experiments.optimiser" = "experiments/optimiser" }
+packages = ["hvac_savings", "experiments", "experiments.optimiser"]

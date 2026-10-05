@@ -1,0 +1,90 @@
+{
+ "Riyadh": {
+  "best_policy": [
+   0,
+   1
+  ],
+  "best_saving_pct": 0.77,
+  "n_saving": 4,
+  "prepeak2_pct": -0.21,
+  "night2_pct": 4.5,
+  "min_increase_pct": -0.77,
+  "ramps": [
+   {
+    "depth": 0.5,
+    "bill_pct": -0.02,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 1,
+    "bill_pct": -0.24,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 1.5,
+    "bill_pct": -0.46,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 2,
+    "bill_pct": -0.55,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 2.5,
+    "bill_pct": -0.18,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 3,
+    "bill_pct": 15.39,
+    "hot_Ch": 0
+   }
+  ],
+  "best_ramp_pct": -0.55
+ },
+ "Jeddah": {
+  "best_policy": [
+   0,
+   0.5
+  ],
+  "best_saving_pct": 0.03,
+  "n_saving": 1,
+  "prepeak2_pct": 3.07,
+  "night2_pct": 3.67,
+  "min_increase_pct": -0.03,
+  "ramps": [
+   {
+    "depth": 0.5,
+    "bill_pct": 0.29,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 1,
+    "bill_pct": 0.75,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 1.5,
+    "bill_pct": 1.54,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 2,
+    "bill_pct": 2.69,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 2.5,
+    "bill_pct": 4.3,
+    "hot_Ch": 0
+   },
+   {
+    "depth": 3,
+    "bill_pct": 22.33,
+    "hot_Ch": 0
+   }
+  ],
+  "best_ramp_pct": 0.29
+ }
+}

@@ -1,0 +1,101 @@
+# Changelog
+
+## 2026-10-05 (e) — round 22: new title, uncertainty analysis, factorial decomposition, shorter paper
+- Title: "Comfort-Constrained Operation of Multi-Mode HVAC in a Saudi Apartment Building under a Volume Tariff and Parameter Uncertainty".
+- New blocks: `factorial` (2^4 factorial of envelope, inverter 3-ton units, setpoints, pre-cooling; Shapley attribution, main effects, interactions) and `uncertainty_Riyadh` / `uncertainty_Jeddah` (Latin hypercube, 128 samples per city over 17 assumed inputs incl. weather swing and shift; quantiles, share of samples in which pre-cooling saves, lever ordering, PRCC). Both resumable (checkpoints in `results/cache/`).
+- Perfect-foresight benchmark: the fixed-point iteration for the indoor COP factor now stops on a tolerance (|ΔV| < 0.01 K and relative objective change < 1e-4, at most 10 solves) and records convergence; solves are checkpointed. The gamma = 0 gap is reported as a rigorous upper bound for the idealised model, the gamma = 0.02 gap as an estimate.
+- Paper shortened from 36 to about 28 pages: geometry and weather (S3), formal definitions and running examples (S4), validation details (S5), full sensitivity and pre-cooling robustness incl. the former Appendix C (S6), uncertainty analysis (S7) and calculation time (S8) moved to `paper/supplementary.pdf`.
+- Strict safe set applied to every comparison: levers in the uncertainty analysis count only where both compared runs are admissible (the pre-code building leaves the safe set in 66-68 of 128 samples; those comparisons are excluded); inadmissible variants show "--" in every lever and cost cell; the instances table reports admissible policies instead of the worst pre-cool; ablation and decomposition rows record both excursions. New blocks `fullyear_admissibility_Riyadh/Jeddah`: every run the results rely on (16 factorial runs, units sized by load, dawn setback) stays within the safe set on all 365 days (55 blocks).
+- Benchmark at gamma = 0.02: every iterate is priced with its own indoor factor and the cheapest valid schedule is reported as an achievable saving (at least 0, and at 20 degC at least the 22 degC value); the optimal saving lies between it and the gamma = 0 bound on each periodic design day. Solves are capped at 6 (34 of 36 design days reach the cap).
+- Consistency fixes from the round-6 panel (safe set vs band, floor guard, feasibility vs admissibility, setpoint lever = cooling and heating setpoints, notation, dawn setback 0.99-1.80 %, 1-min step <= 1.5 pp); eight literature references added (Crossref-verified), two uncited removed.
+
+## 2026-10-05 (d) — floor guard (low-limit heating)
+- Outside the heating months the units heat only as a floor guard (setpoint 21 °C: on at 20.5 °C, off at 21.5 °C, kept 1 K below the active cooling setpoint); `parameters.json` `floor_guard_setpoint_C`, `model.FLOOR_GUARD_SP` (None disables). Cycling extra of guard heating is booked to heating.
+- New block `floor_guard` (50 blocks): without the guard the pre-code building leaves the 20 °C floor over the full year (0.12 K h Riyadh; 41 K h and 18.2 °C Jeddah); with it every reference run is admissible at ≤14 kWh/yr (+0.02 % of the bill); the guard never acts in the SBC-compliant building at the reference policy.
+- All engine blocks rerun: SBC base case and every headline number unchanged; the heat-wave pre-code Riyadh instance is normal again; the full-year pre-code building is admissible (best policy: no pre-cooling); 7 (not 24) Jeddah pre-code pre-cooling policies still leave the floor (deep night pre-cools, where the guard is capped by the deadband); small changes in the TOU contrast and the deepest pre-cooling costs. Timing blocks re-measured on an idle machine.
+
+## 2026-10-05 (c) — strict safe set; paper shortened (supplementary material)
+- **Strict admissibility.** A policy is admissible only if every conditioned room stays within [20, 24] °C at every step (no tolerance, no relaxed ceiling); inadmissible policies are excluded and the optimum is the cheapest admissible policy (`optimiser.admissible`, applied in every block). Text, Algorithm 2 and the tests follow the rule.
+- **Consequences (reruns):** the right-sizing margin moves from 2.0 to 2.5 (savings 16.5 / 11.2 %; size alone 2.1 / 0.2 %); the tightly sized (15 %) units have no admissible lattice policy at the reference setpoints, and a cooling setpoint of 23 °C restores admissibility (new block `tight_frontier`, 49 blocks); the pre-code building in Riyadh in the heat-wave year is infeasible at the floor (heating months lost to the seasonal changeover, 27 K h); over the full year the pre-code building leaves the floor under every policy (0.12 / 41 K h); the Riyadh minimum-on/off controller variant is inadmissible.
+- `instances` and `precool_fullyear` record hot and cold excursions, the coldest room and the heating months; `precool_fullyear` is None-safe.
+- **Paper shortened:** the passive-zone analysis and the full perfect-foresight benchmark table moved to `paper/supplementary.pdf` (S1, S2); Table 12 keeps the key rows; Appendix C condensed to one paragraph plus its table.
+
+## 2026-10-05 (b) — occupancy idealised; pre-cooling condensed; controller, humidity, targeting and sizing tests
+- Occupancy idealised (A4): every room of every apartment occupied and conditioned at all hours. The occupancy-based operation scenario, its blocks (`occupancy`, `occupancy_lead`), table columns, macros, README rows and occupancy-result tests are removed (the model keeps `OCC_AVAIL` and `occupancy()` as an unused option for that future work); occupancy-based operation and vacant apartments move to future work. Rerun without the occupancy column: `revision`, `robustness`, `robustness_extra`, `verification`, `tenant_savings` (all other values byte-identical).
+- New model options (defaults unchanged, base case verified identical): `MIN_ON_MIN` (minimum on-time; inverter units modulate down while held), `START_TAU_MIN` (cycling loss charged per start), `PRECOOL_ZONES` (pre-cooling restricted to a zone mask), `START_FULL` (full capacity in the first step after a start).
+- New blocks: `controller_resolution` (1-min step, 3-min minimum on/off, per-start cycling loss), `humidity_levers` (humidity diagnostic for current practice, reference and 2 K pre-cools), `precool_targeted` (top floor or west rooms only, alone and with the favourable choices), `sizing_margin` (margins 1.15-2.0 with the base controller and a full-capacity start). 48 blocks (with `lp_complexity`).
+- Findings: no robustness test makes pre-cooling pay except the favourable choices combined (at most 0.77 %; top floor alone 0.21 %); a full-capacity start leaves the sizing excursions unchanged (they come from escalation within a step, mostly in the guest rooms); the per-start cycling loss raises absolute energy by 20-39 % without changing any sign or ordering; in Riyadh, minimum on-times make the fixed-speed guest-room units overshoot when heating in winter.
+- Methodology reframed around one optimisation method: the bill-minimisation problem is solved once, as the perfect-foresight optimal-control linear program (HiGHS interior point, global optimum); the 49 thermostat settings are evaluated and compared (Algorithm 2 renamed CompareThermostatPolicies), not searched; Fig. 1, Methodology, Introduction, Related-work positioning and Section 7 updated. New block `lp_complexity` (size and solve time of the program) reported in the calculation-time table. Audit fixes from an isolated consistency check (TOU one-node range, 'only savings' claim, Fig. 1, humidity by SHR, scope of the full-capacity-start claim, cross-references to Appendix C).
+- Printed values use half-up rounding (Decimal) in the generated sections and macros.
+- Paper: pre-cooling condensed into one result in Section 9.3 with the robustness runs in a new Appendix C (Table 20); the time-of-use contrast cites the Saudi time-of-use programme for large customers (JKSU-ES 22(2), 2010); humidity per lever added; sizing margin and hard-instance explanation corrected.
+
+## 2026-10-05 — round-5 review fixes (consistency, claim scope, code-text agreement)
+- Code: the (C3) check counts only excursions below the 20 C safe floor (`sviol_cold`; the old `sviol` also counted excursions above the 24 C ceiling, which is (C2)); blocks `safe_floor`, `scheduling_*`, `scopes_*`, `mass_*` rerun. New option `LAT_ON_ONLY` (latent load billed only for rooms whose unit is available) reported beside the occupancy saving as its upper value. New blocks `equipment_split` (electricity of the fixed-speed guest-room and stair units vs the inverter units), `joint_favourable` (one node, gamma = 0, lowest mode, no cycling loss combined: pre-cooling saves at most 0.77 % in Riyadh, 0.03 % in Jeddah) and `occupancy_lead` (early start 0-3 h with catalogue and load-sized units). New per-unit output `kwh_zone`. Docstrings and the thermostat note in `parameters.json` match the code (restart delay non-binding at the 3-min step; full capacity for a running unit above its switch-on point; Cd 0.15 assumed).
+- Paper: abstract validation range scoped (storey engine and BESTEST-style cases); benchmark reported for both floors and both gamma values everywhere, Table 12 restructured with gamma = 0 columns; occupancy with load-sized units labelled infeasible under (C2); restart delay and cycle length tied to the step; margin search described as the first tested margin; ground-constant variant discloses its U-value; door schedule, ramp window, latent variant, sky term in the heat wave, Cd scope stated; ASHRAE ceiling wording; HVAC share 66 vs 70 % reconciled with a sensitivity; COP change under pre-cooling described per window; dawn windows aligned; theory claims scoped ((A3) in the Theorem 3 proof, (A4) for coupling within a meter, cycling loss as a source in Proposition 3, mode-1 feasibility in Theorem 1, "predicts" replaced); running example stated at gamma = 0; LP matrices renamed; paragraph labels resolve to their subsection; hard instances explained as controller lag at a switch-on point on the ceiling; EnergyPlus settings and TMYx stations given.
+
+## 2026-10-04 (d) — realistic base case completed (round 18)
+- Base case: cooling COP falls 2 %/K of indoor air below 27 C (bounded 0.8-1.1); setpoint capped at 20.5 C so the controller never cools below the safe floor; lattice {0, ..., 3}^2 K (49 policies); full-capacity response of a running unit whose room is above its switch-on point; starts per unit-hour reported.
+- GA/SA cross-check removed (the lattice is enumerated exactly).
+- New analyses: EnergyPlus 2 K pre-peak and night setbacks on the storey box; BESTEST 640/940; right-sizing margin search with size vs compressor decomposition and a tight 15 % margin; occupancy in every sensitivity variant; perfect-foresight LP with the engine's indoor COP factor (fixed-point) and gamma = 0 as the favourable case; air-node share, coupling, escalation, low-mode, ramp, gamma and fan sensitivities.
+- Findings: no thermostat pre-cooling saves (one node with gamma = 0: at most 0.08 %); setpoint 9.8-12.4 %; occupancy 8.0-11.9 %; envelope 38-56 %; 3-ton inverters 11.4-15.0 %; benchmark at most 0.6 % (band) / 1.1 % (20 C) on design days.
+
+## 2026-10-04 (c) — realistic base case, new analyses, consistency audit
+- Base case as installed: thermostats with a 1 K differential and 0.5 K steps (3-minute step = minimum on/off time); two-node ISO 13790 zones (air node 5 % of C); ISO 13370 slab with monthly ground temperatures; angle-dependent glazing; hourly long-wave sky loss; cycling degradation (Cd 0.15 inverter / 0.25 fixed speed); 3-ton units fixed-speed on/off; 3 W standby; capacity derating 1 %/K about 35 C.
+- Policy lattice {0, 0.5, ..., 4}^2 (81 thermostat policies) enumerated; GA/SA candidates snapped to the lattice.
+- New analyses: BESTEST-style cases 600/900 and like-for-like storey-box comparison with EnergyPlus (`hvac_savings.comparative`, `make benchmark`); perfect-foresight benchmark rewritten as a two-node LP (HiGHS IPM; 20 and 22 C floors, gamma 0/0.02, July as a 31-day chained horizon); pre-specified dawn setback on 365 days; occupancy-based operation (0/1 h early start, all cases, per-apartment bills); right-sized units; inverter 3-ton units; fan-continuous; thermal-bridge and absorptance 0.5/0.9 sensitivities; fine-thermostat frontier.
+- Findings: no thermostat pre-cooling policy saves (one-node zone model is the only exception, up to 1.5 %); perfect foresight 0.2-1.8 % on design days; dawn setback costs 0.28-1.09 %; setpoint 7.4-9.5 %; occupancy 7.9-11.9 %; envelope 37.8-56.6 %; right-sized units up to 19.6 % (upper estimate).
+- Paper: theory condensed (Theorems 1-3, Corollary 1 with proof, Propositions 1-3); Section 9 regenerated from results (`gen_results.py`); Ablation study is its own subsection; controller description matches the code (mode chosen from the air's predicted rise within the step); occupancy text reconciles apartment and building savings (common meter); hierarchy figure dropped (same data as the three-case table); seasonal table keeps summer/winter only; all-zero instance columns folded into the caption; repeated passages across Introduction, Related Work, Discussion and Conclusion removed; float placement fixed (32 pages).
+- Tests: `tests/pinned.json` (34 headline values); expectations updated for right-sized hard instances, the sampled-year error and the one-node exception; 24 tests pass.
+- Removed scratch folders `results/parts_old`, `results/energyplus/diag600`, `experiments/energyplus/diag600`.
+
+## 2026-10-04 (b) — revision after an internal review
+- Title: "Comfort-Constrained Operation of Multi-Mode Heat Pumps in a Saudi Apartment Building under a Volume Tariff".
+- New analyses: perfect-foresight linear program over arbitrary schedules (`experiments/optimiser/lower_bound.py`, blocks `lower_bound`, `lower_bound_checks`); dawn-window setback (`dawn_precool`); cycling losses (part-load factor), infiltration, door schedule, 3-ton units on/off, wider daily swing and heat wave, internal latent gains, diagnostic humidity balance, two-node comfort frontier, numerical Theorem 3 bound (`revision`); the 0.1 K grid on all 365 days (`precool_fullyear`).
+- Finding revised: pre-cooling in fixed night/pre-peak windows saves at most 0.23 %, but an ideal schedule could save up to about 4.6 % of the sensible cooling electricity over the season (6.5 % on the hottest day), and a dawn setback held in the lowest mode recovers up to 2.1 %. Theorem 4 is stated as conditional; setpoint and envelope findings unchanged.
+- Model options added (defaults unchanged): `CYCLING_CD`, `ONOFF_ZONES`, `K_DOOR_NIGHT`, `MOISTURE`. Tests: 22.
+
+## 2026-10-04 — thermal capacitance justified
+- Paper: the room capacitance (1.5 kWh/K per 20 m2 = 270 kJ/(m2 K)) is placed in the heavy class of ISO 13790 and related to the SBC 602 mass-floor threshold (143 kJ/(m2 K)); the thermal-mass sweep is given in kJ/(m2 K) with its ISO classes. New reference: ISO 13790:2008.
+
+## 2026-10-03 (c) — leaner paper folder, optimiser under experiments
+- `paper/` holds only `main.tex` (the complete manuscript in one file), `references.bib` and `paper.pdf`.
+- The optimisers moved to `experiments/optimiser/optimiser.py` (import `experiments.optimiser.optimiser`; `make optimise`).
+- README: ablation table (Table 10) and the paper's conclusion added; abstract and findings taken from the paper.
+
+## 2026-10-03 (b) — folder layout and CSV results
+- New layout: `paper/` (main.tex, references.bib, sections/, paper.pdf), `figures/` (every figure, PDF + PNG), `src/` (code: `hvac_savings/`, `drawings/` with the DXF set, `paper_tools/`), `experiments/` (simulation inputs: configs, weather, EnergyPlus IDFs), `results/` (outputs: JSON, CSV, EnergyPlus outputs).
+- `make csv` / `src/paper_tools/export_csv.py`: every paper table (18) as printed and every analysis block as CSV in `results/csv/`.
+- PNG previews of the Fig. 3 panels; `make paper` also writes `paper/paper.pdf`, the anonymised version and the title page.
+- README: author metadata, abstract, methodology, key findings, limitations, conclusion.
+
+## 2026-10-03 — repository structure for GitHub
+- README: paper title, building description (seven units per apartment, 3-ton rotary units, passive zones, balcony), ablation and time-of-use rows, annotated layout of every folder, map of paper figures to the code that generates them.
+- `.gitignore` fixed (LaTeX products are in `src/paper/`, not `paper/`); figures copied into `src/paper/` by `make paper` are ignored; the stored EnergyPlus runs in `results/eprun/` are now kept, because `make benchmark-parse` reads them.
+- `make clean` no longer deletes `results/eprun/`.
+- Removed `results/energyplus_idf_samples/` (inputs of an earlier building; the current IDFs are `results/eprun/*/in.idf`).
+
+## 2026-10-02 — manuscript
+- US$ amounts next to the headline SAR figures (fixed peg US$1 = SAR 3.75); Fig. 3 subfigures referenced where the cases are defined and used; Fig. 8 labels name the modes (mode 1 low, mode 3 high).
+- Geometry rebuilt from the author's DXF drawing set (33 zones per floor, 132 in the building; 3-ton rotary unit for the guest room and the stair); ablation and time-of-use contrast blocks added (40 blocks).
+
+## 2026-09-27 — figure 3 and layout
+- 2026-10-02 audit: optimality wording qualified (grid optimum), theorem assumptions (A1)-(A4), repetitions removed, figure/table order, SBC 602 citation, declarations after references, anonymised LaTeX source in the submission package.
+- Figure 3 gains panel (a): exact affine drift and leap of the running-example room (`running_example.band_cycles`, new in `b_running_example`) for the thermostat ripple, a cycle across the comfort band and one across the safe set; mean power 69 / 72 / 75 W. Test added (`test_band_cycles_of_running_example`); all other results unchanged.
+- Paper restructured: new Section 3 "Methodology" with a pipeline figure (`fig_pipeline`); Preliminaries and Problem Formulation merged into "Model and Problem Formulation", with the parameters moved there from the method; Section 7 is now "Experimental Setup"; model verification and validation is its own section before the results; "training" renamed to policy selection / out-of-sample evaluation.
+- Figures: schematic of the definitions (`fig_defs`, no values: V_min, V_low, V_high, V_max, drift, leap, pre-cooling) placed with the definitions in Section 5; the computed running-example figure (`fig_leap`, two panels) moved to the results (Section 9.5), where it confirms the theory before the building-level search.
+- Paper: numbered citations (`unsrtnat`), blue DOI/URL links, single end-of-proof marks, ragged bottom, no `dblfloatfix` (obsolete `fixltx2e` warning), reference metadata checked against Crossref.
+
+## 2026-09-26 — submission check
+- Full clean reproduction (`make reproduce`): all 34 physics blocks, `ep_compare.json`, the macros, the results section and every figure regenerate identically; only the measured calculation times differ (machine load).
+- `optimiser.optimise` / `evaluate_policy` implement Algorithms 2 / 1 literally; test added.
+- `energyplus.py --parse-only` rebuilds the EnergyPlus comparison from the stored runs (after checking the stored IDFs match the configs).
+- Figures: vector PDF at printed size, Liberation Sans (Arial metrics), landscape relative to the feasible optimum.
+- Paper: author-year references, anonymised version and title page for double-blind review; numerical audit fixes.
+
+
+## 1.0.0
+- Initial public release accompanying the manuscript submission.
+- Simulator (`hvac_savings.model`), full results reproduction
+  (`hvac_savings.reproduce`), independent EnergyPlus benchmark
+  (`hvac_savings.energyplus`), figure regeneration (`hvac_savings.figures`),
+  reproduction tests, and the manuscript source.
