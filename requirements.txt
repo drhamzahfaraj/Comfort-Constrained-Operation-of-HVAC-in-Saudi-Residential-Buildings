@@ -1,2 +1,4 @@
 numpy>=1.21
+scipy>=1.11
 matplotlib>=3.4
+clarabel>=0.9      # only for the whole-building bound (block lower_bound_building)

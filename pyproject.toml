@@ -17,10 +17,11 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Topic :: Scientific/Engineering",
 ]
-dependencies = ["numpy>=1.21", "matplotlib>=3.4"]
+dependencies = ["numpy>=1.21", "scipy>=1.11", "matplotlib>=3.4"]
 
 [project.optional-dependencies]
 dev = ["pytest>=7"]
+benchmark = ["clarabel>=0.9"]   # whole-building (Case 3) bound of the perfect-foresight benchmark
 drawings = ["ezdxf>=1.4", "shapely>=2.0", "pymupdf>=1.24"]
 
 [project.scripts]

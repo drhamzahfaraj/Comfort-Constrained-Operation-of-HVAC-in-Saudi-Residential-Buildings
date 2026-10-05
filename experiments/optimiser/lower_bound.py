@@ -79,17 +79,42 @@ def _segments(cf):
     return np.diff(fr), slopes
 
 
+class _LPResult:
+    def __init__(self, status, x, fun, message=""):
+        self.status, self.x, self.fun, self.message = status, x, fun, message
+
+
+def _linprog(c, A_eq, b_eq, bounds, solver="highs"):
+    """min c x s.t. A_eq x = b_eq, bounds. solver "highs": HiGHS interior point (scipy). solver "clarabel": the Clarabel
+    interior-point solver (sparse LDL of the KKT system, static regularisation 1e-6), used for the whole building
+    (Case 3), whose program HiGHS's interior point solves only very slowly (crash-basis construction)."""
+    if solver == "highs":
+        return linprog(c, A_eq=A_eq, b_eq=b_eq, bounds=bounds, method="highs-ipm")
+    import clarabel
+    n = len(c); lo, hi = bounds[:, 0], bounds[:, 1]
+    il = np.where(np.isfinite(lo))[0]; iu = np.where(np.isfinite(hi))[0]
+    G = sparse.vstack([sparse.csr_matrix((np.ones(len(iu)), (np.arange(len(iu)), iu)), shape=(len(iu), n)),
+                       sparse.csr_matrix((-np.ones(len(il)), (np.arange(len(il)), il)), shape=(len(il), n))])
+    Acl = sparse.vstack([sparse.csr_matrix(A_eq), G]).tocsc(); b = np.r_[b_eq, hi[iu], -lo[il]]
+    st = clarabel.DefaultSettings(); st.verbose = False; st.static_regularization_constant = 1e-6; st.max_iter = 200
+    sol = clarabel.DefaultSolver(sparse.csc_matrix((n, n)), np.asarray(c, float), Acl, b,
+                                 [clarabel.ZeroConeT(len(b_eq)), clarabel.NonnegativeConeT(len(iu) + len(il))], st).solve()
+    ok = str(sol.status) in ("Solved", "AlmostSolved")
+    return _LPResult(0 if ok else 4, np.array(sol.x), float(sol.obj_val), str(sol.status))
+
+
 def solve(city, env="compliant", month=6, kind="mean", days=None, dT0=0.5, steps_per_hour=4, ceiling=None, vmin=None,
-          gamma=None, iters=6, tol_rel=1e-4, method="slp", slp_iters=8, trust0=1.0, trust_min=0.02):
+          gamma=None, iters=6, tol_rel=1e-4, method="slp", slp_iters=8, trust0=1.0, trust_min=0.02, solver="highs"):
     """Return the benchmark E_LP and the hold-at-ceiling energy E_hold [kWh_e per day] of the current scope (M.set_scope).
     vmin: lowest temperature a conditioned room may be pre-cooled to (default: bottom of the safe set).
     gamma: fractional COP loss per K of indoor air below the 27 degC rating condition (lower evaporating temperature),
-    the same factor as in the simulation engine (default: model.GAMMA_IN); handled by fixed-point iteration on the LP
-    solution (gamma = 0: COP depends on the outdoor air only). With gamma > 0 the program is not linear; it is
-    re-solved with the indoor factor evaluated at the previous solution (at most `iters` solves, or until the objective
-    changes by less than tol_rel), and every iterate's schedule is priced with its own indoor factor. The cheapest of these
-    schedules is feasible for the idealised model, so its gap is an achievable saving (a lower bound on the optimal
-    saving at that gamma). With gamma = 0 the gap is exact for gamma = 0 and an upper bound on the optimal saving at
+    the same factor as in the simulation engine (default: model.GAMMA_IN; gamma = 0: COP depends on the outdoor air
+    only). With gamma > 0 the program is not linear. method "slp" (default): two solves with the indoor factor evaluated
+    at the previous solution, then sequential linear programming with a trust region on V from two starts (that
+    schedule, and the program without pre-cooling), at most `slp_iters` steps each; method "fixedpoint": up to `iters`
+    re-solves with the factor at the previous solution. Every schedule is priced with its own indoor factor and the
+    cheapest is kept: it is feasible for the idealised model, so its gap is an achievable saving (a lower bound on the
+    optimal saving at that gamma). With gamma = 0 the gap is exact for gamma = 0 and an upper bound on the optimal saving at
     any gamma >= 0: g(V) is non-decreasing and V <= ceiling, so fixing g at g(ceiling) lowers every cost, and the
     reference, held at the ceiling, scales by the same factor. The two bracket the optimal saving at gamma > 0."""
     gamma = M.GAMMA_IN if gamma is None else gamma
@@ -120,7 +145,7 @@ def solve(city, env="compliant", month=6, kind="mean", days=None, dT0=0.5, steps
     t0 = time.perf_counter(); n_solves = 0; hist = []; converged = not gamma; best = None
     for it in range((min(iters, 2) if method == "slp" else iters) if gamma else 1):
         c_it = np.r_[np.zeros(nV), (cost_q / pen[:, :, None]).ravel()]
-        lp = linprog(c_it, A_eq=Aeq, b_eq=beq, bounds=bounds, method="highs-ipm")   # interior point: much faster than simplex on these sparse, banded programs
+        lp = _linprog(c_it, Aeq, beq, bounds, solver)   # interior point: much faster than simplex on these sparse, banded programs
         n_solves += 1
         if lp.status != 0:
             raise RuntimeError(f"LP failed: {lp.message}")
@@ -139,7 +164,7 @@ def solve(city, env="compliant", month=6, kind="mean", days=None, dT0=0.5, steps
         Vidx = (np.arange(T)[:, None] * nx + cz[None, :])                       # positions of the conditioned air nodes in x
         seeds = [best]
         b_h = bounds.copy(); b_h[Vidx.ravel(), 0] = ceiling - 0.01            # second seed: no pre-cooling (rooms near the ceiling)
-        lp = linprog(np.r_[np.zeros(nV), (cost_q / float(gin(ceiling))).ravel()], A_eq=Aeq, b_eq=beq, bounds=b_h, method="highs-ipm"); n_solves += 1
+        lp = _linprog(np.r_[np.zeros(nV), (cost_q / float(gin(ceiling))).ravel()], Aeq, beq, b_h, solver); n_solves += 1
         if lp.status == 0:
             Xh = lp.x[:nV].reshape(T, nx); qh_ = lp.x[nV:].reshape(T, nc, nseg)
             seeds.append((float((qh_ * cost_q / gin(Xh[:, cz])[:, :, None]).sum()), Xh, qh_))
@@ -155,7 +180,7 @@ def solve(city, env="compliant", month=6, kind="mean", days=None, dT0=0.5, steps
                 b_k = bounds.copy()
                 lo_k = np.maximum(vmin, Xc[:, cz] - delta); hi_k = np.minimum(ceiling, Xc[:, cz] + delta)
                 b_k[Vidx.ravel(), 0] = lo_k.ravel(); b_k[Vidx.ravel(), 1] = hi_k.ravel()
-                lp = linprog(c_k, A_eq=Aeq, b_eq=beq, bounds=b_k, method="highs-ipm"); n_solves += 1
+                lp = _linprog(c_k, Aeq, beq, b_k, solver); n_solves += 1
                 if lp.status != 0:
                     delta *= 0.5
                     if delta < trust_min: break

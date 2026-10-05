@@ -256,6 +256,35 @@ def test_lower_bound_consistency():
         M.set_scope("building")
 
 
+def test_lower_bound_solvers_agree():
+    """The two interior-point solvers of the benchmark (HiGHS, used for Cases 1 and 2 and the top floor; Clarabel, used for
+    Case 3 and the 31-day horizon) give the same bound on the same program (Case 1, Riyadh, July mean day, gamma = 0)."""
+    pytest.importorskip("clarabel")
+    from experiments.optimiser import lower_bound as LB
+    try:
+        M.set_scope("apartment")
+        h, c = (LB.solve("Riyadh", month=6, vmin=22.0, gamma=0.0, solver=s) for s in ("highs", "clarabel"))
+        assert abs(h["gap_pct"] - c["gap_pct"]) < 1e-3 and abs(h["E_lp"] / c["E_lp"] - 1) < 1e-5
+    finally:
+        M.set_scope("building")
+
+
+@needs_results
+def test_lower_bound_bracket():
+    """Every horizon solved: the gamma = 0 bound is at least the achievable saving at gamma = 0.02 (Cases 1 and 2, the top
+    floor, the 31-day July horizon); Case 3 has its bound on every design day of Case 2."""
+    R = R_(); LBR = R["lower_bound"]; LBB = R["lower_bound_building"]
+    for sc in ("apartment", "floor", "top_floor"):
+        for c in CT:
+            for vm in (22.0, 20.0):
+                b = LBR[f"{sc}/{c}/vmin{vm}/gamma0.0"]["days"]; a = LBR[f"{sc}/{c}/vmin{vm}/gamma0.02"]["days"]
+                assert all(b[d]["gap_pct"] >= max(a[d]["gap_pct"], 0) for d in b), (sc, c, vm)
+        for c in CT:
+            ch = LBR[f"apartment/{c}/july_chained"] if sc == "apartment" else None
+            if ch: assert ch["bound_gap_pct"] >= max(ch["gap_pct"], 0)
+    assert all(len(LBB[f"building/{c}/vmin{vm}/gamma0.0"]["days"]) == 3 for c in CT for vm in (22.0, 20.0))
+
+
 @needs_results
 def test_sensitivity():
     """The setpoint lever survives every sensitivity variant; thermostat pre-cooling saves at most a

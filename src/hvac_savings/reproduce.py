@@ -1225,7 +1225,8 @@ def b_lower_bound(scopes=None):
     (gamma = 0) the gap is an upper bound on the saving of any schedule of the idealised model at any gamma >= 0; with
     the engine's indoor COP factor (gamma = model.GAMMA_IN) sequential linear programming from two starts gives the best
     valid schedule found, an achievable saving. Case 1 (one apartment): the mean day of May-Sep, the hottest July day and
-    the 31 consecutive days of July as one horizon (best of three fixed-point solves); Case 2 (the typical floor) and the
+    the 31 consecutive days of July as one horizon (bound and search, solved with Clarabel, which is several times faster
+    than HiGHS's interior point on this long program); Case 2 (the typical floor) and the
     top floor under the roof: the mean and hottest July day and the mean August day. Resumable: one cache file per scope."""
     from experiments.optimiser import lower_bound as LB
     out = {}
@@ -1255,9 +1256,10 @@ def b_lower_bound(scopes=None):
                         w = np.array([M.DIM[m] for m, _ in mean_rows]); eh = np.array([v["E_hold"] for _, v in mean_rows]); el = np.array([v["E_lp"] for _, v in mean_rows])
                         out[f"{sc}/{c}/vmin{vm}/gamma{g}"] = dict(days=rows, season_gap_pct=r2(100 * (w @ (eh - el)) / (w @ eh)))
                 if sc == "apartment":
-                    r = solve_ck(f"{sc}/{c}/chained", city=c, env=MAIN, month=6, days=range(31), vmin=22.0, iters=3, method="fixedpoint")
+                    r = solve_ck(f"{sc}/{c}/chained_slp", city=c, env=MAIN, month=6, days=range(31), vmin=22.0, gamma=M.GAMMA_IN, solver="clarabel")
+                    rb = solve_ck(f"{sc}/{c}/chained_g0", city=c, env=MAIN, month=6, days=range(31), vmin=22.0, gamma=0.0, solver="clarabel")
                     out[f"apartment/{c}/july_chained"] = dict(E_hold=r2(r["E_hold"]), E_lp=r2(r["E_lp"]), gap_pct=r2(r["gap_pct"]),
-                                                              V_profile=r["V_profile"])
+                                                              bound_gap_pct=r2(rb["gap_pct"]), n_solves=r["n_solves"], V_profile=r["V_profile"])
                 if sc == "apartment" and c == "Riyadh":
                     r = solve_ck(f"{sc}/{c}/20.0/{M.GAMMA_IN}/6/mean", city=c, env=MAIN, month=6, kind="mean", vmin=20.0, gamma=M.GAMMA_IN)
                     out["profile_apartment_Riyadh_july"] = dict(V_profile=r["V_profile"], q_profile=r["q_profile"])
@@ -1266,9 +1268,39 @@ def b_lower_bound(scopes=None):
     return out
 
 
+def b_lower_bound_building():
+    """Perfect-foresight bound for the whole building (Case 3, all storeys coupled, roof and ground): gamma = 0, the
+    rigorous upper bound on the saving of any schedule of the idealised model, at the same 15-min steps as the other
+    cases, for the mean and hottest July day and the mean August day, rooms down to 22 or 20 degC. The 264-node program is
+    solved with Clarabel (HiGHS's interior point is very slow on it); the search at gamma = 0.02 (up to 19 solves per day)
+    is not run for Case 3. Resumable (results/cache/lower_bound_building.json)."""
+    from experiments.optimiser import lower_bound as LB
+    out = {}; days = [(6, "mean"), (6, "hottest"), (7, "mean")]
+    ck = ROOT / "results" / "cache" / "lower_bound_building.json"; ck.parent.mkdir(parents=True, exist_ok=True)
+    cache = json.loads(ck.read_text()) if ck.exists() else {}
+    try:
+        M.set_scope("building", REF_FLOORS)
+        for c in CITIES:
+            for vm in (22.0, 20.0):
+                rows = {}
+                for m, kind in days:
+                    key = f"building/{c}/{vm}/0.0/{m}/{kind}"
+                    if key not in cache:
+                        r = LB.solve(c, MAIN, month=m, kind=kind, vmin=vm, gamma=0.0, solver="clarabel")
+                        cache[key] = {k: (v if not isinstance(v, (np.floating, np.integer)) else float(v)) for k, v in r.items()}
+                        ck.write_text(json.dumps(cache, default=float))
+                    r = cache[key]
+                    rows[f"{m + 1}/{kind}"] = dict(E_hold=r2(r["E_hold"]), E_lp=r2(r["E_lp"]), gap_pct=r2(r["gap_pct"]),
+                                                   precool_K_h=r1(r["lp_precool_K_h"]), t_solve_s=r1(r["t_solve_s"]))
+                out[f"building/{c}/vmin{vm}/gamma0.0"] = dict(days=rows)
+    finally:
+        M.set_scope("building", REF_FLOORS)
+    return out
+
+
 def b_lower_bound_checks():
-    """Checks of the perfect-foresight benchmark (Cases 1 and 2, July mean day, SBC-compliant): door exchange
-    linearised about 0.2 and 1.0 K instead of 0.5 K; and the hold-at-ceiling energy of the linear model against the
+    """Checks of the perfect-foresight benchmark (Cases 1 and 2, July mean day, SBC-compliant): the bound (gamma = 0) with
+    the door exchange linearised about 0.2 and 1.0 K instead of 0.5 K; and the hold-at-ceiling energy of the linear model against the
     nonlinear engine run with ideal equipment holding the ceiling in the lowest mode (cooling setpoint 24 degC, no
     differential, no cycling loss, standby or capacity derating; all July days, cooling electricity per day)."""
     from experiments.optimiser import lower_bound as LB
@@ -1278,9 +1310,10 @@ def b_lower_bound_checks():
             M.set_scope(sc, REF_FLOORS)
             for c in CITIES:
                 d = {}
-                r = LB.solve(c, MAIN, month=6, vmin=22.0); d["vmin22_dT0.5"] = r2(r["gap_pct"])
+                d["vmin22_dT0.5"] = r2(LB.solve(c, MAIN, month=6, vmin=22.0, gamma=0.0)["gap_pct"])      # the bound (gamma = 0)
                 for dt0 in (0.2, 1.0):
-                    d[f"vmin22_dT{dt0}"] = r2(LB.solve(c, MAIN, month=6, vmin=22.0, dT0=dt0)["gap_pct"])
+                    d[f"vmin22_dT{dt0}"] = r2(LB.solve(c, MAIN, month=6, vmin=22.0, dT0=dt0, gamma=0.0)["gap_pct"])
+                r = LB.solve(c, MAIN, month=6, vmin=22.0, gamma=M.GAMMA_IN, method="fixedpoint", iters=1)   # reference at gamma = 0.02 (one solve)
                 with patched(REP="all", MSCALE=np.ones(12), HYST=0.0, CYCLING_CD=None, ONOFF_ZONES=None, STANDBY_KW=0.0, CAP_DERATE=False,
                              _MODE=(99.0, 99.0), ESC_KICK=False, MIN_OFF_MIN=0):                                # lowest mode, as the benchmark's hold reference
                     th = sim(c, MAIN, [[M.COMFORT[1], hs, 0, 0]])[0]
@@ -1471,7 +1504,8 @@ def b_lp_complexity():
     """Size and solve time of the optimal-control linear program (experiments/optimiser/lower_bound.py) for the mean July
     day of Case 1, Case 2 and the top floor under the roof (SBC-compliant, Riyadh, rooms down to the band floor): the bound
     (gamma = 0, one solve) and the search with the engine's indoor COP factor (sequential linear programming, several
-    solves). Run on an idle machine: the times are wall-clock."""
+    solves); and the whole building (Case 3), bound only, with Clarabel. Run on an idle machine: the times
+    are wall-clock."""
     from experiments.optimiser import lower_bound as LB
     out = {}
     try:
@@ -1481,6 +1515,9 @@ def b_lp_complexity():
             r = LB.solve("Riyadh", MAIN, month=6, kind="mean", vmin=22.0, gamma=M.GAMMA_IN)
             out[f"{sc}/day"] = dict(n_vars=r["n_vars"], n_constraints=r["n_constraints"], t_bound_s=r2(rb["t_solve_s"]),
                                     n_solves=r["n_solves"], t_solve_s=r2(r["t_solve_s"]), t_per_solve_s=r2(r["t_solve_s"] / r["n_solves"]))
+        M.set_scope("building", REF_FLOORS)                                              # Case 3: bound only, hourly steps, Clarabel
+        rb = LB.solve("Riyadh", MAIN, month=6, kind="mean", vmin=22.0, gamma=0.0, solver="clarabel")
+        out["building/day"] = dict(n_vars=rb["n_vars"], n_constraints=rb["n_constraints"], t_bound_s=r2(rb["t_solve_s"]))
     finally:
         M.set_scope("building", REF_FLOORS)
     return out
@@ -1720,7 +1757,7 @@ BLOCKS.update(seasons_hc=b_seasons_hc, instances=b_instances, train_eval=b_train
               lower_bound=b_lower_bound, dawn_setback=b_dawn_setback, lower_bound_checks=b_lower_bound_checks,
               comparative=b_comparative, equipment_split=b_equipment_split, joint_favourable=b_joint_favourable,
               controller_resolution=b_controller_resolution, humidity_levers=b_humidity_levers, precool_targeted=b_precool_targeted,
-              sizing_margin=b_sizing_margin, lp_complexity=b_lp_complexity, tight_frontier=b_tight_frontier, floor_guard=b_floor_guard, lower_bound_apartment=lambda: b_lower_bound(["apartment"]), lower_bound_floor=lambda: b_lower_bound(["floor"]), lower_bound_top_floor=lambda: b_lower_bound(["top_floor"]), factorial=b_factorial, uncertainty_Riyadh=lambda: b_uncertainty(["Riyadh"]), uncertainty_Jeddah=lambda: b_uncertainty(["Jeddah"]), fullyear_admissibility_Riyadh=lambda: b_fullyear_admissibility(["Riyadh"]), fullyear_admissibility_Jeddah=lambda: b_fullyear_admissibility(["Jeddah"]))
+              sizing_margin=b_sizing_margin, lp_complexity=b_lp_complexity, tight_frontier=b_tight_frontier, floor_guard=b_floor_guard, lower_bound_apartment=lambda: b_lower_bound(["apartment"]), lower_bound_floor=lambda: b_lower_bound(["floor"]), lower_bound_top_floor=lambda: b_lower_bound(["top_floor"]), lower_bound_building=b_lower_bound_building, factorial=b_factorial, uncertainty_Riyadh=lambda: b_uncertainty(["Riyadh"]), uncertainty_Jeddah=lambda: b_uncertainty(["Jeddah"]), fullyear_admissibility_Riyadh=lambda: b_fullyear_admissibility(["Riyadh"]), fullyear_admissibility_Jeddah=lambda: b_fullyear_admissibility(["Jeddah"]))
 for c in CITIES:
     BLOCKS[f"scheduling_{c}"] = b_scheduling(c)
 for Cz in EXP["thermal_mass_sweep"]:

@@ -14,7 +14,7 @@
  "revision/variants/right_sized/Riyadh/bill": 8726,
  "revision/variants/reference/Riyadh/bill": 10456,
  "revision/variants/right_sized_keep_fixed/Riyadh/bill": 10232,
- "lower_bound|apartment/Riyadh/vmin22.0/gamma0.02|season_gap_pct": -0.19,
+ "lower_bound|apartment/Riyadh/vmin22.0/gamma0.02|season_gap_pct": 0.22,
  "scopes_Jeddah/apartment/compliant/setpoint_pct": 9.8,
  "scopes_Jeddah/apartment/compliant/EUI": 34.8,
  "scopes_Jeddah/apartment/noncompliant/EUI": 56.4,
@@ -30,5 +30,5 @@
  "revision/variants/right_sized/Jeddah/bill": 13959,
  "revision/variants/reference/Jeddah/bill": 15714,
  "revision/variants/right_sized_keep_fixed/Jeddah/bill": 15675,
- "lower_bound|apartment/Jeddah/vmin22.0/gamma0.02|season_gap_pct": -0.41
+ "lower_bound|apartment/Jeddah/vmin22.0/gamma0.02|season_gap_pct": 0.05
 }
