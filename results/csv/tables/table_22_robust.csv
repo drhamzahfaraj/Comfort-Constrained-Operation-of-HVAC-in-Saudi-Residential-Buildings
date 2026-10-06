@@ -1,0 +1,40 @@
+# Table 22. Sensitivity analysis (SBC-compliant building, Case 3): HVAC energy intensity [kWh/m^2yr], setpoint lever, saving of the best thermostat pre-cool (0.5-2 K in either window), and the change in cost of a 2 K pre-peak pre-cool. C_d: cycling degradation coefficient; sized by load: at 2.5 times the peak hourly load, the first tested margin that keeps every room within the safe set, unless stated; -: inadmissible, the reference policy lets a room pass the ceiling, so the run is excluded and nothing but its excursion (in the text) is reported. Door schedule: bath doors closed, bedroom and guest-room doors closed 23:00-07:00.
+Variant,Riyadh: Int.,Riyadh: Setp.,Riyadh: Pre-cool,Riyadh: 2 K,Jeddah: Int.,Jeddah: Setp.,Jeddah: Pre-cool,Jeddah: 2 K
+Reference (base case),25.1,12.4%,0.00%,+3.4%,37.7,10.5%,0.00%,+4.3%
+Interior doors closed,25.1,12.2%,0.00%,+3.1%,37.6,10.5%,0.00%,+3.9%
+Internal gains -30%,23.0,11.4%,0.00%,+3.5%,35.0,11.0%,0.00%,+4.3%
+Internal gains +30%,27.4,12.7%,0.00%,+3.2%,40.4,10.1%,0.00%,+4.3%
+Flat part-load COP,31.5,12.6%,0.00%,+2.1%,45.0,11.0%,0.00%,+3.2%
+Ground at constant mean temperature,26.0,17.0%,0.00%,+4.0%,42.2,12.5%,0.00%,+4.6%
+One node per zone,25.5,11.2%,0.00%,+3.3%,38.0,10.4%,0.00%,+6.7%
+"One node, COP independent of indoor air",23.8,8.2%,0.08%,+1.8%,36.1,8.0%,0.00%,+5.0%
+Air node 2% of C,24.7,12.5%,0.00%,+4.6%,37.2,10.7%,0.00%,+5.4%
+Air node 15% of C,25.6,12.2%,0.00%,+2.7%,38.6,10.4%,0.00%,+3.7%
+Air node 30% of C,25.5,12.3%,0.00%,+2.8%,38.5,10.5%,0.00%,+4.2%
+Air-structure coupling x0.5,24.5,12.0%,0.00%,+3.3%,36.8,10.4%,0.00%,+3.8%
+Air-structure coupling x2,25.5,12.6%,0.00%,+3.0%,38.3,10.5%,0.00%,+4.6%
+Latent COP -30% off / low mode,25.1,12.4%,0.00%,+3.4%,41.6,9.5%,0.00%,+3.8%
+Thermostat differential 0.1 K,26.4,11.4%,0.00%,+4.3%,38.8,10.5%,0.00%,+5.1%
+Escalation at 0.2 / 0.6 K,26.0,12.6%,0.00%,+3.1%,38.5,10.8%,0.00%,+4.4%
+Escalation at 0.8 / 2.0 K,25.0,12.3%,0.00%,+2.3%,37.7,10.4%,0.00%,+3.2%
+Inverter units in low mode only,25.0,12.3%,0.00%,+2.0%,37.7,10.4%,0.00%,+2.8%
+No full-capacity response,25.1,12.4%,0.00%,+3.4%,37.7,10.5%,0.00%,+4.3%
+COP independent of indoor air,23.6,9.5%,0.00%,+2.2%,36.0,8.1%,0.00%,+3.0%
+Indoor COP factor 3%/K,25.9,14.0%,0.00%,+4.1%,38.6,11.8%,0.00%,+5.1%
+No cycling loss (C_d=0),21.3,12.5%,0.00%,+4.0%,33.2,10.1%,0.00%,+4.8%
+C_d=0.25 for every unit,26.4,12.4%,0.00%,+3.2%,39.3,10.5%,0.00%,+4.1%
+3-ton units as inverter units,21.3,12.4%,0.00%,+4.5%,33.4,10.0%,0.00%,+5.2%
+No standby power,24.3,12.8%,0.00%,+3.5%,36.9,10.7%,0.00%,+4.4%
+No capacity derating,25.1,12.4%,0.00%,+3.3%,37.8,10.6%,0.00%,+4.1%
+Indoor fan on while compressor off,28.0,10.9%,0.00%,+3.3%,43.2,8.8%,0.00%,+4.1%
+"Sized by load, all inverter",20.9,11.7%,0.00%,+2.9%,33.5,9.6%,0.00%,+3.0%
+"Sized by load, fixed-speed kept",24.5,11.9%,0.00%,+2.6%,37.6,10.1%,0.00%,+2.9%
+"Sized by load, 15% margin",-,-,-,-,-,-,-,-
+Wall U-value +20% (thermal bridges),25.6,12.3%,0.00%,+3.4%,38.2,10.6%,0.00%,+4.3%
+Solar absorptance 0.5,24.3,12.3%,0.00%,+3.6%,36.8,10.6%,0.00%,+4.4%
+Solar absorptance 0.9,25.9,12.5%,0.00%,+3.3%,38.6,10.4%,0.00%,+4.3%
+Infiltration 0.2 ACH,22.5,12.9%,0.00%,+3.2%,30.4,10.7%,0.00%,+4.5%
+Infiltration 0.8 ACH,31.5,10.0%,0.00%,+3.4%,52.4,10.2%,0.00%,+3.8%
+Door schedule,24.8,12.3%,0.00%,+3.6%,37.4,10.4%,0.00%,+4.5%
+Daily swing x1.3,26.0,11.8%,0.00%,+3.2%,38.2,10.4%,0.00%,+4.6%
+"Heat wave +3 K, swing x1.3",33.4,12.2%,0.00%,+3.1%,46.7,9.7%,0.00%,+4.1%

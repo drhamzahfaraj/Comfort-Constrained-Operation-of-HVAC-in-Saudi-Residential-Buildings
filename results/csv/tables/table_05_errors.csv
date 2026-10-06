@@ -1,4 +1,4 @@
-# Table 5. Absolute and relative errors of the model's estimates against their references (pairs of values: Riyadh / Jeddah, or case 600 / 900 and 640 / 940; the BESTEST-style cases are detailed in the supplementary material, Section S5).
+# Table 5. Absolute and relative errors of the model's estimates against their references (pairs of values: Riyadh / Jeddah, or case 600 / 900 and 640 / 940; the BESTEST-style cases are detailed in Appendix [app:S5]).
 Quantity,Reference,Absolute error,Relative error
 "Annual energy, 60 sampled days",full year (365 days),-1953 / +400 kWh,-3.7% / +0.5%
 "Annual energy, 3-min step",1-min step,-,<=2.89%

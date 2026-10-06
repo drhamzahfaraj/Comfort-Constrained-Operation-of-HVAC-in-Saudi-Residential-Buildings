@@ -133,7 +133,7 @@ def table_numbers():
     aux = PAPER / "main.aux"
     num = {}
     if aux.exists():
-        for lab, n in re.findall(r"\\newlabel\{(tab:[^}]*)\}\{\{(\d+)\}", aux.read_text()):
+        for lab, n in re.findall(r"\\newlabel\{((?:tab:|S:)[^}]*)\}\{\{(\d+)\}", aux.read_text()):
             num[lab] = int(n)
     return num
 
@@ -142,7 +142,7 @@ def export_tables():
     src = (PAPER / "main.tex").read_text()
     num = table_numbers(); d = OUT / "tables"; d.mkdir(parents=True, exist_ok=True); n_out = 0
     for k, env in enumerate(re.findall(r"\\begin\{table\*?\}(.*?)\\end\{table\*?\}", src, flags=re.S)):
-        lab = re.search(r"\\label\{(tab:[^}]*)\}", env); lab = lab.group(1) if lab else f"tab:unlabelled{k + 1}"
+        lab = re.search(r"\\label\{((?:tab:|S:)[^}]*)\}", env); lab = lab.group(1) if lab else f"tab:unlabelled{k + 1}"
         cap = re.search(r"\\caption\{(.*?)\}\s*\\label", env, flags=re.S)
         tab = tabular_body(env)
         if tab is None: continue
@@ -156,7 +156,7 @@ def export_tables():
             last = cells[0] or last
             if any(cells): body.append(cells)
         no = num.get(lab, k + 1)
-        f = d / f"table_{no:02d}_{lab.split(':', 1)[1]}.csv"
+        f = d / f"table_{no:02d}_{lab.split(':')[-1]}.csv"
         with open(f, "w", newline="", encoding="utf-8") as fh:
             w = csv.writer(fh)
             if cap: fh.write("# Table %d. %s\n" % (no, plain(cap.group(1))))

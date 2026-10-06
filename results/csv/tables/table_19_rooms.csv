@@ -1,0 +1,19 @@
+# Table 19. Rooms of apartment A and the stair core (apartment B mirrors A, with west and east exchanged). Clear size and clear area from the drawing; floor area of the zone as modelled, on wall centrelines (used for capacitance, internal gains and the energy intensity); exterior faces with the widths of their windows [m] (all windows 1.50 m high); split unit, by rated coverage of the clear area; gain factor: multiple of the per-area internal gain given in Table [tab:params]. Every room of every storey is the same; the ground-floor rooms also lose heat to the ground and the top-floor rooms gain it through the roof.
+Room,Clear size [m],Clear area [m^2],Zone area [m^2],Exterior faces (windows),Unit,Gain factor
+Master bedroom,5.00x5.00,25.0,27.3,"N (2.00), W","2.5 t, inverter",1.0
+Bed 2,4.00x4.00,16.0,17.7,N (2.00),"1.5 t, inverter",1.0
+Master bath,2.50x1.50,3.8,4.5,W (0.90),-,0.5
+Lobby,2.35x1.50,3.5,4.1,-,-,0.3
+Bath 2,2.00x2.00,4.0,4.8,-,-,0.5
+Maid room,2.00x2.00,4.0,4.8,-,-,1.0
+Corridor,irregular,-,23.0,-,-,0.3
+Bed 3,4.00x4.00,16.0,17.5,W (1.80),"1.5 t, inverter",1.0
+Balcony (enclosed),1.50x5.00,7.5,9.3,W (4.00),-,0.0
+Living room,5.00x5.00,25.0,26.9,-,"2.5 t, inverter",1.0
+Dining area,2.20x5.00,11.0,12.4,-,"1.5 t, inverter",1.0
+Kitchen,4.00x4.00,16.0,17.5,W (1.80),"1.5 t, inverter",1.5
+Hall and entrance,irregular,-,22.9,-,-,0.3
+Bath 3,2.00x2.00,4.0,5.0,-,-,0.5
+Guest room,6.90x5.00,34.5,37.5,"S (2.00), W (2.00)","3.0 t, fixed-speed",1.0
+Bath 4,2.00x2.00,4.0,4.8,W (0.80),-,0.5
+Stair and lobby (core),4.25x9.05,38.5,42.0,S (2.00),"3.0 t, fixed-speed",0.3

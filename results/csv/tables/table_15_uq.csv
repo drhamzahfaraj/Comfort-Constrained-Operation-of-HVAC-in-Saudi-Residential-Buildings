@@ -1,4 +1,4 @@
-# Table 15. Global uncertainty analysis (SBC-compliant building, Case 3, 128 Latin-hypercube samples of 17 assumed inputs per city): median and 5-95 % range of each result [%], over the samples in which both compared runs are admissible (envelope: 62 and 60 samples in Riyadh and Jeddah; all others: 128). Levers are savings; pre-cooling rows are the saving of the best admissible pre-cool and the cost of a 2 K pre-cool. Ranges of the inputs and the partial rank correlations: supplementary material, Section S7.
+# Table 15. Global uncertainty analysis (SBC-compliant building, Case 3, 128 Latin-hypercube samples of 17 assumed inputs per city): median and 5-95 % range of each result [%], over the samples in which both compared runs are admissible (envelope: 62 and 60 samples in Riyadh and Jeddah; all others: 128). Levers are savings; pre-cooling rows are the saving of the best admissible pre-cool and the cost of a 2 K pre-cool. Ranges of the inputs and the partial rank correlations: Appendix [app:S7].
 Result,Riyadh: Median,Riyadh: 5-95 %,Jeddah: Median,Jeddah: 5-95 %
 Setpoint lever,10.8,7.9-13.4,9.6,7.6-11.7
 Envelope lever,54.3,49.5-60.3,42.4,35.6-51.5

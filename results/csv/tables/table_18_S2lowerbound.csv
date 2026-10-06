@@ -1,0 +1,19 @@
+# Table 18. Perfect-foresight benchmark (SBC-compliant building): saving [%] of the sensible cooling electricity that an ideal schedule achieves over holding the 24 degC ceiling with the same idealised units, with the rooms pre-cooled at most to the band floor (22 degC) or to the floor of the safe set (20 degC), with a COP that depends on the outdoor air only (=0) or the COP of the engine (=0.02, falling by 2%/K of indoor air below 27 degC). The =0 columns are rigorous upper bounds on the saving of any schedule of the idealised model; the =0.02 columns are achievable savings, those of the best valid schedule found (sequential linear programming, every schedule priced with its own indoor factor): at least the reference, 0, and at 20 degC at least the 22 degC schedule of the same day. Hold: electricity of the reference at =0.02 [kWh/day]. Season: May-September mean days weighted by the reference energy of their month (Case 1); July, 31 days: the whole month as one horizon (Case 1, band floor only). Case 3: the bound only; the search at =0.02 is not run. All design days.
+Case,Day,Riyadh: Hold,Riyadh: =0.02 (achievable): 22 degC,Riyadh: =0.02 (achievable): 20 degC,Riyadh: =0 (bound): 22 degC,Riyadh: =0 (bound): 20 degC,Jeddah: Hold,Jeddah: =0.02 (achievable): 22 degC,Jeddah: =0.02 (achievable): 20 degC,Jeddah: =0 (bound): 22 degC,Jeddah: =0 (bound): 20 degC
+1: apartment,"May, mean day",16.8,0.13,0.13,0.79,1.47,13.7,0.06,0.06,0.59,1.04
+1: apartment,"Jun, mean day",20.8,0.21,0.21,1.05,1.99,15.3,0.14,0.14,0.87,1.59
+1: apartment,"Jul, mean day",22.3,0.28,0.28,1.26,2.41,16.8,0.10,0.10,0.78,1.43
+1: apartment,"Aug, mean day",21.4,0.35,0.35,1.41,2.68,16.8,0.01,0.01,0.24,0.42
+1: apartment,"Sep, mean day",17.1,0.13,0.13,0.82,1.52,15.0,0.01,0.01,0.34,0.56
+1: apartment,"Jul, hottest day",25.4,0.46,0.47,1.50,2.86,19.3,0.54,0.54,1.79,3.34
+1: apartment,Season,-,0.23,0.23,1.07,2.07,-,0.06,0.06,0.58,1.03
+1: apartment,"July, 31 days",22.3,0.33,-,1.31,-,16.9,0.23,-,0.96,-
+2: floor,"Jul, mean day",46.6,0.35,0.35,1.39,2.65,35.9,0.13,0.13,0.86,1.58
+2: floor,"Jul, hottest day",53.8,0.54,0.56,1.63,3.09,41.6,0.63,0.67,1.92,3.57
+2: floor,"Aug, mean day",44.9,0.43,0.43,1.56,2.95,36.2,0.00,0.00,0.27,0.47
+Top floor,"Jul, mean day",55.8,0.12,0.12,0.75,1.42,43.5,0.02,0.02,0.35,0.63
+Top floor,"Jul, hottest day",64.5,0.19,0.19,0.96,1.82,50.1,0.25,0.25,1.08,2.02
+Top floor,"Aug, mean day",53.7,0.16,0.16,0.82,1.56,43.8,0.00,0.00,0.07,0.12
+3: building,"Jul, mean day",204.8,-,-,0.94,1.78,157.3,-,-,0.50,0.91
+3: building,"Jul, hottest day",235.6,-,-,1.16,2.21,181.1,-,-,1.34,2.50
+3: building,"Aug, mean day",197.0,-,-,1.04,1.97,159.0,-,-,0.13,0.22

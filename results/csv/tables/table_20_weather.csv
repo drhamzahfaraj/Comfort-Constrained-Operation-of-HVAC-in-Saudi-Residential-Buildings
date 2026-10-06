@@ -1,0 +1,14 @@
+# Table 20. Measured climate driving the model (TMYx typical years): monthly mean, mean daily maximum and minimum dry-bulb temperature [degC], mean relative humidity (RH) [%], global horizontal irradiation (GHI) [kWh/m^2 per day] and undisturbed ground temperature at 2 m depth (Ground) [degC], the temperature under the ground slab.
+col1,Riyadh: Mean,Riyadh: Max,Riyadh: Min,Riyadh: RH,Riyadh: GHI,Riyadh: Ground,Jeddah: Mean,Jeddah: Max,Jeddah: Min,Jeddah: RH,Jeddah: GHI,Jeddah: Ground
+Jan,14.7,20.9,8.7,47,4.4,19.3,23.5,28.8,18.8,59,4.4,26.2
+Feb,16.9,23.6,10.7,38,5.5,19.7,24.0,29.1,19.8,54,5.3,25.5
+Mar,21.4,28.2,14.5,30,6.3,21.8,25.6,31.7,20.1,69,6.5,25.6
+Apr,26.8,33.2,20.1,25,7.2,24.1,28.1,34.0,22.8,55,7.2,26.2
+May,32.8,38.7,26.2,15,7.6,29.0,30.5,37.0,25.0,58,7.4,28.1
+Jun,35.6,41.9,28.5,13,7.7,32.2,31.8,38.1,25.8,59,7.4,29.8
+Jul,36.4,43.2,29.4,12,7.6,33.8,33.0,39.0,27.1,55,7.1,31.2
+Aug,35.8,43.1,27.9,14,7.4,33.4,33.2,37.8,28.9,57,6.8,31.9
+Sep,33.2,38.9,26.7,16,6.8,31.2,31.8,37.1,27.2,69,6.4,31.8
+Oct,27.7,34.7,20.4,21,5.9,27.7,30.0,36.1,25.2,70,5.8,30.8
+Nov,21.6,27.1,16.1,36,4.7,23.9,27.6,32.6,23.4,58,4.9,29.2
+Dec,15.6,22.1,8.8,47,4.2,20.8,25.2,29.6,21.0,54,4.4,27.6

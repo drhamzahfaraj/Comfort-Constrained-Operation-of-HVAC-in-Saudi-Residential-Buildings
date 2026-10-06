@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-06 (g) — supplementary material moved into the paper as appendices
+- The former supplement (S1-S8) is now Appendices C-J of the paper (after A nomenclature and B proofs), in one column; `paper/supplementary.pdf` is retired and every pointer reads 'Appendix X'. The appendix text refers to the paper's own sections, equations, tables and references (\\citet), and its definitions refer to Section 5 instead of restating it; the leap-cycle figure is Fig. 6. Paper 40 pp (blind 39), one PDF.
+- Data availability, title page, introduction roadmap and README describe the appendices.
+
 ## 2026-10-06 (f) — benchmark extended to the top floor and the whole building; stronger search at gamma = 0.02
 - **Search at gamma = 0.02:** sequential linear programming with a trust region on the room temperatures, from two starts (the program re-solved with the indoor factor of its first solution, and the program without pre-cooling), at most 8 steps each (at most 19 linear programs per horizon); every schedule priced with its own indoor factor. Replaces the capped fixed-point iteration. Achievable savings rise from at most 0.3 % to 0.54 % (apartment), 0.63 % (typical floor) and 0.25 % (top floor) within the band; the search beats holding the ceiling on 44 of 48 design-day programs.
 - **New scopes:** `top_floor` (the typical floor under the roof, adiabatic slab below; blocks `lower_bound_top_floor`) and the whole building (Case 3, block `lower_bound_building`, bound only). The gamma = 0 bound is 0.07-1.08 % on the top floor and 0.13-1.34 % for the whole building within the band, below the typical floor (0.27-1.92 %) on every design day; the quoted maxima (1.9 % within the band, 3.6 % down to 20 °C) are unchanged.

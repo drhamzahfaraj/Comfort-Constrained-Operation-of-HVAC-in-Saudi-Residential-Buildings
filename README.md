@@ -96,7 +96,7 @@ Every conditioned room stays within 22-24 degC all year at the reference policy.
 - **Envelope.** The SBC envelope saves 50.4-56.4% (Riyadh) and 38.3-45.0% (Jeddah) of the HVAC energy of the same building with the pre-code envelope, 998-2,612 SAR a year per apartment.
 - **Pre-cooling.** No thermostat pre-cooling policy pays under the volume tariff in the base model; in the sensitivity analysis the only exception, a one-node zone whose COP does not depend on the room temperature, saves at most 0.08%, and with every choice most favourable to pre-cooling combined the best policy saves 0.77% in Riyadh and 0.03% in Jeddah. 2 K of pre-peak pre-cooling adds 3.4-4.3%, and still 2.9-3.8% if its extra heat is scaled to EnergyPlus. On the solved periodic design days no schedule of the idealised model could save more than 1.9% within the band and 3.6% down to 20 °C (the upper bound with a COP of the outdoor air only); with the engine's indoor COP factor the achievable saving, that of the best valid schedule found, is at most 0.6% and 0.7%, and a dawn setback fixed in advance on a simulated thermostat costs 0.99-1.80% (Case 3).
 - **Equipment.** In the SBC-compliant building, units sized by load at 2.5 times the peak load, the first of the tested margins that keeps every room within the safe set, would use 11.2-16.5% less energy as inverter units, 0.2-2.1% of it from their size alone; replacing only the fixed-speed 3-ton units by inverter units saves 11.4-15.0%, and an indoor fan left running adds 11.8-14.7%.
-- **Passive zones.** Holding their neighbours at the setpoint through walls and open doors, the controller removes 96% of the baths' excursion above the band; a small unit in each bath would remove the rest for 2.8-4.9% more energy (supplementary material, Section S1).
+- **Passive zones.** Holding their neighbours at the setpoint through walls and open doors, the controller removes 96% of the baths' excursion above the band; a small unit in each bath would remove the rest for 2.8-4.9% more energy (Appendix C).
 <!-- FINDINGS:END -->
 
 ### Ablation of the recommended solution
@@ -258,6 +258,7 @@ each result:
 | Physical and numerical verification | `verification` |
 | EnergyPlus comparison (BESTEST-style; storey box); stock energy use | `comparative`, `stock_equivalent` |
 | Factorial lever decomposition (Shapley); global uncertainty analysis (Latin hypercube, PRCC) | `factorial`, `uncertainty_Riyadh`, `uncertainty_Jeddah` |
+| Room schedule; monthly weather and ground temperature (Appendix E) | `experiments/configs/building.json`, `experiments/weather/` (no block) |
 
 ---
 
@@ -283,7 +284,7 @@ blocks; a full run takes several hours on a two-core machine.
 ---
 
 ## Data and code availability
-Everything needed to regenerate every number, table and figure of the paper and its supplementary material is in this
+Everything needed to regenerate every number, table and figure of the paper, including its appendices, is in this
 repository:
 
 | What | Where |
@@ -296,7 +297,7 @@ repository:
 | Every analysis result, one JSON file per block, and every table as CSV | `results/parts/`, `results/results.json`, `results/csv/` |
 | Uncertainty analysis: all 256 Latin-hypercube samples (inputs and results), one line per sample | `results/cache/uq_*.jsonl`, `results/parts/uncertainty_*.json` |
 | Perfect-foresight benchmark: every solve (bound and search), per scope | `results/cache/lower_bound_*.json` |
-| Manuscript (single-file LaTeX, references, PDF) and supplementary material: S1 passive zones; S2 full perfect-foresight benchmark; S3 geometry, room schedule (areas, windows, units, gain factors) and weather with ground temperature; S4 formal definitions and running examples; S5 validation details; S6 full sensitivity analysis and pre-cooling robustness; S7 uncertainty analysis; S8 calculation time | `paper/` |
+| Manuscript (single-file LaTeX, references, PDF). Appendices: A nomenclature; B proofs; C passive zones; D full perfect-foresight benchmark; E geometry, room schedule (areas, windows, units, gain factors) and weather with ground temperature; F formal definitions and running examples; G validation details; H full sensitivity analysis and pre-cooling robustness; I uncertainty analysis; J calculation time | `paper/` |
 | Tests | `tests/` |
 
 ## Use of generative AI
