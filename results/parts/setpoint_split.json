@@ -1,0 +1,234 @@
+{
+ "compliant/Riyadh": {
+  "rows": [
+   {
+    "cool_C": 22.0,
+    "heat_C": 20.5,
+    "bill": 11941,
+    "kwh": 57687,
+    "kwh_heat": 1000,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 22.5,
+    "heat_C": 20.5,
+    "bill": 11356,
+    "kwh": 54859,
+    "kwh_heat": 851,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.0,
+    "heat_C": 20.5,
+    "bill": 10795,
+    "kwh": 52148,
+    "kwh_heat": 718,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 20.5,
+    "bill": 10261,
+    "kwh": 49572,
+    "kwh_heat": 598,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 22.5,
+    "bill": 10456,
+    "kwh": 50512,
+    "kwh_heat": 1367,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   }
+  ],
+  "cooling_part_pct": 14.1,
+  "heating_part_pct": -1.6,
+  "total_pct": 12.4,
+  "per_K_cooling_pct": 9.4
+ },
+ "compliant/Jeddah": {
+  "rows": [
+   {
+    "cool_C": 22.0,
+    "heat_C": 20.5,
+    "bill": 17551,
+    "kwh": 84789,
+    "kwh_heat": 0,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 22.5,
+    "heat_C": 20.5,
+    "bill": 16923,
+    "kwh": 81753,
+    "kwh_heat": 0,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.0,
+    "heat_C": 20.5,
+    "bill": 16310,
+    "kwh": 78793,
+    "kwh_heat": 0,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 20.5,
+    "bill": 15714,
+    "kwh": 75912,
+    "kwh_heat": 0,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 22.5,
+    "bill": 15714,
+    "kwh": 75912,
+    "kwh_heat": 0,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   }
+  ],
+  "cooling_part_pct": 10.5,
+  "heating_part_pct": 0.0,
+  "total_pct": 10.5,
+  "per_K_cooling_pct": 7.0
+ },
+ "noncompliant/Riyadh": {
+  "rows": [
+   {
+    "cool_C": 22.0,
+    "heat_C": 20.5,
+    "bill": 26345,
+    "kwh": 127272,
+    "kwh_heat": 6447,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 22.5,
+    "heat_C": 20.5,
+    "bill": 24950,
+    "kwh": 120530,
+    "kwh_heat": 5733,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.0,
+    "heat_C": 20.5,
+    "bill": 23641,
+    "kwh": 114208,
+    "kwh_heat": 5164,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 20.5,
+    "bill": 22401,
+    "kwh": 108217,
+    "kwh_heat": 4691,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 22.5,
+    "bill": 23994,
+    "kwh": 115915,
+    "kwh_heat": 11116,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   }
+  ],
+  "cooling_part_pct": 15.0,
+  "heating_part_pct": -6.0,
+  "total_pct": 8.9,
+  "per_K_cooling_pct": 10.0
+ },
+ "noncompliant/Jeddah": {
+  "rows": [
+   {
+    "cool_C": 22.0,
+    "heat_C": 20.5,
+    "bill": 32836,
+    "kwh": 158626,
+    "kwh_heat": 9,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 22.5,
+    "heat_C": 20.5,
+    "bill": 31373,
+    "kwh": 151560,
+    "kwh_heat": 4,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.0,
+    "heat_C": 20.5,
+    "bill": 29949,
+    "kwh": 144682,
+    "kwh_heat": 1,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 20.5,
+    "bill": 28566,
+    "kwh": 137998,
+    "kwh_heat": 0,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   },
+   {
+    "cool_C": 23.5,
+    "heat_C": 22.5,
+    "bill": 28566,
+    "kwh": 137998,
+    "kwh_heat": 0,
+    "hot_Kh": 0.0,
+    "cold_Kh": 0.0,
+    "admissible": true
+   }
+  ],
+  "cooling_part_pct": 13.0,
+  "heating_part_pct": 0.0,
+  "total_pct": 13.0,
+  "per_K_cooling_pct": 8.7
+ }
+}

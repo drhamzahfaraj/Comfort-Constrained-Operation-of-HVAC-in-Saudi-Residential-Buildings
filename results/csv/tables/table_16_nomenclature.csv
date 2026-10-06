@@ -20,6 +20,6 @@ theta,annual bill [SAR],"T_a,T_g","outdoor, ground temperature [degC]"
 u_i(t); s_i(t),"mode of unit i; +1 cooling, -1 heating","c_m, h_m; phi","cooling, heating COP coefficients; derating"
 "omega_a, omega^*","outdoor, indoor humidity ratio [kg/kg]",n_ach,infiltration [air changes per hour]
 "delta=(delta_night,delta_peak)",pre-cooling depth pair [K],U-value,thermal transmittance [W/m^2K] (not U_i)
-"V^cool, V^heat","cooling, heating setpoint [degC]",COP_lat,latent (dehumidification) COP
+"V^cool, V^heat","cooling, heating setpoint [degC] (V^heat fixed, (C5))",COP_lat,latent (dehumidification) COP
 J_inf,long-run mean electrical power [kW],x_t; q_it; v_,nodal temperatures; heat removal; pre-cooling floor (benchmark)
 V_0,initial state of a run (not a setpoint),^vol,annual bill under the volume tariff [SAR]

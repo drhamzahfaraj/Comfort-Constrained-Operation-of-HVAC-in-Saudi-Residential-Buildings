@@ -1,4 +1,4 @@
-# Table 22. Sensitivity analysis (SBC-compliant building, Case 3): HVAC energy intensity [kWh/m^2yr], setpoint lever, saving of the best thermostat pre-cool (0.5-2 K in either window), and the change in cost of a 2 K pre-peak pre-cool. C_d: cycling degradation coefficient; sized by load: at 2.5 times the peak hourly load, the first tested margin that keeps every room within the safe set, unless stated; -: inadmissible, the reference policy lets a room pass the ceiling, so the run is excluded and nothing but its excursion (in the text) is reported. Door schedule: bath doors closed, bedroom and guest-room doors closed 23:00-07:00.
+# Table 22. Sensitivity analysis (SBC-compliant building, Case 3): HVAC energy intensity [kWh/m^2yr], setpoint lever, saving of the best thermostat pre-cool (0.5-2 K in either window; positive: saves), and the change in cost of a 2 K pre-peak pre-cool (positive: costs). C_d: cycling degradation coefficient; sized by load: at 2.5 times the peak hourly load, the first tested margin that keeps every room within the safe set, unless stated; excluded: inadmissible, the reference policy lets a room leave the safe set by the annual excursion shown, so nothing else of the run is reported. Door schedule: bath doors closed, bedroom and guest-room doors closed 23:00-07:00.
 Variant,Riyadh: Int.,Riyadh: Setp.,Riyadh: Pre-cool,Riyadh: 2 K,Jeddah: Int.,Jeddah: Setp.,Jeddah: Pre-cool,Jeddah: 2 K
 Reference (base case),25.1,12.4%,0.00%,+3.4%,37.7,10.5%,0.00%,+4.3%
 Interior doors closed,25.1,12.2%,0.00%,+3.1%,37.6,10.5%,0.00%,+3.9%
@@ -29,7 +29,7 @@ No capacity derating,25.1,12.4%,0.00%,+3.3%,37.8,10.6%,0.00%,+4.1%
 Indoor fan on while compressor off,28.0,10.9%,0.00%,+3.3%,43.2,8.8%,0.00%,+4.1%
 "Sized by load, all inverter",20.9,11.7%,0.00%,+2.9%,33.5,9.6%,0.00%,+3.0%
 "Sized by load, fixed-speed kept",24.5,11.9%,0.00%,+2.6%,37.6,10.1%,0.00%,+2.9%
-"Sized by load, 15% margin",-,-,-,-,-,-,-,-
+"Sized by load, 15% margin",excluded: 68.6 K*h above,,,,excluded: 17.8 K*h above,,,
 Wall U-value +20% (thermal bridges),25.6,12.3%,0.00%,+3.4%,38.2,10.6%,0.00%,+4.3%
 Solar absorptance 0.5,24.3,12.3%,0.00%,+3.6%,36.8,10.6%,0.00%,+4.4%
 Solar absorptance 0.9,25.9,12.5%,0.00%,+3.3%,38.6,10.4%,0.00%,+4.3%

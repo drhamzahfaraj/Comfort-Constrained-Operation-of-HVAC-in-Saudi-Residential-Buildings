@@ -321,9 +321,9 @@ def fig_pipeline():
     X = (0.6, 25.9, 51.1, 76.3); w = 23.0
     box(X[0], top, w, h, "Inputs (Sec. 4)", f"TMYx weather: Riyadh, Jeddah\nfloor plan: {M.NZ} zones, {int(M.COND.sum())} units,\n   {M.NMET} meters\nSBC 602 and pre-code envelopes\nunit catalogue; SASO 2663 COP\ntwo-tier volume tariff\ncomfort band [22, 24] °C", *G)
     box(X[1], top, w, h, "1  Room-resolved model (Sec. 5)", "two-node rooms coupled through\n   walls, slabs and open doors\nheat pumps: thermostat, modes,\n   restart delay, cycling losses\nlatent load; per-meter bill", *B)
-    box(X[2], top, w, h, "2  Formal problem (Sec. 5)", "multi-mode system: timed actions,\n   leaps, infinite schedules,\n   limit-average cost\nminimise the annual bill\n   s.t. conditioned rooms ≤ 24 °C\npolicy: setpoints, pre-cooling", *B)
-    box(X[3], top, w, h, "3  Theory (Sec. 6)", "optimal leap: highest level,\n   lowest feasible mode\ninfinite-horizon optimum\npre-cooling bound\nsources of saving\n→ conditions to check", *O)
-    box(X[0], bot, w, h, "4  Optimisation, evaluation (Sec. 7)", "optimal control (LP) of the\n   idealised model\nAlg. 1: annual simulation,\n   per-meter bill\nAlg. 2: 49 thermostat settings\nselect on 60 days, evaluate on 365", *Gr)
+    box(X[2], top, w, h, "2  Formal problem (Sec. 5)", "multi-mode system: timed actions,\n   leaps, infinite schedules,\n   limit-average cost\nminimise the annual bill\n   s.t. rooms in [20, 24] °C\npolicy: cooling setpoint, pre-cooling", *B)
+    box(X[3], top, w, h, "3  Theory (Sec. 6)", "optimal leap: highest level,\n   lowest mode (or two-mode mix)\ninfinite-horizon optimum\npre-cooling bound\nsources of saving\n→ conditions to check", *O)
+    box(X[0], bot, w, h, "4  Optimisation, evaluation (Sec. 7)", "Alg. 2: optimal control (LP)\n   of the idealised model\nAlg. 1: annual simulation,\n   per-meter bill\n49 thermostat settings compared:\nselect on 60 days, evaluate on 365", *Gr)
     box(X[1], bot, w, h, "5  Verification & validation (Sec. 8)", "time-step convergence\nheat balance of passive rooms\nBESTEST-style 600/900/640/940\nEnergyPlus on the same storeys,\n   with and without setbacks\nstock energy use (EUI)", *P)
     box(X[2], bot, w, h, "6  Experiments (Sec. 9)", "one lever at a time: setpoint,\n   mode, envelope, equipment,\n   scheduling\n3 cases × 2 cities × 2 seasons\nsensitivity analysis", *Gr)
     box(X[3], bot, w, h, "Outputs (Secs. 9–11)", "saving of each lever by case,\n   city and season\nSAR a year per apartment\ncomfort in rooms without units\nwhich lever pays under a\n   volume tariff", *K)
@@ -332,7 +332,7 @@ def fig_pipeline():
         arrow(X[k] + w + 0.45, bot + h / 2, X[k + 1] - 0.45, bot + h / 2)
     ym1, ym2 = top - 1.6, top - 3.1
     seg([(X[2] + 6, top - 0.35), (X[2] + 6, ym1), (X[0] + 11.5, ym1), (X[0] + 11.5, bot + h + 0.35)])
-    ax.text((X[0] + 11.5 + X[2] + 6) / 2, ym1, " policy θ and constraints (C1)–(C4) ", fontsize=5.9, color="#444444",
+    ax.text((X[0] + 11.5 + X[2] + 6) / 2, ym1, " policy θ and constraints (C1)–(C5) ", fontsize=5.9, color="#444444",
             ha="center", va="center", bbox=dict(fc="white", ec="none", pad=0.3))
     seg([(X[3] + 11.5, top - 0.35), (X[3] + 11.5, ym2), (X[2] + 11.5, ym2), (X[2] + 11.5, bot + h + 0.35)], ls=(0, (3, 2)), col=O[1])
     ax.text((X[2] + X[3]) / 2 + 11.5, ym2, " conditions checked ", fontsize=5.9, color=O[1], ha="center", va="center",

@@ -1000,6 +1000,72 @@ def b_ablation():
     return out
 
 
+def b_setpoint_split():
+    """The setpoint lever split into its cooling and heating parts (Case 3, sampled year, both envelopes). Current practice
+    (cooling 22, heating 20.5 degC) -> cooling raised in 0.5 K steps with heating kept at 20.5 -> heating raised to the
+    reference 22.5 degC (which holds the band floor in the heating months). The heating setpoint is not a decision of
+    the bill minimisation: it is set by the comfort target; the split shows what each part costs or saves."""
+    out = {}
+    steps = [[22.0, 20.5], [22.5, 20.5], [23.0, 20.5], [23.5, 20.5], [cs, hs]]
+    for env in ENVS:
+        for c in CITIES:
+            rs = sim(c, env, [[a, b, 0, 0] for a, b in steps])
+            rows = [dict(cool_C=a, heat_C=b, bill=round(r["bill"]), kwh=round(r["kwh"]), kwh_heat=round(float(np.sum(r["kwh_heat_m"]))),
+                         hot_Kh=r2(r["cviol_hot"]), cold_Kh=r2(r.get("sviol_cold", 0.0)), admissible=bool(O.admissible(r)))
+                    for (a, b), r in zip(steps, rs)]
+            b1, bx, b2 = rows[0]["kwh"], rows[3]["kwh"], rows[4]["kwh"]
+            out[f"{env}/{c}"] = dict(rows=rows, cooling_part_pct=r1(100 * (b1 - bx) / b1), heating_part_pct=r1(100 * (bx - b2) / b1),
+                                     total_pct=r1(100 * (b1 - b2) / b1),
+                                     per_K_cooling_pct=r1(100 * (b1 - bx) / b1 / 1.5))
+    return out
+
+
+def b_admissibility_tolerance():
+    """Sensitivity of admissibility to a tolerance on the safe set (Case 3, TMYx year): the 49 lattice policies with the
+    catalogue units and with units right-sized at TIGHT_MARGIN, both envelopes and cities. A policy is admissible at
+    tolerance tau if every conditioned room stays within [20 - tau, 24 + tau] degC at every step (tau = 0 is the rule of
+    the paper). Reported per tau: admissible policies, whether the reference is admissible, the best policy and its saving."""
+    out = {}
+    for sizing in ("catalogue", "right_sized"):
+        for env in ENVS:
+            for c in CITIES:
+                with patched():
+                    if sizing == "right_sized": M.right_size(c, env, margin=TIGHT_MARGIN)
+                    R = sim(c, env, GRID)
+                cz = np.where(M.COND)[0]; b = np.array([r["bill"] for r in R])
+                vmax = np.array([r["Vmax"][cz].max() for r in R]); vmin = np.array([r["Vmin"][cz].min() for r in R])
+                hot = np.array([r["cviol_hot"] for r in R]); cold = np.array([r.get("sviol_cold", 0.0) for r in R])
+                assert np.array_equal(adm(R), (hot <= O.EPS_KH) & (cold <= O.EPS_KH))
+                rows = {}
+                for tau in (0.0, 0.05, 0.1, 0.2):
+                    feas = (vmax <= M.SAFE[1] + tau + 1e-9) & (vmin >= M.SAFE[0] - tau - 1e-9)
+                    if tau == 0.0: feas = adm(R)                      # the paper's rule (zero excursion up to round-off)
+                    k = argbest(b, feas)
+                    rows[f"{tau:g}"] = dict(n_admissible=int(feas.sum()), reference_admissible=bool(feas[0]),
+                                            best_policy=[float(x) for x in GRID[k][2:]] if k is not None else None,
+                                            best_saving_pct=r2(pct(b[k], b[0])) if (k is not None and feas[0]) else None)
+                out[f"{sizing}/{env}/{c}"] = dict(rows=rows, ref_max_room_C=r2(vmax[0]), ref_min_room_C=r2(vmin[0]),
+                                                  ref_hot_Kh=r2(hot[0]), max_room_C_all=r2(vmax.max()), min_room_C_all=r2(vmin.min()))
+    return out
+
+
+def b_uq_envelope_all():
+    """Envelope lever of the global uncertainty analysis over all samples (from the cached sample results), against the
+    subset in which the pre-code building is admissible. Where the pre-code building leaves the safe set it holds its rooms
+    warmer than the ceiling, so its energy, and the lever, are understated: the all-sample range is a lower estimate."""
+    cfg = EXP["uncertainty"]; n = cfg["n_samples"]; out = {}
+    for c in CITIES:
+        ck = ROOT / "results" / "cache" / f"uq_{c}_{n}_{cfg['seed']}.jsonl"
+        rows = [json.loads(l) for l in ck.read_text().splitlines() if l.strip()]
+        assert len(rows) == n, (c, len(rows))
+        e = np.array([r["envelope_pct"] for r in rows]); a = np.array([bool(r["precode_admissible"]) for r in rows])
+        q = lambda x: [r2(v) for v in np.percentile(x, [5, 50, 95])]
+        sp = np.array([r["setpoint_pct"] for r in rows]); bp = np.array([max(r["best_precool_pct"] or 0.0, 0.0) for r in rows])
+        out[c] = dict(n_samples=n, n_precode_admissible=int(a.sum()), all=q(e), precode_admissible=q(e[a]), precode_inadmissible=q(e[~a]),
+                      n_ranking_holds_all=int(((e > sp) & (sp > bp)).sum()), min_envelope_minus_setpoint=r1(float((e - sp).min())))
+    return out
+
+
 def b_tou():
     """Contrast case outside the Saudi residential tariff: an illustrative time-of-use (TOU) tariff that prices the
     cooling-month energy used in the peak window M.TOU_PEAK_HOURS at r times the off-peak price (0.18 SAR/kWh, VAT
@@ -1757,7 +1823,7 @@ BLOCKS.update(seasons_hc=b_seasons_hc, instances=b_instances, train_eval=b_train
               lower_bound=b_lower_bound, dawn_setback=b_dawn_setback, lower_bound_checks=b_lower_bound_checks,
               comparative=b_comparative, equipment_split=b_equipment_split, joint_favourable=b_joint_favourable,
               controller_resolution=b_controller_resolution, humidity_levers=b_humidity_levers, precool_targeted=b_precool_targeted,
-              sizing_margin=b_sizing_margin, lp_complexity=b_lp_complexity, tight_frontier=b_tight_frontier, floor_guard=b_floor_guard, lower_bound_apartment=lambda: b_lower_bound(["apartment"]), lower_bound_floor=lambda: b_lower_bound(["floor"]), lower_bound_top_floor=lambda: b_lower_bound(["top_floor"]), lower_bound_building=b_lower_bound_building, factorial=b_factorial, uncertainty_Riyadh=lambda: b_uncertainty(["Riyadh"]), uncertainty_Jeddah=lambda: b_uncertainty(["Jeddah"]), fullyear_admissibility_Riyadh=lambda: b_fullyear_admissibility(["Riyadh"]), fullyear_admissibility_Jeddah=lambda: b_fullyear_admissibility(["Jeddah"]))
+              sizing_margin=b_sizing_margin, lp_complexity=b_lp_complexity, tight_frontier=b_tight_frontier, floor_guard=b_floor_guard, lower_bound_apartment=lambda: b_lower_bound(["apartment"]), lower_bound_floor=lambda: b_lower_bound(["floor"]), lower_bound_top_floor=lambda: b_lower_bound(["top_floor"]), lower_bound_building=b_lower_bound_building, admissibility_tolerance=b_admissibility_tolerance, uq_envelope_all=b_uq_envelope_all, setpoint_split=b_setpoint_split, factorial=b_factorial, uncertainty_Riyadh=lambda: b_uncertainty(["Riyadh"]), uncertainty_Jeddah=lambda: b_uncertainty(["Jeddah"]), fullyear_admissibility_Riyadh=lambda: b_fullyear_admissibility(["Riyadh"]), fullyear_admissibility_Jeddah=lambda: b_fullyear_admissibility(["Jeddah"]))
 for c in CITIES:
     BLOCKS[f"scheduling_{c}"] = b_scheduling(c)
 for Cz in EXP["thermal_mass_sweep"]:

@@ -1,0 +1,44 @@
+{
+ "Riyadh": {
+  "n_samples": 128,
+  "n_precode_admissible": 62,
+  "all": [
+   48.97,
+   53.55,
+   59.77
+  ],
+  "precode_admissible": [
+   49.54,
+   54.25,
+   60.29
+  ],
+  "precode_inadmissible": [
+   48.23,
+   52.7,
+   58.7
+  ],
+  "n_ranking_holds_all": 128,
+  "min_envelope_minus_setpoint": 34.5
+ },
+ "Jeddah": {
+  "n_samples": 128,
+  "n_precode_admissible": 60,
+  "all": [
+   33.91,
+   41.65,
+   51.19
+  ],
+  "precode_admissible": [
+   35.59,
+   42.35,
+   51.52
+  ],
+  "precode_inadmissible": [
+   33.24,
+   40.9,
+   49.13
+  ],
+  "n_ranking_holds_all": 128,
+  "min_envelope_minus_setpoint": 22.9
+ }
+}
