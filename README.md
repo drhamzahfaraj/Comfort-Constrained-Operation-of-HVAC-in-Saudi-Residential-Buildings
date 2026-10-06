@@ -296,7 +296,7 @@ repository:
 | Every analysis result, one JSON file per block, and every table as CSV | `results/parts/`, `results/results.json`, `results/csv/` |
 | Uncertainty analysis: all 256 Latin-hypercube samples (inputs and results), one line per sample | `results/cache/uq_*.jsonl`, `results/parts/uncertainty_*.json` |
 | Perfect-foresight benchmark: every solve (bound and search), per scope | `results/cache/lower_bound_*.json` |
-| Manuscript (single-file LaTeX, references, PDF) and supplementary material (S1-S8) | `paper/` |
+| Manuscript (single-file LaTeX, references, PDF) and supplementary material: S1 passive zones; S2 full perfect-foresight benchmark; S3 geometry, room schedule (areas, windows, units, gain factors) and weather with ground temperature; S4 formal definitions and running examples; S5 validation details; S6 full sensitivity analysis and pre-cooling robustness; S7 uncertainty analysis; S8 calculation time | `paper/` |
 | Tests | `tests/` |
 
 ## Use of generative AI
