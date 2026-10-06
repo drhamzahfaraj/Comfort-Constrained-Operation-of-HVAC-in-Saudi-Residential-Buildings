@@ -9,7 +9,7 @@ Capacitance C [kWh/K per 20 m^2],1.5 (270 kJ/m^2K),,heavy class of ISO 13790 [51
 Air-node share of C; air-structure coupling,5%; 9.9 W/m^2K of floor,,"ISO 13790 two-node simplification, heavy class [51]"
 Infiltration n_ach [ACH],0.4,,"nominal, new construction (stock: 0.8 [1]); sensible and latent"
 Interior doors / openings W_dx H_d [m]; C_dis,0.70-0.90x2.032 / 2.20-5.00x3.00; 0.6,,drawing; height SBC 201 [47]; [53]
-"Internal gains, mean [W/m^2]",5.4,,end-use split [1]
+Internal gains [W/m^2]: continuous + daytime half-sine; mean,"3.5 + 0-6.0 (08:00-20:00, peak 14:00); 5.4",,"end-use split [1]; times a room factor of 0-1.5 by use, assumed (supplementary material, Section S3)"
 Opaque solar absorptance,0.7,,"nominal (idealised, A5)"
 Exterior film / ground reflectance,17 W/m^2K / 0.2,,nominal (sol-air temperature and diffuse gains)
 "Sky long-wave: ; F_sky roof / walls, windows",0.9; 1 / 0.5,,ISO 13790 [51]; hourly infrared radiation of the TMYx file
