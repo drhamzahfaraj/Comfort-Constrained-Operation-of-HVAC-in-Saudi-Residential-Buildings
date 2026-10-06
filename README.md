@@ -121,15 +121,22 @@ Every conditioned room stays within 22-24 degC all year at the reference policy.
   indicative; the ordering of the levers and the relative savings are the robust results.
 - **Model.** Two-node rooms (air and structure), no layered walls, reveal shading or curtains; the stair is a zone
   per storey. Equipment curves (mode part-load ratios, escalation thresholds, Cd, standby, derating) are nominal.
-  With one node per zone, which couples all the capacitance to the air, a shallow pre-peak pre-cool saves about
-  1 %; this is the one assumption on which the sign of the thermostat result depends. In Jeddah the units'
+  Only a one-node zone whose COP ignores the room temperature lets a shallow pre-cool save, and then by 0.08 %;
+  with every choice most favourable to pre-cooling combined the best policy saves at most 0.77 %. In Jeddah the units'
   sensible runtime alone does not hold the 9.6 g/kg humidity target; the latent term prices the extra
   dehumidification.
-- **Sensitivity design.** Inputs are varied one at a time, not jointly.
+- **Sensitivity design.** Four layers: one-at-a-time runs (each assumption, including alternative models such as
+  one or two nodes, unit type, controller resolution, ground and humidity models, heat wave and tariff, against the
+  base case); a global uncertainty analysis that varies 17 continuous inputs **jointly** (Latin hypercube, 128 samples
+  per city, partial rank correlations; blocks `uncertainty_*`); the choices most favourable to pre-cooling combined in
+  one run; and a 2^4 factorial of the levers with Shapley attribution (`factorial`). Not covered: the capacitance, the
+  ground model and the weather year are varied only one at a time or not at all, and no variance-based (Sobol)
+  indices are computed.
 - **Scope.** One representative building, designed for the study; every room of every apartment occupied and
   conditioned at all hours (switching empty rooms off is future work); 49 uniform pre-cooling depth pairs in fixed
   windows for the thermostat search; the perfect-foresight benchmark covers arbitrary schedules
-  with idealised units on design days and one month. One typical weather year per city. Time-of-use and demand
+  with idealised units on design days of every case (the whole building for the bound only) and the 31 days of July
+  (one apartment). One typical weather year per city. Time-of-use and demand
   tariffs lie outside the theory.
 - **Comfort and envelope.** Comfort is the air temperature against a fixed 22-24 °C band (the operative temperature
   is estimated separately). "SBC-compliant" refers to walls, roof and glazing; slabs and partitions keep the
@@ -143,7 +150,7 @@ mixed stocks; field evaluation.
 
 ## Conclusion
 <!-- CONCLUSION:BEGIN -->
-We asked how much the operation of multi-mode heat pumps can save in a Saudi apartment building under the volume tariff, and which lever produces the saving. The theory shows that, without re-timing, the cheapest policy holds every room at the top of the comfort band in the lowest mode that holds the room, and bounds what pre-cooling can gain under any energy-only tariff; the room-resolved simulations of one apartment, one floor and the whole building in Riyadh and Jeddah find (Tables 6 and 8):
+We asked how much the operation of multi-mode heat pumps can save in a Saudi apartment building under the volume tariff, and which lever produces the saving. The theory shows that, without re-timing, the cheapest policy holds every room at the top of the comfort band in the lowest mode that holds the room, and bounds what pre-cooling can gain under any energy-only tariff; the room-resolved simulations of one apartment, one floor and the whole building in Riyadh and Jeddah (Tables 6 and 8) give the findings listed under Key findings above.
 
 The operating mode is set by the controller, not the household: the lowest mode that holds the room is optimal, and holding the highest mode costs more (Table 11). The four levers of the factorial together lower the building's annual HVAC bill from 26,788 to 8,889 SAR in Riyadh and from 33,616 to 13,924 SAR in Jeddah; a factorial decomposition on that base places the envelope first and timing last (Table 12), and a global uncertainty analysis of 17 assumed inputs leaves that ordering unchanged in every comparison within the safe set, and none of the pre-cooling settings tested in each of its 2x128 samples saves (Table 15). These findings hold for an energy-only tariff, every room occupied and conditioned at all hours, a hard 24 °C ceiling and catalogue units sized by coverage, and the timing result holds in the base model. For Saudi households and code bodies the implications are to improve the envelope, above all under the roof (the top-floor apartments carry the largest envelope penalty), size units by load with enough margin for the controller, raise the setpoints (cooling 22->23.5 °C, heating 20.5->22.5 °C), switch off pre-cooling and keep the indoor fan on automatic; moving cooling in time pays substantially only under a tariff that prices the time of use or the peak (Section 9.7).
 <!-- CONCLUSION:END -->
