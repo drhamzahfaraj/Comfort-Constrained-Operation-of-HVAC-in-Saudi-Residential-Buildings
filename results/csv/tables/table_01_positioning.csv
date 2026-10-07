@@ -1,7 +1,8 @@
-# Table 1. State-of-the-art comparison: positioning against representative prior work. yes: yes; partly: partly; -: no. Param.: envelope parameters derived from the code and cited sources; EUI: energy use checked against the stock; Tariff: the real tariff is used; Levers: savings decomposed by lever (E: envelope only); Tariff dep.: dependence of the saving on the tariff (A: one tariff or price signal assumed, not tested; T: compared across tariffs; B: bounded for every energy-priced tariff, with a perfect-foresight benchmark and a time-of-use contrast).
+# Table 1. State-of-the-art comparison: positioning against prior work. yes: yes; partly: partly; -: no. Param.: envelope parameters taken from the code and cited sources; EUI: energy use checked against the stock or bills; Tariff: the tariff the customers pay is used; Levers: savings compared by lever under a common comfort constraint (partly: levers evaluated one at a time); Tariff dep.: dependence of the saving on the tariff (A: one tariff or price signal assumed, not tested; T: compared across tariffs; B: bounded for every energy-priced tariff, with a perfect-foresight benchmark and a time-of-use contrast).
 Ref.,Method (study strand),Years,Param.,EUI,Tariff,Levers,Tariff dep.
 "[4, 5, 6, 9, 10, 28, 29, 30, 31, 32, 33, 34]","Pre-cooling, thermal storage, flexibility",1990-2024,partly,-,partly,-,T
-"[20, 21, 22, 23, 25, 26]",Building MPC,2010-24,partly,partly,partly,-,A
-"[1, 2, 3, 36, 38, 41]",Saudi envelope and code,2015-25,yes,yes,-,E,-
+"[20, 21, 22, 23, 25, 26]",Building MPC,2010-2024,partly,partly,partly,-,A
+"[1, 2, 3, 37, 39, 40, 42, 43, 44]","Saudi envelope, equipment and stock",2015-2025,yes,yes,-,partly,-
+[46],Occupancy scheduling (Riyadh homes),2019,partly,partly,-,-,-
 [8],Learning-based coordination (Saudi homes),2026,partly,-,yes,partly,A
-This work,"Multi-mode theory, optimal control, room-resolved simulation",2026,yes,yes,yes,yes,B
+This work,"Multi-mode theory, optimal control, room-resolved model",2026,yes,yes,yes,yes,B

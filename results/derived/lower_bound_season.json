@@ -1,0 +1,12 @@
+{
+ "Riyadh": {
+  "achievable_season_pct_band": 0.229,
+  "achievable_season_pct_20C": 0.229,
+  "note": "May-September mean days of Case 1 weighted by the reference energy of their month; each day's achievable saving floored at 0 (and at the band value for 20 C); differs from season_gap_pct in results.json, which averages the raw gaps"
+ },
+ "Jeddah": {
+  "achievable_season_pct_band": 0.064,
+  "achievable_season_pct_20C": 0.064,
+  "note": "May-September mean days of Case 1 weighted by the reference energy of their month; each day's achievable saving floored at 0 (and at the band value for 20 C); differs from season_gap_pct in results.json, which averages the raw gaps"
+ }
+}

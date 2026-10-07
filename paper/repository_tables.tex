@@ -3,7 +3,7 @@
 % file: sensitivity_all_variants
 \begin{table}[htbp]
 \centering\footnotesize\setlength{\tabcolsep}{2.5pt}
-\caption{Sensitivity analysis (SBC-compliant building, Case~3): HVAC energy intensity [kWh/m\textsuperscript{2}yr], setpoint lever, saving of the best thermostat pre-cool ($0.5$--$2\,$K in either window; positive: saves), and the change in cost of a $2\,$K pre-peak pre-cool (positive: costs). $C_d$: cycling degradation coefficient; sized by load: at $2.5$ times the peak hourly load, the first tested margin that keeps every room within the safe set, unless stated; excluded: inadmissible, the reference policy lets a room leave the safe set by the annual excursion shown, so nothing else of the run is reported. Door schedule: bath doors closed, bedroom and guest-room doors closed 23:00--07:00.}
+\caption{Sensitivity analysis (SBC-compliant building, Case~3): HVAC energy intensity [kWh/m\textsuperscript{2}yr], setpoint lever, saving of the best thermostat pre-cool ($0.5$--$2\,$K in either window; positive: saves), and the change in cost of a $2\,$K pre-peak pre-cool (positive: costs). $C_d$: cycling degradation coefficient; sized by load: at $2.5$ times the peak hourly load, the first tested margin that keeps every room within the safe set, unless stated; excluded: inadmissible, because the reference policy lets a room leave the safe set by the annual excursion shown; nothing else of the run is reported. Door schedule: bath doors closed, bedroom and guest-room doors closed 23:00--07:00.}
 \label{R:robust}
 \begin{tabularx}{\linewidth}{L{4.6cm} *{8}{C}}
 \toprule
@@ -12,11 +12,6 @@
 Variant & Int. & Setp. & Pre-cool & $2\,$K & Int. & Setp. & Pre-cool & $2\,$K \\
 \midrule
 Reference (base case) & 25.1 & 12.4\% & 0.00\% & $+3.4\%$ & 37.7 & 10.5\% & 0.00\% & $+4.3\%$ \\
-Interior doors closed & 25.1 & 12.2\% & 0.00\% & $+3.1\%$ & 37.6 & 10.5\% & 0.00\% & $+3.9\%$ \\
-Internal gains $-30\%$ & 23.0 & 11.4\% & 0.00\% & $+3.5\%$ & 35.0 & 11.0\% & 0.00\% & $+4.3\%$ \\
-Internal gains $+30\%$ & 27.4 & 12.7\% & 0.00\% & $+3.2\%$ & 40.4 & 10.1\% & 0.00\% & $+4.3\%$ \\
-Flat part-load COP & 31.5 & 12.6\% & 0.00\% & $+2.1\%$ & 45.0 & 11.0\% & 0.00\% & $+3.2\%$ \\
-Ground at constant mean temperature & 26.0 & 17.0\% & 0.00\% & $+4.0\%$ & 42.2 & 12.5\% & 0.00\% & $+4.6\%$ \\
 \midrule
 One node per zone & 25.5 & 11.2\% & 0.00\% & $+3.3\%$ & 38.0 & 10.4\% & 0.00\% & $+6.7\%$ \\
 One node, COP independent of indoor air & 23.8 & 8.2\% & 0.08\% & $+1.8\%$ & 36.1 & 8.0\% & 0.00\% & $+5.0\%$ \\
@@ -25,12 +20,11 @@ Air node $15\%$ of $C$ & 25.6 & 12.2\% & 0.00\% & $+2.7\%$ & 38.6 & 10.4\% & 0.0
 Air node $30\%$ of $C$ & 25.5 & 12.3\% & 0.00\% & $+2.8\%$ & 38.5 & 10.5\% & 0.00\% & $+4.2\%$ \\
 Air--structure coupling $\times0.5$ & 24.5 & 12.0\% & 0.00\% & $+3.3\%$ & 36.8 & 10.4\% & 0.00\% & $+3.8\%$ \\
 Air--structure coupling $\times2$ & 25.5 & 12.6\% & 0.00\% & $+3.0\%$ & 38.3 & 10.5\% & 0.00\% & $+4.6\%$ \\
-Latent COP $-30\%$ off / low mode & 25.1 & 12.4\% & 0.00\% & $+3.4\%$ & 41.6 & 9.5\% & 0.00\% & $+3.8\%$ \\
 \midrule
 Thermostat differential $0.1\,$K & 26.4 & 11.4\% & 0.00\% & $+4.3\%$ & 38.8 & 10.5\% & 0.00\% & $+5.1\%$ \\
 Escalation at $0.2$ / $0.6\,$K & 26.0 & 12.6\% & 0.00\% & $+3.1\%$ & 38.5 & 10.8\% & 0.00\% & $+4.4\%$ \\
 Escalation at $0.8$ / $2.0\,$K & 25.0 & 12.3\% & 0.00\% & $+2.3\%$ & 37.7 & 10.4\% & 0.00\% & $+3.2\%$ \\
-Inverter units in low mode only & 25.0 & 12.3\% & 0.00\% & $+2.0\%$ & 37.7 & 10.4\% & 0.00\% & $+2.8\%$ \\
+Inverter units in lowest mode & 25.0 & 12.3\% & 0.00\% & $+2.0\%$ & 37.7 & 10.4\% & 0.00\% & $+2.8\%$ \\
 No full-capacity response & 25.1 & 12.4\% & 0.00\% & $+3.4\%$ & 37.7 & 10.5\% & 0.00\% & $+4.3\%$ \\
 COP independent of indoor air & 23.6 & 9.5\% & 0.00\% & $+2.2\%$ & 36.0 & 8.1\% & 0.00\% & $+3.0\%$ \\
 Indoor COP factor $3\%$/K & 25.9 & 14.0\% & 0.00\% & $+4.1\%$ & 38.6 & 11.8\% & 0.00\% & $+5.1\%$ \\
@@ -43,14 +37,21 @@ No capacity derating & 25.1 & 12.4\% & 0.00\% & $+3.3\%$ & 37.8 & 10.6\% & 0.00\
 Indoor fan on while compressor off & 28.0 & 10.9\% & 0.00\% & $+3.3\%$ & 43.2 & 8.8\% & 0.00\% & $+4.1\%$ \\
 Sized by load, all inverter & 20.9 & 11.7\% & 0.00\% & $+2.9\%$ & 33.5 & 9.6\% & 0.00\% & $+3.0\%$ \\
 Sized by load, fixed-speed kept & 24.5 & 11.9\% & 0.00\% & $+2.6\%$ & 37.6 & 10.1\% & 0.00\% & $+2.9\%$ \\
-Sized by load, $15\%$ margin & \multicolumn{4}{c}{excluded: $68.6\,$K$\cdot$h above} & \multicolumn{4}{c}{excluded: $17.8\,$K$\cdot$h above} \\
+Sized by load with a $15\%$ margin & \multicolumn{4}{c}{excluded: $68.6\,$K$\cdot$h above} & \multicolumn{4}{c}{excluded: $17.8\,$K$\cdot$h above} \\
+Flat part-load COP & 31.5 & 12.6\% & 0.00\% & $+2.1\%$ & 45.0 & 11.0\% & 0.00\% & $+3.2\%$ \\
 \midrule
 Wall U-value $+20\%$ (thermal bridges) & 25.6 & 12.3\% & 0.00\% & $+3.4\%$ & 38.2 & 10.6\% & 0.00\% & $+4.3\%$ \\
 Solar absorptance $0.5$ & 24.3 & 12.3\% & 0.00\% & $+3.6\%$ & 36.8 & 10.6\% & 0.00\% & $+4.4\%$ \\
 Solar absorptance $0.9$ & 25.9 & 12.5\% & 0.00\% & $+3.3\%$ & 38.6 & 10.4\% & 0.00\% & $+4.3\%$ \\
 Infiltration $0.2\,$ACH & 22.5 & 12.9\% & 0.00\% & $+3.2\%$ & 30.4 & 10.7\% & 0.00\% & $+4.5\%$ \\
 Infiltration $0.8\,$ACH & 31.5 & 10.0\% & 0.00\% & $+3.4\%$ & 52.4 & 10.2\% & 0.00\% & $+3.8\%$ \\
+Interior doors closed & 25.1 & 12.2\% & 0.00\% & $+3.1\%$ & 37.6 & 10.5\% & 0.00\% & $+3.9\%$ \\
 Door schedule & 24.8 & 12.3\% & 0.00\% & $+3.6\%$ & 37.4 & 10.4\% & 0.00\% & $+4.5\%$ \\
+Internal gains $-30\%$ & 23.0 & 11.4\% & 0.00\% & $+3.5\%$ & 35.0 & 11.0\% & 0.00\% & $+4.3\%$ \\
+Internal gains $+30\%$ & 27.4 & 12.7\% & 0.00\% & $+3.2\%$ & 40.4 & 10.1\% & 0.00\% & $+4.3\%$ \\
+Ground slab without soil resistance, constant ground temperature & 26.0 & 17.0\% & 0.00\% & $+4.0\%$ & 42.2 & 12.5\% & 0.00\% & $+4.6\%$ \\
+Latent COP $-30\%$ off / low mode & 25.1 & 12.4\% & 0.00\% & $+3.4\%$ & 41.6 & 9.5\% & 0.00\% & $+3.8\%$ \\
+\midrule
 Daily swing $\times1.3$ & 26.0 & 11.8\% & 0.00\% & $+3.2\%$ & 38.2 & 10.4\% & 0.00\% & $+4.6\%$ \\
 Heat wave $+3\,$K, swing $\times1.3$ & 33.4 & 12.2\% & 0.00\% & $+3.1\%$ & 46.7 & 9.7\% & 0.00\% & $+4.1\%$ \\
 \bottomrule
@@ -60,7 +61,7 @@ Heat wave $+3\,$K, swing $\times1.3$ & 33.4 & 12.2\% & 0.00\% & $+3.1\%$ & 46.7 
 % file: lower_bound_all_design_days
 \begin{table}[t]
 \centering\footnotesize\setlength{\tabcolsep}{2.5pt}
-\caption{Perfect-foresight benchmark (SBC-compliant building): saving [\%] of the sensible cooling electricity that an ideal schedule achieves over holding the $24\,^{\circ}$C ceiling with the same idealised units, with the rooms pre-cooled at most to the band floor ($22\,^{\circ}$C) or to the floor of the safe set ($20\,^{\circ}$C), with a COP that depends on the outdoor air only ($\gamma=0$) or the COP of the engine ($\gamma=0.02$, falling by $2\%$/K of indoor air below $27\,^{\circ}$C). The $\gamma=0$ columns are rigorous upper bounds on the saving of any periodic schedule of the idealised model on that horizon; the $\gamma=0.02$ columns are achievable savings, those of the best valid schedule found (sequential linear programming, every schedule priced with its own indoor factor): at least the reference, $0$, and at $20\,^{\circ}$C at least the $22\,^{\circ}$C schedule of the same day. Hold: electricity of the reference at $\gamma=0.02$ [kWh/day]. Season: May--September mean days weighted by the reference energy of their month (Case~1), a weighted mean of the daily values and not itself a bound for the season; July, 31 days: the whole month as one horizon (Case~1, band floor only). Case~3: the bound only; the search at $\gamma=0.02$ is not run. All design days.}
+\caption{Perfect-foresight benchmark (SBC-compliant building): saving [\%] of the sensible cooling electricity that an ideal schedule achieves over holding the $24\,^{\circ}$C ceiling with the same idealised units, with the rooms pre-cooled at most to the band floor ($22\,^{\circ}$C) or to the floor of the safe set ($20\,^{\circ}$C), with a COP that depends on the outdoor air only ($\gamma=0$) or the COP of the engine ($\gamma=0.02$, falling by $2\%$/K of indoor air below $27\,^{\circ}$C). The $\gamma=0$ columns are upper bounds on the saving of any periodic schedule of the idealised model on that horizon; the $\gamma=0.02$ columns are achievable savings, those of the best valid schedule found (Section~\ref{sec:lpbench}). Hold: electricity of the reference at $\gamma=0.02$ [kWh/day]. Season: May--September mean days weighted by the reference energy of their month (Case~1), a weighted mean of the daily values and not itself a bound for the season; July, 31 days: the whole month as one horizon (Case~1, band floor only). Case~3: the bound only; the search at $\gamma=0.02$ is not run. All design days.}
 \label{R:lowerbound}
 \begin{tabularx}{\linewidth}{l l C C C C C C C C C C}
 \toprule
@@ -77,7 +78,7 @@ Case & Day & Hold & $22\,^{\circ}$C & $20\,^{\circ}$C & $22\,^{\circ}$C & $20\,^
  & Sep, mean day & 17.1 & 0.13 & 0.13 & 0.82 & 1.52 & 15.0 & 0.01 & 0.01 & 0.34 & 0.56 \\
  & Jul, hottest day & 25.4 & 0.46 & 0.47 & 1.50 & 2.86 & 19.3 & 0.54 & 0.54 & 1.79 & 3.34 \\
 & Season & -- & 0.23 & 0.23 & 1.07 & 2.07 & -- & 0.06 & 0.06 & 0.58 & 1.03 \\
-& July, 31 days & 22.3 & 0.33 & -- & 1.31 & -- & 16.9 & 0.23 & -- & 0.96 & -- \\
+& Jul, 31 days & 22.3 & 0.33 & -- & 1.31 & -- & 16.9 & 0.23 & -- & 0.96 & -- \\
 \midrule
 2: floor & Jul, mean day & 46.6 & 0.35 & 0.35 & 1.39 & 2.65 & 35.9 & 0.13 & 0.13 & 0.86 & 1.58 \\
  & Jul, hottest day & 53.8 & 0.54 & 0.56 & 1.63 & 3.09 & 41.6 & 0.63 & 0.67 & 1.92 & 3.57 \\
@@ -95,7 +96,7 @@ Top floor & Jul, mean day & 55.8 & 0.12 & 0.12 & 0.75 & 1.42 & 43.5 & 0.02 & 0.0
 % file: test_instances_all
 \begin{table}[htbp]
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
-\caption{Every normal and hard test instance (Case~3, the whole building). Units: catalogue (sized by coverage) or sized to the building's own peak hourly load with a $15\%$ margin. Peak load ratio: largest hourly sensible load of any unit over its rated capacity; excursion of the reference policy above $24\,^{\circ}$C and below $20\,^{\circ}$C; best policy: the cheapest admissible thermostat policy, night/pre-peak depth (none: no pre-cooling; --: no lattice setting at the reference setpoints is admissible; in brackets, the highest admissible cooling setpoint without pre-cooling, where one exists); admissible policies: number of the $49$ lattice policies that keep every conditioned room within the safe set on the sampled days (the others are excluded). No unit reaches a load ratio of $0.85$.}
+\caption{Every normal and hard test instance (Case~3, the whole building). Units: catalogue (sized by coverage) or each sized to its room's own peak hourly load with a $15\%$ margin. Peak load ratio: largest hourly sensible load of any unit over its rated capacity; Exc.: excursion of the reference policy above $24\,^{\circ}$C and below $20\,^{\circ}$C; best policy: the cheapest admissible thermostat policy, night/pre-peak depth (none: no pre-cooling; --: no lattice setting at the reference setpoints is admissible; in brackets, the highest admissible cooling setpoint without pre-cooling, where one exists); admissible policies: number of the $49$ lattice policies that keep every conditioned room within the safe set on the sampled days (the others are excluded). No unit reaches a load ratio of $0.85$.}
 \label{R:instances}
 \begin{tabularx}{\linewidth}{l l l l c c c c C}
 \toprule
@@ -132,11 +133,11 @@ COP ratio $c_1/c_3$ & $-0.32$/$-0.28$ & $+0.43$/$+0.33$ & $+0.90$/$+0.89$ & $+0.
 COP ratio $c_2/c_3$ & $-0.12$/$-0.09$ & $+0.05$/$-0.10$ & $+0.13$/$+0.17$ & $+0.10$/$+0.03$ & $+0.07$/$+0.07$ \\
 inverter $C_d$ & $-0.19$/$+0.16$ & $-0.36$/$-0.04$ & $-0.89$/$-0.89$ & $-0.37$/$-0.38$ & $-0.15$/$-0.16$ \\
 fixed-speed $C_d$ & $+0.04$/$+0.22$ & $+0.04$/$+0.03$ & $+0.94$/$+0.95$ & $-0.08$/$-0.14$ & $-0.13$/$-0.16$ \\
-escalation thresholds (scale) & $-0.22$/$-0.27$ & $-0.55$/$-0.27$ & $+0.32$/$+0.33$ & $-0.36$/$-0.34$ & $-0.24$/$-0.19$ \\
+escalation-threshold scale & $-0.22$/$-0.27$ & $-0.55$/$-0.27$ & $+0.32$/$+0.33$ & $-0.36$/$-0.34$ & $-0.24$/$-0.19$ \\
 air-node share of capacitance & $-0.36$/$-0.41$ & $-0.80$/$-0.80$ & $+0.31$/$+0.05$ & $-0.44$/$-0.46$ & $+0.08$/$-0.04$ \\
 latent COP & $-0.10$/$+0.84$ & $+0.12$/$+0.77$ & $+0.14$/$+0.64$ & $-0.06$/$+0.16$ & $+0.04$/$+0.33$ \\
-infiltration (ACH) & $-0.85$/$-0.57$ & $-0.88$/$-0.96$ & $-0.21$/$-0.82$ & $+0.34$/$-0.27$ & $+0.55$/$+0.15$ \\
-internal gains (scale) & $+0.48$/$-0.80$ & $-0.90$/$-0.77$ & $-0.15$/$+0.01$ & $-0.26$/$-0.24$ & $-0.29$/$-0.37$ \\
+infiltration & $-0.85$/$-0.57$ & $-0.88$/$-0.96$ & $-0.21$/$-0.82$ & $+0.34$/$-0.27$ & $+0.55$/$+0.15$ \\
+internal-gain scale & $+0.48$/$-0.80$ & $-0.90$/$-0.77$ & $-0.15$/$+0.01$ & $-0.26$/$-0.24$ & $-0.29$/$-0.37$ \\
 wall $U$ (thermal bridges) & $+0.00$/$+0.06$ & $+0.35$/$+0.00$ & $-0.07$/$+0.07$ & $-0.04$/$-0.03$ & $+0.02$/$-0.03$ \\
 opaque solar absorptance & $-0.07$/$-0.43$ & $+0.85$/$+0.87$ & $+0.11$/$+0.18$ & $+0.05$/$+0.09$ & $-0.00$/$+0.03$ \\
 door exchange (scale) & $-0.03$/$-0.11$ & $-0.14$/$+0.11$ & $-0.15$/$-0.29$ & $+0.02$/$+0.03$ & $+0.05$/$+0.01$ \\
@@ -145,6 +146,26 @@ daily temperature swing (scale) & $-0.43$/$-0.20$ & $+0.05$/$-0.03$ & $+0.07$/$+
 air temperature shift [K] & $+0.73$/$-0.78$ & $-0.52$/$+0.78$ & $+0.12$/$+0.36$ & $+0.02$/$-0.28$ & $+0.21$/$-0.42$ \\
 \bottomrule
 \end{tabular}
+\end{table}
+
+% file: calculation_time
+\begin{table}[htbp]
+\centering\footnotesize\setlength{\tabcolsep}{2.5pt}
+\caption{Calculation time (two-core virtual machine): one annual evaluation of a thermostat policy (sampled year, $3$-minute steps), alone and for all 49 policies together; the optimal-control linear program for one mean July day ($15$-minute steps; the bound, $\gamma=0$, and the search, sequential linear programming for the indoor COP factor; Case~3: bound only, with Clarabel); and the controller at one control step.}
+\label{R:time}
+\begin{tabularx}{\linewidth}{@{}X r r r@{}}
+\toprule
+ & Case~1 & Case~2 & Case~3 \\
+\midrule
+Zones & 16 & 33 & 132 \\
+Units & 7 & 15 & 60 \\
+Open doors & 15 & 30 & 120 \\
+Annual evaluation, 1 policy [s] & 11.2 & 10.0 & 13.4 \\
+Annual evaluation, 49 policies [s] & 18.9 & 24.2 & 52.5 \\
+Linear program, bound / search [s] & 1.3/21.2 & 18.4/284.3 & 233.8/-- \\
+Controller, one step [$\mu$s] & 7.2 & 7.1 & 8.4 \\
+\bottomrule
+\end{tabularx}
 \end{table}
 
 % file: weather_monthly

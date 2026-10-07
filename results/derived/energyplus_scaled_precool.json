@@ -1,0 +1,22 @@
+{
+ "Riyadh": {
+  "prepeak_2K": {
+   "ratio_ep_engine": 0.7516,
+   "bill_pct_scaled": 2.943
+  },
+  "night_2K": {
+   "ratio_ep_engine": 0.7557,
+   "bill_pct_scaled": 3.204
+  }
+ },
+ "Jeddah": {
+  "prepeak_2K": {
+   "ratio_ep_engine": 0.8348,
+   "bill_pct_scaled": 3.819
+  },
+  "night_2K": {
+   "ratio_ep_engine": 0.7575,
+   "bill_pct_scaled": 3.26
+  }
+ }
+}

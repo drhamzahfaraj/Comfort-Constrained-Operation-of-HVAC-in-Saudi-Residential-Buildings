@@ -1,9 +1,0 @@
-# Table 23. Calculation time (two-core virtual machine): one annual evaluation of a thermostat policy (sampled year, 3-minute steps), alone and for all 49 policies together; the optimal-control linear program for one mean July day (15-minute steps; the bound, gamma=0, and the search, sequential linear programming for the indoor COP factor; Case 3: bound only, with Clarabel); and the controller at one control step.
-col1,Case 1,Case 2,Case 3
-Zones,16,33,132
-Units,7,15,60
-Open doors,15,30,120
-"Annual evaluation, 1 policy [s]",11.2,10.0,13.4
-"Annual evaluation, 49 policies [s]",18.9,24.2,52.5
-"Linear program, bound / search [s]",1.3/21.2,18.4/284.3,233.8/-
-"Controller, one step [us]",7.2,7.1,8.4

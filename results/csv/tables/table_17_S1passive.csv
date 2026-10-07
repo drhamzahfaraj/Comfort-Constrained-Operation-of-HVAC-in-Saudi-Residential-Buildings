@@ -1,5 +1,5 @@
 # Table 17. The baths of the SBC-compliant building (Case 3, the whole building; 32 baths) with and without the controller: July mean and annual peak temperature [degC], share of the year above the 24 degC ceiling [%], mean excursion above the ceiling per bath [K*h/yr], and the building's HVAC energy relative to the controller of this study [%].
-Case,Riyadh: July,Riyadh: Peak,Riyadh: >24 degC,Riyadh: K*h,Riyadh: Energy,Jeddah: July,Jeddah: Peak,Jeddah: >24 degC,Jeddah: K*h,Jeddah: Energy
+Variant,Riyadh: July,Riyadh: Peak,Riyadh: >24 degC,Riyadh: K*h,Riyadh: Energy,Jeddah: July,Jeddah: Peak,Jeddah: >24 degC,Jeddah: K*h,Jeddah: Energy
 No controller (all units off),41.3,44.3,83,"79,141",-,39.3,41.7,99,"96,640",-
 "Controller, interior doors closed",27.7,31.9,68,"15,164",+0.1,27.1,31.4,97,"18,350",-0.3
 "Controller, reference setpoint (this study)",24.9,26.3,62,"3,509",0,24.7,26.3,91,"4,248",0

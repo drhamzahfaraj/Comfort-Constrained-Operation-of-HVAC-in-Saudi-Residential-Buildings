@@ -5,7 +5,7 @@ Symbol,Meaning,Symbol,Meaning
 "K^w_i,K^o_i",window and infiltration; opaque conductance [kW/K],K^am_i,air-structure conductance [kW/K]
 "S^o_i,S^w_i,S^sky_i","opaque sol-air, window solar, window sky drives [kW]",f_r; _i,radiant share of gains; run fraction of a step
 K_ij,"coupling conductance of zones i,j [kW/K]",K^grd_i,zone-ground conductance [kW/K]
-"G_i,S_i","internal, solar gains [kW]",L,heat gain of a zone [kW]
+G_i,internal gains [kW],L,heat gain of a zone [kW]
 q^env_i,heat entering via envelope and ground [kW],q_ji,heat carried through a door [kW]
 "M, m","mode set 0,1,2,3; a mode",f_m,capacity fraction of mode m
 Q_i; Q^h_i,cooling; heating capacity of unit i [kW],COP_m,coefficient of performance
@@ -17,9 +17,11 @@ V; V^*,level (time-mean temperature) of a leap cycle; highest admissible level (
 "[V_low,V_high]","comfort band [22,24] degC","[V_,V_]","safe set [20,24] degC"
 theta,"policy (V^cool,V^heat,delta_night,delta_peak)","E_r,k",energy of meter r in month k [kWh]
 theta,annual bill [SAR],"T_a,T_g","outdoor, ground temperature [degC]"
-u_i(t); s_i(t),"mode of unit i; +1 cooling, -1 heating","c_m, h_m; phi","cooling, heating COP coefficients; derating"
-"omega_a, omega^*","outdoor, indoor humidity ratio [kg/kg]",n_ach,infiltration [air changes per hour]
+u_i(t); s_i(t),"mode of unit i; +1 cooling, -1 heating","c_m, h_m; phi","cooling, heating COP coefficients; outdoor COP factor"
+"omega_a, omega^*","outdoor, indoor humidity ratio [g/kg]",n_ach,infiltration [air changes per hour]
 "delta=(delta_night,delta_peak)",pre-cooling depth pair [K],U-value,thermal transmittance [W/m^2K] (not U_i)
 "V^cool, V^heat","cooling, heating setpoint [degC] (V^heat fixed, (C5))",COP_lat,latent (dehumidification) COP
 J_inf,long-run mean electrical power [kW],x_t; q_it; v_,nodal temperatures; heat removal; pre-cooling floor (benchmark)
 V_0,initial state of a run (not a setpoint),^vol,annual bill under the volume tariff [SAR]
+P,lower convex envelope of a unit's mode power curve [kW],_theta,"controller under policy theta, (C0)"
+"COP_w,COP_p; _w,_p",incremental COP in and after the pre-cooling window; their inverses,"Delta H; Delta H_w,Delta H_r",extra heat admitted by pre-cooling; in and after the window [kWh]

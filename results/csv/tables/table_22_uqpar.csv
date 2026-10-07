@@ -6,11 +6,11 @@ COP ratio c_1/c_3,1.45,1.3,1.6
 COP ratio c_2/c_3,1.24,1.1,1.3
 inverter C_d,0.15,0.05,0.25
 fixed-speed C_d,0.25,0.15,0.35
-escalation thresholds (scale),1,0.5,2
+escalation-threshold scale,1,0.5,2
 air-node share of capacitance,0.05,0.02,0.15
 latent COP,3.4,2.5,4
-infiltration (ACH),0.4,0.2,0.8
-internal gains (scale),1,0.7,1.3
+infiltration,0.4,0.2,0.8
+internal-gain scale,1,0.7,1.3
 wall U (thermal bridges),1,1,1.2
 opaque solar absorptance,0.7,0.5,0.9
 door exchange (scale),1,0.5,1.5

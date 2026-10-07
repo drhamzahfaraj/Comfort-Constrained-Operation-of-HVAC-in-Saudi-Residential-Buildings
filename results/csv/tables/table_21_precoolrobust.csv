@@ -1,7 +1,7 @@
 # Table 21. Robustness of the thermostat pre-cooling result (SBC-compliant building, Case 3, volume tariff). Best: saving of the cheapest admissible policy against no pre-cooling [%] (positive: saves; 0: no pre-cooling is best; negative: every depth run costs, for the rows that do not include no pre-cooling among their options; -: not run, or inadmissible because the reference policy leaves the safe set). 2 K: change in the annual bill of a 2 K pre-peak pre-cool [%] (positive: costs). Favourable choices: one node per zone, COP independent of the indoor air, inverter units in their lowest mode, no cycling loss. Dawn setback: all 365 days; the other rows: sampled year.
 Test,Riyadh: Best,Riyadh: 2 K,Jeddah: Best,Jeddah: 2 K
 "Base model, lattice of 49 policies",+0.00,+3.40,+0.00,+4.30
-Inverter units in their lowest mode,+0.00,+1.95,+0.00,+2.84
+Inverter units in lowest mode,+0.00,+1.95,+0.00,+2.84
 Ramped pre-peak setback (0.5 K/h),-0.25,+2.26,-0.34,+3.04
 Extra heat scaled to EnergyPlus,-,+2.94,-,+3.82
 "Dawn setback, 2 K, all 365 days",-0.99,-,-1.80,-
