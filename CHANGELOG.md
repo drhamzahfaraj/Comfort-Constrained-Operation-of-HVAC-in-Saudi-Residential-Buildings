@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-07 (m) — title
+- Title changed to "Comparing HVAC Energy-Saving Measures in a Saudi Residential Building under a Volume Tariff" (round-8 editor and reviewers: the former title led with method jargon and a robustness check, and "comfort-constrained" held only for the air temperature of conditioned rooms). The body keeps the term "lever".
+
 ## 2026-10-07 (l) — round-9 verification: reference currency and blocking fixes
 - **References.** Eight older example citations in Related Work replaced by six Crossref-verified 2022-2026 works (Kim et al. 2022, Hou et al. 2022, Dhaliwal et al. 2026, Wang et al. 2023, Canet & Qadrdan 2023, Rama Curiel & Thakur 2022); 68 references, 22 from 2022 onwards. The remaining pre-2022 references are standards, tools, methods, data sources and the seminal works the paper quotes.
 - **Verification panel** (EIC, R1, R2, R4, R5, R6, Devil's Advocate, language; stopping rule: only factual, numerical, contradiction, unsupported-claim, citation and journal-requirement items block): all eight "ready after blocking fixes" (85-93/100). Fixed: contribution scope (depth pairs in two fixed windows), cycling-loss caveat on the bound, 0.08 % vs 0.77 % in the limitations, Almogbel 44 % (46 % on 18 days), no-gain condition not claimed as measured, Proposition 2(ii) strictness, proof slope, coupled-zone model credited to Nghiem et al. 2012, Alur et al. 2013 described as safe schedulability, BESTEST peaks wording, appendix/repository pointers, ablation heating cap, bath excursion baseline, pronouns and table citation order. A focused re-check of the changed text found one more (bath range 62-91 % to match the table), fixed.

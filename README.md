@@ -1,4 +1,4 @@
-# Comfort-Constrained Operation of Multi-Mode HVAC in a Saudi Apartment Building under a Volume Tariff and Parameter Uncertainty
+# Comparing HVAC Energy-Saving Measures in a Saudi Residential Building under a Volume Tariff
 
 Code, drawings, simulation inputs, results and manuscript of the paper. Every result, table and figure of the
 paper is regenerated from this repository, and the tests check the headline numbers against the paper.
