@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-07 (o) — figures and tables placed with their sections
+- Every figure and table is cited in the text of its own section or subsection; Fig. 6 (Appendix F) now has its own sentence ("Fig. 6 shows these mean powers…").
+- Float sources moved so that each figure and table prints within the section that discusses it (17 printed after the next heading had started; now 28 of 30 print inside their section and the other two, Tables 6 and 17, at the adjoining page boundary). Table and figure numbering, text and numbers are unchanged; the paper is still 37 pages. References are now numbered in reading order (a float's citations count where the text first refers to it, via a generated \nocite list), so moving a float's source does not renumber them; only [54] and [56] swap.
+
 ## 2026-10-07 (n) — repository pointers consolidated
 - File paths and "in the repository" pointers removed from the sections, captions and appendices; the text now refers to the appendix tables that summarise each result. The Data availability statement now says, in one place, that all data and results (code, configuration, weather files, drawings, EnergyPlus inputs and outputs, every result as JSON/CSV, the six summarised tables, the derived values, the uncertainty samples, the benchmark solves, the LaTeX source and the tests) are in the public repository. No number changed.
 
