@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07 (j) — five appendix tables moved to the repository; tables at column width; weather links
+- Moved out of the paper into `results/csv/repository/` (LaTeX in `paper/repository_tables.tex`, exported by `make csv`): the benchmark on every design day, all 37 sensitivity variants, every test instance, the partial rank correlation coefficients and the monthly weather. Each appendix keeps a paragraph with the key numbers (generated from the results) and the file name; the main-text Tables 10, 13 and 14 keep their selected rows.
+- Set to one-column width (transposed or restructured): the air-conditioner catalogue, the three cases, the pre-cooling decomposition, the ablation (excursion columns replaced by a caption statement; all zero, asserted), the seasonal operation, the pre-cooling robustness tests, the uncertainty inputs and the calculation time.
+- Data availability names the TMYx files with their Climate.OneBuilding.Org download links (Riyadh Air Base 404380, Jeddah King Abdulaziz International Airport 410240) and the repository tables. Paper 37 pp.
+
 ## 2026-10-07 (i) — appendices in two columns; table widths unified
 - The appendices keep the paper's two-column layout (no `\onecolumn` page break after the declarations). Every appendix table is a page-wide float spanning the full text width (`table*`, tabularx); the uncertainty-input and PRCC tables now fill the width too. All tables use the same font size (`\footnotesize`). Paper 39 pp.
 

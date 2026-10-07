@@ -20,7 +20,7 @@ Cycling degradation C_d: inverter / fixed-speed,0.15 / 0.25,,"part-load factor p
 Standby power; capacity derating,"3 W per unit; 1%/K about 35 degC, [0.8,1.1]",,nominal
 Restart delay; mode escalation,"3 min; 0.4/1.0 K, full if lagging",,anti-short-cycle timer; nominal
 Thermostat differential; setpoint step,1.0 K; 0.5 K,,typical room thermostat; state updated every 3 min
-Cooling COP (modes 1/2/3),5.81/4.98/4.01xphi(T_a) g(V),,"SASO 2663 minimum at full load [48]; ratios and assumed, Eq. [eq:cop]"
+Cooling COP (modes 1/2/3),5.81/4.98/4.01xphi(T_a) g(V),,"SASO 2663 minimum at full load [48]; ratios and gamma assumed, Eq. [eq:cop]"
 Heating COP (modes 1/2/3),4.6 / 4.0 / 3.2,,nominal heat-pump values
 Heating / cooling capacity Q^h_i/Q_i,1.14,,nominal inverter heat pump (6.0 vs 5.28 kW at 1.5 t)
 "Latent (dehumidification) COP, COP_lat",3.4,,"nominal, all modes (Eq. [eq:latent])"

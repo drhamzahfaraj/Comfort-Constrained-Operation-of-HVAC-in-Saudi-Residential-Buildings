@@ -1,5 +1,5 @@
-# Table 6. The three cases (SBC-compliant building; pre-code value in parentheses). HVAC energy intensity: electricity of the units per floor area. Setpoint: saving of the setpoint lever, from current practice (cooling 22, heating 20.5 degC) to the reference setpoints (23.5 and 22.5 degC). Pre-cooling: saving of the best admissible thermostat policy of the lattice. Envelope: SBC versus pre-code at the reference setpoints.
-City,Case,HVAC intensity [kWh/m^2yr],Setpoint,Pre-cooling,Envelope
+# Table 6. The three cases (SBC-compliant building; pre-code value in parentheses). Intensity: HVAC energy intensity, electricity of the units per floor area [kWh/m^2yr]; the other columns are savings [%]. Setpoint: saving of the setpoint lever, from current practice (cooling 22, heating 20.5 degC) to the reference setpoints (23.5 and 22.5 degC). Pre-cooling: saving of the best admissible thermostat policy of the lattice. Envelope: SBC versus pre-code at the reference setpoints.
+City,Case,Intensity,Setpoint,Pre-cooling,Envelope
 Riyadh,1: apartment,23.8 (48.0),12.2%,0%,50.5%
 Riyadh,2: floor,23.3 (46.9),12.4%,0%,50.4%
 Riyadh,3: building,25.1 (57.5),12.4%,0%,56.4%

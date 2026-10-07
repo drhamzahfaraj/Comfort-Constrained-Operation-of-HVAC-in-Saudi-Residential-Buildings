@@ -9,7 +9,7 @@ K_ij,"coupling conductance of zones i,j [kW/K]",K^grd_i,zone-ground conductance 
 q^env_i,heat entering via envelope and ground [kW],q_ji,heat carried through a door [kW]
 "M, m","mode set 0,1,2,3; a mode",f_m,capacity fraction of mode m
 Q_i; Q^h_i,cooling; heating capacity of unit i [kW],COP_m,coefficient of performance
-"; g,","capacity derating with T_a; indoor COP factor, its slope [K^-1]",C_d; PLF; RTF,cycling degradation; part-load factor; runtime fraction
+"; g, gamma","capacity derating with T_a; indoor COP factor, its slope [K^-1]",C_d; PLF; RTF,cycling degradation; part-load factor; runtime fraction
 "(m,t)",timed action: mode m for time t,Delta; Delta_th,amplitude of a leap cycle; thermostat differential [K]
 "(m,t)",schedule (finite or infinite),_i(m),"cost per unit time, unit i, mode m"
 theta^*,"selected policy (frontier setpoint, best depths)",lambda,energy price [SAR/kWh]

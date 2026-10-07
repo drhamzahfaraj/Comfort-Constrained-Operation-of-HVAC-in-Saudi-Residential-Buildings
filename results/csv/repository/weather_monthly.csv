@@ -1,4 +1,4 @@
-# Table 20. Measured climate driving the model (TMYx typical years): monthly mean, mean daily maximum and minimum dry-bulb temperature [degC], mean relative humidity (RH) [%], global horizontal irradiation (GHI) [kWh/m^2 per day] and undisturbed ground temperature at 2 m depth (Ground) [degC], the temperature under the ground slab.
+# Repository table weather_monthly. Measured climate driving the model (TMYx typical years): monthly mean, mean daily maximum and minimum dry-bulb temperature [degC], mean relative humidity (RH) [%], global horizontal irradiation (GHI) [kWh/m^2 per day] and undisturbed ground temperature at 2 m depth (Ground) [degC], the temperature under the ground slab.
 col1,Riyadh: Mean,Riyadh: Max,Riyadh: Min,Riyadh: RH,Riyadh: GHI,Riyadh: Ground,Jeddah: Mean,Jeddah: Max,Jeddah: Min,Jeddah: RH,Jeddah: GHI,Jeddah: Ground
 Jan,14.7,20.9,8.7,47,4.4,19.3,23.5,28.8,18.8,59,4.4,26.2
 Feb,16.9,23.6,10.7,38,5.5,19.7,24.0,29.1,19.8,54,5.3,25.5

@@ -1,0 +1,8 @@
+# Table 20. Summer and winter operation of the whole building at the reference policy: annual cooling, heating and latent electricity [kWh], and the share of time [%] the conditioned rooms spend off and in the low, medium and high modes, given as off/low/medium/high (cooling and heating together; fixed-speed units count as high) in summer (Jun-Sep) and winter (Dec-Feb). The remainder of the HVAC energy is the units' standby electricity, 1,577 kWh a year in the SBC-compliant building. Last row: summer / winter shares of apartment 2A's HVAC energy.
+col1,Riyadh: SBC,Riyadh: Pre-code,Jeddah: SBC,Jeddah: Pre-code
+Cooling [kWh],"47,383","103,038","54,784","116,870"
+Heating [kWh],"1,367","11,116",0,0
+Latent [kWh],185,185,"19,551","19,551"
+Summer modes [%],59/33/1/7,40/32/15/13,63/31/0/6,44/32/13/12
+Winter modes [%],97/2/0/1,81/14/1/5,82/14/0/4,75/18/2/6
+Apt. 2A summer/winter [%],61.0/3.9,-,46.8/12.6,-

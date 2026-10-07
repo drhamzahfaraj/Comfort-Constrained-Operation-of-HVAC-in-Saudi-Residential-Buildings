@@ -1,6 +1,6 @@
-# Table 2. Air-conditioner catalogue and the rooms each unit serves. All units are split heat pumps for heating and cooling. The 1.5- to 2.5-ton units are inverter units with four operating modes (off, low, medium, high; capacity fractions 0, 0.35, 0.65 and 1); the 3-ton unit has a fixed-speed rotary compressor and runs on/off at full capacity. Heating capacity: 1.14 times the cooling capacity (assumed). The stair (38.5 m^2) lies just above the rated coverage of its unit, and the dining area (11.0 m^2) below that of the smallest unit.
-Unit,Cooling / heating capacity,Rated coverage,Rooms served
-1.5 ton,5.28 / 6.0 kW,16-18 m^2,"Bed 2, Bed 3, kitchen, dining area"
-2.0 ton,7.03 / 8.0 kW,19-22 m^2,none (no room of the plan falls in this range)
-2.5 ton,8.79 / 10.0 kW,22-30 m^2,"master bedroom, living room"
-3.0 ton,10.55 / 12.0 kW,30-36 m^2,"guest room, stair"
+# Table 2. Air-conditioner catalogue and the rooms each unit serves. All units are split heat pumps for heating and cooling. The 1.5- to 2.5-ton units are inverter units with four operating modes (off, low, medium, high; capacity fractions 0, 0.35, 0.65 and 1); the 3-ton unit has a fixed-speed rotary compressor and runs on/off at full capacity. Capacity: cooling/heating, the heating capacity 1.14 times the cooling capacity (assumed); coverage: rated floor area. The 2.0-ton unit serves no room of the plan. The stair (38.5 m^2) lies just above the rated coverage of its unit, and the dining area (11.0 m^2) below that of the smallest unit.
+Unit,Capacity [kW],Coverage,Rooms served
+1.5 ton,5.28/6.0,16-18 m^2,"Bed 2, Bed 3, kitchen, dining area"
+2.0 ton,7.03/8.0,19-22 m^2,none
+2.5 ton,8.79/10.0,22-30 m^2,"master bedroom, living room"
+3.0 ton,10.55/12.0,30-36 m^2,"guest room, stair"

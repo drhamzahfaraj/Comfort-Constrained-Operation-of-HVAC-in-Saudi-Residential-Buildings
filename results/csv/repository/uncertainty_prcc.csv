@@ -1,6 +1,6 @@
-# Table 27. Partial rank correlation coefficients of the inputs with the results (Riyadh / Jeddah). Columns: setpoint lever, envelope lever, inverter lever, best admissible pre-cool (omitted when no sample saves), cost of a 2 K pre-peak and of a 2 K night pre-cool.
+# Repository table uncertainty_prcc. Partial rank correlation coefficients of the inputs with the results (Riyadh / Jeddah). Columns: setpoint lever, envelope lever, inverter lever, best admissible pre-cool (omitted when no sample saves), cost of a 2 K pre-peak and of a 2 K night pre-cool.
 Input,Setp.,Env.,Inv.,Pre-peak,Night
-indoor COP slope,+0.93/+0.98,+0.04/+0.10,-0.17/-0.09,+0.69/+0.65,+0.76/+0.81
+indoor COP slope gamma,+0.93/+0.98,+0.04/+0.10,-0.17/-0.09,+0.69/+0.65,+0.76/+0.81
 outdoor COP slope,-0.19/-0.10,+0.23/+0.39,+0.01/+0.09,-0.14/+0.34,-0.78/-0.80
 COP ratio c_1/c_3,-0.32/-0.28,+0.43/+0.33,+0.90/+0.89,+0.35/+0.34,+0.12/+0.16
 COP ratio c_2/c_3,-0.12/-0.09,+0.05/-0.10,+0.13/+0.17,+0.10/+0.03,+0.07/+0.07

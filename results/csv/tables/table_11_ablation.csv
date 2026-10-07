@@ -1,8 +1,8 @@
-# Table 11. Ablation of the selected policy theta^* (whole building, Case 3, volume tariff). Each variant changes one component and keeps the others, including the heating setpoint (which Algorithm [alg:eval] caps at 1 K below the cooling setpoint, so the current-practice row heats to 21 degC). Bill: annual HVAC bill (SAR); Delta: its change relative to theta^*; Exc.: excursion above the 24 degC ceiling / below the 20 degC floor (K*h), summed over conditioned rooms; every row stays within the safe set, so every variant is admissible. Deterministic simulation, one annual run per variant; lowest bill in bold.
-Variant,Changed component,Riyadh: Bill,Riyadh: Delta (%),Riyadh: Exc. above/below,Jeddah: Bill,Jeddah: Delta (%),Jeddah: Exc. above/below
-"Full solution (theta^*, SBC)",-,"10,456",-,0/0,"15,714",-,0/0
-Current-practice cooling,23.5->22 degC,"11,968",+14.5,0/0,"17,551",+11.7,0/0
-Highest mode,lowest -> highest mode,"12,801",+22.4,0/0,"18,440",+17.3,0/0
-Pre-code envelope,SBC -> pre-code,"23,994",+129.5,0/0,"28,566",+81.8,0/0
-Night pre-cooling,none -> 2 K at night,"10,934",+4.6,0/0,"16,542",+5.3,0/0
-Pre-peak pre-cooling,none -> 2 K before peak,"10,811",+3.4,0/0,"16,390",+4.3,0/0
+# Table 11. Ablation of the selected policy theta^* (whole building, Case 3, volume tariff). Each variant changes one component and keeps the others, including the heating setpoint (which Algorithm [alg:eval] caps at 1 K below the cooling setpoint, so the current-practice row heats to 21 degC). Bill: annual HVAC bill (SAR); Delta: its change relative to theta^* [%]. Every variant keeps every conditioned room within the safe set (zero excursion above 24 degC and below 20 degC), so every variant is admissible. Deterministic simulation, one annual run per variant; lowest bill in bold.
+Variant (changed component),Riyadh: Bill,Riyadh: Delta,Jeddah: Bill,Jeddah: Delta
+Selected policy theta^* (SBC),"10,456",-,"15,714",-
+Current-practice cooling (23.5->22 degC),"11,968",+14.5,"17,551",+11.7
+Highest mode (instead of the lowest),"12,801",+22.4,"18,440",+17.3
+Pre-code envelope (instead of SBC),"23,994",+129.5,"28,566",+81.8
+Night pre-cooling (2 K),"10,934",+4.6,"16,542",+5.3
+Pre-peak pre-cooling (2 K),"10,811",+3.4,"16,390",+4.3

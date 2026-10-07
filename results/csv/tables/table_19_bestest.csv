@@ -1,4 +1,4 @@
-# Table 21. BESTEST-style comparative test (Standard 140 cases on the Riyadh weather; differences computed from unrounded values): annual heating and cooling [MWh], peak hourly heating and cooling [kW], and the free-floating minimum, mean and maximum temperature [degC]. Cases 640/940: 600/900 with the night heating setback. E+: EnergyPlus 26.1; this: the engine of the model.
+# Table 19. BESTEST-style comparative test (Standard 140 cases on the Riyadh weather; differences computed from unrounded values): annual heating and cooling [MWh], peak hourly heating and cooling [kW], and the free-floating minimum, mean and maximum temperature [degC]. Cases 640/940: 600/900 with the night heating setback. E+: EnergyPlus 26.1; this: the engine of the model.
 col1,Case 600: E+,Case 600: this,Case 900: E+,Case 900: this,Case 640: E+,Case 640: this,Case 940: E+,Case 940: this
 Heating [MWh],0.40,0.62,0.00,0.01,0.16,0.28,0.00,0.00
 Cooling [MWh],11.12,11.10,9.62,10.04,11.05,11.04,9.62,10.03

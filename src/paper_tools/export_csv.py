@@ -2,6 +2,8 @@
 
   results/csv/tables/table_NN_<label>.csv   every table of the paper, cell for cell as printed
                                             (read from paper/main.tex; numbers from paper/main.aux, written by `make paper`)
+  results/csv/repository/<file>.csv         tables of the study kept in the repository (cited by file name in the paper;
+                                            read from paper/repository_tables.tex)
   results/csv/blocks/<block>.csv            every analysis block of results/parts/, flattened to
                                             (key, value) rows, one row per scalar
 
@@ -32,7 +34,7 @@ SYMBOLS = {r"\%": "%", r"\&": "&", r"\$": "$", r"\,": " ", r"\;": " ", r"\ ": " 
            r"^{\circ}": "deg", r"^\circ": "deg", r"\circ": "partly", r"\Delta": "Delta", r"\delta": "delta",
            r"\theta": "theta", r"\lambda": "lambda", r"\varphi": "phi", r"\omega": "omega", r"\ast": "*",
            r"\infty": "inf", r"\checkmark": "yes", r"\textendash": "-", "--": "-", r"\ldots": "...",
-           r"\dots": "...", r"\quad": " ", r"\mathcal": "", r"\sim": "~"}
+           r"\dots": "...", r"\quad": " ", r"\mathcal": "", r"\sim": "~", r"\gamma": "gamma", r"\mu": "u"}
 
 
 def plain(s):
@@ -138,6 +140,38 @@ def table_numbers():
     return num
 
 
+def write_table(env, f, title):
+    """One table environment -> CSV (caption as a comment line, header, rows). False if it has no tabular."""
+    cap = re.search(r"\\caption\{(.*?)\}\s*\\label", env, flags=re.S)
+    tab = tabular_body(env)
+    if tab is None: return False
+    head, rows = table_rows(tab)
+    ncol = max(len(r) for r in head + rows)
+    header = combine_header(head, ncol)
+    body, last = [], ""
+    for r in rows:
+        cells = [plain(c) if c is not None else "" for c in r] + [""] * (ncol - len(r))
+        if not cells[0] and any(cells[1:]): cells[0] = last   # repeat a grouping label (e.g. the city)
+        last = cells[0] or last
+        if any(cells): body.append(cells)
+    with open(f, "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        if cap: fh.write("# %s. %s\n" % (title, plain(cap.group(1))))
+        w.writerow(header); w.writerows(body)
+    return True
+
+
+def export_repository_tables():
+    """Tables of the study kept in the repository instead of the paper (paper/repository_tables.tex, written by the
+    paper build) -> results/csv/repository/<file>.csv; the paper cites them by these file names."""
+    src = PAPER / "repository_tables.tex"
+    if not src.exists(): return 0
+    d = OUT / "repository"; d.mkdir(parents=True, exist_ok=True); n = 0
+    for name, env in re.findall(r"% file: (\S+)\n\\begin\{table\*?\}(?:\[[^\]]*\])?(.*?)\\end\{table\*?\}", src.read_text(), flags=re.S):
+        n += write_table(env, d / f"{name}.csv", f"Repository table {name}")
+    return n
+
+
 def export_tables():
     src = (PAPER / "main.tex").read_text()
     num = table_numbers(); d = OUT / "tables"; d.mkdir(parents=True, exist_ok=True); n_out = 0
@@ -192,5 +226,5 @@ def export_blocks():
 
 if __name__ == "__main__":
     if OUT.exists(): shutil.rmtree(OUT)
-    t = export_tables(); b = export_blocks()
-    print(f"results/csv: {t} paper tables, {b} result blocks")
+    t = export_tables(); r = export_repository_tables(); b = export_blocks()
+    print(f"results/csv: {t} paper tables, {r} repository tables, {b} result blocks")

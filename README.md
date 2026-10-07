@@ -103,16 +103,16 @@ Every conditioned room stays within 22-24 degC all year at the reference policy.
 
 ### Ablation of the recommended solution
 <!-- ABLATION:BEGIN -->
-*Table 11. Ablation of the selected policy θ\* (whole building, Case 3, volume tariff). Each variant changes one component and keeps the others, including the heating setpoint (which Algorithm [alg:eval] caps at 1 K below the cooling setpoint, so the current-practice row heats to 21 °C). Bill: annual HVAC bill (SAR); Δ: its change relative to θ\*; Exc.: excursion above the 24 °C ceiling / below the 20 °C floor (K*h), summed over conditioned rooms; every row stays within the safe set, so every variant is admissible. Deterministic simulation, one annual run per variant; lowest bill in bold.* ([`results/csv/tables/table_11_ablation.csv`](results/csv/tables/table_11_ablation.csv))
+*Table 11. Ablation of the selected policy θ\* (whole building, Case 3, volume tariff). Each variant changes one component and keeps the others, including the heating setpoint (which Algorithm [alg:eval] caps at 1 K below the cooling setpoint, so the current-practice row heats to 21 °C). Bill: annual HVAC bill (SAR); Δ: its change relative to θ\* [%]. Every variant keeps every conditioned room within the safe set (zero excursion above 24 °C and below 20 °C), so every variant is admissible. Deterministic simulation, one annual run per variant; lowest bill in bold.* ([`results/csv/tables/table_11_ablation.csv`](results/csv/tables/table_11_ablation.csv))
 
-| Variant | Changed component | Riyadh: Bill | Riyadh: Δ (%) | Riyadh: Exc. above/below | Jeddah: Bill | Jeddah: Δ (%) | Jeddah: Exc. above/below |
-|---|---|---|---|---|---|---|---|
-| Full solution (θ\*, SBC) | - | 10,456 | - | 0/0 | 15,714 | - | 0/0 |
-| Current-practice cooling | 23.5->22 °C | 11,968 | +14.5 | 0/0 | 17,551 | +11.7 | 0/0 |
-| Highest mode | lowest → highest mode | 12,801 | +22.4 | 0/0 | 18,440 | +17.3 | 0/0 |
-| Pre-code envelope | SBC → pre-code | 23,994 | +129.5 | 0/0 | 28,566 | +81.8 | 0/0 |
-| Night pre-cooling | none → 2 K at night | 10,934 | +4.6 | 0/0 | 16,542 | +5.3 | 0/0 |
-| Pre-peak pre-cooling | none → 2 K before peak | 10,811 | +3.4 | 0/0 | 16,390 | +4.3 | 0/0 |
+| Variant (changed component) | Riyadh: Bill | Riyadh: Δ | Jeddah: Bill | Jeddah: Δ |
+|---|---|---|---|---|
+| Selected policy θ\* (SBC) | 10,456 | - | 15,714 | - |
+| Current-practice cooling (23.5->22 °C) | 11,968 | +14.5 | 17,551 | +11.7 |
+| Highest mode (instead of the lowest) | 12,801 | +22.4 | 18,440 | +17.3 |
+| Pre-code envelope (instead of SBC) | 23,994 | +129.5 | 28,566 | +81.8 |
+| Night pre-cooling (2 K) | 10,934 | +4.6 | 16,542 | +5.3 |
+| Pre-peak pre-cooling (2 K) | 10,811 | +3.4 | 16,390 | +4.3 |
 <!-- ABLATION:END -->
 
 ---
@@ -232,8 +232,12 @@ saudi-hvac-savings/
 section, energy by storey, monthly energy) and not used in the paper.
 
 ### Paper tables
-Every table of `paper/main.tex` is exported, as printed, to `results/csv/tables/table_NN_<name>.csv` (NN = table number in the paper). The analysis block behind
-each result:
+Every table of `paper/main.tex` is exported, as printed, to `results/csv/tables/table_NN_<name>.csv` (NN = table number in the paper).
+Five tables that the appendices summarise in text are kept here instead of in the paper, in `results/csv/repository/`
+(LaTeX source `paper/repository_tables.tex`): `lower_bound_all_design_days.csv` (benchmark on every design day, Appendix D),
+`sensitivity_all_variants.csv` (all 37 sensitivity variants, Appendix H), `test_instances_all.csv` (every test instance, Appendix H),
+`uncertainty_prcc.csv` (partial rank correlations, Appendix I) and `weather_monthly.csv` (monthly weather and ground temperature, Appendix E).
+The analysis block behind each result:
 
 | Paper item | Block (results/parts/<block>.json) |
 |---|---|
@@ -294,10 +298,10 @@ repository:
 |---|---|
 | Simulation engine, 62 resumable analysis blocks, perfect-foresight benchmark, EnergyPlus driver, figure and CSV export | `src/hvac_savings/`, `experiments/optimiser/`, `src/paper_tools/` |
 | Building geometry, parameters (each with its source), experiment matrix, climates | `experiments/configs/*.json` |
-| Weather: TMYx typical years assembled from measured records (Riyadh 404380, Jeddah 410240) | `experiments/weather/` |
+| Weather: TMYx typical years assembled from measured records (Riyadh 404380, Jeddah 410240), as downloaded from [Climate.OneBuilding.Org](https://climate.onebuilding.org/WMO_Region_2_Asia/SAU_Saudi_Arabia/index.html): [Riyadh](https://climate.onebuilding.org/WMO_Region_2_Asia/SAU_Saudi_Arabia/RI_Riyadh/SAU_RI_Riyadh.AB.404380_TMYx.zip), [Jeddah](https://climate.onebuilding.org/WMO_Region_2_Asia/SAU_Saudi_Arabia/MK_Makkah/SAU_MK_Jeddah-Abdulaziz.Intl.AP.410240_TMYx.zip) | `experiments/weather/` |
 | Floor plans and elevation (DXF and PDF) and the scripts that draw them | `src/drawings/` |
 | EnergyPlus models (storey box, BESTEST-style cases, setback tests) and their outputs | `experiments/energyplus/`, `results/energyplus/` |
-| Every analysis result, one JSON file per block, and every table as CSV | `results/parts/`, `results/results.json`, `results/csv/` |
+| Every analysis result, one JSON file per block, every paper table as CSV, and the five tables kept out of the paper | `results/parts/`, `results/results.json`, `results/csv/` (`tables/`, `repository/`, `blocks/`) |
 | Uncertainty analysis: all 256 Latin-hypercube samples (inputs and results), one line per sample | `results/cache/uq_*.jsonl`, `results/parts/uncertainty_*.json` |
 | Perfect-foresight benchmark: every solve (bound and search), per scope | `results/cache/lower_bound_*.json` |
 | Manuscript (single-file LaTeX, references, PDF). Appendices: A nomenclature; B proofs; C passive zones; D full perfect-foresight benchmark; E geometry, room schedule (areas, windows, units, gain factors) and weather with ground temperature; F formal definitions and running examples; G validation details; H full sensitivity analysis and pre-cooling robustness; I uncertainty analysis; J calculation time | `paper/` |
