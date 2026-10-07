@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-07 (n) — repository pointers consolidated
+- File paths and "in the repository" pointers removed from the sections, captions and appendices; the text now refers to the appendix tables that summarise each result. The Data availability statement now says, in one place, that all data and results (code, configuration, weather files, drawings, EnergyPlus inputs and outputs, every result as JSON/CSV, the six summarised tables, the derived values, the uncertainty samples, the benchmark solves, the LaTeX source and the tests) are in the public repository. No number changed.
+
 ## 2026-10-07 (m) — title
 - Title changed to "Comparing HVAC Energy-Saving Measures in a Saudi Residential Building under a Volume Tariff" (round-8 editor and reviewers: the former title led with method jargon and a robustness check, and "comfort-constrained" held only for the air temperature of conditioned rooms). The body keeps the term "lever".
 
