@@ -405,3 +405,29 @@ def test_fullyear_admissibility():
         k = f"fullyear_admissibility_{c}"
         if k in R:
             assert R[k][c]["all_admissible"], (c, R[k][c]["inadmissible"])
+
+
+@needs_results
+def test_tariff_revision_2027():
+    """Generalisation to the tariff in force from 1 January 2027: every percentage is unchanged, every SAR amount scales
+    by 0.21/0.18, no meter reaches tier 2, no pre-cooling stays optimal, and the paper quotes the stored values."""
+    T = R_()["tariff_2027"]; k = T["tariff"]["tier1_price"] / T["base_tariff"]["tier1_price"]
+    paper = (ROOT / "paper" / "main.tex").read_text()
+    def rng(xs, fmt="{:,}"):
+        lo, hi = min(xs), max(xs)
+        return (fmt.format(lo) + "$--$" + fmt.format(hi)).replace(",", "{,}")
+    for c in CT:
+        t = T[c]
+        assert t["tier2_kwh"] == 0 and t["max_meter_month_kwh"] < T["tariff"]["threshold_kwh"]
+        assert t["thermostat_lattice"]["best_policy"] == [0, 0] == t["thermostat_lattice"]["best_policy_base"]
+        assert t["thermostat_lattice"]["saving_pct"] == 0.0 and t["thermostat_lattice"]["n_infeasible"] == 0
+        for sc in SCS:
+            assert t[sc]["envelope_pct"] == t[sc]["envelope_pct_base"]
+            for e in ("compliant", "noncompliant"):
+                x = t[sc][e]
+                assert x["setpoint_pct"] == x["setpoint_pct_base"] and abs(x["bill"] / x["bill_base"] - k) < 2e-3, (c, sc, e)
+        a = t["apartments"].values()
+        for x in a:
+            assert x["setpoint_pct"] == x["setpoint_pct_base"] and x["envelope_pct"] == x["envelope_pct_base"]
+        assert rng([x["setpoint_SAR"] for x in a]) in paper and rng([x["envelope_SAR"] for x in a]) in paper, c
+        assert "{:,}".format(t["max_meter_month_kwh"]).replace(",", "{,}") in paper

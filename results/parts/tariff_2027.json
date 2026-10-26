@@ -1,0 +1,474 @@
+{
+ "tariff": {
+  "tier1_price": 0.21,
+  "tier2_price": 0.33,
+  "threshold_kwh": 6000,
+  "vat": 1.15
+ },
+ "base_tariff": {
+  "tier1_price": 0.18,
+  "tier2_price": 0.3,
+  "threshold_kwh": 6000,
+  "vat": 1.15
+ },
+ "Riyadh": {
+  "apartment": {
+   "compliant": {
+    "bill": 1324,
+    "bill_base": 1135,
+    "ratio": 1.167,
+    "setpoint_pct": 12.2,
+    "setpoint_pct_base": 12.2,
+    "setpoint_SAR": 183,
+    "kwh": 5484
+   },
+   "noncompliant": {
+    "bill": 2674,
+    "bill_base": 2292,
+    "ratio": 1.167,
+    "setpoint_pct": 9.1,
+    "setpoint_pct_base": 9.1,
+    "setpoint_SAR": 267,
+    "kwh": 11071
+   },
+   "envelope_pct": 50.5,
+   "envelope_pct_base": 50.5,
+   "envelope_SAR": 1350
+  },
+  "floor": {
+   "compliant": {
+    "bill": 2828,
+    "bill_base": 2424,
+    "ratio": 1.167,
+    "setpoint_pct": 12.4,
+    "setpoint_pct_base": 12.4,
+    "setpoint_SAR": 399,
+    "kwh": 11711
+   },
+   "noncompliant": {
+    "bill": 5701,
+    "bill_base": 4886,
+    "ratio": 1.167,
+    "setpoint_pct": 9.3,
+    "setpoint_pct_base": 9.3,
+    "setpoint_SAR": 581,
+    "kwh": 23605
+   },
+   "envelope_pct": 50.4,
+   "envelope_pct_base": 50.4,
+   "envelope_SAR": 2873
+  },
+  "building": {
+   "compliant": {
+    "bill": 12199,
+    "bill_base": 10456,
+    "ratio": 1.167,
+    "setpoint_pct": 12.4,
+    "setpoint_pct_base": 12.4,
+    "setpoint_SAR": 1733,
+    "kwh": 50512,
+    "meter_bill": [
+     1451,
+     1415,
+     1335,
+     1296,
+     1340,
+     1301,
+     1509,
+     1471,
+     1081
+    ],
+    "meter_bill_current": [
+     1672,
+     1627,
+     1524,
+     1478,
+     1525,
+     1479,
+     1705,
+     1660,
+     1263
+    ]
+   },
+   "noncompliant": {
+    "bill": 27994,
+    "bill_base": 23994,
+    "ratio": 1.167,
+    "setpoint_pct": 8.9,
+    "setpoint_pct_base": 8.9,
+    "setpoint_SAR": 2743,
+    "kwh": 115915,
+    "meter_bill": [
+     2772,
+     2680,
+     2701,
+     2606,
+     2875,
+     2774,
+     4556,
+     4452,
+     2578
+    ],
+    "meter_bill_current": [
+     3067,
+     2958,
+     2973,
+     2867,
+     3163,
+     3046,
+     4960,
+     4850,
+     2852
+    ]
+   },
+   "envelope_pct": 56.4,
+   "envelope_pct_base": 56.4,
+   "envelope_SAR": 15795
+  },
+  "thermostat_lattice": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_policy_base": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "n_infeasible": 0,
+   "n_policies": 49,
+   "prepeak2_pct": 3.4,
+   "night2_pct": 4.6
+  },
+  "apartments": {
+   "1A": {
+    "bill_current": 1672,
+    "bill_current_base": 1433,
+    "setpoint_SAR": 221,
+    "setpoint_SAR_base": 190,
+    "setpoint_pct": 13.2,
+    "setpoint_pct_base": 13.2,
+    "envelope_SAR": 1321,
+    "envelope_SAR_base": 1132,
+    "envelope_pct": 47.7,
+    "envelope_pct_base": 47.7
+   },
+   "1B": {
+    "bill_current": 1627,
+    "bill_current_base": 1394,
+    "setpoint_SAR": 212,
+    "setpoint_SAR_base": 181,
+    "setpoint_pct": 13.0,
+    "setpoint_pct_base": 13.0,
+    "envelope_SAR": 1264,
+    "envelope_SAR_base": 1084,
+    "envelope_pct": 47.2,
+    "envelope_pct_base": 47.2
+   },
+   "2A": {
+    "bill_current": 1524,
+    "bill_current_base": 1306,
+    "setpoint_SAR": 189,
+    "setpoint_SAR_base": 162,
+    "setpoint_pct": 12.4,
+    "setpoint_pct_base": 12.4,
+    "envelope_SAR": 1366,
+    "envelope_SAR_base": 1171,
+    "envelope_pct": 50.6,
+    "envelope_pct_base": 50.6
+   },
+   "2B": {
+    "bill_current": 1478,
+    "bill_current_base": 1266,
+    "setpoint_SAR": 182,
+    "setpoint_SAR_base": 156,
+    "setpoint_pct": 12.3,
+    "setpoint_pct_base": 12.3,
+    "envelope_SAR": 1310,
+    "envelope_SAR_base": 1123,
+    "envelope_pct": 50.3,
+    "envelope_pct_base": 50.3
+   },
+   "3A": {
+    "bill_current": 1525,
+    "bill_current_base": 1307,
+    "setpoint_SAR": 185,
+    "setpoint_SAR_base": 159,
+    "setpoint_pct": 12.1,
+    "setpoint_pct_base": 12.1,
+    "envelope_SAR": 1535,
+    "envelope_SAR_base": 1316,
+    "envelope_pct": 53.4,
+    "envelope_pct_base": 53.4
+   },
+   "3B": {
+    "bill_current": 1479,
+    "bill_current_base": 1268,
+    "setpoint_SAR": 178,
+    "setpoint_SAR_base": 152,
+    "setpoint_pct": 12.0,
+    "setpoint_pct_base": 12.0,
+    "envelope_SAR": 1473,
+    "envelope_SAR_base": 1263,
+    "envelope_pct": 53.1,
+    "envelope_pct_base": 53.1
+   },
+   "4A": {
+    "bill_current": 1705,
+    "bill_current_base": 1462,
+    "setpoint_SAR": 196,
+    "setpoint_SAR_base": 168,
+    "setpoint_pct": 11.5,
+    "setpoint_pct_base": 11.5,
+    "envelope_SAR": 3047,
+    "envelope_SAR_base": 2612,
+    "envelope_pct": 66.9,
+    "envelope_pct_base": 66.9
+   },
+   "4B": {
+    "bill_current": 1660,
+    "bill_current_base": 1423,
+    "setpoint_SAR": 189,
+    "setpoint_SAR_base": 162,
+    "setpoint_pct": 11.4,
+    "setpoint_pct_base": 11.4,
+    "envelope_SAR": 2981,
+    "envelope_SAR_base": 2555,
+    "envelope_pct": 67.0,
+    "envelope_pct_base": 67.0
+   }
+  },
+  "max_meter_month_kwh": 3395,
+  "tier2_kwh": 0
+ },
+ "Jeddah": {
+  "apartment": {
+   "compliant": {
+    "bill": 1942,
+    "bill_base": 1664,
+    "ratio": 1.167,
+    "setpoint_pct": 9.8,
+    "setpoint_pct_base": 9.8,
+    "setpoint_SAR": 211,
+    "kwh": 8041
+   },
+   "noncompliant": {
+    "bill": 3145,
+    "bill_base": 2696,
+    "ratio": 1.167,
+    "setpoint_pct": 12.7,
+    "setpoint_pct_base": 12.7,
+    "setpoint_SAR": 458,
+    "kwh": 13025
+   },
+   "envelope_pct": 38.3,
+   "envelope_pct_base": 38.3,
+   "envelope_SAR": 1203
+  },
+  "floor": {
+   "compliant": {
+    "bill": 4334,
+    "bill_base": 3715,
+    "ratio": 1.167,
+    "setpoint_pct": 9.8,
+    "setpoint_pct_base": 9.8,
+    "setpoint_SAR": 468,
+    "kwh": 17945
+   },
+   "noncompliant": {
+    "bill": 7097,
+    "bill_base": 6083,
+    "ratio": 1.167,
+    "setpoint_pct": 12.5,
+    "setpoint_pct_base": 12.5,
+    "setpoint_SAR": 1009,
+    "kwh": 29386
+   },
+   "envelope_pct": 38.9,
+   "envelope_pct_base": 38.9,
+   "envelope_SAR": 2763
+  },
+  "building": {
+   "compliant": {
+    "bill": 18333,
+    "bill_base": 15714,
+    "ratio": 1.167,
+    "setpoint_pct": 10.5,
+    "setpoint_pct_base": 10.5,
+    "setpoint_SAR": 2144,
+    "kwh": 75912,
+    "meter_bill": [
+     2097,
+     2148,
+     1960,
+     2017,
+     1966,
+     2023,
+     2138,
+     2194,
+     1789
+    ],
+    "meter_bill_current": [
+     2366,
+     2422,
+     2180,
+     2240,
+     2183,
+     2242,
+     2385,
+     2444,
+     2016
+    ]
+   },
+   "noncompliant": {
+    "bill": 33326,
+    "bill_base": 28566,
+    "ratio": 1.167,
+    "setpoint_pct": 13.0,
+    "setpoint_pct_base": 13.0,
+    "setpoint_SAR": 4982,
+    "kwh": 137998,
+    "meter_bill": [
+     3261,
+     3418,
+     3182,
+     3342,
+     3370,
+     3527,
+     4886,
+     5032,
+     3310
+    ],
+    "meter_bill_current": [
+     3773,
+     3934,
+     3652,
+     3817,
+     3871,
+     4030,
+     5643,
+     5800,
+     3787
+    ]
+   },
+   "envelope_pct": 45.0,
+   "envelope_pct_base": 45.0,
+   "envelope_SAR": 14993
+  },
+  "thermostat_lattice": {
+   "best_policy": [
+    0,
+    0
+   ],
+   "best_policy_base": [
+    0,
+    0
+   ],
+   "saving_pct": 0.0,
+   "n_infeasible": 0,
+   "n_policies": 49,
+   "prepeak2_pct": 4.3,
+   "night2_pct": 5.3
+  },
+  "apartments": {
+   "1A": {
+    "bill_current": 2366,
+    "bill_current_base": 2028,
+    "setpoint_SAR": 269,
+    "setpoint_SAR_base": 231,
+    "setpoint_pct": 11.4,
+    "setpoint_pct_base": 11.4,
+    "envelope_SAR": 1165,
+    "envelope_SAR_base": 998,
+    "envelope_pct": 35.7,
+    "envelope_pct_base": 35.7
+   },
+   "1B": {
+    "bill_current": 2422,
+    "bill_current_base": 2076,
+    "setpoint_SAR": 273,
+    "setpoint_SAR_base": 234,
+    "setpoint_pct": 11.3,
+    "setpoint_pct_base": 11.3,
+    "envelope_SAR": 1270,
+    "envelope_SAR_base": 1088,
+    "envelope_pct": 37.1,
+    "envelope_pct_base": 37.1
+   },
+   "2A": {
+    "bill_current": 2180,
+    "bill_current_base": 1869,
+    "setpoint_SAR": 220,
+    "setpoint_SAR_base": 189,
+    "setpoint_pct": 10.1,
+    "setpoint_pct_base": 10.1,
+    "envelope_SAR": 1222,
+    "envelope_SAR_base": 1047,
+    "envelope_pct": 38.4,
+    "envelope_pct_base": 38.4
+   },
+   "2B": {
+    "bill_current": 2240,
+    "bill_current_base": 1920,
+    "setpoint_SAR": 222,
+    "setpoint_SAR_base": 191,
+    "setpoint_pct": 9.9,
+    "setpoint_pct_base": 9.9,
+    "envelope_SAR": 1324,
+    "envelope_SAR_base": 1135,
+    "envelope_pct": 39.6,
+    "envelope_pct_base": 39.6
+   },
+   "3A": {
+    "bill_current": 2183,
+    "bill_current_base": 1871,
+    "setpoint_SAR": 217,
+    "setpoint_SAR_base": 186,
+    "setpoint_pct": 9.9,
+    "setpoint_pct_base": 9.9,
+    "envelope_SAR": 1404,
+    "envelope_SAR_base": 1203,
+    "envelope_pct": 41.7,
+    "envelope_pct_base": 41.7
+   },
+   "3B": {
+    "bill_current": 2242,
+    "bill_current_base": 1921,
+    "setpoint_SAR": 218,
+    "setpoint_SAR_base": 187,
+    "setpoint_pct": 9.7,
+    "setpoint_pct_base": 9.7,
+    "envelope_SAR": 1503,
+    "envelope_SAR_base": 1289,
+    "envelope_pct": 42.6,
+    "envelope_pct_base": 42.6
+   },
+   "4A": {
+    "bill_current": 2385,
+    "bill_current_base": 2044,
+    "setpoint_SAR": 247,
+    "setpoint_SAR_base": 212,
+    "setpoint_pct": 10.4,
+    "setpoint_pct_base": 10.4,
+    "envelope_SAR": 2748,
+    "envelope_SAR_base": 2355,
+    "envelope_pct": 56.2,
+    "envelope_pct_base": 56.2
+   },
+   "4B": {
+    "bill_current": 2444,
+    "bill_current_base": 2095,
+    "setpoint_SAR": 250,
+    "setpoint_SAR_base": 214,
+    "setpoint_pct": 10.2,
+    "setpoint_pct_base": 10.2,
+    "envelope_SAR": 2837,
+    "envelope_SAR_base": 2432,
+    "envelope_pct": 56.4,
+    "envelope_pct_base": 56.4
+   }
+  },
+  "max_meter_month_kwh": 3077,
+  "tier2_kwh": 0
+ }
+}

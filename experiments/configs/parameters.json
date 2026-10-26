@@ -116,6 +116,14 @@
    "tier2_price": 0.3,
    "threshold_kwh": 6000,
    "vat": 1.15
+  },
+  "volume_2027": {
+   "_note": "Residential tariff in force from 1 January 2027 (Saudi Energy, announced 25 October 2026): tier prices exclude VAT; the 6,000 kWh/month threshold is unchanged; the new fixed monthly charge (70-100 SAR by breaker size) does not depend on the policy and is excluded, as the meter fee is in the base tariff",
+   "tier1_price": 0.21,
+   "tier2_price": 0.33,
+   "threshold_kwh": 6000,
+   "vat": 1.15,
+   "effective": "2027-01-01"
   }
  },
  "policies": {

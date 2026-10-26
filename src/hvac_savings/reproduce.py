@@ -1808,6 +1808,71 @@ def b_fullyear_admissibility(cities=None):
     return out
 
 
+def b_tariff_2027():
+    """Generalisation to the revised residential tariff in force from 1 January 2027 (Saudi Energy: 0.21 SAR/kWh up to
+    6,000 kWh a month and 0.33 SAR/kWh above, VAT 15%; the policy-independent fixed charge is excluded). The simulations of
+    the three cases (both envelopes, current practice and reference policy), the 49-policy thermostat lattice of Case 3 and
+    every apartment meter are re-run with the model billing under the revised tariff and compared with the stored results
+    under the tariff in force since 2018."""
+    v = M._P["tariff"]["volume"]; old = dict(v); new = M._P["tariff"]["volume_2027"]
+    keys = ("tier1_price", "tier2_price", "threshold_kwh", "vat")
+    out = {"tariff": {k: new[k] for k in keys}, "base_tariff": {k: old[k] for k in keys}}
+    try:
+        v.update({k: new[k] for k in keys})
+        for c in CITIES:
+            S = json.load(open(PARTS / f"scopes_{c}.json")); T = json.load(open(PARTS / "tenant_savings.json"))[c]["apartments"]
+            G = json.load(open(PARTS / f"scheduling_{c}.json"))
+            row = {}; tier2_kwh = 0.0; max_mm = 0.0
+            try:
+                for sc in M.SCOPES:
+                    M.set_scope(sc, REF_FLOORS); o = {}
+                    for env in ENVS:
+                        cod, cur = sim(c, env, [M.CODE, M.CURRENT])
+                        for r in (cod, cur):
+                            tier2_kwh += float(np.maximum(r["meter_kwh_m"] - new["threshold_kwh"], 0).sum())
+                            max_mm = max(max_mm, float(r["meter_kwh_m"].max()))
+                        o[env] = dict(bill=round(cod["bill"]), bill_base=S[sc][env]["bill"],
+                                      ratio=r3(cod["bill"] / S[sc][env]["bill"]),
+                                      setpoint_pct=r1(pct(cod["bill"], cur["bill"])), setpoint_pct_base=S[sc][env]["setpoint_pct"],
+                                      setpoint_SAR=round(cur["bill"] - cod["bill"]), kwh=round(cod["kwh"]))
+                        if sc == "building":
+                            o[env]["meter_bill"] = [float(x) for x in cod["meter_bill"]]
+                            o[env]["meter_bill_current"] = [float(x) for x in cur["meter_bill"]]
+                    o["envelope_pct"] = r1(pct(o["compliant"]["bill"], o["noncompliant"]["bill"]))
+                    o["envelope_pct_base"] = S[sc]["envelope_pct"]
+                    o["envelope_SAR"] = o["noncompliant"]["bill"] - o["compliant"]["bill"]
+                    row[sc] = o
+                M.set_scope("building", REF_FLOORS)
+                g = grid_saving(c, MAIN, "volume")
+                pk = [k for k, x in enumerate(GRID) if list(x[2:]) == [0, 2]][0]; nt = [k for k, x in enumerate(GRID) if list(x[2:]) == [2, 0]][0]
+                R = sim(c, MAIN, [GRID[0], GRID[pk], GRID[nt]])
+                row["thermostat_lattice"] = dict(best_policy=g["best_policy"], best_policy_base=G[MAIN]["volume"]["best_policy"],
+                                                 saving_pct=g["bldg_pct"], n_infeasible=g["n_infeasible"], n_policies=g["n_policies"],
+                                                 prepeak2_pct=r1(-pct(R[1]["bill"], R[0]["bill"])), night2_pct=r1(-pct(R[2]["bill"], R[0]["bill"])))
+                apts = {}
+                bld = row["building"]; cmp, pre = bld["compliant"], bld["noncompliant"]
+                for f in range(M.FLOORS):
+                    for sd in ("A", "B"):
+                        m = M.apartment_meter(f, sd); n = f"{f + 1}{sd}"
+                        b0, b1, bp = cmp["meter_bill_current"][m], cmp["meter_bill"][m], pre["meter_bill"][m]
+                        apts[n] = dict(bill_current=round(b0), bill_current_base=T[n]["bill_current"],
+                                       setpoint_SAR=round(b0 - b1), setpoint_SAR_base=T[n]["setpoint_SAR"],
+                                       setpoint_pct=r1(pct(b1, b0)), setpoint_pct_base=T[n]["setpoint_pct"],
+                                       envelope_SAR=round(bp - b1), envelope_SAR_base=T[n]["envelope_SAR"],
+                                       envelope_pct=r1(pct(b1, bp)), envelope_pct_base=T[n]["envelope_pct"])
+                for env in ENVS:
+                    for k in ("meter_bill", "meter_bill_current"):
+                        bld[env][k] = [round(x) for x in bld[env][k]]
+                row["apartments"] = apts
+            finally:
+                M.set_scope("building", REF_FLOORS)
+            row["max_meter_month_kwh"] = round(max_mm); row["tier2_kwh"] = round(tier2_kwh)
+            out[c] = row
+    finally:
+        v.clear(); v.update(old)
+    return out
+
+
 BLOCKS = {"stage1": b_stage1, "operations": b_operations, "rooms": b_rooms, "humidity": b_humidity,
           "verification": b_verification, "cop_swing": b_cop_swing, "landscape": b_landscape,
           "setpoint_frontier": b_setpoint_frontier, "party_wall": b_party_wall,
@@ -1826,6 +1891,7 @@ BLOCKS.update(seasons_hc=b_seasons_hc, instances=b_instances, train_eval=b_train
               sizing_margin=b_sizing_margin, lp_complexity=b_lp_complexity, tight_frontier=b_tight_frontier, floor_guard=b_floor_guard, lower_bound_apartment=lambda: b_lower_bound(["apartment"]), lower_bound_floor=lambda: b_lower_bound(["floor"]), lower_bound_top_floor=lambda: b_lower_bound(["top_floor"]), lower_bound_building=b_lower_bound_building, admissibility_tolerance=b_admissibility_tolerance, uq_envelope_all=b_uq_envelope_all, setpoint_split=b_setpoint_split, factorial=b_factorial, uncertainty_Riyadh=lambda: b_uncertainty(["Riyadh"]), uncertainty_Jeddah=lambda: b_uncertainty(["Jeddah"]), fullyear_admissibility_Riyadh=lambda: b_fullyear_admissibility(["Riyadh"]), fullyear_admissibility_Jeddah=lambda: b_fullyear_admissibility(["Jeddah"]))
 for c in CITIES:
     BLOCKS[f"scheduling_{c}"] = b_scheduling(c)
+BLOCKS["tariff_2027"] = b_tariff_2027
 for Cz in EXP["thermal_mass_sweep"]:
     BLOCKS[f"mass_{Cz}"] = b_mass(Cz)
 
