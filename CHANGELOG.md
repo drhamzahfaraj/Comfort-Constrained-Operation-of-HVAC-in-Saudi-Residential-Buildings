@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-29 (q) — JKSU-ES submission guidelines
+- Captions in Springer style: bold "Fig. n" and "Table n" labels, no colon.
+- Substantive use of generative AI is now also described in the Methods (Section 7.5), as the guidelines require; the declaration at the end is kept.
+- Citations stay numbered (author's decision); funding names the funder without a grant number (none).
+- Float sources re-placed after the caption change (Tables 6-8, 17, 21); numbering in first-citation order; 28 of 30 floats inside their section in both versions.
+
 ## 2026-10-26 (p) — tariff revision of 1 January 2027 (generalisation)
 - New block `tariff_2027` (`src/hvac_savings/reproduce.py`; parameters in `experiments/configs/parameters.json`, `tariff.volume_2027`): the three cases with both envelopes, the 49-policy thermostat lattice of Case 3 and the eight apartment meters are simulated again and billed under the residential tariff in force from 1 January 2027 (0.21/0.33 SAR/kWh before VAT, 6,000 kWh threshold unchanged; the new fixed monthly charge is policy-independent and excluded). Every percentage is unchanged, no pre-cooling stays optimal, every SAR amount rises by 0.21/0.18, and no meter reaches tier 2 (at most 3,395 kWh of HVAC electricity in a month). New test `test_tariff_revision_2027` checks these properties and the values quoted in the paper.
 - Paper: §5.6 states the revised tariff, cited to Saudi Energy's announcement through the Saudi Press Agency [`se_tariff2027`]; §9.5 adds the paragraph "Tariff revision"; §7.4 lists the experiment; §10.3 (i) and Conclusion (1) note the revision. References are renumbered in reading order (the new reference is [58]).
