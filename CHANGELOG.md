@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-31 (r) — back matter in Springer form; repository renamed
+- The back matter is now three unnumbered sections: Author contributions (CRediT roles), Data availability (with the code statement) and Declarations (Funding; Competing interests; Ethics approval and consent to participate; Consent for publication; Use of generative AI).
+- The repository is now https://github.com/drhamzahfaraj/Comparing-HVAC-Energy-Saving-Measures-in-a-Saudi-Residential-Building-under-a-Volume-Tarif (paper, CITATION.cff).
+
 ## 2026-10-29 (q) — JKSU-ES submission guidelines
 - Captions in Springer style: bold "Fig. n" and "Table n" labels, no colon.
 - Substantive use of generative AI is now also described in the Methods (Section 7.5), as the guidelines require; the declaration at the end is kept.
