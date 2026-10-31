@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2026-10-31 (r) — back matter in Springer form; repository renamed
+- The three sections are placed after the appendices, immediately before the references (author's request). Float sources re-placed (Tables 16, 17, 19): 29 of 30 floats print inside their section; Table 6 at the foot of the page before Section 9.2.
 - The back matter is now three unnumbered sections: Author contributions (CRediT roles), Data availability (with the code statement) and Declarations (Funding; Competing interests; Ethics approval and consent to participate; Consent for publication; Use of generative AI).
 - The repository is now https://github.com/drhamzahfaraj/Comparing-HVAC-Energy-Saving-Measures-in-a-Saudi-Residential-Building-under-a-Volume-Tarif (paper, CITATION.cff).
 
